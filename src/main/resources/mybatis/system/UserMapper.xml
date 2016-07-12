@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="UserMapper">
+	<sql id="userColumns">id,user_email,user_phone,user_type,nickname,user_level,user_role,user_head_images,description,user_status</sql>
+
+	
+	<resultMap type="User" id="userResultMap">
+		<id column="id" property="id"/>
+		<result column="user_email" property="userEmail"/>
+		<result column="user_phone" property="userPhone"/>
+		<result column="user_type" property="userType"/>
+		<result column="nickname" property="nickname"/>
+		<result column="user_pwd" property="userPwd"/>
+		<result column="user_level" property="userLevel"/>
+		<result column="user_role" property="userRole"/>
+		<result column="user_head_images" property="userHeadImages"/>
+		<result column="description" property="description"/>
+		<result column="user_status" property="userStatus"/>
+	</resultMap>
+		
+	<!-- 判断用户名和密码 -->
+	<select id="getUserInfo" parameterType="PageData" resultType="User" useCache="false">
+	   select 
+	   <include refid="userColumns"></include>
+		from cr_user 
+		where 1=1
+		<if test="loginName != null and password != null">
+	  	and	(
+	  		(user_phone = #{loginName} and user_pwd = #{password})
+	  		or
+	  		(user_email = #{loginName} and user_pwd = #{password})
+	  		) 
+	  	and user_status != -1
+		</if>
+		<if test="id != null">
+		     and id = #{id}
+		</if>
+	</select>
+	
+	<select id="getUserById" parameterType="java.lang.Integer" resultType="User">
+	   select 
+	   <include refid="userColumns"></include>
+		from cr_user 
+		where  id = #{id}
+	</select>
+	
+	<select id="count" parameterType="PageData" resultType="int">
+		select count(1)
+		from sys_user u
+		where u.status != -1
+		<if test="keyword != null and keyword != ''">
+	  	and	CONCAT(IFNULL(u.login_name,''),IFNULL(u.name,'')) like #{keyword}
+		</if>
+	</select>
+	
+	<select id="list" parameterType="PageData" resultType="PageData">
+		select  u.user_id userId,
+				u.login_name loginName,
+				u.password,
+				u.name,
+				u.last_login lastLogin,
+				u.ip,
+				u.status,
+				u.description,
+				u.email,
+				u.phone,
+				u.skin
+		from sys_user u
+		where u.status != -1
+		<if test="keyword != null and keyword != ''">
+	  	and	CONCAT(IFNULL(u.login_name,''),IFNULL(u.name,'')) like #{keyword}
+		</if>
+		limit #{from},#{size}
+	</select>
+	
+	
+	<insert id="saveUserInfo" parameterType="PageData">
+		insert into cr_user (
+			user_email,
+			user_phone,
+			user_type,
+			nickname,
+			user_pwd,
+			user_level,
+			user_status,
+			description
+		) values (
+			#{userEmail},
+			#{userPhone},
+			#{userType},
+			#{nickname},
+			#{userPwd},
+			#{userLevel},
+			#{userStatus},
+			#{description}
+		)
+	</insert>
+	
+	
+
+	
+	<update id="edit" parameterType="PageData">
+		update sys_user set
+		<if test="password != null">
+			password = #{password},
+		</if>
+			name		= #{name},
+			description	= #{description},
+			email		= #{email},
+			phone		= #{phone}
+		where
+			user_id		= #{userId}
+	</update>
+	
+	<update id="updatePassword" parameterType="PageData">
+		update sys_user set
+			password	= #{newEncodePwd}
+		where
+			user_id		= #{userId}
+	</update>
+</mapper>
