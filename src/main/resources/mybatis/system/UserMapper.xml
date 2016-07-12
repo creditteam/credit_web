@@ -47,27 +47,18 @@
 	
 	<select id="count" parameterType="PageData" resultType="int">
 		select count(1)
-		from sys_user u
-		where u.status != -1
+		from cr_user u
+		where u.user_status != -1
 		<if test="keyword != null and keyword != ''">
 	  	and	CONCAT(IFNULL(u.login_name,''),IFNULL(u.name,'')) like #{keyword}
 		</if>
 	</select>
 	
 	<select id="list" parameterType="PageData" resultType="PageData">
-		select  u.user_id userId,
-				u.login_name loginName,
-				u.password,
-				u.name,
-				u.last_login lastLogin,
-				u.ip,
-				u.status,
-				u.description,
-				u.email,
-				u.phone,
-				u.skin
-		from sys_user u
-		where u.status != -1
+		select  
+		 <include refid="userColumns"></include>
+		from cr_user u
+		where u.user_status != -1
 		<if test="keyword != null and keyword != ''">
 	  	and	CONCAT(IFNULL(u.login_name,''),IFNULL(u.name,'')) like #{keyword}
 		</if>
@@ -97,26 +88,10 @@
 		)
 	</insert>
 	
-	
-
-	
-	<update id="edit" parameterType="PageData">
-		update sys_user set
-		<if test="password != null">
-			password = #{password},
-		</if>
-			name		= #{name},
-			description	= #{description},
-			email		= #{email},
-			phone		= #{phone}
-		where
-			user_id		= #{userId}
-	</update>
-	
 	<update id="updatePassword" parameterType="PageData">
-		update sys_user set
-			password	= #{newEncodePwd}
+		update cr_user set
+			user_pwd	= #{newEncodePwd}
 		where
-			user_id		= #{userId}
+			id		= #{id}
 	</update>
 </mapper>

@@ -1,5 +1,12 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%
+String path = request.getContextPath();
+// 获得本项目的地址(例如: http://localhost:8080/MyApp/)赋值给basePath变量
+String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+// 将 "项目路径basePath" 放入pageContext中，待以后用EL表达式读出。
+pageContext.setAttribute("basePath",basePath);
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -38,22 +45,23 @@
                     </div>
                     <div class="ibox-content">
                     <form class="form-horizontal m-t" id="commentForm">
+                    <input type="hidden" name="userId"  id="userId" value="${user.id }">
                             <div class="form-group">
                                 <label class="col-sm-3 control-label">姓名：</label>
                                 <div class="col-sm-8">
-                                    <input id="cname" name="name" minlength="2" type="text" class="form-control" required="" aria-required="true" value="liaoxj@l63.com" readonly="readonly">
+                                    <input id="cname" name="name"  type="text" class="form-control" required="" aria-required="true" value="${user.userEmail }" readonly="readonly">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="col-sm-3 control-label">旧密码：</label>
                                 <div class="col-sm-8">
-                                    <input id="cemail" type="email" class="form-control" name="email" required="" aria-required="true">
+                                    <input id="oldpassowrd" type="passowrd" class="form-control" name="oldpassowrd" minlength="6" required="" aria-required="true">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="col-sm-3 control-label">新密码：</label>
                                 <div class="col-sm-8">
-                                    <input id="curl" type="url" class="form-control" name="url">
+                                    <input id="newpassowrd" type="passowrd" class="form-control" name="newpassowrd" minlength="6" required="">
                                 </div>
                             </div>
                             <div class="form-group">
@@ -83,7 +91,27 @@
 
     <jsp:include page="/common/_script.jsp"></jsp:include>
     <script>
-        $(document).ready(function(){var d1=[[1262304000000,6],[1264982400000,3057],[1267401600000,20434],[1270080000000,31982],[1272672000000,26602],[1275350400000,27826],[1277942400000,24302],[1280620800000,24237],[1283299200000,21004],[1285891200000,12144],[1288569600000,10577],[1291161600000,10295]];var d2=[[1262304000000,5],[1264982400000,200],[1267401600000,1605],[1270080000000,6129],[1272672000000,11643],[1275350400000,19055],[1277942400000,30062],[1280620800000,39197],[1283299200000,37000],[1285891200000,27000],[1288569600000,21000],[1291161600000,17000]];var data1=[{label:"数据1",data:d1,color:"#17a084"},{label:"数据2",data:d2,color:"#127e68"}];$.plot($("#flot-chart1"),data1,{xaxis:{tickDecimals:0},series:{lines:{show:true,fill:true,fillColor:{colors:[{opacity:1},{opacity:1}]},},points:{width:0.1,show:false},},grid:{show:false,borderWidth:0},legend:{show:false,}});var lineData={labels:["一月","二月","三月","四月","五月","六月","七月"],datasets:[{label:"示例数据",fillColor:"rgba(220,220,220,0.5)",strokeColor:"rgba(220,220,220,1)",pointColor:"rgba(220,220,220,1)",pointStrokeColor:"#fff",pointHighlightFill:"#fff",pointHighlightStroke:"rgba(220,220,220,1)",data:[65,59,40,51,36,25,40]},{label:"示例数据",fillColor:"rgba(26,179,148,0.5)",strokeColor:"rgba(26,179,148,0.7)",pointColor:"rgba(26,179,148,1)",pointStrokeColor:"#fff",pointHighlightFill:"#fff",pointHighlightStroke:"rgba(26,179,148,1)",data:[48,48,60,39,56,37,30]}]};var lineOptions={scaleShowGridLines:true,scaleGridLineColor:"rgba(0,0,0,.05)",scaleGridLineWidth:1,bezierCurve:true,bezierCurveTension:0.4,pointDot:true,pointDotRadius:4,pointDotStrokeWidth:1,pointHitDetectionRadius:20,datasetStroke:true,datasetStrokeWidth:2,datasetFill:true,responsive:true,};var ctx=document.getElementById("lineChart").getContext("2d");var myNewChart=new Chart(ctx).Line(lineData,lineOptions)});
+       
+    $('#commentForm').submit(function() {
+		var newpassowrd=$("#newpassowrd").val();
+		var oldpassowrd=$("#oldpassowrd").val();
+		var userId=$("#userId").val();
+		 $.ajax({
+			 type: "POST", //用POST方式传输
+			 dataType: "text", //数据格式:字符串
+			 url: "${basePath}user/updatePwd", //目标地址
+			 data: "password=" + newpassowrd+"&oldpassowrd="+oldpassowrd+"&id="+userId,
+			 error: function (XMLHttpRequest, textStatus, errorThrown) {
+				 alert("修改密码异常，请稍候再试");
+			 },
+			 success: function (msg){
+				 alert(msg);
+				 document.getElementById("backinputyzm").disabled=false;
+			 }
+		 });
+	});
+    
+    
     </script>
     <script type="text/javascript" src="http://tajs.qq.com/stats?sId=9051096" charset="UTF-8"></script>
 </body>

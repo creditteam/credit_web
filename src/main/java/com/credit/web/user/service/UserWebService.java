@@ -30,4 +30,12 @@ public class UserWebService {
 		}
 		return false;
 	}
+	
+	public Boolean updatePassword(PageData pd) throws Exception{
+		int num = dao.update("UserMapper.updatePassword", pd);
+		if (num > 0) {
+			return true;
+		}
+		return false;
+	}
 }

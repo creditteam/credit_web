@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="FileManagerMapper">
+	<sql id="userColumns">id,file_type,file_title,dowload_url</sql>
+	
+	<resultMap type="FileManager" id="FileResultMap">
+		<id column="id" property="id"/>
+		<result column="file_type" property="fileType"/>
+		<result column="file_title" property="fileTitle"/>
+		<result column="dowload_url" property="dowloadUrl"/>
+	</resultMap>
+	
+	
+	
+</mapper>
