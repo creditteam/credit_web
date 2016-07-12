@@ -44,7 +44,8 @@ pageContext.setAttribute("basePath",basePath);
                         </div>
                     </div>
                     <div class="ibox-content">
-                    <form class="form-horizontal m-t" id="commentForm">
+                    <span id="error" class="help-block m-b-none"><i class="fa fa-times-circle"></i>  用户密码错误</span>
+                    <form class="form-horizontal m-t" id="commentForm" method="post" target="_self">
                     <input type="hidden" name="userId"  id="userId" value="${user.id }">
                             <div class="form-group">
                                 <label class="col-sm-3 control-label">姓名：</label>
@@ -55,13 +56,13 @@ pageContext.setAttribute("basePath",basePath);
                             <div class="form-group">
                                 <label class="col-sm-3 control-label">旧密码：</label>
                                 <div class="col-sm-8">
-                                    <input id="oldpassowrd" type="passowrd" class="form-control" name="oldpassowrd" minlength="6" required="" aria-required="true">
+                                    <input id="oldpassowrd" type="password" class="form-control" name="oldpassowrd" minlength="6" required="" aria-required="true">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="col-sm-3 control-label">新密码：</label>
                                 <div class="col-sm-8">
-                                    <input id="newpassowrd" type="passowrd" class="form-control" name="newpassowrd" minlength="6" required="">
+                                    <input id="newpassowrd" type="password" class="form-control" name="newpassowrd" minlength="6" required="">
                                 </div>
                             </div>
                             <div class="form-group">
