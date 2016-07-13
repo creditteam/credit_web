@@ -57,7 +57,7 @@
 	</select>
 	
 	<select id="list" parameterType="PageData" resultType="PageData">
-	   <include refid="creditColumns"></include>
+	   <include refid="commonColumns"></include>
 		from cr_reward u
 		where u.reward_status != -1
 		<if test="userId != null and userId != ''">
