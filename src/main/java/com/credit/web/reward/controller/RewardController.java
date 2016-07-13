@@ -1,24 +1,23 @@
-package com.credit.web.credit.controller;
+package com.credit.web.reward.controller;
 
 import java.util.List;
-
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
-import com.credit.web.credit.service.CreditWebService;
-import com.credit.web.entity.Credit;
+import com.credit.web.entity.Reward;
+import com.credit.web.reward.service.RewardWebService;
 import com.gvtv.manage.base.controller.BaseController;
 import com.gvtv.manage.base.util.PageData;
 
 @Controller
-@RequestMapping(value="/credit")
-public class CreditController extends BaseController{
+@RequestMapping(value="/reward")
+public class RewardController extends BaseController{
 
 	@Resource
-	private CreditWebService creditWebService;
+	private RewardWebService rewardWebService;
 	/**
 	 * 用户中心债权首页
 	 * @param request
@@ -31,18 +30,23 @@ public class CreditController extends BaseController{
 		PageData pd =super.getPageData();
 		pd.put("from", 0);
 		pd.put("size", 10);
-		List<Credit> creditList = creditWebService.creditlist(pd);
+		List<Reward> rewardList = rewardWebService.rewardlist(pd);
 		
 		ModelAndView mv = this.getModelAndView();
-		mv.addObject("creditList", creditList);
+		mv.addObject("rewardList", rewardList);
 		mv.addObject("pd", pd);
-		mv.setViewName("/user/user_credit_disposal_list");
+		mv.setViewName("/user/user_reward_list");
 		return mv;
 	}
 	
 	
-	@RequestMapping(value="/saveCredit",method =RequestMethod.GET)
-	public ModelAndView toSaveCredit() throws Exception{
+	/**
+	 * 调整到新增悬赏页面
+	 * @return
+	 * @throws Exception
+	 */
+	@RequestMapping(value="/saveReward",method =RequestMethod.GET)
+	public ModelAndView toSaveReward() throws Exception{
 		String userId =super.getRequest().getParameter("userId");
 		ModelAndView mv = this.getModelAndView();
 		mv.addObject("userId", userId);
@@ -51,36 +55,34 @@ public class CreditController extends BaseController{
 	}
 	
 	/**
-	 * 跳转到修改密码页面
+	 * 新增悬赏信息
 	 * @param request
 	 * @return
 	 * @throws Exception
 	 */
-	@RequestMapping(value="/saveCredit",method =RequestMethod.POST)
-	public String saveCredit() throws Exception{
+	@RequestMapping(value="/saveReward",method =RequestMethod.POST)
+	public String saveReward() throws Exception{
 		PageData pd =super.getPageData();
-		pd.put("crStatus", 1);
-		creditWebService.creditSave(pd);
-		return "redirect:/credit/list";
+		pd.put("rewardStatus", 1);
+		rewardWebService.rewardSave(pd);
+		return "redirect:/reward/list";
 	}
 	
 	/**
-	 * 查询债权详情
+	 * 查询悬赏详情
 	 * @return
 	 * @throws Exception
 	 */
-	@RequestMapping(value="/creditDetails",method =RequestMethod.GET)
-	public ModelAndView creditDetails() throws Exception{
+	@RequestMapping(value="/rewardDetails",method =RequestMethod.GET)
+	public ModelAndView rewardDetails() throws Exception{
 		String id =super.getRequest().getParameter("id");
 		if(id!=null&&id!=""){
-			Credit credit = creditWebService.findById(Integer.valueOf(id));
+			Reward reward = rewardWebService.findById(Integer.valueOf(id));
 			ModelAndView mv = this.getModelAndView();
-			mv.addObject("credit", credit);
-			mv.setViewName("/user/user_credit_disposal_details");
+			mv.addObject("reward", reward);
+			mv.setViewName("/user/user_reward_details");
 			return mv;
 		}
 		return null;
 	}
-	
-	
 }

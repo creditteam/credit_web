@@ -39,7 +39,7 @@ pageContext.setAttribute("basePath",basePath);
                                 </li>
                                  <li class="jstree-open">悬赏信息
                                     <ul>
-                                    <li data-jstree='{"type":"css"}'><a href ="${basePath }user/user_reward_list.jsp" target="_self">悬赏信息</a></li>
+                                    <li data-jstree='{"type":"css"}'><a href ="${basePath }reward/list" target="_self">悬赏信息</a></li>
                                     </ul>
                                  </li>
                             </ul>

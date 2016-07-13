@@ -64,14 +64,17 @@ pageContext.setAttribute("basePath",basePath);
 										</tr>
 									</thead>
 									<tbody>
+									<c:forEach items="${rewardList }" var="reward">
 										<tr>
-											<td><span class="label label-warning">找人</span></td>
-											<td>2016-07-08 11:22:33</td>
-											<td>湛*市雄立房产有限公司</td>
-											<td>1.00金额(万元)</td>
-											<td><span class="label label-warning">悬赏中</span></td>
+											<td><span class="label label-warning">${reward.rewardType }</span></td>
+											<td>${reward.createTime }</td>
+											<td>${reward.province }</td>
+											<td>${reward.rewardAmount }金额(万元)</td>
+											<td><span class="label label-warning">${reward.rewardStatus }</span></td>
 											<td><a href="${basePath }user/user_reward_details.jsp" target="_self">查看</a></td>
 										</tr>
+										</c:forEach>
+										<%--
 										<tr>
 											<td><span class="label label-warning">找车</span></td>
 											<td>2016-07-08 11:22:33</td>
@@ -88,6 +91,7 @@ pageContext.setAttribute("basePath",basePath);
 											<td><span class="label label-warning">招标中</span></td>
 											<td><a href="${basePath }user/user_reward_details.jsp" target="_self">查看</a></td>
 										</tr>
+										 --%>
 									</tbody>
 								</table>
 

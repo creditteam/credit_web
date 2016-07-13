@@ -56,7 +56,7 @@
 		</if>
 	</select>
 	
-	<select id="list" parameterType="PageData" resultType="PageData">
+	<select id="list" parameterType="PageData" resultType="Reward">
 	   <include refid="commonColumns"></include>
 		from cr_reward u
 		where u.reward_status != -1
@@ -68,7 +68,7 @@
 	
 	
 	<insert id="rewardSave" parameterType="PageData">
-		insert into cr_credit (
+		insert into cr_reward (
 			 reward_type,
 			 reward_amount,
 			 reward_name,

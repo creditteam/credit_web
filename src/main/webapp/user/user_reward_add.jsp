@@ -36,7 +36,7 @@ pageContext.setAttribute("basePath",basePath);
                     </div>
                     <div class="ibox-content">
                    
-                           <form class="form-horizontal m-t" id="signupForm">
+                           <form class="form-horizontal m-t" id="signupForm" action="${basePath }reward/saveReward" method="post" target="_self">
                           <a class="list-group-item active">
 					      <h4 class="list-group-item-heading">
 					         基本信息
@@ -45,7 +45,7 @@ pageContext.setAttribute("basePath",basePath);
                             <div class="form-group">
                                 <label class="col-sm-3 control-label">悬赏类型：</label>
                                 <div class="col-sm-8">
-                                        <select  name="shenfen" class="form-control">
+                                        <select  name="rewardType" class="form-control">
 													<option value="0">个人债权</option>
 													<option value="1">企业债权</option>
 													<option value="2">预期贷款</option>
@@ -57,20 +57,20 @@ pageContext.setAttribute("basePath",basePath);
                             <div class="form-group">
                                 <label class="col-sm-3 control-label">悬赏金额：</label>
                                 <div class="col-sm-8">
-                                    <input id="lastname" name="lastname" class="form-control" type="text" aria-required="true" aria-invalid="false" class="valid">
+                                    <input id="rewardAmount" name="rewardAmount" class="form-control" type="text" aria-required="true" aria-invalid="false" class="valid">
                                     <span class="help-block m-b-none"><i class="fa fa-info-circle"></i> 注意：金额币种人民币(￥)</span>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="col-sm-3 control-label">姓名：</label>
                                 <div class="col-sm-8">
-                                           <input id="lastname" name="lastname" class="form-control" type="text" aria-required="true" aria-invalid="false" class="valid">
+                                           <input id="rewardName" name="rewardName" class="form-control" type="text" aria-required="true" aria-invalid="false" class="valid">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="col-sm-3 control-label">身份证：</label>
                                 <div class="col-sm-8">
-                                      <input id="lastname" name="lastname" class="form-control" type="text" aria-required="true" aria-invalid="false" class="valid">
+                                      <input id="cartId" name="cartId" class="form-control" type="text" aria-required="true" aria-invalid="false" class="valid">
                                 </div>
                             </div>
                            <div class="hr-line-dashed"></div>
@@ -82,8 +82,8 @@ pageContext.setAttribute("basePath",basePath);
                             <div class="form-group">
                                 <label class="col-sm-3 control-label">所在地：</label>
                                 <div class="col-sm-4">
-												<select onchange="takeCity()" id="provinceSel1"
-													name="provinceSel" class="form-control input-sm">
+												<select onchange="takeCity()" id="province"
+													name="province" class="form-control input-sm">
 													<option value="1">请选择</option>
 													<option>北京市</option>
 													<option>上海市</option>
@@ -120,7 +120,7 @@ pageContext.setAttribute("basePath",basePath);
 												</select>
 								</div>
 								<div class="col-sm-4">
-										<select id="citySel" name="citySel" class="form-control input-sm">
+										<select id="city" name="city" class="form-control input-sm">
 											<option value="1">请选择</option>
 										</select>
 								</div>
@@ -129,19 +129,19 @@ pageContext.setAttribute("basePath",basePath);
                             <div class="form-group">
                                 <label class="col-sm-3 control-label">照片：</label>
                                 <div class="col-sm-8">
-                                     <input type="file" class="form-control">
+                                     <input type="file" name="imagesFile" class="form-control">
                                 </div>
                             </div>
                             <div class="form-group" id="data_1">
 	                            <label class="col-sm-3 control-label">悬赏日期：</label>
 	                            <div class="col-sm-8  input-group date">
-	                                <input type="text" class="form-control" value="2014-11-11">
+	                                <input type="text"  name="createTime" class="form-control" value="2014-11-11">
 	                            </div>
                            </div>
                             <div class="form-group">
                                 <label class="col-sm-3 control-label">悬赏描述：</label>
                                 <div class="col-sm-8">
-                                    <textarea id="zqtxtms" name="zqtxtms" class="form-control" rows="3"></textarea>
+                                    <textarea id="description" name="description" class="form-control" rows="3"></textarea>
                                 </div>
                             </div>
                        
