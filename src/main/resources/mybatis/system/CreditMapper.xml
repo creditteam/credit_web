@@ -63,12 +63,15 @@
 		</if>
 	</select>
 	
-	<select id="list" parameterType="PageData" resultType="PageData">
+	<select id="list" parameterType="PageData" resultType="Credit">
 	   <include refid="creditColumns"></include>
 		from cr_credit u
 		where u.cr_status != -1
 		<if test="userId != null and userId != ''">
 		and user_id=#{userId}
+		</if>
+		<if test="contactName!=nul and contactName!=''">
+		and contact_name like CONCAT(CONCAT('%',#{contactName}),'%')
 		</if>
 		limit #{from},#{size}
 	</select>
@@ -100,8 +103,6 @@
 			#{crAmount},
 			#{crStatus},
 			#{disposalType},
-			#{userLevel},
-			#{userStatus},
 			#{commisionRange},
 			#{contactName},
 			#{contactNumber},

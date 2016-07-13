@@ -34,22 +34,25 @@ pageContext.setAttribute("basePath",basePath);
                    <div class="ibox-title">
                         <h5>债权处置</h5>
                         <div class="ibox-tools">
-                            <a href="${basePath }user/user_credit_disposal_add.jsp" class="btn btn-primary btn-xs" target="_self">发布项目</a>
+                            <a href="${basePath }credit/saveCredit?userId=${userInfo.id}" class="btn btn-primary btn-xs" target="_self">发布项目</a>
                         </div>
                     </div>
                     <div class="ibox-content">
                       <!-- 搜索表单 -->
+                      <form id="signupForm" action="${basePath }credit/list" method="post" target="_self">
+                      <input type="hidden" name="userId" value="${userInfo.id }">
                       <div class="row m-b-sm m-t-sm">
                             <div class="col-md-1">
                                 <button type="button" id="loading-example-btn" class="btn btn-white btn-sm"><i class="fa fa-refresh"></i> 刷新</button>
                             </div>
                             <div class="col-md-11">
                                 <div class="input-group">
-                                    <input type="text" placeholder="请输入项目名称" class="input-sm form-control"> <span class="input-group-btn">
-                                        <button type="button" class="btn btn-sm btn-primary"> 搜索</button> </span>
+                                    <input type="text" name="contactName" value="${pd.contactName }"  placeholder="请输入债务人名称" class="input-sm form-control"> <span class="input-group-btn">
+                                     <button type="submit" class="btn btn-sm btn-primary"> 搜索</button> </span>
                                 </div>
                             </div>
                         </div>
+                        </form>   
                       <!-- 数据列表 -->
                        <table class="table table-hover no-margins">
 					<thead>
@@ -62,41 +65,15 @@ pageContext.setAttribute("basePath",basePath);
 						</tr>
 					</thead>
 					<tbody>
+					    <c:forEach items="${creditList }" var="credit">
 						<tr>
-							<td><span class="label label-primary">河南</span></td>
-							<td>谭*晓</td>
-							<td><i class="fa fa-clock-o"></i> 1.40</td>
-							<td class="text-navy"><i class="fa fa-level-up"></i>20%-30%</td>
-							<td><a href="${basePath }user/user_credit_disposal_details.jsp" target="_self">查看</a></td>
+							<td><span class="label label-warning">${credit.debtProvince }</span></td>
+							<td>${credit.debtName }</td>
+							<td><i class="fa fa-clock-o"></i> ${credit.crAmount }</td>
+							<td class="text-navy"><i class="fa fa-level-up"></i>${credit.commisionRange}</td>
+							<td><a href="${basePath }credit/creditDetails?id=${credit.id}" target="_self">查看</a></td>
 						</tr>
-						<tr>
-							<td><span class="label label-warning">湖南</span></td>
-							<td>徐子崴</td>
-							<td><i class="fa fa-clock-o"></i> 10.40</td>
-							<td class="text-navy"><i class="fa fa-level-up"></i>30%-40%</td>
-							<td><a href="${basePath }user/user_credit_disposal_details.jsp" target="_self">查看</a></td>
-						</tr>
-						<tr>
-							<td><span class="label label-warning">江苏</span></td>
-							<td>姜岚昕</td>
-							<td><i class="fa fa-clock-o"></i> 1.30</td>
-							<td class="text-navy"><i class="fa fa-level-up"></i> 54%-60%</td>
-							<td><a href="${basePath }user/user_credit_disposal_details.jsp" target="_self">查看</a></td>
-						</tr>
-						<tr>
-							<td><span class="label label-warning">江苏</span></td>
-							<td>武汉大兵哥</td>
-							<td><i class="fa fa-clock-o"></i> 2.20</td>
-							<td class="text-navy"><i class="fa fa-level-up"></i>12%-25%</td>
-							<td><a href="${basePath }user/user_credit_disposal_details.jsp" target="_self">查看</a></td>
-						</tr>
-						<tr>
-							<td><span class="label label-primary">湖北</span></td>
-							<td>荆莹儿</td>
-							<td><i class="fa fa-clock-o"></i> 9.40</td>
-							<td class="text-navy"><i class="fa fa-level-up"></i> 22%-30%</td>
-							<td><a href="${basePath }user/user_credit_disposal_details.jsp" target="_self">查看</a></td>
-						</tr>
+						</c:forEach>
 					</tbody>
 				</table>
 
