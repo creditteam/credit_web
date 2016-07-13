@@ -1,19 +1,34 @@
-package com.credit.web.credit.service;
+/** 
+  * Project Name:credit_web 
+  * File Name:RewardService.java 
+  * Package Name:com.credit.web.reward.service 
+  * Date:2016年7月13日下午6:06:27 
+  * Copyright (c) 2016, JuanPi.com All Rights Reserved
+  */  
+  
+package com.credit.web.reward.service;
 
 import java.util.List;
 import javax.annotation.Resource;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import com.credit.web.entity.Credit;
+
+import com.credit.web.entity.Reward;
 import com.gvtv.manage.base.dao.BaseDao;
 import com.gvtv.manage.base.util.AppUtil;
 import com.gvtv.manage.base.util.Const;
 import com.gvtv.manage.base.util.PageData;
 
+/** 
+  * @department:架构服务部/JAVA工程师
+  * @author huixiong 
+  * @date: 2016年7月13日 下午6:06:27 
+  * @since:1.0.0
+  */
 @Transactional(readOnly=true)
-@Service("creditWebService")
-public class CreditWebService {
+@Service("rewardWebService")
+public class RewardWebService {
 	@Resource(name = "BaseDao")
 	private BaseDao dao;
 	
@@ -30,7 +45,7 @@ public class CreditWebService {
 		if (StringUtils.isNotBlank(search)) {
 			pd.put("keyword", "%" + search + "%");
 		}
-		int totalNum = (int) dao.findForObject("CreditMapper.count", pd);
+		int totalNum = (int) dao.findForObject("RewardMapper.count", pd);
 		
 		pd.put("from", pd.getInteger("start"));
 		pd.put("size", pd.getInteger("length"));
@@ -51,9 +66,9 @@ public class CreditWebService {
 	 * @return
 	 * @throws Exception
 	 */
-	public List<Credit> creditlist(PageData pd) throws Exception {
-		List<Credit> creditList = dao.findForList("CreditMapper.list", pd);
-		return creditList;
+	public List<Reward> rewardlist(PageData pd) throws Exception {
+		List<Reward> rewardList = dao.findForList("RewardMapper.list", pd);
+		return rewardList;
 	}
 	
 	/**
@@ -63,8 +78,8 @@ public class CreditWebService {
 	 * @return
 	 * @throws Exception
 	 */
-	public Boolean creditSave(PageData pd) throws Exception {
-		int num = dao.save("CreditMapper.creditSave", pd);
+	public Boolean rewardSave(PageData pd) throws Exception {
+		int num = dao.save("RewardMapper.rewardSave", pd);
 		if(num>0){
 			return true;
 		}
@@ -72,9 +87,9 @@ public class CreditWebService {
 	}
 	
 	
-	public Credit findById(Integer id)throws Exception {
-		Credit credit = dao.findForObject("CreditMapper.findById", id);
-		return credit;
+	public Reward findById(Integer id)throws Exception {
+		Reward reward = dao.findForObject("RewardMapper.findById", id);
+		return reward;
 	}
-
 }
+  

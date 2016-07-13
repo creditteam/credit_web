@@ -1,5 +1,10 @@
 package com.credit.web.credit.controller;
 
-public class CreditController {
+import org.springframework.stereotype.Controller;
+
+import com.gvtv.manage.base.controller.BaseController;
+
+@Controller
+public class CreditController extends BaseController{
 
 }

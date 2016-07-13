@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="FeedBackMapper">
-	<sql id="userColumns">id,user_name,phone,user_email,context</sql>
+<mapper namespace="FeedbackMapper">
+	<sql id="commonColumns">id,user_name,phone,user_email,context</sql>
 
-	<resultMap type="FeedBack" id="FeedBackResultMap">
+	<resultMap type="Feedback" id="FeedbackResultMap">
 		<id column="id" property="id"/>
 		<result column="user_name" property="userName"/>
 		<result column="phone" property="phone"/>
@@ -12,6 +12,18 @@
 		<result column="context" property="context"/>
 	</resultMap>
 	
-	
+	<insert id="save" parameterType="PageData">
+		insert into cr_feedback (
+			user_name,
+			phone,
+			user_email,
+			context
+		) values (
+			#{userName},
+			#{phone},
+			#{userEmail},
+			#{context}
+		)
+	</insert>
 	
 </mapper>

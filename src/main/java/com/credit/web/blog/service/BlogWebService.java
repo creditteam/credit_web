@@ -1,19 +1,34 @@
-package com.credit.web.credit.service;
+/** 
+  * Project Name:credit_web 
+  * File Name:BlogService.java 
+  * Package Name:com.credit.web.blog.service 
+  * Date:2016年7月13日下午7:56:02 
+  * Copyright (c) 2016, JuanPi.com All Rights Reserved
+  */  
+  
+package com.credit.web.blog.service;
 
 import java.util.List;
 import javax.annotation.Resource;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import com.credit.web.entity.Credit;
+
+import com.credit.web.entity.Blog;
+import com.credit.web.entity.Reward;
 import com.gvtv.manage.base.dao.BaseDao;
 import com.gvtv.manage.base.util.AppUtil;
 import com.gvtv.manage.base.util.Const;
 import com.gvtv.manage.base.util.PageData;
 
+/** 
+  * @author huixiong 
+  * @date: 2016年7月13日 下午7:56:02 
+  * @since:1.0.0
+  */
 @Transactional(readOnly=true)
-@Service("creditWebService")
-public class CreditWebService {
+@Service("blogWebService")
+public class BlogWebService {
 	@Resource(name = "BaseDao")
 	private BaseDao dao;
 	
@@ -30,11 +45,11 @@ public class CreditWebService {
 		if (StringUtils.isNotBlank(search)) {
 			pd.put("keyword", "%" + search + "%");
 		}
-		int totalNum = (int) dao.findForObject("CreditMapper.count", pd);
+		int totalNum = (int) dao.findForObject("RewardMapper.count", pd);
 		
 		pd.put("from", pd.getInteger("start"));
 		pd.put("size", pd.getInteger("length"));
-		 List<PageData> pds = dao.findForList("CreditMapper.list", pd);
+		 List<PageData> pds = dao.findForList("BlogMapper.list", pd);
 		AppUtil.nullToEmpty(pds, new String[]{"menuId", "menuName", "menuUrl", "menuOrder", "description"});
 		
 		result.put(Const.DRAW, pd.getString(Const.DRAW));
@@ -51,30 +66,16 @@ public class CreditWebService {
 	 * @return
 	 * @throws Exception
 	 */
-	public List<Credit> creditlist(PageData pd) throws Exception {
-		List<Credit> creditList = dao.findForList("CreditMapper.list", pd);
-		return creditList;
+	public List<Blog> bloglist(PageData pd) throws Exception {
+		List<Blog> blogList = dao.findForList("BlogMapper.list", pd);
+		return blogList;
 	}
 	
-	/**
-	 * 
-	 * @author huixiong 
-	 * @param pd
-	 * @return
-	 * @throws Exception
-	 */
-	public Boolean creditSave(PageData pd) throws Exception {
-		int num = dao.save("CreditMapper.creditSave", pd);
-		if(num>0){
-			return true;
-		}
-		return false;
-	}
-	
-	
-	public Credit findById(Integer id)throws Exception {
-		Credit credit = dao.findForObject("CreditMapper.findById", id);
-		return credit;
-	}
 
+		
+	public Reward findById(Integer id)throws Exception {
+		Reward reward = dao.findForObject("BlogMapper.findById", id);
+		return reward;
+	}
 }
+  

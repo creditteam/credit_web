@@ -1,9 +1,28 @@
-<?xm
-l version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="CreditMapper">
-	<sql id="creditColumns">id,user_name,phone,user_email,context</sql>
+	<sql id="creditColumns">
+		 select id,
+		 user_id,
+		 cr_type,
+		 cr_amount,
+		 cr_status,
+		 disposal_type,
+		 commision_range,
+		 contact_name,
+		 contact_number,
+		 debt_name,
+		 debt_province,
+		 debt_city,
+		 debt_phone,
+		 debt_proof,
+		 description,
+		 create_date,
+		 end_date,
+		 open_date,
+		 agreed_date
+	</sql>
 
 	<resultMap type="Credit" id="CreditResultMap">
 		<id column="id" property="id"/>
@@ -26,6 +45,77 @@ l version="1.0" encoding="UTF-8"?>
 		<result column="open_date" property="openDate"/>
 		<result column="agreed_date" property="agreedDate"/>
 	</resultMap>
+    
+    <!-- 根据id获取债权信息 -->
+	<select id="findById" parameterType="PageData" resultType="Credit" useCache="false">
+	   <include refid="creditColumns"></include>
+		from cr_credit 
+		where id = #{id}
+	</select>
 	
 	
+   <select id="count" parameterType="PageData" resultType="int">
+		select count(1)
+		from cr_credit u
+		where u.cr_status != -1
+		<if test="keyword != null and keyword != ''">
+	  	and	CONCAT(IFNULL(u.login_name,''),IFNULL(u.name,'')) like #{keyword}
+		</if>
+	</select>
+	
+	<select id="list" parameterType="PageData" resultType="PageData">
+	   <include refid="creditColumns"></include>
+		from cr_credit u
+		where u.cr_status != -1
+		<if test="userId != null and userId != ''">
+		and user_id=#{userId}
+		</if>
+		limit #{from},#{size}
+	</select>
+	
+	
+	<insert id="creditSave" parameterType="PageData">
+		insert into cr_credit (
+			 user_id,
+			 cr_type,
+			 cr_amount,
+			 cr_status,
+			 disposal_type,
+			 commision_range,
+			 contact_name,
+			 contact_number,
+			 debt_name,
+			 debt_province,
+			 debt_city,
+			 debt_phone,
+			 debt_proof,
+			 description,
+			 create_date,
+			 end_date,
+			 open_date,
+			 agreed_date
+		) values (
+			#{userId},
+			#{crType},
+			#{crAmount},
+			#{crStatus},
+			#{disposalType},
+			#{userLevel},
+			#{userStatus},
+			#{commisionRange},
+			#{contactName},
+			#{contactNumber},
+			#{debtName},
+			#{debtProvince},
+			#{debtCity},
+			#{debtPhone},
+			#{debtProof},
+			#{description},
+			#{createDate},
+			#{endDate},
+			#{openDate},
+			#{agreedDate}
+		)
+	</insert>	
+
 </mapper>
