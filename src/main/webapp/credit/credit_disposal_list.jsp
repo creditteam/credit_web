@@ -116,6 +116,7 @@ pageContext.setAttribute("basePath",basePath);
 	<!-- 底部文件 -->
 	<jsp:include page="/common/_footer.jsp"></jsp:include>
 	<jsp:include page="/common/_script.jsp"></jsp:include>
+	<script src="${basePath }hplus/js/bootstrap-paginator.min.js"></script>
 	<script type="text/javascript">
 	$(function(){
 		$.ajax({
