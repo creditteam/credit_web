@@ -35,7 +35,7 @@ pageContext.setAttribute("basePath",basePath);
                     <div class="ibox-title">
                         <h5>线索悬赏</h5>
                         <div class="ibox-tools">
-                            <a href="${basePath }user/user_reward_add.jsp" class="btn btn-primary btn-xs" target="_self">发布悬赏</a>
+                            <a href="${basePath }reward/saveReward" class="btn btn-primary btn-xs" target="_self">发布悬赏</a>
                         </div>
                     </div>
                     <div class="ibox-content">
@@ -71,27 +71,9 @@ pageContext.setAttribute("basePath",basePath);
 											<td>${reward.province }</td>
 											<td>${reward.rewardAmount }金额(万元)</td>
 											<td><span class="label label-warning">${reward.rewardStatus }</span></td>
-											<td><a href="${basePath }user/user_reward_details.jsp" target="_self">查看</a></td>
+											<td><a href="${basePath }reward/rewardDetails?id=${reward.id}" target="_self">查看</a></td>
 										</tr>
 										</c:forEach>
-										<%--
-										<tr>
-											<td><span class="label label-warning">找车</span></td>
-											<td>2016-07-08 11:22:33</td>
-											<td>张三</td>
-											<td>5.00金额(万元)</td>
-											<td><span class="label label-warning">招标中</span></td>
-											<td><a href="${basePath }user/user_reward_details.jsp" target="_self">查看</a></td>
-										</tr>
-										<tr>
-											<td><span class="label label-warning">找房产</span></td>
-											<td>2016-07-08 11:22:33</td>
-											<td>湛*市</td>
-											<td>11.00金额(万元)</td>
-											<td><span class="label label-warning">招标中</span></td>
-											<td><a href="${basePath }user/user_reward_details.jsp" target="_self">查看</a></td>
-										</tr>
-										 --%>
 									</tbody>
 								</table>
 
