@@ -150,7 +150,15 @@ pageContext.setAttribute("basePath",basePath);
 				<p style="color: #666666" >商务合作</p>
 			</div>
 		</a></div>
-		
+	</div>
+	<div class="row">
+		<div class="col-xs-4" style="height: 100px; ">
+		<a href="${basePath }mobile/userHome.jsp">
+			<div class="text-center" style="margin:e 8 8 8 8; width: 90%; height: 84%; border-radius:25px;">
+				<img alt="" src="${basePath }hplus/img/yh_02.png" width="70px" height="70px">
+				<p style="color: #666666" >用户中心</p>
+			</div>
+		</a></div>
 	</div>
 	<div class="row">
 		

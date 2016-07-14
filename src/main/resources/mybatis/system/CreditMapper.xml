@@ -21,7 +21,7 @@
 		 create_date,
 		 end_date,
 		 open_date,
-		 agreed_date
+		 agreed_date 
 	</sql>
 
 	<resultMap type="Credit" id="CreditResultMap">
@@ -58,14 +58,17 @@
 		select count(1)
 		from cr_credit u
 		where u.cr_status != -1
-		<if test="keyword != null and keyword != ''">
-	  	and	CONCAT(IFNULL(u.login_name,''),IFNULL(u.name,'')) like #{keyword}
+		<if test="userId != null and userId != ''">
+		and user_id=#{userId}
+		</if>
+		<if test="contactName!=nul and contactName!=''">
+		and contact_name like CONCAT(CONCAT('%',#{contactName}),'%')
 		</if>
 	</select>
 	
 	<select id="list" parameterType="PageData" resultType="Credit">
 	   <include refid="creditColumns"></include>
-		from cr_credit u
+		 from cr_credit u
 		where u.cr_status != -1
 		<if test="userId != null and userId != ''">
 		and user_id=#{userId}

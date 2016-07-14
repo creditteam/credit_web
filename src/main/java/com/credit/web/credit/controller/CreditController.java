@@ -1,16 +1,22 @@
 package com.credit.web.credit.controller;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
+
 import com.credit.web.credit.service.CreditWebService;
 import com.credit.web.entity.Credit;
 import com.gvtv.manage.base.controller.BaseController;
+import com.gvtv.manage.base.util.Const;
 import com.gvtv.manage.base.util.PageData;
 
 @Controller
@@ -80,6 +86,22 @@ public class CreditController extends BaseController{
 			return mv;
 		}
 		return null;
+	}
+	
+	/**
+	 * 查询债权详情
+	 * @return
+	 * @throws Exception
+	 */
+	@RequestMapping(value="/findCreditList",method =RequestMethod.POST)
+	@ResponseBody
+	public PageData findCreditList(Integer from) throws Exception{
+		
+		PageData pd =super.getPageData();
+		pd.put("from", from);
+		pd.put("size", 10);
+		pd = creditWebService.pageList(pd);
+		return pd;
 	}
 	
 	

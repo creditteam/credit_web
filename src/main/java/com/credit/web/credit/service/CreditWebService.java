@@ -1,10 +1,13 @@
 package com.credit.web.credit.service;
 
 import java.util.List;
+
 import javax.annotation.Resource;
+
 import org.apache.commons.lang.StringUtils;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
 import com.credit.web.entity.Credit;
 import com.gvtv.manage.base.dao.BaseDao;
 import com.gvtv.manage.base.util.AppUtil;
@@ -32,12 +35,13 @@ public class CreditWebService {
 		}
 		int totalNum = (int) dao.findForObject("CreditMapper.count", pd);
 		
-		pd.put("from", pd.getInteger("start"));
-		pd.put("size", pd.getInteger("length"));
-		 List<PageData> pds = dao.findForList("CreditMapper.list", pd);
-		AppUtil.nullToEmpty(pds, new String[]{"menuId", "menuName", "menuUrl", "menuOrder", "description"});
+		pd.put("from", pd.getInteger("from"));
+		pd.put("size", pd.getInteger("size"));
+		List<Credit> pds = dao.findForList("CreditMapper.list", pd);
+		//AppUtil.nullToEmpty(pds, new String[]{"menuId", "menuName", "menuUrl", "menuOrder", "description"});
 		
 		result.put(Const.DRAW, pd.getString(Const.DRAW));
+		result.put("from", pd.getInteger("from"));
 		result.put(Const.RECORDSTOTAL, totalNum);
 		result.put(Const.RECORDSFILTERED, totalNum);
 		result.put(Const.NDATA, pds);
