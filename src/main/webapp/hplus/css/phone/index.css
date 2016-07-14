@@ -1,0 +1,66 @@
+@CHARSET "UTF-8";
+
+.w {
+	background-color: #fff;
+	float: left;
+	min-width: 320px;
+	width: 100%;
+	margin-top: 1%;
+	
+	margin-bottom: 1%;
+	
+}
+
+.jx-top .jx_banner {
+	padding: 5px;
+}
+
+
+
+.jx-invest {
+	line-height: 40px;
+	text-align: center;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+	border-bottom-color: #eee;
+	float: left;
+	width: 100%;
+}
+
+.jx-invest .jx-invest-title {
+	line-height: 40px;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+	border-bottom-color: #f9f9f9;
+	width: 100%;
+	height: 40px;
+}
+
+.jx-invest .jx-invest-title span {
+	float: left;
+	margin-left: 10px;
+	font-size: 16px;
+	font-weight: bold;
+}
+
+.jx-invest .jx-invest-title em {
+	float: right;
+	margin-right: 10px;
+	font-size: 12px;
+	font-style: normal;
+	color: #666;
+}
+
+.jx-invest .jx-invest-title a {
+	color: #666;
+	text-decoration: none;
+}
+
+.jx-invest .jx-invest-title img {
+	width: 20px;
+	margin-top: 10px;
+}
+
+.jx-invest .jx-invest-list {
+	float: left;
+}
