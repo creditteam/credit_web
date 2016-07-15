@@ -49,7 +49,7 @@ public class RewardWebService {
 		
 		pd.put("from", pd.getInteger("start"));
 		pd.put("size", pd.getInteger("length"));
-		 List<PageData> pds = dao.findForList("CreditMapper.list", pd);
+		List<PageData> pds = dao.findForList("CreditMapper.list", pd);
 		AppUtil.nullToEmpty(pds, new String[]{"menuId", "menuName", "menuUrl", "menuOrder", "description"});
 		
 		result.put(Const.DRAW, pd.getString(Const.DRAW));
