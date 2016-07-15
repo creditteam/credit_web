@@ -1,5 +1,6 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %> 
 <!DOCTYPE html>
 <html>
 <head>
@@ -36,42 +37,47 @@
                         </div>
                     </div>
                     <div class="ibox-content">
-<dl class="dl-horizontal">
+                    <dl class="dl-horizontal">
                                     <dt>悬赏类型：</dt>
-                                    <dd>找人</dd>
+                                    <dd>
+                                    <c:if test="${reward.rewardType==0}">个人债权</c:if>
+                                    <c:if test="${reward.rewardType==1}">企业债权</c:if>
+                                    <c:if test="${reward.rewardType==2}">预期贷款</c:if>
+                                    <c:if test="${reward.rewardType==3}">固定资产</c:if>
+                                    <c:if test="${reward.rewardType==4}">国际债权</c:if>
+                                    </dd>
                                 </dl>
                   
                               <dl class="dl-horizontal">
                                     <dt>金额：</dt>
-                                    <dd> 200</dd>
+                                    <dd>${reward.rewardAmount }</dd>
                                </dl>
                   
                                 <dl class="dl-horizontal">
                                     <dt>姓名：</dt>
-                                    <dd>黄飞</dd>
+                                    <dd>${reward.rewardName }</dd>
                                </dl>
 								<dl class="dl-horizontal">
 									<dt>身份证：</dt>
-									<dd> 432826198605240423</dd>
+									<dd>${reward.cartId }</dd>
 								</dl>
 
 								<dl class="dl-horizontal">
 									<dt>发布日期：</dt>
-									<dd>  Tuesday, May 17, 2016</dd>
+									<dd><fmt:formatDate value="${reward.createTime }" pattern="yyyy-MM-dd HH:mm:ss"/> </dd>
 								</dl>
 
 								<dl class="dl-horizontal">
 									<dt>有效日期：</dt>
-									<dd>30天</dd>
+									<dd><fmt:formatDate value="${reward.endTime }" pattern="yyyy-MM-dd HH:mm:ss"/></dd>
 								</dl>
 
 								<dl class="dl-horizontal">
-									<dt>发布日期：</dt>
-									<dd>2016年07月07日</dd>
-								</dl>
-								<dl class="dl-horizontal">
 									<dt>状态：</dt>
-									<dd> 悬赏中</dd>
+									<dd>
+									<c:if test="${reward.rewardStatus==1}">发布中</c:if>
+									<c:if test="${reward.rewardStatus==0}">已结束</c:if>
+									</dd>
 								</dl>
                                <hr/>
 								<dl class="dl-horizontal">
@@ -81,7 +87,7 @@
 
 								<dl class="dl-horizontal">
 									<dt>联系电话：</dt>
-									<dd> 请在抢标后联系快易收平台方获取*</dd>
+									<dd>${reward.rewardType }</dd>
 								</dl>
 							</div>
                 </div>

@@ -30,10 +30,10 @@ public class RewardController extends BaseController{
 		PageData pd =super.getPageData();
 		pd.put("from", 0);
 		pd.put("size", 10);
-		List<Reward> rewardList = rewardWebService.rewardlist(pd);
+		pd = rewardWebService.pageList(pd);
 		
 		ModelAndView mv = this.getModelAndView();
-		mv.addObject("rewardList", rewardList);
+//		mv.addObject("rewardList", rewardList);
 		mv.addObject("pd", pd);
 		mv.setViewName("/user/user_reward_list");
 		return mv;
