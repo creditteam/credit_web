@@ -33,7 +33,7 @@ public class BlogWebService {
 	private BaseDao dao;
 	
 	/**
-	 * 查询债权分页信息
+	 * 业务资讯分页信息
 	 * @author huixiong 
 	 * @param pd
 	 * @return
@@ -41,26 +41,19 @@ public class BlogWebService {
 	 */
 	public PageData pageList(PageData pd) throws Exception{
 		PageData result = new PageData();
-		String search = pd.getString("keyword");
-		if (StringUtils.isNotBlank(search)) {
-			pd.put("keyword", "%" + search + "%");
-		}
-		int totalNum = (int) dao.findForObject("RewardMapper.count", pd);
+		int totalNum = (int) dao.findForObject("BlogMapper.count", pd);
 		
-		pd.put("from", pd.getInteger("start"));
-		pd.put("size", pd.getInteger("length"));
-		 List<PageData> pds = dao.findForList("BlogMapper.list", pd);
-		AppUtil.nullToEmpty(pds, new String[]{"menuId", "menuName", "menuUrl", "menuOrder", "description"});
+		List<Blog> pds = dao.findForList("BlogMapper.list", pd);
 		
-		result.put(Const.DRAW, pd.getString(Const.DRAW));
+		result.put("size", pd.get("size"));
+		result.put("blogType", pd.get("blogType"));
 		result.put(Const.RECORDSTOTAL, totalNum);
-		result.put(Const.RECORDSFILTERED, totalNum);
 		result.put(Const.NDATA, pds);
 		return result;
 	}
 	
 	/**
-	 * 查询债权列表信息
+	 * 业务资讯列表信息
 	 * @author huixiong 
 	 * @param pd
 	 * @return
@@ -73,9 +66,9 @@ public class BlogWebService {
 	
 
 		
-	public Reward findById(Integer id)throws Exception {
-		Reward reward = dao.findForObject("BlogMapper.findById", id);
-		return reward;
+	public Blog findById(Integer id)throws Exception {
+		Blog blog = dao.findForObject("BlogMapper.findById", id);
+		return blog;
 	}
 }
   

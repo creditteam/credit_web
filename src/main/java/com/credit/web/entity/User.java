@@ -10,7 +10,7 @@ public class User {
 	private String userPwd;
 	private Short userLevel;
 	private String userRole;
-	private String user_head_images;
+	private String userHeadImages;
 	private String description;
 	private Short userStatus;
 
@@ -78,12 +78,12 @@ public class User {
 		this.userRole = userRole;
 	}
 
-	public String getUser_head_images() {
-		return user_head_images;
+	public String getUserHeadImages() {
+		return userHeadImages;
 	}
 
-	public void setUser_head_images(String user_head_images) {
-		this.user_head_images = user_head_images;
+	public void setUserHeadImages(String userHeadImages) {
+		this.userHeadImages = userHeadImages;
 	}
 
 	public String getDescription() {

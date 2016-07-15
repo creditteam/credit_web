@@ -41,6 +41,10 @@ public class Credit {
 	private Date openDate;
 	// 约定日期
 	private Date agreedDate;
+	
+	private String openDateStr;
+	
+	private String agreedDateStr;
 
 	public Credit() {
 
@@ -51,7 +55,8 @@ public class Credit {
 			String contactName, String contactNumber, String debtName,
 			String debtProvince, String debtCity, String debtPhone,
 			String debtProof, String description, Date createDate,
-			Date endDate, Date openDate, Date agreedDate) {
+			Date endDate, Date openDate, Date agreedDate,
+			String openDateStr,String agreedDateStr) {
 		super();
 		this.id = id;
 		this.userId = userId;
@@ -72,6 +77,8 @@ public class Credit {
 		this.endDate = endDate;
 		this.openDate = openDate;
 		this.agreedDate = agreedDate;
+		this.openDateStr = openDateStr;
+		this.agreedDateStr = agreedDateStr;
 	}
 
 	public Integer getId() {
@@ -224,6 +231,22 @@ public class Credit {
 
 	public void setAgreedDate(Date agreedDate) {
 		this.agreedDate = agreedDate;
+	}
+
+	public String getOpenDateStr() {
+		return openDateStr;
+	}
+
+	public void setOpenDateStr(String openDateStr) {
+		this.openDateStr = openDateStr;
+	}
+
+	public String getAgreedDateStr() {
+		return agreedDateStr;
+	}
+
+	public void setAgreedDateStr(String agreedDateStr) {
+		this.agreedDateStr = agreedDateStr;
 	}
 
 }

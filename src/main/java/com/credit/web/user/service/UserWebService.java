@@ -1,5 +1,7 @@
 package com.credit.web.user.service;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
@@ -65,5 +67,10 @@ public class UserWebService {
 			return true;
 		}
 		return false;
+	}
+	
+	public List<User> findPartUserList(PageData pd) throws Exception{
+		List<User> userList = dao.findForList("UserMapper.list", pd);
+		return userList;
 	}
 }

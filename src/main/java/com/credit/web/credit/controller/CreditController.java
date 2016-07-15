@@ -1,8 +1,7 @@
 package com.credit.web.credit.controller;
 
-import java.util.ArrayList;
+import java.text.SimpleDateFormat;
 import java.util.List;
-import java.util.Map;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -15,9 +14,12 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.credit.web.credit.service.CreditWebService;
 import com.credit.web.entity.Credit;
+import com.credit.web.entity.User;
+import com.credit.web.user.service.UserWebService;
 import com.gvtv.manage.base.controller.BaseController;
-import com.gvtv.manage.base.util.Const;
+import com.gvtv.manage.base.util.MozillaUtil;
 import com.gvtv.manage.base.util.PageData;
+import com.gvtv.manage.base.util.SensitiveUtil;
 
 @Controller
 @RequestMapping(value="/credit")
@@ -25,6 +27,9 @@ public class CreditController extends BaseController{
 
 	@Resource
 	private CreditWebService creditWebService;
+	
+	@Resource
+	private UserWebService userWerService;
 	/**
 	 * 用户中心债权首页
 	 * @param request
@@ -80,16 +85,38 @@ public class CreditController extends BaseController{
 		String id =super.getRequest().getParameter("id");
 		if(id!=null&&id!=""){
 			Credit credit = creditWebService.findById(Integer.valueOf(id));
+			User user = null;
+			SimpleDateFormat sf = new SimpleDateFormat("yyyy-MM-dd");
+			if(null != credit){
+				user = userWerService.getUserById(credit.getUserId());
+				credit.setDebtName(SensitiveUtil.shieldName(credit.getDebtName()));
+				credit.setDebtPhone(SensitiveUtil.shieldPhone(credit.getDebtPhone()));
+				credit.setContactName(SensitiveUtil.shieldName(credit.getContactName()));
+				credit.setContactNumber(SensitiveUtil.shieldPhone(credit.getContactNumber()));
+				credit.setOpenDateStr(sf.format(credit.getOpenDate()==null?"":credit.getOpenDate()));
+				credit.setAgreedDateStr(sf.format(credit.getAgreedDate()==null?"":credit.getAgreedDate()));
+			}
+			if(null == user){
+				user = new User();
+				user.setNickname("未找到债权人信息");
+			}else{
+				user.setNickname(SensitiveUtil.shieldName(user.getNickname()));
+				user.setUserPhone(SensitiveUtil.shieldPhone(user.getUserPhone()));
+			}
 			ModelAndView mv = this.getModelAndView();
 			mv.addObject("credit", credit);
-			mv.setViewName("/user/user_credit_disposal_details");
+			mv.addObject("user",user);
+			if(MozillaUtil.isMobileDevice(super.getRequest())){//如果是手机
+				//待完成
+			}
+			mv.setViewName("/credit/credit_disposal_detail");
 			return mv;
 		}
 		return null;
 	}
 	
 	/**
-	 * 查询债权详情
+	 * 查询债权列表
 	 * @return
 	 * @throws Exception
 	 */

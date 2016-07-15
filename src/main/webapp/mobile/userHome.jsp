@@ -23,10 +23,7 @@ body {background:url(<%=basePath%>hplus/img/bg.gif) top center no-repeat; backgr
   <div class="main-container">
   
     <div class="container" style="background-color: #fff">
-    <div class="row">
-		<div class="col-xs-6"><img style="height: 25px" id="logo" src="${basePath}hplus/img/logo.jpg"  alt="快易收"></div>
-		<div class="col-xs-6"><p style="color: #5f5d5d">服务热线:4008-338-997</p></div>
-	</div>
+    <jsp:include page="mobile_top_logo.jsp"></jsp:include>
     	<div class="row">
     		
     		<div class="col-md-14" style="height:80px;line-height:80px;overflow:hidden;background-image: url(${basePath}hplus/img/ad_27.jpg);">

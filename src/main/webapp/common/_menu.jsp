@@ -41,7 +41,7 @@ pageContext.setAttribute("basePath",basePath);
 		</div>
 		<div class="navbar-collapse collapse" id="navbar">
 			<ul class="nav navbar-nav">
-				<li class="active"><a aria-expanded="false" role="button"href="${basePath }index_main.jsp" target="_self"> 首页</a></li>
+				<li class="active"><a aria-expanded="false" role="button"href="${basePath }mainPage" target="_self">首页</a></li>
 				<li class="dropdown"><a aria-expanded="false" role="button" href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown"> 债权信息 <span class="caret"></span></a>
 					<ul role="menu" class="dropdown-menu">
 						<li><a href="${basePath }credit/credit_disposal_list.jsp" target="_self">债权处置</a></li>
@@ -50,7 +50,7 @@ pageContext.setAttribute("basePath",basePath);
 				</li>
 				<li><a aria-expanded="false" role="button" href="${basePath }disposal.jsp">处置方式 </a></li>
 				<li><a aria-expanded="false" role="button" href="${basePath }reward/reward_list.jsp" target="_self"> 线索悬赏 </a></li>
-				<li><a aria-expanded="false" role="button" href="${basePath }blog/blog.jsp" target="_self">业务资讯 </a></li>
+				<li><a aria-expanded="false" role="button" href="${basePath }blog/list?from=0&blogType=1" target="_self">业务资讯 </a></li>
 			</ul>
 		</div>
 	</nav>

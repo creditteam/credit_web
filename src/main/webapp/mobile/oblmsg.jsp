@@ -21,20 +21,18 @@ pageContext.setAttribute("basePath",basePath);
 	</style>
   </head>
 	<jsp:include page="mobile_meta.jsp"></jsp:include>
+	 <link href="${basePath }hplus/css/kkpager_orange.css" rel="stylesheet">
+<script src="${basePath }hplus/js/kkpager.min.js"></script>
 <body>
 
 <div class="main-container" style="height:100%">
-<div class="row">
-			<div class="col-xs-6"><img style="height: 25px" id="logo" src="<%=basePath%>hplus/img/logo.jpg"  alt="快易收"></div>
-			<div class="col-xs-6"><p style="color: #5f5d5d">服务热线 ： 4008-338-997</p></div>
-		</div>
+	<jsp:include page="mobile_top_logo.jsp"></jsp:include>
 	<div class="row">
 	<div class="col-md-12" >
 		<table class="table table-striped" style=" text-align:center; ">
 		   <caption style="text-align:center;">债权信息</caption>
 		   <thead>
 		      <tr>
-		         
 		         <th style="text-align:center;">所在地</th>
 		         <th style="text-align:center;">金额(万元)</th>
 		         <th style="text-align:center;">佣金</th>
@@ -135,8 +133,9 @@ pageContext.setAttribute("basePath",basePath);
 		</table>
 	</div>
 	</div>
-	
-	<div class="row text-center">
+	<div id="kkpager"></div>
+	<div style="height:55px;"></div>
+<!-- 	<div class="row text-center">
 		<ul class="pagination">
 		  <li><a id="hispage" onclick="checkmeg()" href="IdentPage?page=1">上一页</a></li>
 		  <li><a id="fpage" onblur="cheNonMsg()" href="IdentPage?page=1">1</a></li>
@@ -146,7 +145,7 @@ pageContext.setAttribute("basePath",basePath);
 		  <li><a id="fifpage" onclick="checkmeg1()" href="IdentPage?page=5">5</a></li>
 		  <li><a id="nextpage" onclick="checkmeg1()" href="IdentPage?page=1">下一页</a></li>
 		</ul>
-	</div>
+	</div> -->
 </div>
 <script type="text/javascript">
 var hismeg = 0;
@@ -185,6 +184,58 @@ $(document).ready(function (){
 		$("#fifpage").attr("href", "IdentPage?page="+${oblMsgPage +2});
 		$("#fopage").attr("href", "IdentPage?page="+${oblMsgPage +1});
 	} */
+		$.ajax({
+			url: "${basePath}credit/findCreditList",    //请求的url地址
+		    dataType: "json",   //返回格式为json
+		    async: true, //请求是否异步
+		    data: { "from": 0},//参数值
+		    type: "post", 
+		    success: function(page) {
+		    	$("#obltb_body").empty();
+		    	$.each(page.data,function(n,value){
+		    		$("#obltb_body").append('<tr onclick="showcc(1)" data-toggle="modal" data-target="#oblsModal">'+
+			         '<td style=""><span>'+value.debtProvince+'</span></td>'+
+			         '<td style=""><span style="color: #f0841d">'+value.crAmount+'</span></td>'+
+			         '<td style=""><span>'+value.commisionRange+'</span></td>'+
+			         '<td style="">'+
+					 '<button  style="background-color: red; border-radius:25px;" class="btn btn-yellow export btn-sm" id="qd1" onclick="showcc(1)" disabled="disabled">招标中</button></td>'+
+			         '</td></tr>');
+		    	});
+		    	kkpager.generPageHtml({
+					pno : 0,
+					//总页码
+					total : parseInt(page.recordsTotal/10)+1,
+					//总数据条数
+					totalRecords : page.recordsTotal,
+					mode : 'click',//默认值是link，可选link或者click
+					click : function(n){
+						//手动选中按钮
+						$.ajax({
+							url: "${basePath}credit/findCreditList",    //请求的url地址
+						    dataType: "json",   //返回格式为json
+						    async: true, //请求是否异步
+						    data: { "from": (n-1)*10},//参数值
+						    type: "post", 
+						    success: function(page) {
+						    	$("#obltb_body").empty();
+						    	$.each(page.data,function(n,value){
+						    		$("#obltb_body").append('<tr onclick="showcc(1)" data-toggle="modal" data-target="#oblsModal">'+
+									         '<td style=""><span>'+value.debtProvince+'</span></td>'+
+									         '<td style=""><span style="color: #f0841d">'+value.crAmount+'</span></td>'+
+									         '<td style=""><span>'+value.commisionRange+'</span></td>'+
+									         '<td style="">'+
+											 '<button  style="background-color: red; border-radius:25px;" class="btn btn-yellow export btn-sm" id="qd${ident.did}" onclick="showcc(${ident.did})" disabled="disabled">招标中</button></td>'+
+									'</td></tr>');
+						    	});
+						    }
+						});
+						kkpager.selectPage(n);
+						return false;
+					}
+				});
+		    }
+		});
+		
 });
 
 function cheNonMsg() {

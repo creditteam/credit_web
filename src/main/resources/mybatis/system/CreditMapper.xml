@@ -73,6 +73,12 @@
 		<if test="userId != null and userId != ''">
 		and user_id=#{userId}
 		</if>
+		<if test="crStatus != null and crStatus != ''">
+		and cr_status=#{crStatus}
+		</if>
+		<if test="crType != null and crType != ''">
+		and cr_type=#{crType}
+		</if>
 		<if test="contactName!=nul and contactName!=''">
 		and contact_name like CONCAT(CONCAT('%',#{contactName}),'%')
 		</if>

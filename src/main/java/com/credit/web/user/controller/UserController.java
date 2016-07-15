@@ -1,5 +1,7 @@
 package com.credit.web.user.controller;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -14,6 +16,7 @@ import com.credit.web.user.service.UserWebService;
 import com.gvtv.manage.base.controller.BaseController;
 import com.gvtv.manage.base.util.AjaxUtil;
 import com.gvtv.manage.base.util.MD5;
+import com.gvtv.manage.base.util.MozillaUtil;
 import com.gvtv.manage.base.util.PageData;
 
 @Controller
@@ -163,5 +166,33 @@ public class UserController extends BaseController{
 		AjaxUtil.ajaxResponse(response, responseText, AjaxUtil.RESPONCE_TYPE_JSON);
 	}
 	
+	/**
+	 * 查询处置专家、律师、媒体人
+	 * @return
+	 */
+	@RequestMapping(value="/expertList")
+	public ModelAndView findAllExpertList(HttpServletRequest request) throws Exception{
+		
+		PageData pd= super.getPageData();
+		pd.put("userLevel", 99);//专家、律师、财经法制媒体人
+		pd.put("userStatus", 7);
+		List<User> userList1 = userWebService.findPartUserList(pd);
+		pd.put("userStatus", 8);
+		List<User> userList2 = userWebService.findPartUserList(pd);
+		pd.put("userStatus", 9);
+		List<User> userList3 = userWebService.findPartUserList(pd);
+		
+		ModelAndView mv = this.getModelAndView();
+		mv.addObject("userList1",userList1);
+		mv.addObject("userList2",userList2);
+		mv.addObject("userList3",userList3);
+		//if(MozillaUtil.isMobileDevice(request)){
+			mv.setViewName("mobile/expert");
+		//}else{
+			//待完成
+		//}
+		return mv;
+		
+	}
 	
 }

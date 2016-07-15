@@ -51,10 +51,7 @@ pageContext.setAttribute("basePath",basePath);
 
 <body >
 <div class="main-container">
-	<div class="row">
-		<div class="col-xs-6"><img style="height: 24px" id="logo" src="${basePath }hplus/img/logo.jpg"  alt="快易收"></div>
-		<div class="col-xs-6"><p style="color: #5f5d5d">服务热线 ： 4008-338-997</p></div>
-	</div>
+	<jsp:include page="mobile_top_logo.jsp"></jsp:include>
 	<div class="row">
 		
 		<div class="col-xs-12">
@@ -118,7 +115,7 @@ pageContext.setAttribute("basePath",basePath);
 			</div>
 		</a></div>
 		<div class="col-xs-4" style="height: 100px; ">
-		<a href="${basePath }mobile/zjgw.jsp">
+		<a href="${basePath }user/expertList">
 			<div class="text-center" style="margin: 8 8 8 8; width: 90%; height: 84%; border-radius:25px;">
 				<img alt="" src="${basePath }hplus/img/bj04.png">
 				<p style="color: #666666" >专家顾问库</p>
@@ -136,7 +133,7 @@ pageContext.setAttribute("basePath",basePath);
 		</div>
 		
 		<div class="col-xs-4" style="height: 100px; ">
-			<a href="${basePath }mobile/dongtai.jsp">
+			<a href="${basePath }blog/mlList">
 			<div class="text-center" style="margin: 8 8 8 8; width: 90%; height: 84%; border-radius:25px;">
 				<img alt="" src="${basePath }hplus/img/bj08.png">
 				<p style="color: #666666" >业务咨讯</p>
@@ -190,82 +187,76 @@ pageContext.setAttribute("basePath",basePath);
 	<div class="row"><h4 class="text-center">专家顾问库</h4></div>
 <div class="main-container" id="yunxing" style="background-color: #f2f2f2; border-top:thick double #ff0000;height:196px;overflow-x:auto">
 	<ul class="test_ul">
-        <li >
-          <div class="thum22">
-            <img src="${basePath }hplus/img/expert/crt.jpg" class="img-rounded" width="100px" height="120px"/>
-            <div >
-              <h5>哦哦哦</h5>
-              <p>资深处置专家</p>
-            </div>
-          </div>
-        </li>
-        <li >
-          <div class="thum22">
-            <img src="${basePath }hplus/img/expert/gch.jpg" class="img-rounded" width="100px" height="120px"/>
-            <div >
-              <h5>哟哟哟</h5>
-              <p>资深处置专家</p>
-            </div>
-          </div>
-        </li>
-        <li >
-          <div class="thum22" >
-            <img src="${basePath }hplus/img/expert/xxy.jpg" class="img-rounded" width="100px" height="120px"/>
-            <div >
-              <h5>嘻嘻嘻</h5>
-              <p>资深处置专家</p>
-            </div>
-          </div>
-        </li>
-        <li >
-          <div class="thum22" >
-            <img src="${basePath }hplus/img/expert/zhb.jpg" class="img-rounded" width="100px" height="120px"/>
-            <div >
-              <h5>哈哈哈</h5>
-              <p>资深处置专家</p>
-            </div>
-          </div>
-        </li>
-        <li >
-          <div class="thum22">
-            <img src="${basePath }hplus/img/expert/crt.jpg" width="100px" height="120px"/>
-            <div >
-              <h5>哦哦哦</h5>
-              <p>资深处置专家</p>
-            </div>
-          </div>
-        </li>
-        <li >
-          <div class="thum22">
-            <img src="${basePath }hplus/img/expert/gch.jpg" class="img-rounded" width="100px" height="120px"/>
-            <div >
-              <h5>哟哟哟</h5>
-              <p>资深处置专家</p>
-            </div>
-          </div>
-        </li>
-        <li >
-          <div class="thum22" >
-            <img src="${basePath }hplus/img/expert/xxy.jpg" class="img-rounded" width="100px" height="120px"/>
-            <div >
-              <h5>嘻嘻嘻</h5>
-              <p>资深处置专家</p>
-            </div>
-          </div>
-        </li>
-        <li >
-          <div class="thum22" >
-            <img src="${basePath }hplus/img/expert/zhb.jpg" class="img-rounded" width="100px" height="120px"/>
-            <div >
-              <h5>哈哈哈</h5>
-              <p>资深处置专家</p>
-            </div>
-          </div>
-        </li>
+		<c:forEach items="${userList1}" var="item">
+			<li >
+	          <div class="thum22">
+	            <img src="${basePath}${item.userHeadImages}" class="img-rounded" width="100px" height="120px"
+	            onclick="openExpertWin('${item.userHeadImages}','${item.nickname}','${item.description}')"/>
+	            <div >
+	              <h5>${item.nickname}</h5>
+	              <p>资深处置专家</p>
+	            </div>
+	          </div>
+	        </li>
+		</c:forEach>
+		<c:forEach items="${userList2}" var="item">
+			<li>
+	          <div class="thum22">
+	            <img src="${basePath}${item.userHeadImages}" class="img-rounded" width="100px" height="120px"
+	            onclick="openExpertWin('${item.userHeadImages}','${item.nickname}','${item.description}')"/>
+	            <div >
+	              <h5>${item.nickname}</h5>
+	              <p>资深诉讼律师</p>
+	            </div>
+	          </div>
+	        </li>
+		</c:forEach>
+		<c:forEach items="${userList3}" var="item">
+			<li >
+	          <div class="thum22">
+	            <img src="${basePath}${item.userHeadImages}" class="img-rounded" width="100px" height="120px"
+	            onclick="openExpertWin('${item.userHeadImages}','${item.nickname}','${item.description}')"/>
+	            <div >
+	              <h5>${item.nickname}</h5>
+	              <p>财经法制媒体人</p>
+	            </div>
+	          </div>
+	        </li>
+		</c:forEach>
       </ul>
 	
 </div>
- 
+ <div id="mf_expert" class="modal fade" tabindex="-1" role="dialog"
+		aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal-dialog modal-lg">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"
+						aria-hidden="true">
+						<span>&times;</span><span class="sr-only">关闭</span>
+					</button>
+					<h4 class="modal-title">个人简介</h4>
+				</div>
+				<div class="modal-body">
+					<div class="row">
+						<div class="col-md-4">
+							<img class="img-circle" src="" alt="" id="expertImg"
+								style="width: 120px; height: 160px; margin-top: 10px">
+						</div>
+						<div class="col-md-8">
+							<h3 id="expertName"></h3>
+							<b>简介：</b><p id="expertRmk" style="font-size: 16px;"></p>
+						</div>
+
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-sm btn-primary"
+						class="btn btn-default" data-dismiss="modal">关闭</button>
+				</div>
+			</div>
+		</div>
+	</div>
 
 <div class="subfooter" style="background-color: #0b6070; margin-top: 50px">
 	<div class="main-container">
@@ -281,6 +272,13 @@ pageContext.setAttribute("basePath",basePath);
 </div>
 
 <jsp:include page="mobile_footer.jsp"></jsp:include>
-
+<script type="text/javascript">
+	function openExpertWin(url,name,rmk){
+		$("#expertImg").attr("src",url);
+		$("#expertName").html(name);
+		$("#expertRmk").html(rmk);
+		$("#mf_expert").modal("show");
+	}
+</script>
 </body>
 </html>

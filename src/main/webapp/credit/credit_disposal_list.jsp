@@ -11,12 +11,11 @@ pageContext.setAttribute("basePath",basePath);
 <html>
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>快易收-欢迎您登陆快易收债权管理系统</title>
 <meta name="keywords" content="H+后台主题,后台bootstrap框架,会员中心主题,后台HTML,响应式后台">
 <meta name="description" content="H+是一个完全响应式，基于Bootstrap3最新版本开发的扁平化主题，她采用了主流的左右两栏式布局，使用了Html5+CSS3等现代技术">
 <jsp:include page="/common/_meta.jsp"></jsp:include>
-
+ <link href="${basePath }hplus/css/kkpager_orange.css" rel="stylesheet">
 </head>
 
 <body class="gray-bg top-navigation">
@@ -42,8 +41,6 @@ pageContext.setAttribute("basePath",basePath);
 								</div>
 							</div>
 							<div class="ibox-content">
-							<input name="pageNum" id="pageNum" type="hidden" value="0"/>
-							<input name="recordsTotal" id="recordsTotal" type="hidden"/>
 								<table class="table table-hover" id="finishingTask" >
 									<thead>
 										<tr>
@@ -107,7 +104,7 @@ pageContext.setAttribute("basePath",basePath);
                             </div>
                         </div>-->
 					 <!-- page end -->
-					 <div id="example"></div>
+					 <div id="kkpager"></div>
 				</div>
 			</div>
 		   </div>
@@ -116,14 +113,14 @@ pageContext.setAttribute("basePath",basePath);
 	<!-- 底部文件 -->
 	<jsp:include page="/common/_footer.jsp"></jsp:include>
 	<jsp:include page="/common/_script.jsp"></jsp:include>
-	<script src="${basePath }hplus/js/bootstrap-paginator.min.js"></script>
+	<script src="${basePath }hplus/js/kkpager.min.js"></script>
 	<script type="text/javascript">
 	$(function(){
 		$.ajax({
 			url: "${basePath}credit/findCreditList",    //请求的url地址
 		    dataType: "json",   //返回格式为json
 		    async: true, //请求是否异步
-		    data: { "from": 0*10},//参数值
+		    data: { "from": 0},//参数值
 		    type: "post", 
 		    success: function(page) {
 		    	$("#creditDisposal").empty();
@@ -135,96 +132,47 @@ pageContext.setAttribute("basePath",basePath);
 							'<td>'+value.crAmount+'</td>'+
 							'<td class="text-navy"><i class="fa fa-level-up"></i>'+value.commisionRange+'</td>'+
 							'<td><span class="label label-warning">'+value.crStatus+'</span></td>'+
-							'<td><a href="${basePath }credit/credit_disposal_detail.jsp">查看</a></td>'+
+							'<td><a href="${basePath }credit/creditDetails?id='+value.id+'">查看</a></td>'+
 						'</tr>');
 		    	});
-		    	//$("#recordsTotal").val(page.recordsTotal);
-		    var options = {
-		            currentPage: 0,//当前页
-		            totalPages: 3,//总页数
-		            numberofPages: 5,//显示的页数
-		            itemTexts: function(type, page, current) { //修改显示文字
-		                switch (type) {
-		                case "first":
-		                    return "首页";
-		                case "prev":
-		                    return "上一页";
-		                case "next":
-		                    return "下一页";
-		                case "last":
-		                    return "最后一页";
-		                case "page":
-		                    return page;
-		                }
-		            },//点击事件，用于通过Ajax来刷新整个list列表
-		            onPageClicked: function (event, originalEvent, type, page){
-		            	$.ajax({
-		        			url: "${basePath}credit/findCreditList",    //请求的url地址
-		        		    dataType: "json",   //返回格式为json
-		        		    async: true, //请求是否异步
-		        		    data: { "from": page*10},//参数值
-		        		    type: "post", 
-		        		    success: function(page) {
-		        		    	$("#creditDisposal").empty();
-		        		    	$.each(page.data,function(n,value){
-		        		    		$("#creditDisposal").append('<tr>'+
-		        							'<td><span class="label label-warning">'+value.crType+'</span></td>'+
-		        							'<td>'+value.debtProvince+'</td>'+
-		        							'<td>'+value.debtProof+'</td>'+
-		        							'<td>'+value.crAmount+'</td>'+
-		        							'<td class="text-navy"><i class="fa fa-level-up"></i>'+value.commisionRange+'</td>'+
-		        							'<td><span class="label label-warning">'+value.crStatus+'</span></td>'+
-		        							'<td><a href="${basePath }credit/credit_disposal_detail.jsp">查看</a></td>'+
-		        						'</tr>');
-		        		    	});
-		        		    	$("#recordsTotal").val(page.recordsTotal);
-		        		    }
-		        		});
-		            }
-		        }
-		    $('#example').bootstrapPaginator(options);
+		    	kkpager.generPageHtml({
+					pno : 0,
+					//总页码
+					total : parseInt(page.recordsTotal/10)+1,
+					//总数据条数
+					totalRecords : page.recordsTotal,
+					mode : 'click',//默认值是link，可选link或者click
+					click : function(n){
+						//手动选中按钮
+						$.ajax({
+							url: "${basePath}credit/findCreditList",    //请求的url地址
+						    dataType: "json",   //返回格式为json
+						    async: true, //请求是否异步
+						    data: { "from": (n-1)*10},//参数值
+						    type: "post", 
+						    success: function(page) {
+						    	$("#creditDisposal").empty();
+						    	$.each(page.data,function(n,value){
+						    		$("#creditDisposal").append('<tr>'+
+											'<td><span class="label label-warning">'+value.crType+'</span></td>'+
+											'<td>'+value.debtProvince+'</td>'+
+											'<td>'+value.debtProof+'</td>'+
+											'<td>'+value.crAmount+'</td>'+
+											'<td class="text-navy"><i class="fa fa-level-up"></i>'+value.commisionRange+'</td>'+
+											'<td><span class="label label-warning">'+value.crStatus+'</span></td>'+
+											'<td><a href="${basePath }credit/creditDetails?id='+value.id+'">查看</a></td>'+
+										'</tr>');
+						    	});
+						    }
+						});
+						kkpager.selectPage(n);
+						return false;
+					}
+				});
 		    }
 		});
 		
 	});
-	function loadTable(pageNum){
-		
-		var recordsTotal = $("#recordsTotal").val();
-		var pageNumOld = parseInt($("#pageNum").val());
-		
-		if(pageNum == 'for' && pageNumOld > 0){//上一页
-			pageNum = pageNumOld - 1;
-		}else if(pageNum == 'next' && (pageNumOld+1)*10 <= recordsTotal){//下一页
-			pageNum = pageNumOld + 1;
-		}
-		if(isNaN(pageNum) || (recordsTotal != '' && pageNum*10 >= recordsTotal)){
-			return;
-		}
-		
-		$.ajax({
-			url: "${basePath}credit/findCreditList",    //请求的url地址
-		    dataType: "json",   //返回格式为json
-		    async: true, //请求是否异步
-		    data: { "from": pageNum*10},//参数值
-		    type: "post", 
-		    success: function(page) {
-		    	$("#creditDisposal").empty();
-		    	$.each(page.data,function(n,value){
-		    		$("#creditDisposal").append('<tr>'+
-							'<td><span class="label label-warning">'+value.crType+'</span></td>'+
-							'<td>'+value.debtProvince+'</td>'+
-							'<td>'+value.debtProof+'</td>'+
-							'<td>'+value.crAmount+'</td>'+
-							'<td class="text-navy"><i class="fa fa-level-up"></i>'+value.commisionRange+'</td>'+
-							'<td><span class="label label-warning">'+value.crStatus+'</span></td>'+
-							'<td><a href="${basePath }credit/credit_disposal_detail.jsp">查看</a></td>'+
-						'</tr>');
-		    	});
-		    	$("#recordsTotal").val(page.recordsTotal);
-		    }
-		});
-		//$("#pageNum").val(pageNum);
-	}
 </script>
 </body>
 

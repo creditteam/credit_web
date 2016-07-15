@@ -54,15 +54,23 @@
 		</if>
 	</select>
 	
-	<select id="list" parameterType="PageData" resultType="PageData">
+	<select id="list" parameterType="PageData" resultType="User">
 		select  
 		 <include refid="userColumns"></include>
 		from cr_user u
 		where u.user_status != -1
+		<if test="userStatus != null">
+			and u.user_status = #{userStatus}
+		</if>
+		<if test="userLevel != null">
+			and u.user_level = #{userLevel}
+		</if>
 		<if test="keyword != null and keyword != ''">
 	  	and	CONCAT(IFNULL(u.login_name,''),IFNULL(u.name,'')) like #{keyword}
 		</if>
-		limit #{from},#{size}
+		<if test="from != 0 and size != 0">
+			limit #{from},#{size}
+		</if>
 	</select>
 	
 	

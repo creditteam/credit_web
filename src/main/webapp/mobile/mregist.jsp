@@ -19,10 +19,7 @@
 
 <body>
 	<div class="main-container">
-		<div class="row">
-			<div class="col-xs-6"><img style="height: 20px" id="logo" src="<%=basePath%>hplus/img/logo.jpg"  alt="快易收"></div>
-			<div class="col-xs-6"><p style="color: #5f5d5d">服务热线 ： 4008-338-997</p></div>
-		</div>
+		<jsp:include page="mobile_top_logo.jsp"></jsp:include>
 		<div class="row">
 			<div>
 				<img class="carousel-inner img-responsive img-rounded" alt="" src="${basePath}hplus/img/25.jpg">
