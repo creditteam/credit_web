@@ -79,8 +79,8 @@ public class CreditWebService {
 	 * @return
 	 * @throws Exception
 	 */
-	public Boolean creditSave(PageData pd) throws Exception {
-		int num = dao.save("CreditMapper.creditSave", pd);
+	public Boolean creditSave(Credit credit) throws Exception {
+		int num = dao.save("CreditMapper.creditSave", credit);
 		if(num>0){
 			return true;
 		}

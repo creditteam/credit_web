@@ -1,5 +1,8 @@
 package com.credit.web.credit.controller;
 
+import java.util.Date;
+import java.util.List;
+
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 
@@ -12,7 +15,10 @@ import org.springframework.web.servlet.ModelAndView;
 import com.credit.web.credit.service.CreditWebService;
 import com.credit.web.entity.Credit;
 import com.credit.web.entity.User;
+import com.credit.web.filemanager.service.UploadFileService;
 import com.credit.web.user.service.UserWebService;
+import com.credit.web.util.CitiesEnum;
+import com.credit.web.util.ProvinceEnum;
 import com.gvtv.manage.base.controller.BaseController;
 import com.gvtv.manage.base.util.MozillaUtil;
 import com.gvtv.manage.base.util.PageData;
@@ -27,6 +33,9 @@ public class CreditController extends BaseController{
 	
 	@Resource
 	private UserWebService userWerService;
+	
+	@Resource
+	private UploadFileService uploadFileService;
 	/**
 	 * 用户中心债权首页
 	 * @param request
@@ -55,24 +64,51 @@ public class CreditController extends BaseController{
 	@RequestMapping(value="/saveCredit",method =RequestMethod.GET)
 	public ModelAndView toSaveCredit() throws Exception{
 		String userId =super.getRequest().getParameter("userId");
+		List<String> provinceList = ProvinceEnum.takeAllValues();//省份list
+ 		
 		ModelAndView mv = this.getModelAndView();
 		mv.addObject("userId", userId);
-		mv.setViewName("/user/user_credit_disposal_add");
+		mv.addObject("provinceList", provinceList);
+		if(MozillaUtil.isMobileDevice(super.getRequest())){
+			mv.setViewName("/mobile/credit_add");
+		}else{
+			mv.setViewName("/user/user_credit_disposal_add");
+		}
 		return mv;
 	}
 	
 	/**
-	 * 跳转到修改密码页面
+	 * 保存债权信息
 	 * @param request
 	 * @return
 	 * @throws Exception
 	 */
 	@RequestMapping(value="/saveCredit",method =RequestMethod.POST)
-	public String saveCredit() throws Exception{
+	public String saveCredit(Credit credit) throws Exception{
 		PageData pd =super.getPageData();
-		pd.put("crStatus", 1);
-		creditWebService.creditSave(pd);
-		return "redirect:/credit/list";
+		HttpServletRequest request = super.getRequest();
+		String path = request.getSession().getServletContext().getRealPath("/");
+		Boolean bool = false;
+		if(null!= credit.getUploadFile()){
+			bool = uploadFileService.uploadFile(path+"uploadFile", credit.getUploadFile(), credit.getUploadFile().getOriginalFilename());
+		}
+		credit.setDebtProof(path+"uploadFile\\"+credit.getUploadFile().getOriginalFilename());
+		System.out.println(path+"uploadFile\\"+credit.getUploadFile().getOriginalFilename());
+		credit.setCreateDate(new Date());
+		credit.setCrStatus((short)1);
+		creditWebService.creditSave(credit);
+		
+		if(MozillaUtil.isMobileDevice(request)){
+			if(bool){//如果上传保存成功 
+				return "redirect:/mobile/credit_list.jsp";
+			}else{
+				return "redirect:/mobile/credit_add.jsp";
+				
+				
+			}
+		}else{
+			return "redirect:/credit/list";
+		}
 	}
 	
 	@RequestMapping(value="/userCreditDetails",method =RequestMethod.GET)
@@ -170,6 +206,16 @@ public class CreditController extends BaseController{
 		
 		return mv;
 	}
-	
+	/**
+	 * 根据省份加载城市
+	 * @param proName
+	 * @return
+	 */
+	@RequestMapping(value="/loadCity")
+	@ResponseBody
+	public List<String> loadCityData(String proName){
+		List<String> list = CitiesEnum.getCityByProvince(proName);
+		return list;
+	}
 	
 }
