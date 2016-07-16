@@ -42,10 +42,9 @@ public class CreditController extends BaseController{
 		PageData pd =super.getPageData();
 		pd.put("from", 0);
 		pd.put("size", 10);
-		List<Credit> creditList = creditWebService.creditlist(pd);
+		pd = creditWebService.pageList(pd);
 		
 		ModelAndView mv = this.getModelAndView();
-		mv.addObject("creditList", creditList);
 		mv.addObject("pd", pd);
 		mv.setViewName("/user/user_credit_disposal_list");
 		return mv;
@@ -75,8 +74,25 @@ public class CreditController extends BaseController{
 		return "redirect:/credit/list";
 	}
 	
+	@RequestMapping(value="/userCreditDetails",method =RequestMethod.GET)
+	public ModelAndView userCreditDetails() throws Exception{
+		String id =super.getRequest().getParameter("id");
+		if(id!=null&&id!=""){
+			Credit credit = creditWebService.findById(Integer.valueOf(id));
+			ModelAndView mv = this.getModelAndView();
+			mv.addObject("credit", credit);
+			if(MozillaUtil.isMobileDevice(super.getRequest())){//如果是手机
+				//待完成
+			}else{
+				mv.setViewName("/credit/credit_disposal_detail");
+			}
+		}
+		return null;
+	}
+	
+	
 	/**
-	 * 查询债权详情
+	 * 查询债权详情(未登录时，屏蔽敏感信息)
 	 * @return
 	 * @throws Exception
 	 */
@@ -108,8 +124,10 @@ public class CreditController extends BaseController{
 			mv.addObject("user",user);
 			if(MozillaUtil.isMobileDevice(super.getRequest())){//如果是手机
 				//待完成
+			}else{
+				mv.setViewName("/credit/credit_disposal_detail");
 			}
-			mv.setViewName("/credit/credit_disposal_detail");
+			
 			return mv;
 		}
 		return null;
@@ -129,6 +147,31 @@ public class CreditController extends BaseController{
 		pd.put("size", 10);
 		pd = creditWebService.pageList(pd);
 		return pd;
+	}
+	
+	/**
+	 * 导航债权列表信息（用户未登录时,部分铭感信息屏蔽）
+	 * @param request
+	 * @return
+	 * @throws Exception
+	 */
+	@RequestMapping(value="/navlist")
+	public ModelAndView navlist(HttpServletRequest request) throws Exception{
+		String creditType =request.getParameter("creditType");
+		PageData pd =super.getPageData();
+		pd.put("from", 0);
+		pd.put("size", 10);
+		pd = creditWebService.pageList(pd);
+		
+		ModelAndView mv = this.getModelAndView();
+		mv.addObject("pd", pd);
+		if(creditType.equals("1")){
+			mv.setViewName("/credit/credit_disposal_list");	
+		}else if(creditType.equals("2")){
+			mv.setViewName("/credit/credit_transfer_list");
+		}
+		
+		return mv;
 	}
 	
 	

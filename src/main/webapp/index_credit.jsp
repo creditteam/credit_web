@@ -23,9 +23,9 @@
 						</tr>
 					</thead>
 					<tbody>
-					<c:forEach items="${creditList1}" var="item">
+					<c:forEach items="${creditdisposalList}" var="item">
 						<tr>
-							<td><span class="label label-primary">${item.debtCity}</span></td>
+							<td><span class="label label-warning">${item.debtCity}</span></td>
 							<td>${item.debtName}</td>
 							<td><i class="fa fa-clock-o"></i>${item.crAmount}</td>
 							<td class="text-navy"><i class="fa fa-level-up"></i>${item.commisionRange}</td>
@@ -59,9 +59,9 @@
 						</tr>
 					</thead>
 					<tbody>
-					<c:forEach items="${creditList2}" var="item">
+					<c:forEach items="${credittransferList}" var="item">
 						<tr>
-							<td><span class="label label-primary">${item.debtCity}</span></td>
+							<td><span class="label label-warning">${item.debtCity}</span></td>
 							<td>${item.debtName}</td>
 							<td><i class="fa fa-clock-o"></i>${item.crAmount}</td>
 							<td class="text-navy"><i class="fa fa-level-up"></i>${item.commisionRange}</td>

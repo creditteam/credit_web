@@ -1,5 +1,6 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %> 
 <%
 String path = request.getContextPath();
 // 获得本项目的地址(例如: http://localhost:8080/MyApp/)赋值给basePath变量
@@ -58,14 +59,26 @@ pageContext.setAttribute("basePath",basePath);
 										</tr>
 									</thead>
 									<tbody>
+									<c:forEach items="${pd.data}" var="reward">
 										<tr>
-											<td><span class="label label-warning">找人</span></td>
-											<td>2016-07-08 11:22:33</td>
-											<td>湛*市雄立房产有限公司</td>
-											<td>1.00金额(万元)</td>
-											<td><span class="label label-warning">悬赏中</span></td>
-											<td><a href="${basePath }reward/reward_details.jsp">查看</a></td>
+											<td><span class="label label-warning">
+								    <c:if test="${reward.rewardType==0}">个人债权</c:if>
+                                    <c:if test="${reward.rewardType==1}">企业债权</c:if>
+                                    <c:if test="${reward.rewardType==2}">预期贷款</c:if>
+                                    <c:if test="${reward.rewardType==3}">固定资产</c:if>
+                                    <c:if test="${reward.rewardType==4}">国际债权</c:if>
+											</span></td>
+											<td><fmt:formatDate value="${reward.createTime }" pattern="yyyy-MM-dd HH:mm:ss"/></td>
+											<td>${reward.province }</td>
+											<td>${reward.rewardAmount }金额(万元)</td>
+											<td><span class="label label-warning">
+											<c:if test="${reward.rewardStatus==1}">发布中</c:if>
+									        <c:if test="${reward.rewardStatus==0}">已结束</c:if>
+											</span></td>
+											<td><a href="${basePath }reward/navRewardDetails?id=${reward.id}">查看</a></td>
 										</tr>
+										</c:forEach>
+										<%--
 										<tr>
 											<td><span class="label label-warning">找车</span></td>
 											<td>2016-07-08 11:22:33</td>
@@ -82,6 +95,7 @@ pageContext.setAttribute("basePath",basePath);
 											<td><span class="label label-warning">招标中</span></td>
 											<td><a href="${basePath }reward/reward_details.jsp">查看</a></td>
 										</tr>
+										 --%>
 									</tbody>
 								</table>
 							</div>

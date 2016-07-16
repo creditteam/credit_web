@@ -65,20 +65,23 @@ pageContext.setAttribute("basePath",basePath);
 						</tr>
 					</thead>
 					<tbody>
-					    <c:forEach items="${creditList }" var="credit">
+					    <c:forEach items="${pd.data }" var="credit">
 						<tr>
 							<td><span class="label label-warning">${credit.debtProvince }</span></td>
 							<td>${credit.debtName }</td>
 							<td><i class="fa fa-clock-o"></i> ${credit.crAmount }</td>
 							<td class="text-navy"><i class="fa fa-level-up"></i>${credit.commisionRange}</td>
-							<td><a href="${basePath }credit/creditDetails?id=${credit.id}" target="_self">查看</a></td>
+							<td><a href="${basePath }credit/userCreditDetails?id=${credit.id}" target="_self">查看</a></td>
 						</tr>
 						</c:forEach>
 					</tbody>
 				</table>
 
                     <div class="hr-line-dashed"></div>
-                    <jsp:include page="/common/_pagination.jsp"></jsp:include>
+                    <jsp:include page="/common/_pagination.jsp">
+                      <jsp:param value="/credit/navlist?creditType=1" name="action"/>
+                      <jsp:param value="page" name="action"/>
+                    </jsp:include>
                     </div>
                
                

@@ -38,8 +38,8 @@ public class IndexController extends BaseController{
 		pd.put("from", 0);
 		pd.put("size", 6);
 		
-		List<Credit> creditList1 = creditWebService.creditlist(pd);//债权信息
-		List<Credit> creditList2 = creditWebService.creditlist(pd);//债权转让
+		List<Credit> creditdisposalList = creditWebService.creditlist(pd);//债权信息
+		List<Credit> credittransferList = creditWebService.creditlist(pd);//债权转让
 		
 		//行业动态、业务文章 
 		pd.put("blogType", 1);
@@ -55,8 +55,8 @@ public class IndexController extends BaseController{
 		pd.put("userStatus", 9);
 		List<User> userList3 = userWebService.findPartUserList(pd);
 		
-		mv.addObject("creditList1",creditList1);
-		mv.addObject("creditList2",creditList2);
+		mv.addObject("creditdisposalList",creditdisposalList);
+		mv.addObject("credittransferList",credittransferList);
 		
 		mv.addObject("blogList1",blogList1);
 		mv.addObject("blogList2",blogList2);

@@ -47,10 +47,9 @@ public class RewardWebService {
 		}
 		int totalNum = (int) dao.findForObject("RewardMapper.count", pd);
 		
-		pd.put("from", pd.getInteger("start"));
-		pd.put("size", pd.getInteger("length"));
-		List<PageData> pds = dao.findForList("CreditMapper.list", pd);
-		AppUtil.nullToEmpty(pds, new String[]{"menuId", "menuName", "menuUrl", "menuOrder", "description"});
+		pd.put("from", pd.getInteger("from"));
+		pd.put("size", pd.getInteger("size"));
+		List<Reward> pds = dao.findForList("RewardMapper.list", pd);
 		
 		result.put(Const.DRAW, pd.getString(Const.DRAW));
 		result.put(Const.RECORDSTOTAL, totalNum);

@@ -59,33 +59,24 @@ pageContext.setAttribute("basePath",basePath);
 										</tr>
 									</thead>
 									<tbody>
-										<tr>
-											<td><span class="label label-warning">企业债权</span></td>
-											<td>湛江市</td>
-											<td>湛*市雄立房产有限公司</td>
-											<td>160.00金额(万元)</td>
-											<td class="text-navy"><i class="fa fa-level-up"></i>20%-40%</td>
-											<td><span class="label label-warning">处置中</span></td>
-											<td><a href="${basePath }credit/credit_transfer_details.jsp">查看</a></td>
-										</tr>
-										<tr>
-											<td><span class="label label-warning">个人债权</span></td>
-											<td>湛江市</td>
-											<td>张三</td>
-											<td>15.00金额(万元)</td>
-											<td class="text-navy"><i class="fa fa-level-up"></i>10%-15%</td>
-											<td><span class="label label-warning">招标中</span></td>
-											<td><a href="${basePath }credit/credit_transfer_details.jsp">查看</a></td>
-										</tr>
-										<tr>
-											<td><span class="label label-warning">企业债权</span></td>
-											<td>湛江市</td>
-											<td>湛*市雄立房产有限公司</td>
-											<td>161.00金额(万元)</td>
-											<td class="text-navy"><i class="fa fa-level-up"></i>21%-40%</td>
-											<td><span class="label label-warning">招标中</span></td>
-											<td><a href="${basePath }credit/credit_transfer_details.jsp">查看</a></td>
-										</tr>
+										<c:forEach items="${pd.data }" var="credit">
+											<tr>
+											    <td><span class="label label-warning">
+												    <c:if test="${credit.crType==1 }">个人债权</c:if>
+												    <c:if test="${credit.crType==2 }">企业债权</c:if>
+												    <c:if test="${credit.crType==3 }">预期贷款</c:if>
+												    <c:if test="${credit.crType==4 }">固定资产</c:if>
+												    <c:if test="${credit.crType==5 }">资产包</c:if>
+												    <c:if test="${credit.crType==6 }">国际债权</c:if>
+											    </span></td>
+												<td><span class="label label-warning">${credit.debtProvince }</span></td>
+												<td>${credit.debtName }</td>
+												<td><i class="fa fa-clock-o"></i> ${credit.crAmount }</td>
+												<td class="text-navy"><i class="fa fa-level-up"></i>${credit.commisionRange}</td>
+												<td><span class="label label-warning">${credit.crStatus }</span></td>
+												<td><a href="${basePath }credit/creditDetails?id=${credit.id}" target="_self">查看</a></td>
+											</tr>
+										</c:forEach>
 									</tbody>
 								</table>
 							</div>
