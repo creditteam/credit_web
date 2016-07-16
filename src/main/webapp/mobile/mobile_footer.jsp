@@ -17,7 +17,7 @@ pageContext.setAttribute("basePath",basePath);
 			<a target="_blank" href="http://form.mikecrm.com/yJPdFL" style="color: #fff"><i style="color: #fff" class="glyphicon glyphicon-plus-sign"></i><br>加盟</a>
 		</li>
 		<li role="presentation" class="col-xs-3 " style="padding: 0px;color: #fff">
-			<a href="${basePath }mobile/oblReg.jsp" style="color: #fff"><i style="color: #fff" class="glyphicon glyphicon-share"></i><br>发布</a>
+			<a href="${basePath }mobile/credit_add.jsp" style="color: #fff"><i style="color: #fff" class="glyphicon glyphicon-share"></i><br>发布</a>
 		</li>
 		<li role="presentation" class="col-xs-3 " style="padding: 0px;color: #fff">
 			<a href="${basePath }user/tologin" style="color: #fff"><i style="color: #fff" class="glyphicon glyphicon-user"></i><br>登录|注册</a>

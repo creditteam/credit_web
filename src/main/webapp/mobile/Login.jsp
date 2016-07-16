@@ -70,12 +70,12 @@
 				<div class="form-group">
 					<div class="col-xs-6 link">
 						<p class="text-center remove-margin">
-							<small>忘记密码？</small><a href="javascript:void(0)" data-toggle="modal" data-target="#oblsModal"><small>找回</small></a>
+							<small>忘记密码？</small><a href="javascript:void(0)" data-toggle="modal" data-target="#oblsModal">找回</a>
 						</p>
 					</div>
 					<div class="col-xs-6 link">
 						<p class="text-center remove-margin">
-							<small>还没注册?</small> <a href="${basePath }mobile/ml_regist.jsp"><small>注册</small></a>
+							<small>还没注册?</small><a href="${basePath }mobile/ml_regist.jsp">注册</a>
 						</p>
 					</div>
 				</div>
@@ -83,73 +83,100 @@
 		</div>
 	</div>
 
-	<!-- 模态框（Modal） -->
-	<div class="modal fade" id="oblsModal" tabindex="-1" role="dialog" 
-   aria-labelledby="oblModalLabel" aria-hidden="true">
-   <div class="modal-dialog">
-      <div class="modal-content">
-         <div class="modal-header">
-            <button type="button" class="close" 
-               data-dismiss="modal" aria-hidden="true">
-                  &times;
-            </button>
-            <h4 class="modal-title" id="oblModalLabel">
-               	密码找回
-            </h4>
-         </div>
-         <div class="modal-body">
-           	
+<!-- 模态框（Modal） -->
+<div class="modal fade" id="oblsModal" tabindex="-1" role="dialog"
+	aria-labelledby="oblModalLabel" aria-hidden="true">
+	<form action="${basePath}user/passBack" class="bs-example bs-example-form" method="POST" role="form" id="getBackForm">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal"
+					aria-hidden="true">&times;</button>
+				<h4 class="modal-title" id="oblModalLabel">密码找回</h4>
+			</div>
+			<div class="modal-body">
 
-<span class="list-group-item active">
-填写新密码
-</span>
-
-<div class="list-group-item">
-<table><tr>
-
-<td><input id="regbakphone" type="text" placeholder="注册手机" class="form-username form-control" name="backinputPhone1" ></td>
-<td><button type="button" id="regbakphonesend" class="btn btn-primary" onclick="sendPhone()" >发送短信</button></td>
-</tr></table>
+				<div class="form-group">
+					<div class="input-group input-group-xs">
+						<span class="input-group-addon">注册手机</span>
+						<input type="text" class="form-control" id="userPhone" name="userPhone" placeholder="手机号码" maxlength="16">
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="input-group input-group-xs">
+						<table>
+							<tr>
+								<td>
+									<input type="text" id="registerZm" name="registerZm" class="form-control" disabled="disabled" placeholder="验证码" maxlength="6">
+								</td>
+								<td>
+									<input class="btn btn-primary" id="regiohonebtn" type="button" value="发送验证码" onclick="sendPhone()"/>
+								</td>
+							</tr>
+							<tr>
+								<td><span class="text-left">请勿关闭此页面防止验证码失效</span></td>
+							</tr>
+						</table>
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="input-group input-group-xs">
+						<span class="input-group-addon">新密码</span>
+						<input type="password" class="form-control" id="newpassowrd" name="newpassowrd" placeholder="重置后,请使用新密码登录" maxlength="16">
+					</div>
+					
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-primary" data-dismiss="modal" onclick="subBackInof()">提交</button>
+				<button type="button" class="btn btn-primary" data-dismiss="modal">关闭</button>
+			</div>
+		</div>
+	</div>
+	</form>
 </div>
 
-<div class="list-group-item">
-<table><tr>
+<jsp:include page="mobile_footer.jsp"></jsp:include>
 
-<td><input type="text" placeholder="验证码" class="form-username form-control" id="backinputyzm" name="backinputyzm" disabled="disabled"></td>
-</tr>
-<tr><td><span class="text-left">请勿关闭此页面防止验证码失效</span></td></tr>
-</table>
+<script type="text/javascript">
 
-</div>
-<div class="list-group-item">
-<table><tr>
+var InterValObj; //timer变量，控制时间
+var count = 5; //间隔函数，1秒执行
+var curCount = 40;//当前剩余秒数
+function sendPhone(){
+	var phone = $("#userPhone").val();
+	if(phone == ''){
+		alert('请输入手机号');
+		return false;
+	}
+	$("#registerZm").removeAttr("disabled");
+	InterValObj = window.setInterval(SetRemainTime, 1000); //启动计时器，1秒执行一次
+	//调用发送短信
+}
 
-<td><input type="text" placeholder="新密码" class="form-username form-control" id="backinputpass1" name="backinputpass1"></td>
+function subBackInof(){
+	$("#getBackForm").submit();
+}
 
-</tr>
-<tr><td><span>重置密码后，请使用新密码登录系统</span></td></tr></table>
-
-</div>
-
-<input type="hidden" id="lsg14" />
-
-         </div>
-         <div class="modal-footer">
-         
-          <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="sendResetCode()">
-               提交
-            </button>
-            
-            <button type="button" class="btn btn-primary" data-dismiss="modal">
-               关闭
-            </button>
-         </div>
-      </div>
-</div>
-</div> 
-
-	<jsp:include page="mobile_footer.jsp"></jsp:include>
-
-	<!-- Javascript -->
+function SetRemainTime() {
+    if (curCount == 0) {                
+        window.clearInterval(InterValObj);//停止计时器
+        $("#regiohonebtn").removeAttr("disabled");//启用按钮
+        $("#regiohonebtn").val("发送验证码");
+        curCount = 40;
+    }
+    else {
+        curCount--;
+        $("#regiohonebtn").val(curCount);
+        $("#regiohonebtn").attr("disabled", "disabled");
+    }
+};
+$(function(){
+	var result = '${result}';
+	if(result != ''){
+		alert(result);
+	}
+});
+</script>
 </body>
 </html>

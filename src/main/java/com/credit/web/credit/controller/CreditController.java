@@ -1,8 +1,5 @@
 package com.credit.web.credit.controller;
 
-import java.text.SimpleDateFormat;
-import java.util.List;
-
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 
@@ -102,15 +99,12 @@ public class CreditController extends BaseController{
 		if(id!=null&&id!=""){
 			Credit credit = creditWebService.findById(Integer.valueOf(id));
 			User user = null;
-			SimpleDateFormat sf = new SimpleDateFormat("yyyy-MM-dd");
 			if(null != credit){
 				user = userWerService.getUserById(credit.getUserId());
 				credit.setDebtName(SensitiveUtil.shieldName(credit.getDebtName()));
 				credit.setDebtPhone(SensitiveUtil.shieldPhone(credit.getDebtPhone()));
 				credit.setContactName(SensitiveUtil.shieldName(credit.getContactName()));
 				credit.setContactNumber(SensitiveUtil.shieldPhone(credit.getContactNumber()));
-				credit.setOpenDateStr(sf.format(credit.getOpenDate()==null?"":credit.getOpenDate()));
-				credit.setAgreedDateStr(sf.format(credit.getAgreedDate()==null?"":credit.getAgreedDate()));
 			}
 			if(null == user){
 				user = new User();

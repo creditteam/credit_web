@@ -57,6 +57,7 @@ public class UserController extends BaseController{
 					mv.setViewName("redirect:/user/user_main.jsp");
 				}
 			}else{
+				mv.addObject("result","用户名或密码错误");
 				if(isMobile){
 					mv.setViewName("mobile/Login");
 				}else{
@@ -154,6 +155,12 @@ public class UserController extends BaseController{
 		return mv;
 	}
 	
+	/**
+	 * 查看用户明细
+	 * @param request
+	 * @return
+	 * @throws Exception
+	 */
 	@RequestMapping(value="/userdetails")
 	public ModelAndView userDetails(HttpServletRequest request) throws Exception{
 		String id =request.getParameter("id");
@@ -161,7 +168,11 @@ public class UserController extends BaseController{
 		if(id!=null){
 			User user = userWebService.getUserById(Integer.valueOf(id));
 			mv.addObject("user",user);
-			mv.setViewName("/user/user_details");
+			if(MozillaUtil.isMobileDevice(request)){
+				mv.setViewName("/mobile/user_info");
+			}else{
+				mv.setViewName("/user/user_details");
+			}
 		}
 		return mv;
 	}
@@ -203,6 +214,41 @@ public class UserController extends BaseController{
 	}
 	
 	/**
+	 * 修改用户密码
+	 * @param request
+	 * @param response
+	 * @throws Exception
+	 */
+	@RequestMapping(value="/updUsePwd")
+	@ResponseBody
+	public String updateUserPwd(String userPwd,String newpassowrd) throws Exception{
+		PageData pd= super.getPageData();
+		String result = "";
+		userPwd = MD5.md5(String.valueOf(userPwd));
+		
+		User user = (User) this.getRequest().getSession().getAttribute("userInfo");
+		pd.put("loginName", user.getUserPhone());
+		pd.put("password", userPwd);
+		User userOld = userWebService.login(pd);
+		
+		if(null != user && null != userOld){
+			String newEncodePwd = MD5.md5(newpassowrd);
+			pd.put("newEncodePwd", newEncodePwd);
+			pd.put("id", userOld.getId());
+			Boolean isFlag = userWebService.updatePassword(pd);
+			if(isFlag){
+				result = "修改成功!";
+			}else{
+				result = "修改失败!";
+			}
+		}else{
+			result = "原密码输入错误";
+		}
+		return result;
+		
+	}
+	
+	/**
 	 * 验证注册手机是否已经存在
 	 * @return
 	 * @throws Exception
@@ -240,6 +286,43 @@ public class UserController extends BaseController{
 			result.put("valid", true);
 		}
 		return result;
+	}
+	
+	/**
+	 * 用户密码找回
+	 */
+	@RequestMapping(value="/passBack")
+	public ModelAndView passwordGetBack(HttpServletRequest request) throws Exception{
+		
+		PageData pd= super.getPageData();
+		ModelAndView mv = this.getModelAndView();
+		
+		String phone =  request.getParameter("userPhone");
+		String registerZm = request.getParameter("registerZm");//验证码
+		pd.put("phone", phone);
+		User user = userWebService.findUserByPhoneOrEmail(pd);
+		String result = "";
+		if(null == user){
+			result = "没找到该手机用户";
+		}else{
+			pd.put("id",user.getId());
+			String newEncodePwd = MD5.md5(String.valueOf(pd.get("newpassowrd")));
+			pd.put("newEncodePwd", newEncodePwd);
+			Boolean isFlag = userWebService.updatePassword(pd);
+			if(isFlag){
+				result = "密码重置成功!";
+			}else{
+				result = "密码重置出错!";
+			}
+		}
+		mv.addObject("result",result);
+		Boolean isMobile = MozillaUtil.isMobileDevice(request);
+		if(isMobile){
+			mv.setViewName("/mobile/Login");
+		}else{
+			mv.setViewName("/login");
+		}
+		return mv;
 	}
 	
 	/**

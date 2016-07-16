@@ -45,6 +45,20 @@
 		where  id = #{id}
 	</select>
 	
+	<select id="getUserByPhoneOrEmail" parameterType="PageData" resultType="User">
+	   select 
+	   <include refid="userColumns"></include>
+		from cr_user u
+		where 1=1 
+		<if test="userPhone != null">
+			and u.user_phone = #{userPhone}
+		</if>
+		<if test="userEmail != null">
+			and u.user_email = #{userEmail}
+		</if>
+		limit 1
+	</select>
+	
 	<select id="count" parameterType="PageData" resultType="int">
 		select count(1)
 		from cr_user u

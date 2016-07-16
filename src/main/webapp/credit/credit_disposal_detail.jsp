@@ -114,11 +114,11 @@
 
 								<dl class="dl-horizontal">
 									<dt>发布日期：</dt>
-									<dd>${credit.openDateStr}</dd>
+									<dd><fmt:formatDate value="${credit.openDate}" type="date" dateStyle="long"/></dd>
 								</dl>
 								<dl class="dl-horizontal">
 									<dt>债权开始日期：</dt>
-									<dd>${credit.agreedDateStr}</dd>
+									<dd><fmt:formatDate value="${credit.agreedDate}" type="date" dateStyle="long"/></dd>
 								</dl>
 
 								<dl class="dl-horizontal">

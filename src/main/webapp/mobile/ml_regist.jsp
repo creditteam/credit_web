@@ -54,10 +54,10 @@
 						<table>
 							<tr>
 								<td>
-									<input class="btn btn-primary" id="regiohonebtn" type="button" value="验证手机" />
+									<input type="text" id="registerZm" name="registerZm" class="form-control" disabled="disabled" placeholder="验证码" maxlength="6">
 								</td>
 								<td>
-									<input type="text" id="registerZm" name="registerZm" class="form-control" placeholder="验证码" maxlength="6">
+									<input class="btn btn-primary" id="regiohonebtn" type="button" value="发送验证码" onclick="registPhone()"/>
 								</td>
 							</tr>
 						</table>
@@ -125,6 +125,33 @@
 	<script src="js/jquery.min.js"></script>
 	<script type="text/javascript" src="js/register/register.js"></script>
 	<script type="text/javascript">
+	var InterValObj; //timer变量，控制时间
+	var count = 5; //间隔函数，1秒执行
+	var curCount = 40;//当前剩余秒数
+	function registPhone(){
+		
+		var phone = $("#userPhone").val();
+		if(phone == ''){
+			alert('请输入手机号');
+			return false;
+		}
+		$("#registerZm").removeAttr("disabled");
+		InterValObj = window.setInterval(SetRemainTime, 1000); //启动计时器，1秒执行一次
+		
+	}
+	function SetRemainTime() {
+	    if (curCount == 0) {                
+	        window.clearInterval(InterValObj);//停止计时器
+	        $("#regiohonebtn").removeAttr("disabled");//启用按钮
+	        $("#regiohonebtn").val("发送验证码");
+	        curCount = 40;
+	    }
+	    else {
+	        curCount--;
+	        $("#regiohonebtn").val(curCount);
+	        $("#regiohonebtn").attr("disabled", "disabled");
+	    }
+	}
 	
 	$(document).ready(function () {
 		$('#registForm').bootstrapValidator({
