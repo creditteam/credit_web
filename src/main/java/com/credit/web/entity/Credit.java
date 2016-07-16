@@ -2,6 +2,8 @@ package com.credit.web.entity;
 
 import java.util.Date;
 
+import org.springframework.web.multipart.MultipartFile;
+
 public class Credit {
 
 	private Integer id;
@@ -14,7 +16,7 @@ public class Credit {
 	// 债权状态
 	private Short crStatus;
 	// 处置方式
-	private Short disposalType;
+	private String disposalType;
 	// 佣金范围
 	private String commisionRange;
 	// 联系人
@@ -29,7 +31,7 @@ public class Credit {
 	private String debtCity;
 	// 债权方电话
 	private String debtPhone;
-	// 债权方凭证
+	// 债权方凭证(上传的文件存放路径)
 	private String debtProof;
 	// 债权方描述
 	private String description;
@@ -41,17 +43,19 @@ public class Credit {
 	private Date openDate;
 	// 约定日期
 	private Date agreedDate;
+	//表单上传的文件
+	private MultipartFile uploadFile;
 	
 	public Credit() {
 
 	}
 
 	public Credit(Integer id, Integer userId, Short crType, Double crAmount,
-			Short crStatus, Short disposalType, String commisionRange,
+			Short crStatus, String disposalType, String commisionRange,
 			String contactName, String contactNumber, String debtName,
 			String debtProvince, String debtCity, String debtPhone,
 			String debtProof, String description, Date createDate,
-			Date endDate, Date openDate, Date agreedDate) {
+			Date endDate, Date openDate, Date agreedDate,MultipartFile uploadFile) {
 		super();
 		this.id = id;
 		this.userId = userId;
@@ -72,6 +76,7 @@ public class Credit {
 		this.endDate = endDate;
 		this.openDate = openDate;
 		this.agreedDate = agreedDate;
+		this.uploadFile = uploadFile;
 	}
 
 	public Integer getId() {
@@ -114,11 +119,11 @@ public class Credit {
 		this.crStatus = crStatus;
 	}
 
-	public Short getDisposalType() {
+	public String getDisposalType() {
 		return disposalType;
 	}
 
-	public void setDisposalType(Short disposalType) {
+	public void setDisposalType(String disposalType) {
 		this.disposalType = disposalType;
 	}
 
@@ -225,5 +230,14 @@ public class Credit {
 	public void setAgreedDate(Date agreedDate) {
 		this.agreedDate = agreedDate;
 	}
+
+	public MultipartFile getUploadFile() {
+		return uploadFile;
+	}
+
+	public void setUploadFile(MultipartFile uploadFile) {
+		this.uploadFile = uploadFile;
+	}
+
 
 }

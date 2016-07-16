@@ -36,8 +36,8 @@ pageContext.setAttribute("basePath",basePath);
   
   <body>
     <div class="main-container">
-		<form action="Ident?method=3200" method="POST" class=" form-inline" role="form"">
-       
+		<form action="${basePath}credit/saveCredit" method="POST" class="form-inline" role="form" enctype="multipart/form-data">
+        <input type="hidden" name="userId" value="${userInfo.id}"/>
  		<div class="main-container theme-showcase" style="padding-top:20px;">
 		<div class="row">
 		
@@ -56,7 +56,7 @@ pageContext.setAttribute("basePath",basePath);
 							   	<td>
 							   		<div class="form-group">
 						             <label>债权类型:</label>
-						             <select name="obltype" class="form-control">
+						             <select name="crType" class="form-control">
 									 <option value="1">个人债权</option>
 									 <option value="2">企业债权</option>
 									 <option value="3">逾期贷款</option>
@@ -72,7 +72,7 @@ pageContext.setAttribute("basePath",basePath);
 		        				<div class="input-group" >
 							      <span class="input-group-addon">债权金额</span>
 							         <span class="input-group-addon">￥</span>
-							         <input id="oblmoney" name="oblmoney" type="text" class="form-control">
+							         <input id="crAmount" name="crAmount" type="text" class="form-control">
 							         <span class="input-group-addon">.00</span>
 						      	</div>
 					      </td>
@@ -87,25 +87,23 @@ pageContext.setAttribute("basePath",basePath);
 					   <table>
 					   		<tr>
 					   			<td>
-					   		  <label >您期望的处置方式：<span class="colorF00">*</span> 可多选 </label><br />
-				              <input name="ids" id="su1" class="exts1" type="checkbox" value="1"/> 
-							  <span>诉讼</span>
-					          <div id="su" style="display:none"></div>
-					          <label>&nbsp;&nbsp;</label>
-					          <input name="ids" id="fsu1" class="exts1" type="checkbox" checked="checked" value="2"/>
-							  <span>催收</span>
-					          <div id="fsu" style="display:none"></div>
-					          <label>&nbsp;&nbsp;</label>
-					          <input name="ids"  class="exts1" id="rang1" type="checkbox" value="3"/>
-					          <span>债权转让</span> &nbsp;&nbsp;
-					          <div id="rang" style="display:none"></div>
-					          <input type="hidden" id="idsvalue" name="idsvalue"/>
+						   		  <label >您期望的处置方式：<span class="colorF00">*</span> 可多选 </label><br />
+					              <input name="disposalType" id="su1" class="exts1" type="checkbox" value="1"/> 
+								  <span>诉讼</span>
+						          <div id="su" style="display:none"></div>
+						          <label>&nbsp;&nbsp;</label>
+						          <input name="disposalType" id="fsu1" class="exts1" type="checkbox" checked="checked" value="2"/>
+								  <span>催收</span>
+						          <div id="fsu" style="display:none"></div>
+						          <label>&nbsp;&nbsp;</label>
+						          <input name="disposalType"  class="exts1" id="rang1" type="checkbox" value="3"/>
+						          <span>债权转让</span> &nbsp;&nbsp;
+						          <div id="rang" style="display:none"></div>
 					   			</td>
-					   			
 					   		</tr>
 					   		<tr><td>
 					   				<label>支付的佣金范围:</label>
-						             <select name="oblcot" class="form-control">
+						             <select name="commisionRange" class="form-control">
 									 <option value="1">10%</option>
 									 <option value="2">10%-20%</option>
 									 <option value="3" selected="selected">20%-30%</option>
@@ -120,7 +118,6 @@ pageContext.setAttribute("basePath",basePath);
 					          
 					   </div>
 					   <div class="list-group-item">
-					   
 					   </div>
 					   <div class="list-group-item">
 					   <h4 class="list-group-item-heading">
@@ -131,7 +128,7 @@ pageContext.setAttribute("basePath",basePath);
 					   		<td>
 					   		<div class="list-group-item-text">
 								
-								<input id="weituoname" type="text" name="weituoname" class="form-control" placeholder="可以是本人也可以委托他人"/>
+								<input id="contactName" type="text" name="contactName" class="form-control" placeholder="可以是本人也可以委托他人"/>
 							</div>
 					   		</td>
 					   		
@@ -140,7 +137,7 @@ pageContext.setAttribute("basePath",basePath);
 					   	<tr ><td style="width: 30%"><label style="color: #CCCCCC">联系电话:</label></td><td>
 					   		<div class="list-group-item-text">
 								
-								<input type="text" id="weituophone" name="weituophone" class="form-control" placeholder="请输入联系人的联系电话"/>
+								<input type="text" id="contactNumber" name="contactNumber" class="form-control" placeholder="请输入联系人的联系电话"/>
 								<span id="userspan" style="color: red" hidden="hidden"></span>
 							</div>
 					   		</td></tr>
@@ -159,82 +156,51 @@ pageContext.setAttribute("basePath",basePath);
 					   <tr><td><label style="color: #CCCCCC">债务方名称:</label></td></tr>
 					   <tr>
 					   	<td>
-							<input type="text" name="zaiwuoname" class="form-control" placeholder="可以输入个人姓名或者企业名称" style="width: 100%"/>
+							<input type="text" name="debtName" class="form-control" placeholder="可以输入个人姓名或者企业名称" style="width: 100%"/>
 							<span id="userspan" style="color: red" hidden="hidden"></span></td>
 							
 					   </tr>
 					   <tr><td ><label style="color: #CCCCCC;">债务方地址:</label></td></tr>
 					   <tr><td>
-				             <select onchange="takeCity()" id="provinceSel1" name="provinceSel" class="form-control input-sm" style="width: 120px;">
+				             <select onchange="loadCity(this)" id="debtProvince" name="debtProvince" class="form-control input-sm" style="width: 120px;">
 							 <option value="1">请选择</option>
-							 <c:forEach items="${province}" var="prov">
-							 <option>${prov}</option>
+							 <c:forEach items="${provinceList}" var="item">
+							 <option value="${item}">${item}</option>
 							 </c:forEach>
 							 </select>
 							 </td><td>
-							 <select id="citySel" name="citySel" class="form-control input-sm" style="width: 120px;">
-							 <option value="1">请选择</option>
-							 <c:forEach items="${cities}" var="city">
-							 <option>${city}</option>
-							 </c:forEach>
+							 <select id="debtCity" name="debtCity" class="form-control input-sm" style="width: 120px;">
+							 <option value="">请选择</option>
 							 </select></td></tr>
 							 
 							 <tr><td><label style="color: #CCCCCC">联系电话:</label></td></tr>
 							 
 					   <tr>
 					   		<td>
-							<input type="text" name="zhaiwuphonenum" class="form-control" placeholder="请输入债务人联系电话"/>
+							<input type="text" name="debtPhone" class="form-control" placeholder="请输入债务人联系电话"/>
 							<span id="zhaiwuuserspan" style="color: red" hidden="hidden"></span></td>
 					   </tr>
 					   </table>	
 						</div>
-						
-						<script type="text/javascript">
-							function takeCity() {
-								var province = $("#provinceSel1").val();
-								//$("#provinceSel1").val(province);
-								$.ajax({
-									url : 'ObligMsg?method=3100',
-									async : false,
-									data : {
-										"province" : province
-									},
-									type : "POST",
-									success : function(data) {
-										
-										var a=JSON.parse(data);
-										$("#citySel").empty();
-										$('#citySel').append('<option>请选择</option>');
-										for (var int = 0; int < a.length; int++) {
-											$('#citySel').append('<option>'+a[int]+'</option>');
-										}
-										
-									},
-									error : function() {
-										alert("获取城市数据失败");
-									}
-								});
-							}
-						</script>
 					   
 						<div class="list-group-item form-group">
 						<table>
 							<tr>
 								<td>
 								<label  style="color: #CCCCCC" for="fileToUpload">凭证<small>(借条、欠条、合同、汇款凭证等)</small></label>
-						<input class="form-control" type="file" name="fileToUpload" id="fileToUpload" onchange="uploadCheck();"/>
+						<input class="form-control" type="file" name="uploadFile" id="uploadFile" onchange="uploadCheck();"/>
 						<div id="progressNumber"></div>
 								</td>
 								
 							</tr><tr><td><label style="color: #CCCCCC; ">债权开始日期:</label>
-								<input class="form-control" type="text" name="zqdatepicker" id="datetimepicker"></td></tr>
+								<input class="form-control" type="text" name="openDate" id="datetimepicker"></td></tr>
 						</table>
 			      		
 						</div>
 						
 						<div class="list-group-item">
 							<label style="color: #CCCCCC">债权描述:</label>
-				            <textarea id="zqtxtms" name="zqtxtms" class="form-control" rows="3"></textarea>
+				            <textarea id="description" name="description" class="form-control" rows="3"></textarea>
 						</div>
 				</div>
 				<div class="list-group">
@@ -244,7 +210,6 @@ pageContext.setAttribute("basePath",basePath);
               </div><!--/.well -->
             </div><!--/span-->
             
-                
                 <div>
             	</div><!--/span-->
         		</div><!--/row-->
@@ -271,11 +236,29 @@ pageContext.setAttribute("basePath",basePath);
 <jsp:include page="mobile_footer.jsp"></jsp:include>
 
 <script type="text/javascript">
-$(document).ready(function () {
-	if (${not empty OblRegError}) {
-		alert('${OblRegError}');
-	}
-});
+function loadCity(obj) {
+	var proName = $(obj).val();
+	//$("#provinceSel1").val(province);
+	$.ajax({
+		url : '${basePath}credit/loadCity',
+		async : false,
+		data : {
+			"proName" : proName
+		},
+		type : "POST",
+		success : function(data) {
+			
+			$("#debtCity").empty();
+			$('#debtCity').append('<option>请选择</option>');
+			$.each(data, function (i,item) {
+				$('#debtCity').append('<option value='+item+'>'+item+'</option>');
+		    });
+		},
+		error : function() {
+			alert("获取城市数据失败");
+		}
+	});
+}
 
 $(function () {
     $('#datetimepicker').datetimepicker({
@@ -286,38 +269,6 @@ $(function () {
     });
 });
 
-function uploadCheck() {
-	if (${user.userid < 0}) {
-		alert("请先登录系统，再发布债权信息");
-		return false;
-	} else {
-		fileSelected();
-	}
-}
-
-function subCheck() {
-	var str = "";
-	if ($('#su1').is(':checked')) {
-		str = "诉讼,";
-	}
-	if ($('#fsu1').is(':checked')) {
-		str = str+"催收,";
-	}
-	if ($('#rang1').is(':checked')) {
-		str = str+"转让,";
-	}
-	if ("" == str) {
-		alert("请至少选择一个处置方式");
-		return false;
-	}
-	$("#idsvalue").val(str);
-	if (${user.userid < 0}) {
-		alert("请先登录系统，再发布债权信息");
-		return false;
-	}
-	return true;
-};
-$("#suboblbtn").click(subCheck);
 </script>
   </body>
 </html>

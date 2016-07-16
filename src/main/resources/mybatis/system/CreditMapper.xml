@@ -86,7 +86,7 @@
 	</select>
 	
 	
-	<insert id="creditSave" parameterType="PageData">
+	<insert id="creditSave" parameterType="credit">
 		insert into cr_credit (
 			 user_id,
 			 cr_type,
