@@ -11,7 +11,7 @@
 <head>
 
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
 	<title>快易收债权管理|登录</title>
 	<Link Rel="icon" href="${basePath}hplus/img/kuaiyishou.ico" type=”image/x-icon”>
 	<link rel="stylesheet" href="${basePath}hplus/css/bootstrap.min.css">
@@ -39,14 +39,14 @@
 			</h1>
 		</div>
 		<div class="form">
-			<form action="#" method="post">
+			<form role="form" action="${basePath }user/login" method="post" target="_self">
 				<div class="form-group">
 					<div class="col-xs-12">
 						<div class="input-group">
 							<span class="input-group-addon">
 								<span class="glyphicon glyphicon-user"></span>
 							</span>
-							<input type="text" id="username" name="username" class="form-control" placeholder="用户名">
+							<input type="text" id="loginName" name="loginName" class="form-control" placeholder="输入Email或手机">
 						</div>
 					</div>
 				</div>
@@ -75,7 +75,7 @@
 					</div>
 					<div class="col-xs-6 link">
 						<p class="text-center remove-margin">
-							<small>还没注册?</small> <a href="${basePath }mobile/mregist.jsp"><small>注册</small></a>
+							<small>还没注册?</small> <a href="${basePath }mobile/ml_regist.jsp"><small>注册</small></a>
 						</p>
 					</div>
 				</div>

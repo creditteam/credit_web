@@ -42,9 +42,6 @@ pageContext.setAttribute("basePath",basePath);
                                 <li><a href="form_basic.html#">选项2</a>
                                 </li>
                             </ul>
-                            <a class="close-link">
-                                <i class="fa fa-times"></i>
-                            </a>
                         </div>
                     </div>
                     <div class="ibox-content">

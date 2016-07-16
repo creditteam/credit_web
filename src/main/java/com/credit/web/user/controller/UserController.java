@@ -1,6 +1,8 @@
 package com.credit.web.user.controller;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -8,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.alibaba.fastjson.JSONArray;
@@ -45,11 +48,20 @@ public class UserController extends BaseController{
 			pd.put("password", newEncodePwd);
 			User user=userWebService.login(pd);
 			ModelAndView mv = this.getModelAndView();
+			Boolean isMobile = MozillaUtil.isMobileDevice(request);
 			if(user!=null){
 				request.getSession().setAttribute("userInfo",user);
-				mv.setViewName("redirect:/user/user_main.jsp");
+				if(isMobile){
+					mv.setViewName("redirect:/mobile/userHome.jsp");
+				}else{
+					mv.setViewName("redirect:/user/user_main.jsp");
+				}
 			}else{
-				mv.setViewName("login");
+				if(isMobile){
+					mv.setViewName("mobile/Login");
+				}else{
+					mv.setViewName("login");
+				}
 			}
 			return mv;
 		}else{
@@ -66,7 +78,17 @@ public class UserController extends BaseController{
 	@RequestMapping(value = "/tologin")
 	public ModelAndView toLogin() throws Exception {
 		ModelAndView mv = this.getModelAndView();
-		mv.setViewName("login");
+		Boolean isMobile = MozillaUtil.isMobileDevice(super.getRequest());
+		if(isMobile){
+			User user = (User) this.getRequest().getSession().getAttribute("userInfo");
+			if(null != user){
+				mv.setViewName("redirect:/mobile/userHome.jsp");
+			}else{
+				mv.setViewName("mobile/Login");
+			}
+		}else{
+			mv.setViewName("login");
+		}
 		return mv;
 	}
 	
@@ -79,7 +101,12 @@ public class UserController extends BaseController{
 		HttpServletRequest request= this.getRequest();
 		request.getSession().removeAttribute("userInfo");
 		ModelAndView mv = this.getModelAndView();
-		mv.setViewName("redirect:/index_main.jsp");
+		Boolean isMobile = MozillaUtil.isMobileDevice(request);
+		if(isMobile){
+			mv.setViewName("mobile/Login");
+		}else{
+			mv.setViewName("login");
+		}
 		return mv;
 	}
 	
@@ -110,10 +137,19 @@ public class UserController extends BaseController{
 		pd.put("userPwd", newEncodePwd);
 		Boolean isFlag=userWebService.register(pd);
 		ModelAndView mv = this.getModelAndView();
-		if(isFlag){
-			mv.setViewName("/login");
+		Boolean isMobile = MozillaUtil.isMobileDevice(request);
+		if(isFlag){//注册成功
+			if(isMobile){//如果是手机注册
+				mv.setViewName("/mobile/login");
+			}else{
+				mv.setViewName("/login");
+			}
 		}else{
-			mv.setViewName("/register");
+			if(isMobile){//如果是手机注册
+				mv.setViewName("/mobile/ml_regist");
+			}else{
+				mv.setViewName("/register");
+			}
 		}
 		return mv;
 	}
@@ -164,6 +200,46 @@ public class UserController extends BaseController{
 		
 		String responseText = JSONArray.toJSONString(params);
 		AjaxUtil.ajaxResponse(response, responseText, AjaxUtil.RESPONCE_TYPE_JSON);
+	}
+	
+	/**
+	 * 验证注册手机是否已经存在
+	 * @return
+	 * @throws Exception
+	 */
+	@RequestMapping(value="/validaPhone")
+	@ResponseBody
+	public Map<String ,Object> validatorPhone(String userPhone) throws Exception{
+		PageData pd= super.getPageData();
+		pd.put("userPhone", userPhone);
+		List<User> userLst = userWebService.findPartUserList(pd);
+		Map<String ,Object> result = new HashMap<String ,Object>();
+		if(null != userLst & userLst.size() > 0){
+			result.put("valid", false);
+		}else{
+			result.put("valid", true);
+		}
+		return result;
+	}
+	
+	/**
+	 * 验证注册邮箱是否已经存在
+	 * @return
+	 * @throws Exception
+	 */
+	@RequestMapping(value="/validaEmail")
+	@ResponseBody
+	public Map<String ,Object> validatorEmail(String userEmail) throws Exception{
+		PageData pd= super.getPageData();
+		pd.put("userEmail", userEmail);
+		List<User> userLst = userWebService.findPartUserList(pd);
+		Map<String ,Object> result = new HashMap<String ,Object>();
+		if(null != userLst & userLst.size() > 0){
+			result.put("valid", false);
+		}else{
+			result.put("valid", true);
+		}
+		return result;
 	}
 	
 	/**
