@@ -9,11 +9,15 @@
 package com.credit.web.reward.service;
 
 import java.util.List;
+
 import javax.annotation.Resource;
+
 import org.apache.commons.lang.StringUtils;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.credit.web.common.tag.PageInfo;
+import com.credit.web.common.tag.PageUtil;
 import com.credit.web.entity.Reward;
 import com.gvtv.manage.base.dao.BaseDao;
 import com.gvtv.manage.base.util.AppUtil;
@@ -51,9 +55,11 @@ public class RewardWebService {
 		pd.put("size", pd.getInteger("size"));
 		List<Reward> pds = dao.findForList("RewardMapper.list", pd);
 		
-		result.put(Const.DRAW, pd.getString(Const.DRAW));
-		result.put(Const.RECORDSTOTAL, totalNum);
-		result.put(Const.RECORDSFILTERED, totalNum);
+		PageUtil pu = new PageUtil(totalNum,1,10);
+		PageInfo pageInfo = pu.getPageInfo();
+		pageInfo.setRangeSize(20);
+		
+		result.put("pageInfo", pageInfo);
 		result.put(Const.NDATA, pds);
 		return result;
 	}

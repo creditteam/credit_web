@@ -11,17 +11,26 @@
 	<short-name>gvtv</short-name>
 	<uri>http://www.gvtv.com.cn/jsp/jstl/common</uri>
   
-    <tag>
-		<description>
-		根据菜单path生成页头导航条，会自动补充菜单的层级关系
-		</description>
-	  	<name>navigater</name>
-	  	<tag-class>com.gvtv.manage.base.tag.NavigaterTag</tag-class>
-	  	<body-content>JSP</body-content>
-	  	<attribute>
-			<name>path</name>
+  	
+  		<tag>
+		<name>newPage</name>
+		<tag-class>com.credit.web.common.tag.PageTag</tag-class>
+		<body-content>scriptless</body-content>
+		<attribute>
+		   <description>the URL link must be filled in, because the pagination depends on the href attribute, if this is missing, the tag cannot run correctly, the parameter 'curPage' is not nessary, you can ingore it, others cannot be missing</description>
+			<name>href</name>
 			<required>true</required>
 			<rtexprvalue>true</rtexprvalue>
 		</attribute>
-  	</tag>
+		<attribute>
+		   <name>pageNo</name>
+			<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+		</attribute>
+		<attribute>
+		   <name>pageSize</name>
+			<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+		</attribute>
+	</tag>
 </taglib>

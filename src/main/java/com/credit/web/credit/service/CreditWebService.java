@@ -4,15 +4,18 @@ import java.util.List;
 
 import javax.annotation.Resource;
 
-import org.apache.commons.lang.StringUtils;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.ObjectUtils;
 
+import com.credit.web.common.tag.PageInfo;
+import com.credit.web.common.tag.PageUtil;
 import com.credit.web.entity.Credit;
 import com.gvtv.manage.base.dao.BaseDao;
 import com.gvtv.manage.base.util.AppUtil;
 import com.gvtv.manage.base.util.Const;
 import com.gvtv.manage.base.util.PageData;
+import com.gvtv.manage.base.util.StringUtils;
 
 @Transactional(readOnly=true)
 @Service("creditWebService")
@@ -30,22 +33,31 @@ public class CreditWebService {
 	public PageData pageList(PageData pd) throws Exception{
 		PageData result = new PageData();
 		String search = pd.getString("keyword");
-		if (StringUtils.isNotBlank(search)) {
+		if (StringUtils.isNotEmpty(search)) {
 			pd.put("keyword", "%" + search + "%");
 		}
 		int totalNum = (int) dao.findForObject("CreditMapper.count", pd);
 		
-		pd.put("from", pd.getInteger("from"));
-		pd.put("size", pd.getInteger("size"));
-		List<Credit> pds = dao.findForList("CreditMapper.list", pd);
-		//AppUtil.nullToEmpty(pds, new String[]{"menuId", "menuName", "menuUrl", "menuOrder", "description"});
+		Integer pageNo=  pd.getInteger("pageNo");
+		PageUtil pu = new PageUtil(totalNum,pageNo,10);
+		PageInfo pageInfo = pu.getPageInfo();
+		pageInfo.setRangeSize(20);
+		if(pageNo==0){
+			pd.put("from",0);
+			pd.put("size", 10);	
+		}else{
+			pd.put("from",(pageInfo.getPageNo()-1)*pageInfo.getPageSize());
+			pd.put("size", pageInfo.getPageNo()*pageInfo.getPageSize());	
+		}
+
 		
-		result.put(Const.DRAW, pd.getString(Const.DRAW));
-		result.put("from", pd.getInteger("from"));
-		result.put(Const.RECORDSTOTAL, totalNum);
-		result.put(Const.RECORDSFILTERED, totalNum);
+		List<Credit> pds = dao.findForList("CreditMapper.list", pd);
+		
+		
+	
+		result.put("pageInfo", pageInfo);
 		result.put(Const.NDATA, pds);
-		return result;
+		return result; 
 	}
 	
 	/**

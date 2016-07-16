@@ -1,6 +1,7 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %> 
+<%@ taglib prefix="gvtv" uri="/WEB-INF/gvtv.tld"%>
 <%
 String path = request.getContextPath();
 // 获得本项目的地址(例如: http://localhost:8080/MyApp/)赋值给basePath变量
@@ -102,7 +103,7 @@ pageContext.setAttribute("basePath",basePath);
 						</div>
 					</div>
 					
-					 <!-- page begin-->
+					 <!-- page begin
 					   <div class="hr-line-dashed"></div>
                         <div class="text-center">
                             <div class="btn-group">
@@ -119,9 +120,9 @@ pageContext.setAttribute("basePath",basePath);
                                 </button>
                             </div>
                         </div>
-					 
+					 -->
 					 <!-- page end -->
-					
+					<gvtv:newPage href="reward/navlist"></gvtv:newPage>
 				</div>
 			</div>
 		   </div>
