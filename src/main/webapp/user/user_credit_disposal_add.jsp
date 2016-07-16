@@ -35,9 +35,9 @@ pageContext.setAttribute("basePath",basePath);
                         <h5>债权处置-发布项目</h5>
                     </div>
                     <div class="ibox-content">
-                   
-                          <form class="form-horizontal m-t" id="signupForm" action="${basePath }credit/saveCredit" method="post" target="_self">
-                          <input type="hidden" value="${userId }" name="userId">
+                          <form class="form-horizontal m-t" id="signupForm" action="${basePath }credit/saveCredit" method="post" target="_self"  enctype="multipart/form-data">
+                          <input type="hidden"  name="userId" value="${userInfo.id}"/>
+                          <input type="hidden"  name="creditType" value="${creditType }">
                           <a class="list-group-item active">
 					      <h4 class="list-group-item-heading">
 					         债权人信息
@@ -116,47 +116,17 @@ pageContext.setAttribute("basePath",basePath);
                             <div class="form-group">
                                 <label class="col-sm-3 control-label">债务方地址：</label>
                                 <div class="col-sm-4">
-												<select onchange="takeCity()" id="debtProvince"
-													name="debtProvince" class="form-control input-sm">
-													<option value="1">请选择</option>
-													<option>北京市</option>
-													<option>上海市</option>
-													<option>天津市</option>
-													<option>重庆市</option>
-													<option>香港</option>
-													<option>澳门</option>
-													<option>河北省</option>
-													<option>浙江省</option>
-													<option>辽宁省</option>
-													<option>湖北省</option>
-													<option>江苏省</option>
-													<option>内蒙古</option>
-													<option>江西省</option>
-													<option>山西省</option>
-													<option>甘肃省</option>
-													<option>山东省</option>
-													<option>黑龙江</option>
-													<option>福建省</option>
-													<option>广东省</option>
-													<option>四川省</option>
-													<option>湖南省</option>
-													<option>河南省</option>
-													<option>云南省</option>
-													<option>安徽省</option>
-													<option>宁夏</option>
-													<option>吉林省</option>
-													<option>广西省</option>
-													<option>贵州省</option>
-													<option>陕西省</option>
-													<option>青海省</option>
-													<option>海南省</option>
-													<option>西藏</option>
-												</select>
+												   <select onchange="loadCity(this)" id="debtProvince" name="debtProvince" class="form-control input-sm" style="width: 120px;">
+													 <option value="1">请选择</option>
+													 <c:forEach items="${provinceList}" var="item">
+													 <option value="${item}">${item}</option>
+													 </c:forEach>
+							                       </select>
 								</div>
 								<div class="col-sm-4">
-										<select id="debtCity" name="debtCity" class="form-control input-sm">
-											<option value="1">请选择</option>
-										</select>
+									 <select id="debtCity" name="debtCity" class="form-control input-sm" style="width: 120px;">
+							              <option value="">请选择</option>
+							          </select>
 								</div>
                             </div>
                                 
@@ -170,13 +140,13 @@ pageContext.setAttribute("basePath",basePath);
                             <div class="form-group">
                                 <label class="col-sm-3 control-label">债务凭证：</label>
                                 <div class="col-sm-8">
-                                     <input type="file" name="debtProofFile" class="form-control">
+                                     <input class="form-control" type="file" name="uploadFile" id="uploadFile" onchange="uploadCheck();"/>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="col-sm-3 control-label">债权开始日期：</label>
                                 <div class="col-sm-8">
-                                    <input id="createDate" name="createDate" class="form-control" type="text">
+                                    <input class="form-control" type="text" name="openDate" id="datetimepicker">
                                 </div>
                             </div>
                             <div class="form-group">
@@ -217,31 +187,39 @@ pageContext.setAttribute("basePath",basePath);
     <script type="text/javascript" src="http://tajs.qq.com/stats?sId=9051096" charset="UTF-8"></script>
     
 	<script type="text/javascript">
-	function takeCity() {
-		var province = $("#provinceSel1").val();
+	function loadCity(obj) {
+		var proName = $(obj).val();
 		//$("#provinceSel1").val(province);
 		$.ajax({
-			url : 'ObligMsg?method=3100',
+			url : '${basePath}credit/loadCity',
 			async : false,
 			data : {
-				"province" : province
+				"proName" : proName
 			},
 			type : "POST",
 			success : function(data) {
 				
-				var a=JSON.parse(data);
-				$("#citySel").empty();
-				$('#citySel').append('<option>请选择</option>');
-				for (var int = 0; int < a.length; int++) {
-					$('#citySel').append('<option>'+a[int]+'</option>');
-				}
-				
+				$("#debtCity").empty();
+				$('#debtCity').append('<option>请选择</option>');
+				$.each(data, function (i,item) {
+					$('#debtCity').append('<option value='+item+'>'+item+'</option>');
+			    });
 			},
 			error : function() {
 				alert("获取城市数据失败");
 			}
 		});
 	}
+
+	$(function () {
+	    $('#datetimepicker').datetimepicker({
+	    	minView: "month",//选择日期后，不会再跳转去选择时分秒 
+	    	format: "yyyy-mm-dd",
+	    	language: 'zh-CN',
+	    	autoclose:true
+	    });
+	});
+
 </script>
 </body>
 

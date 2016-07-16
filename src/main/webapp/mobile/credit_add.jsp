@@ -38,6 +38,7 @@ pageContext.setAttribute("basePath",basePath);
     <div class="main-container">
 		<form action="${basePath}credit/saveCredit" method="POST" class="form-inline" role="form" enctype="multipart/form-data">
         <input type="hidden" name="userId" value="${userInfo.id}"/>
+        <input type="hidden" name="creditType" value="${creditType }">
  		<div class="main-container theme-showcase" style="padding-top:20px;">
 		<div class="row">
 		

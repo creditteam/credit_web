@@ -45,6 +45,8 @@ public class Credit {
 	private Date agreedDate;
 	//表单上传的文件
 	private MultipartFile uploadFile;
+	// 债权类型（1债权处置，2债权转让）
+	private Integer creditType;
 	
 	public Credit() {
 
@@ -55,7 +57,7 @@ public class Credit {
 			String contactName, String contactNumber, String debtName,
 			String debtProvince, String debtCity, String debtPhone,
 			String debtProof, String description, Date createDate,
-			Date endDate, Date openDate, Date agreedDate,MultipartFile uploadFile) {
+			Date endDate, Date openDate, Date agreedDate,MultipartFile uploadFile,Integer creditType) {
 		super();
 		this.id = id;
 		this.userId = userId;
@@ -77,6 +79,7 @@ public class Credit {
 		this.openDate = openDate;
 		this.agreedDate = agreedDate;
 		this.uploadFile = uploadFile;
+		this.creditType = creditType;
 	}
 
 	public Integer getId() {
@@ -239,5 +242,14 @@ public class Credit {
 		this.uploadFile = uploadFile;
 	}
 
+	public Integer getCreditType() {
+		return creditType;
+	}
 
+	public void setCreditType(Integer creditType) {
+		this.creditType = creditType;
+	}
+
+
+	
 }

@@ -21,5 +21,7 @@ pageContext.setAttribute("basePath",basePath);
 <script src="${basePath }hplus/js/plugins/validate/jquery.validate.min.js"></script>
 <script src="${basePath }hplus/js/plugins/validate/messages_zh.min.js"></script>
 <script src="${basePath }hplus/js/demo/form-validate-demo.min.js"></script>
-<script src="${basePath }hplus/js/plugins/datapicker/bootstrap-datepicker.js"></script>
+<script src="${basePath}hplus/js/bootstrap-datetimepicker.js"></script>
+<script src="${basePath}hplus/js/bootstrap-datetimepicker.zh-CN.js"></script>
 <script src="${basePath }hplus/js/gvtv.common.js"></script>
+<script src="${basePath}hplus/js/upload.js"></script>
