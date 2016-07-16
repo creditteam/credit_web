@@ -1,5 +1,6 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %> 
 <!DOCTYPE html>
 <html>
 <head>
@@ -36,9 +37,20 @@
                         </div>
                     </div>
                     <div class="ibox-content">
+                          <a class="list-group-item active">
+					      <h4 class="list-group-item-heading">
+					         债权人信息
+					      </h4>
+					      </a><br/>
                   		    <dl class="dl-horizontal">
                                     <dt>债权类型：</dt>
-                                    <dd>个人债权</dd>
+                                    <dd>
+                                    			    <c:if test="${credit.crType==0 }">个人债权</c:if>
+													<c:if test="${credit.crType==1 }">企业债权</c:if>
+													<c:if test="${credit.crType==2 }">预期贷款</c:if>
+													<c:if test="${credit.crType==3 }">固定资产</c:if>
+													<c:if test="${credit.crType==4 }">国际债权</c:if>
+                                    </dd>
                                 </dl>
                   
                               <dl class="dl-horizontal">
@@ -67,11 +79,15 @@
 
 								<dl class="dl-horizontal">
 									<dt>发布日期：</dt>
-									<dd>${credit.createDate }</dd>
+									<dd>
+									<fmt:formatDate value="${credit.createDate }" pattern="yyyy-MM-dd HH:mm:ss"/>
+									</dd>
 								</dl>
 								<dl class="dl-horizontal">
 									<dt>债权开始日期：</dt>
-									<dd>${credit.openDate }</dd>
+									<dd>
+									<fmt:formatDate value="${credit.openDate }" pattern="yyyy-MM-dd HH:mm:ss"/>
+									</dd>
 								</dl>
 
 								<dl class="dl-horizontal">
@@ -79,6 +95,12 @@
 									<dd> ${credit.crAmount }(万元)</dd>
 								</dl>
 
+                          <div class="hr-line-dashed"></div>
+                          <a class="list-group-item active">
+					      <h4 class="list-group-item-heading">
+					         债务方信息
+					      </h4>
+					      </a><br/>
 								<dl class="dl-horizontal">
 									<dt>债权方联系人：</dt>
 									<dd> ${credit.debtName }</dd>

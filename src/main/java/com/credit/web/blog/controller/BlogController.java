@@ -31,8 +31,6 @@ public class BlogController extends BaseController{
 	 */
 	@RequestMapping(value="/list")
 	public ModelAndView list(HttpServletRequest request) throws Exception{
-		//String userId =request.getParameter("userId");
-		String from = request.getParameter("from");
 		String blogType = request.getParameter("blogType");
 		PageData pd =super.getPageData();
 		pd.put("from", 0);
@@ -41,7 +39,6 @@ public class BlogController extends BaseController{
 		pd = blogWebService.pageList(pd);
 		
 		ModelAndView mv = this.getModelAndView();
-		pd.put("from", Integer.valueOf(from));
 		mv.addObject("pd", pd);
 		mv.setViewName("/blog/blog");
 		return mv;

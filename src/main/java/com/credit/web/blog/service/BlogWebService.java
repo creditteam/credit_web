@@ -9,11 +9,15 @@
 package com.credit.web.blog.service;
 
 import java.util.List;
+
 import javax.annotation.Resource;
+
 import org.apache.commons.lang.StringUtils;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.credit.web.common.tag.PageInfo;
+import com.credit.web.common.tag.PageUtil;
 import com.credit.web.entity.Blog;
 import com.credit.web.entity.Reward;
 import com.gvtv.manage.base.dao.BaseDao;
@@ -43,10 +47,22 @@ public class BlogWebService {
 		PageData result = new PageData();
 		int totalNum = (int) dao.findForObject("BlogMapper.count", pd);
 		
+		Integer pageNo=  pd.getInteger("pageNo");
+		PageUtil pu = new PageUtil(totalNum,pageNo,10);
+		PageInfo pageInfo = pu.getPageInfo();
+		pageInfo.setRangeSize(20);
+		if(pageNo==0){
+			pd.put("from",0);
+			pd.put("size", 10);	
+		}else{
+			pd.put("from",(pageInfo.getPageNo()-1)*pageInfo.getPageSize());
+			pd.put("size", pageInfo.getPageNo()*pageInfo.getPageSize());	
+		}
 		List<Blog> pds = dao.findForList("BlogMapper.list", pd);
 		
 		result.put("size", pd.get("size"));
 		result.put("blogType", pd.get("blogType"));
+		result.put("pageInfo", pageInfo);
 		result.put(Const.RECORDSTOTAL, totalNum);
 		result.put(Const.NDATA, pds);
 		return result;

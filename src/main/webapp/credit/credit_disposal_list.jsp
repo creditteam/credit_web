@@ -1,5 +1,6 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="gvtv" uri="/WEB-INF/gvtv.tld"%>
 <%
 String path = request.getContextPath();
 // 获得本项目的地址(例如: http://localhost:8080/MyApp/)赋值给basePath变量
@@ -54,57 +55,37 @@ pageContext.setAttribute("basePath",basePath);
 										</tr>
 									</thead>
 									<tbody id="creditDisposal">
-										<tr>
-											<td><span class="label label-warning">企业债权</span></td>
-											<td>湛江市</td>
-											<td>湛*市雄立房产有限公司</td>
-											<td>160.00金额(万元)</td>
-											<td class="text-navy"><i class="fa fa-level-up"></i>20%-40%</td>
-											<td><span class="label label-warning">处置中</span></td>
-											<td><a href="${basePath }credit/credit_disposal_detail.jsp">查看</a></td>
-										</tr>
-										<tr>
-											<td><span class="label label-warning">个人债权</span></td>
-											<td>湛江市</td>
-											<td>张三</td>
-											<td>15.00金额(万元)</td>
-											<td class="text-navy"><i class="fa fa-level-up"></i>10%-15%</td>
-											<td><span class="label label-warning">招标中</span></td>
-											<td><a href="${basePath }credit/credit_disposal_detail.jsp">查看</a></td>
-										</tr>
-										<tr>
-											<td><span class="label label-warning">企业债权</span></td>
-											<td>湛江市</td>
-											<td>湛*市雄立房产有限公司</td>
-											<td>161.00金额(万元)</td>
-											<td class="text-navy"><i class="fa fa-level-up"></i>21%-40%</td>
-											<td><span class="label label-warning">招标中</span></td>
-											<td><a href="${basePath }credit/credit_disposal_detail.jsp">查看</a></td>
-										</tr>
+										<c:forEach items="${pd.data }" var="credit">
+											<tr>
+											    <td><span class="label label-warning">
+												    <c:if test="${credit.crType==1 }">个人债权</c:if>
+												    <c:if test="${credit.crType==2 }">企业债权</c:if>
+												    <c:if test="${credit.crType==3 }">预期贷款</c:if>
+												    <c:if test="${credit.crType==4 }">固定资产</c:if>
+												    <c:if test="${credit.crType==5 }">资产包</c:if>
+												    <c:if test="${credit.crType==6 }">国际债权</c:if>
+											    </span></td>
+												<td><span class="label label-warning">${credit.debtProvince }</span></td>
+												<td>${credit.debtName }</td>
+												<td><i class="fa fa-clock-o"></i> ${credit.crAmount }</td>
+												<td class="text-navy"><i class="fa fa-level-up"></i>${credit.commisionRange}</td>
+												<td><span class="label label-warning">${credit.crStatus }</span></td>
+												<td><a href="${basePath }credit/creditDetails?id=${credit.id}" target="_self">查看</a></td>
+											</tr>
+										</c:forEach>
 									</tbody>
 								</table>
 							</div>
 						</div>
 					</div>
 					
-					 <!-- page begin 
-					   <div class="hr-line-dashed"></div>
-                        <div class="text-center">
-                            <div class="btn-group">
-                                <button class="btn btn-white" onclick="loadTable('for')" type="button">上一页</i>
-                                </button>
-                                <button class="btn btn-white" onclick="loadTable(0)">1</button>
-                                <button class="btn btn-white" onclick="loadTable(1)">2</button>
-                                <button class="btn btn-white" onclick="loadTable(2)">3</button>
-                                <button class="btn btn-white" onclick="loadTable(3)">4</button>
-                                <button class="btn btn-white" onclick="loadTable(4)">5</button>
-                                <button class="btn btn-white" onclick="loadTable(5)">6</button>
-                                <button class="btn btn-white" type="button" onclick="loadTable('next')">下一页</i>
-                                </button>
-                            </div>
-                        </div>-->
+					<div class="hr-line-dashed"></div>
+					 <!-- page begin -->
+                     <gvtv:newPage href="${basePath }credit/navlist?creditType=1"></gvtv:newPage>
 					 <!-- page end -->
+					 <%--
 					 <div id="kkpager"></div>
+					  --%>
 				</div>
 			</div>
 		   </div>
@@ -113,6 +94,7 @@ pageContext.setAttribute("basePath",basePath);
 	<!-- 底部文件 -->
 	<jsp:include page="/common/_footer.jsp"></jsp:include>
 	<jsp:include page="/common/_script.jsp"></jsp:include>
+	<%--
 	<script src="${basePath }hplus/js/kkpager.min.js"></script>
 	<script type="text/javascript">
 	$(function(){
@@ -174,6 +156,7 @@ pageContext.setAttribute("basePath",basePath);
 		
 	});
 </script>
+ --%>
 </body>
 
 </html>

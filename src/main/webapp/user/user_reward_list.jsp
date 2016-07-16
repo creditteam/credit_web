@@ -1,6 +1,7 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %> 
+<%@ taglib prefix="gvtv" uri="/WEB-INF/gvtv.tld"%>
 <%
 String path = request.getContextPath();
 // 获得本项目的地址(例如: http://localhost:8080/MyApp/)赋值给basePath变量
@@ -65,9 +66,15 @@ pageContext.setAttribute("basePath",basePath);
 										</tr>
 									</thead>
 									<tbody>
-									<c:forEach items="${rewardList }" var="reward">
+									<c:forEach items="${pd.data }" var="reward">
 										<tr>
-											<td><span class="label label-warning">${reward.rewardType }</span></td>
+											<td><span class="label label-warning">
+									<c:if test="${reward.rewardType==0}">找人</c:if>
+                                    <c:if test="${reward.rewardType==1}">找车辆</c:if>
+                                    <c:if test="${reward.rewardType==2}">找房产</c:if>
+                                    <c:if test="${reward.rewardType==3}">找应收款</c:if>
+                                    <c:if test="${reward.rewardType==4}">其他</c:if>
+											</span></td>
 											<td><fmt:formatDate value="${reward.createTime }" pattern="yyyy-MM-dd HH:mm:ss"/></td>
 											<td>${reward.province }</td>
 											<td>${reward.rewardAmount }金额(万元)</td>
@@ -83,7 +90,7 @@ pageContext.setAttribute("basePath",basePath);
 			                    <jsp:include page="/common/_pagination.jsp"></jsp:include>
 			                     -->
 			                     
-			                     
+			                     <gvtv:newPage href="${basePath }reward/list"></gvtv:newPage>
 								</div>
                 </div>
             </div>
@@ -103,14 +110,6 @@ pageContext.setAttribute("basePath",basePath);
     </div>
 
     <jsp:include page="/common/_script.jsp"></jsp:include>
-    <script>
-    $("#Pagination").pagination(56, {
-        num_edge_entries: 2,
-        num_display_entries: 4,
-        callback: pageselectCallback,
-        items_per_page:1
-    });
-    </script>
 </body>
 
 </html>

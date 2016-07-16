@@ -11,10 +11,7 @@ import com.gvtv.manage.base.util.PageData;
 @SuppressWarnings("serial")
 public class PageTag extends BodyTagSupport {
 
-	private String href; 
-	private Integer pageNo;//当前页面
-	private Integer pageSize;//每页大小
-	
+	private String href; //分页请求地址
 	public int doEndTag() throws JspException {
 
 		JspWriter out = pageContext.getOut();
@@ -25,11 +22,6 @@ public class PageTag extends BodyTagSupport {
 			PageInfo pageInfo = (PageInfo) pageData.get("pageInfo");
 			StringBuilder html=new StringBuilder();
 
-		System.out.println("当前第 " + pageInfo.getPageNo() + " 页" + 
-				";总页数：" + pageInfo.getPages() + "；" +
-						"区域大小：" + pageInfo.getPageSize() + ";" +
-								"区域中间值：" + pageInfo.getMiddle());
-
 		    int first = pageInfo.getRangeOfFirst();
 		    int end = pageInfo.getRangeOfEnd();
 		    html.append("<form action='"+this.href+"' method='post' id='pageForm' target='_self'>");
@@ -37,7 +29,7 @@ public class PageTag extends BodyTagSupport {
 		    html.append("<input type='hidden' name='pageSize' value='"+pageInfo.getPageSize()+"'>");
 		    html.append("<div class='text-center'>");
 		    html.append("<div class='btn-group'>");
-		    html.append("<button class='btn btn-white' type='button' onclick='pageSubmit("+first+")'><i class='fa fa-chevron-left'></i></button>");
+		    html.append("<button class='btn btn-white' type='button' onclick='pageSubmit("+(pageInfo.getPageNo()-1)+")'><i class='fa fa-chevron-left'></i></button>");
 			for (int i=first;i<=end;i++)
 			{
 				if(pageInfo.getPageNo()==i){
@@ -46,7 +38,7 @@ public class PageTag extends BodyTagSupport {
 					html.append("<button class='btn btn-white' onclick='pageSubmit("+i+")'>"+i+"</button>");
 				}
 			}
-			html.append("<button class='btn btn-white' type='button'   onclick='pageSubmit("+end+")'><i class='fa fa-chevron-right'></i></button>");
+			html.append("<button class='btn btn-white' type='button'   onclick='pageSubmit("+(pageInfo.getPageNo()+1)+")'><i class='fa fa-chevron-right'></i></button>");
 			html.append(" </div>");
 			html.append(" </div>");
 			html.append(" </form>");
@@ -66,24 +58,5 @@ public class PageTag extends BodyTagSupport {
 
 	public void setHref(String href) {
 		this.href = href;
-	}
-
-	public Integer getPageNo() {
-		return pageNo;
-	}
-
-	public void setPageNo(Integer pageNo) {
-		this.pageNo = pageNo;
-	}
-
-	public Integer getPageSize() {
-		return pageSize;
-	}
-
-	public void setPageSize(Integer pageSize) {
-		this.pageSize = pageSize;
-	}
-	
-	
-	
+	}	
 }

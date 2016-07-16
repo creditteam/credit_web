@@ -1,6 +1,7 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ taglib prefix="gvtv" uri="/WEB-INF/gvtv.tld"%>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";//
@@ -22,7 +23,7 @@ pageContext.setAttribute("basePath", basePath);
 	                        </div>
                         </c:forEach>
                         <div class="hr-line-dashed"></div>
-                        <!--<jsp:include page="/common/_pagination.jsp"></jsp:include>-->
+                        <gvtv:newPage href="${basePath }blog/list?blogType=1"></gvtv:newPage>
                     </div>
                 </div>
             </div>

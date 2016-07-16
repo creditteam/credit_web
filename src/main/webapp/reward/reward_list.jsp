@@ -63,11 +63,11 @@ pageContext.setAttribute("basePath",basePath);
 									<c:forEach items="${pd.data}" var="reward">
 										<tr>
 											<td><span class="label label-warning">
-								    <c:if test="${reward.rewardType==0}">个人债权</c:if>
-                                    <c:if test="${reward.rewardType==1}">企业债权</c:if>
-                                    <c:if test="${reward.rewardType==2}">预期贷款</c:if>
-                                    <c:if test="${reward.rewardType==3}">固定资产</c:if>
-                                    <c:if test="${reward.rewardType==4}">国际债权</c:if>
+											    <c:if test="${reward.rewardType==0}">找人</c:if>
+			                                    <c:if test="${reward.rewardType==1}">找车辆</c:if>
+			                                    <c:if test="${reward.rewardType==2}">找房产</c:if>
+			                                    <c:if test="${reward.rewardType==3}">找应收款</c:if>
+			                                    <c:if test="${reward.rewardType==4}">其他</c:if>
 											</span></td>
 											<td><fmt:formatDate value="${reward.createTime }" pattern="yyyy-MM-dd HH:mm:ss"/></td>
 											<td>${reward.province }</td>
@@ -103,26 +103,9 @@ pageContext.setAttribute("basePath",basePath);
 						</div>
 					</div>
 					
-					 <!-- page begin
-					   <div class="hr-line-dashed"></div>
-                        <div class="text-center">
-                            <div class="btn-group">
-                                <button class="btn btn-white" type="button"><i class="fa fa-chevron-left"></i>
-                                </button>
-                                <button class="btn btn-white">1</button>
-                                <button class="btn btn-white  active">2</button>
-                                <button class="btn btn-white">3</button>
-                                <button class="btn btn-white">4</button>
-                                <button class="btn btn-white">5</button>
-                                <button class="btn btn-white">6</button>
-                                <button class="btn btn-white">7</button>
-                                <button class="btn btn-white" type="button"><i class="fa fa-chevron-right"></i>
-                                </button>
-                            </div>
-                        </div>
-					 -->
-					 <!-- page end -->
-					<gvtv:newPage href="reward/navlist"></gvtv:newPage>
+					 <!-- page begin-->
+					 <div class="hr-line-dashed"></div>
+					 <gvtv:newPage href="reward/navlist"></gvtv:newPage>
 				</div>
 			</div>
 		   </div>

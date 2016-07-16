@@ -36,12 +36,18 @@ public class CreditController extends BaseController{
 	@RequestMapping(value="/list")
 	public ModelAndView list(HttpServletRequest request) throws Exception{
 		String userId =request.getParameter("userId");
+		String creditType =request.getParameter("creditType");
 		PageData pd =super.getPageData();
 		pd = creditWebService.pageList(pd);
 		
 		ModelAndView mv = this.getModelAndView();
 		mv.addObject("pd", pd);
-		mv.setViewName("/user/user_credit_disposal_list");
+		mv.addObject("creditType", creditType);
+		if(creditType.equals("1")){
+			mv.setViewName("/user/user_credit_disposal_list");
+		}else if(creditType.equals("2")){
+			mv.setViewName("/user/user_credit_transfer_list");
+		}
 		return mv;
 	}
 	
@@ -71,18 +77,18 @@ public class CreditController extends BaseController{
 	
 	@RequestMapping(value="/userCreditDetails",method =RequestMethod.GET)
 	public ModelAndView userCreditDetails() throws Exception{
+		ModelAndView mv = this.getModelAndView();
 		String id =super.getRequest().getParameter("id");
 		if(id!=null&&id!=""){
 			Credit credit = creditWebService.findById(Integer.valueOf(id));
-			ModelAndView mv = this.getModelAndView();
 			mv.addObject("credit", credit);
 			if(MozillaUtil.isMobileDevice(super.getRequest())){//如果是手机
 				//待完成
 			}else{
-				mv.setViewName("/credit/credit_disposal_detail");
+				mv.setViewName("/user/user_credit_disposal_details");
 			}
 		}
-		return null;
+		return mv;
 	}
 	
 	
@@ -151,12 +157,11 @@ public class CreditController extends BaseController{
 	public ModelAndView navlist(HttpServletRequest request) throws Exception{
 		String creditType =request.getParameter("creditType");
 		PageData pd =super.getPageData();
-		pd.put("from", 0);
-		pd.put("size", 10);
 		pd = creditWebService.pageList(pd);
 		
 		ModelAndView mv = this.getModelAndView();
 		mv.addObject("pd", pd);
+		mv.addObject("creditType",creditType);
 		if(creditType.equals("1")){
 			mv.setViewName("/credit/credit_disposal_list");	
 		}else if(creditType.equals("2")){

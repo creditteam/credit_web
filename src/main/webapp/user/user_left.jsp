@@ -33,8 +33,8 @@ pageContext.setAttribute("basePath",basePath);
                                 </li>
                                  <li class="jstree-open">债权管理
                                     <ul>
-                                    <li data-jstree='{"type":"css"}'><a href ="${basePath }credit/list" target="_self">债权信息</a></li>
-                                    <li data-jstree='{"type":"css"}'><a href ="${basePath }user/user_credit_transfer_list.jsp" target="_self">债权转让</a></li>
+                                    <li data-jstree='{"type":"css"}'><a href ="${basePath }credit/list?creditType=1" target="_self">债权信息</a></li>
+                                    <li data-jstree='{"type":"css"}'><a href ="${basePath }credit/list?creditType=2" target="_self">债权转让</a></li>
                                     </ul>
                                 </li>
                                  <li class="jstree-open">悬赏信息

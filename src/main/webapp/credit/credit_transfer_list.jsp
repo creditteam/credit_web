@@ -1,5 +1,6 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="gvtv" uri="/WEB-INF/gvtv.tld"%>
 <%
 String path = request.getContextPath();
 // 获得本项目的地址(例如: http://localhost:8080/MyApp/)赋值给basePath变量
@@ -79,29 +80,16 @@ pageContext.setAttribute("basePath",basePath);
 										</c:forEach>
 									</tbody>
 								</table>
+												
+								 <div class="hr-line-dashed"></div>
+								  <!-- page begin-->
+			                     <gvtv:newPage href="${basePath }credit/navlist?creditType=${creditType }"></gvtv:newPage>
+								 <!-- page end -->
 							</div>
 						</div>
 					</div>
 					
-					 <!-- page begin-->
-					   <div class="hr-line-dashed"></div>
-                        <div class="text-center">
-                            <div class="btn-group">
-                                <button class="btn btn-white" type="button"><i class="fa fa-chevron-left"></i>
-                                </button>
-                                <button class="btn btn-white">1</button>
-                                <button class="btn btn-white  active">2</button>
-                                <button class="btn btn-white">3</button>
-                                <button class="btn btn-white">4</button>
-                                <button class="btn btn-white">5</button>
-                                <button class="btn btn-white">6</button>
-                                <button class="btn btn-white">7</button>
-                                <button class="btn btn-white" type="button"><i class="fa fa-chevron-right"></i>
-                                </button>
-                            </div>
-                        </div>
-					 
-					 <!-- page end -->
+
 					
 				</div>
 			</div>
