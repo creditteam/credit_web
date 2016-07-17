@@ -29,7 +29,7 @@ public class PageTag extends BodyTagSupport {
 		    html.append("<input type='hidden' name='pageSize' value='"+pageInfo.getPageSize()+"'>");
 		    html.append("<div class='text-center'>");
 		    html.append("<div class='btn-group'>");
-		    html.append("<button class='btn btn-white' type='button' onclick='pageSubmit("+(pageInfo.getPageNo()-1)+")'><i class='fa fa-chevron-left'></i></button>");
+		    html.append("<button class='btn btn-white'  onclick='pageSubmit("+(pageInfo.getPageNo()-1)+")'><i class='fa fa-chevron-left'></i></button>");
 			for (int i=first;i<=end;i++)
 			{
 				if(pageInfo.getPageNo()==i){
@@ -38,7 +38,7 @@ public class PageTag extends BodyTagSupport {
 					html.append("<button class='btn btn-white' onclick='pageSubmit("+i+")'>"+i+"</button>");
 				}
 			}
-			html.append("<button class='btn btn-white' type='button'   onclick='pageSubmit("+(pageInfo.getPageNo()+1)+")'><i class='fa fa-chevron-right'></i></button>");
+			html.append("<button class='btn btn-white'    onclick='pageSubmit("+(pageInfo.getPageNo()+1)+")'><i class='fa fa-chevron-right'></i></button>");
 			html.append(" </div>");
 			html.append(" </div>");
 			html.append(" </form>");

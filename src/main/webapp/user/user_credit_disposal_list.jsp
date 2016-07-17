@@ -35,7 +35,7 @@ pageContext.setAttribute("basePath",basePath);
                    <div class="ibox-title">
                         <h5>债权处置</h5>
                         <div class="ibox-tools">
-                            <a href="${basePath }credit/saveCredit?userId=${userInfo.id}" class="btn btn-primary btn-xs" target="_self">发布项目</a>
+                            <a href="${basePath }credit/saveCredit?userId=${userInfo.id}&creditType=${creditType}" class="btn btn-primary btn-xs" target="_self">发布项目</a>
                         </div>
                     </div>
                     <div class="ibox-content">

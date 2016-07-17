@@ -53,7 +53,7 @@ public class CreditController extends BaseController{
 		ModelAndView mv = this.getModelAndView();
 		mv.addObject("pd", pd);
 		mv.addObject("creditType", creditType);
-		if(creditType.equals("1")){
+		if(creditType!=null&&creditType.equals("1")){
 			mv.setViewName("/user/user_credit_disposal_list");
 		}else if(creditType.equals("2")){
 			mv.setViewName("/user/user_credit_transfer_list");
@@ -65,15 +65,22 @@ public class CreditController extends BaseController{
 	@RequestMapping(value="/saveCredit",method =RequestMethod.GET)
 	public ModelAndView toSaveCredit() throws Exception{
 		String userId =super.getRequest().getParameter("userId");
+		String creditType =super.getRequest().getParameter("creditType");
 		List<String> provinceList = ProvinceEnum.takeAllValues();//省份list
  		
 		ModelAndView mv = this.getModelAndView();
 		mv.addObject("userId", userId);
+		mv.addObject("creditType", creditType);
 		mv.addObject("provinceList", provinceList);
 		if(MozillaUtil.isMobileDevice(super.getRequest())){
 			mv.setViewName("/mobile/credit_add");
 		}else{
-			mv.setViewName("/user/user_credit_disposal_add");
+			if(creditType.equals("1")){
+				mv.setViewName("/user/user_credit_disposal_add");
+			}else if(creditType.equals("2")){
+				mv.setViewName("/user/user_credit_transfer_add");
+			}
+			
 		}
 		return mv;
 	}
@@ -88,12 +95,13 @@ public class CreditController extends BaseController{
 	public String saveCredit(Credit credit) throws Exception{
 		PageData pd =super.getPageData();
 		HttpServletRequest request = super.getRequest();
+		String creditType =request.getParameter("creditType");
 		String path = request.getSession().getServletContext().getRealPath("/");
 		Boolean bool = false;
 		if(null!= credit.getUploadFile()){
-			bool = uploadFileService.uploadFile(path+"uploadFile", credit.getUploadFile(), credit.getUploadFile().getOriginalFilename());
+			bool = uploadFileService.uploadFile(path+"uploadFile\\credit", credit.getUploadFile(), credit.getUploadFile().getOriginalFilename());
 		}
-		credit.setDebtProof(path+"uploadFile\\"+credit.getUploadFile().getOriginalFilename());
+		credit.setDebtProof(path+"uploadFile\\credit\\"+credit.getUploadFile().getOriginalFilename());
 		credit.setCreateDate(new Date());
 		credit.setCrStatus((short)1);
 		creditWebService.creditSave(credit);
@@ -107,7 +115,7 @@ public class CreditController extends BaseController{
 				
 			}
 		}else{
-			return "redirect:/credit/list";
+			return "redirect:/credit/list?creditType="+credit.getCreditType();
 		}
 	}
 	

@@ -108,7 +108,7 @@ pageContext.setAttribute("basePath",basePath);
 		</a>
 		</div>
 		<div class="col-xs-4" style="height: 100px;">
-		<a href="${basePath }mobile/xuans.jsp">
+		<a href="${basePath }mobile/reward.jsp">
 			<div class="text-center" style="margin: 8 8 8 8; width: 90%; height: 84%; ; border-radius:25px;">
 				<img alt="" style="" src="${basePath }hplus/img/bj10.png">
 				<p style="color: #666666" >线索悬赏</p>
