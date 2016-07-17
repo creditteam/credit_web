@@ -6,6 +6,7 @@ import java.util.List;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 
+import org.apache.commons.lang.StringUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -93,14 +94,13 @@ public class CreditController extends BaseController{
 			bool = uploadFileService.uploadFile(path+"uploadFile", credit.getUploadFile(), credit.getUploadFile().getOriginalFilename());
 		}
 		credit.setDebtProof(path+"uploadFile\\"+credit.getUploadFile().getOriginalFilename());
-		System.out.println(path+"uploadFile\\"+credit.getUploadFile().getOriginalFilename());
 		credit.setCreateDate(new Date());
 		credit.setCrStatus((short)1);
 		creditWebService.creditSave(credit);
 		
 		if(MozillaUtil.isMobileDevice(request)){
 			if(bool){//如果上传保存成功 
-				return "redirect:/mobile/credit_list.jsp";
+				return "redirect:/mobile/credit_disList.jsp";
 			}else{
 				return "redirect:/mobile/credit_add.jsp";
 				
@@ -145,6 +145,10 @@ public class CreditController extends BaseController{
 				credit.setDebtPhone(SensitiveUtil.shieldPhone(credit.getDebtPhone()));
 				credit.setContactName(SensitiveUtil.shieldName(credit.getContactName()));
 				credit.setContactNumber(SensitiveUtil.shieldPhone(credit.getContactNumber()));
+				if(StringUtils.isNotEmpty(credit.getDisposalType())){
+					String[] types = credit.getDisposalType().split(",");
+					credit.setDisTypes(types);
+				}
 			}
 			if(null == user){
 				user = new User();
@@ -157,7 +161,7 @@ public class CreditController extends BaseController{
 			mv.addObject("credit", credit);
 			mv.addObject("user",user);
 			if(MozillaUtil.isMobileDevice(super.getRequest())){//如果是手机
-				//待完成
+				mv.setViewName("/mobile/credit_details");
 			}else{
 				mv.setViewName("/credit/credit_disposal_detail");
 			}
@@ -198,10 +202,19 @@ public class CreditController extends BaseController{
 		ModelAndView mv = this.getModelAndView();
 		mv.addObject("pd", pd);
 		mv.addObject("creditType",creditType);
+		Boolean isMobile = MozillaUtil.isMobileDevice(super.getRequest());
 		if(creditType.equals("1")){
-			mv.setViewName("/credit/credit_disposal_list");	
+			if(isMobile){//如果是手机
+				mv.setViewName("/mobile/credit_disList");
+			}else{
+				mv.setViewName("/credit/credit_disposal_list");	
+			}
 		}else if(creditType.equals("2")){
-			mv.setViewName("/credit/credit_transfer_list");
+			if(isMobile){//如果是手机
+				mv.setViewName("/mobile/credit_traList");
+			}else{
+				mv.setViewName("/credit/credit_transfer_list");
+			}
 		}
 		
 		return mv;

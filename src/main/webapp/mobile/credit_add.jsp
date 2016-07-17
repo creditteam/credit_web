@@ -27,7 +27,6 @@ pageContext.setAttribute("basePath",basePath);
 	<link href="${basePath}hplus/css/bootstrap-datetimepicker.min.css" rel="stylesheet">
 	<script src="${basePath}hplus/js/jquery.min.js"></script>
     <script src="${basePath}hplus/js/bootstrap.min.js"></script>
-    <script src="${basePath}hplus/js/upload.js"></script>
     <script src="${basePath}hplus/js/obilRegister.js"></script>
     <script src="${basePath}hplus/js/bootstrap-datetimepicker.js"></script>
     <script src="${basePath}hplus/js/bootstrap-datetimepicker.zh-CN.js"></script>

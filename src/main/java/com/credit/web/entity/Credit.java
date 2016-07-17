@@ -1,6 +1,7 @@
 package com.credit.web.entity;
 
 import java.util.Date;
+import java.util.List;
 
 import org.springframework.web.multipart.MultipartFile;
 
@@ -45,6 +46,8 @@ public class Credit {
 	private Date agreedDate;
 	//表单上传的文件
 	private MultipartFile uploadFile;
+	//债权处置方式单个切分
+	private String[] disTypes;
 	
 	public Credit() {
 
@@ -237,6 +240,14 @@ public class Credit {
 
 	public void setUploadFile(MultipartFile uploadFile) {
 		this.uploadFile = uploadFile;
+	}
+
+	public String[] getDisTypes() {
+		return disTypes;
+	}
+
+	public void setDisTypes(String[] disTypes) {
+		this.disTypes = disTypes;
 	}
 
 

@@ -11,4 +11,5 @@ pageContext.setAttribute("basePath",basePath);
 <link href="${basePath }hplus/css/bootstrap.min.css" rel="stylesheet">
 <script src="${basePath }hplus/js/jquery.min.js"></script>
 <script src="${basePath }hplus/js/bootstrap.min.js"></script>
+<script src="${basePath }hplus/js/gvtv.common.js"></script>
     

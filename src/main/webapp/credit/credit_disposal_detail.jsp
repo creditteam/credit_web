@@ -49,6 +49,12 @@
                                 </div>
                             </div>
                             <div class="form-group">
+                                <label class="col-sm-3">电话：</label>
+                                <div class="col-sm-8">
+                                    ${user.userPhone}
+                                </div>
+                            </div>
+                            <div class="form-group">
                                 <label class="col-sm-3">E-mail：</label>
                                 <div class="col-sm-8">
                                     ${user.userEmail}
@@ -104,7 +110,16 @@
 
 								<dl class="dl-horizontal">
 									<dt>处置方式：</dt>
-									<dd>${credit.disposalType}</dd>
+									<dd><c:forEach items="${credit.disTypes}" var="item">
+										<c:if test="${item eq '1'}">诉讼</c:if>
+										<c:if test="${item eq '2'}">催收</c:if>
+										<c:if test="${item eq '3'}">债权转让</c:if>
+									</c:forEach></dd>
+								</dl>
+								
+								<dl class="dl-horizontal">
+									<dt>债权金额：</dt>
+									<dd>${credit.crAmount} (万元)</dd>
 								</dl>
 
 								<dl class="dl-horizontal">
@@ -119,11 +134,6 @@
 								<dl class="dl-horizontal">
 									<dt>债权开始日期：</dt>
 									<dd><fmt:formatDate value="${credit.agreedDate}" type="date" dateStyle="long"/></dd>
-								</dl>
-
-								<dl class="dl-horizontal">
-									<dt>债权金额：</dt>
-									<dd>${credit.crAmount} (万元)</dd>
 								</dl>
 
 								<dl class="dl-horizontal">

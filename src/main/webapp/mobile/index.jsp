@@ -100,7 +100,7 @@ pageContext.setAttribute("basePath",basePath);
 <div class="container" >
 	<div class="row" style="background-color: #fff">
 		<div class="col-xs-4" style="height: 100px; ">
-		<a href="${basePath }mobile/credit_list.jsp">
+		<a href="${basePath }credit/navlist?creditType=1">
 			<div class="text-center" style="margin: 8 8 8 8; width: 90%; height: 84%; ; border-radius:25px;">
 				<img alt="" src="${basePath }hplus/img/bj03.png">
 				<p style="color: #666666" >债权信息 </p>
