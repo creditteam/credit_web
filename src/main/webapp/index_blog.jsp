@@ -14,8 +14,7 @@ pageContext.setAttribute("basePath", basePath);
 					aria-expanded="true">行业动态</a></li>
 				<li class=""><a data-toggle="tab" href="#tab-blog2"
 					aria-expanded="false">业务文章</a></li>
-				<li class=""><a data-toggle="tab" href="#tab-blog3"
-					aria-expanded="false">资源下载</a></li>
+				<li class=""><a href="${basePath}filemanager/list">资源下载</a></li>
 			</ul>
 			<div class="tab-content">
 				<div id="tab-blog1" class="tab-pane active">

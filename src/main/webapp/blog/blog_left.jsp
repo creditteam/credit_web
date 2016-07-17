@@ -15,7 +15,7 @@ pageContext.setAttribute("basePath", basePath);
                                 </li>
                                 <li><a href="${basePath}blog/list?blogType=2&from=0" target="_parent"><i class="fa fa-folder"></i> 业务文章</a>
                                 </li>
-                                <li><a href="${basePath}filemanager/list"><i class="fa fa-folder"></i> 资源下载</a>
+                                <li><a href="${basePath}filemanager/list"><i class="fa fa-folder"></i> 资源下载</a></li>
                             </ul>
                             <h5 class="tag-title">标签</h5>
                             <ul class="tag-list" style="padding: 0">
