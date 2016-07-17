@@ -34,7 +34,7 @@ public class FeedbackWebService {
 	 * @return
 	 * @throws Exception
 	 */
-	public Boolean blogSave(PageData pd) throws Exception {
+	public Boolean feedbackSave(PageData pd) throws Exception {
 		int num = dao.save("FeedbackMapper.save", pd);
 		if(num>0){
 			return true;
