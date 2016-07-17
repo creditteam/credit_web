@@ -100,30 +100,7 @@
 	</div>
 
 	<div style="height: 50px"></div>
-	<div class="container-fluid">
-		<nav class="navbar navbar-default navbar-fixed-bottom" style="background-color: #0b6070">
-			<ul class="nav text-center">
-				<li role="presentation" class="col-xs-3 active" style="padding: 0px;">
-					<a href="http://www.eshou360.com" style="color: #fff">
-					<i style="color: #fff" class="glyphicon glyphicon-home"></i><br>主页</a>
-				</li>
-				<li role="presentation" class="col-xs-3 active" style="padding: 0px; color: #fff">
-					<a target="_blank" href="http://form.mikecrm.com/yJPdFL" style="color: #fff"><i
-						style="color: #fff" class="glyphicon glyphicon-plus-sign"></i><br>加盟</a>
-				</li>
-				<li role="presentation" class="col-xs-3 active" style="padding: 0px; color: #fff">
-					<a href="ObligMsg?method=3000" style="color: #fff">
-					<i style="color: #fff" class="glyphicon glyphicon-share"></i><br>发布</a>
-				</li>
-				<li role="presentation" class="col-xs-3 active" style="padding: 0px; color: #fff">
-					<a href="om?method=410" style="color: #fff">
-					<i style="color: #fff" class="glyphicon glyphicon-user"></i><br>登录|注册</a>
-				</li>
-			</ul>
-		</nav>
-	</div>
-	<script src="js/jquery.min.js"></script>
-	<script type="text/javascript" src="js/register/register.js"></script>
+	<jsp:include page="mobile_footer.jsp"></jsp:include>
 	<script type="text/javascript">
 	var InterValObj; //timer变量，控制时间
 	var count = 5; //间隔函数，1秒执行
@@ -177,15 +154,7 @@
 	                         url: '${basePath }user/validaPhone',//验证地址
 	                         message: '该手机号已注册',//提示消息
 	                         delay :  1000,//每输入一个字符，就发ajax请求，服务器压力还是太大，设置2秒发送一次ajax
-	                         type: 'POST'//请求方式
-	                         /**自定义提交数据，默认值提交当前input value
-	                          *  data: function(validator) {
-	                               return {
-	                                   password: $('[name="passwordNameAttributeInYourForm"]').val(),
-	                                   whatever: $('[name="whateverNameAttributeInYourForm"]').val()
-	                               };
-	                            }
-	                          */
+	                         type: 'POST'
 	                     }
 	                }
 	            },

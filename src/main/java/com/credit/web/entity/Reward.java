@@ -2,6 +2,8 @@ package com.credit.web.entity;
 
 import java.util.Date;
 
+import org.springframework.web.multipart.MultipartFile;
+
 public class Reward {
 	// 序号
 	private Integer id;
@@ -31,6 +33,9 @@ public class Reward {
 	private Short rewardStatus;
 	// 登录用户编号
 	private Integer userId;
+	
+	//表单上传的文件
+	private MultipartFile uploadFile;
 
 	public Reward() {
 
@@ -169,4 +174,12 @@ public class Reward {
 		this.userId = userId;
 	}
 
+	public MultipartFile getUploadFile() {
+		return uploadFile;
+	}
+
+	public void setUploadFile(MultipartFile uploadFile) {
+		this.uploadFile = uploadFile;
+	}
+ 
 }

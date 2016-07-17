@@ -63,11 +63,12 @@
 		<if test="userId != null and userId != ''">
 		and user_id=#{userId}
 		</if>
+		ORDER BY u.create_time desc 
 		limit #{from},#{size}
 	</select>
 	
 	
-	<insert id="rewardSave" parameterType="PageData">
+	<insert id="rewardSave" parameterType="reward">
 		insert into cr_reward (
 			 reward_type,
 			 reward_amount,

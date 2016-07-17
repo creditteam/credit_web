@@ -44,7 +44,7 @@ public class FileManangerController extends BaseController{
 		mv.addObject("wsfileList",wsfileList);		
 		Boolean isMobile = MozillaUtil.isMobileDevice(super.getRequest());
 		if(isMobile){
-			mv.setViewName("mobile/index");
+			mv.setViewName("mobile/file_manager");
 		}else{
 			mv.setViewName("file_manager");
 		}

@@ -1,15 +1,21 @@
 package com.credit.web.reward.controller;
 
+import java.util.Date;
+import java.util.List;
+
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.credit.web.entity.Reward;
+import com.credit.web.filemanager.service.UploadFileService;
 import com.credit.web.reward.service.RewardWebService;
+import com.credit.web.util.ProvinceEnum;
 import com.gvtv.manage.base.controller.BaseController;
 import com.gvtv.manage.base.util.MozillaUtil;
 import com.gvtv.manage.base.util.PageData;
@@ -21,7 +27,8 @@ public class RewardController extends BaseController{
 	@Resource
 	private RewardWebService rewardWebService;
 	
-	
+	@Resource
+	UploadFileService uploadFileService;
 	
 	/**
 	 * 导航债权首页
@@ -41,7 +48,7 @@ public class RewardController extends BaseController{
 		mv.addObject("pd", pd);
 		Boolean isMobile = MozillaUtil.isMobileDevice(super.getRequest());
 		if(isMobile){
-			mv.setViewName("mobile/index");
+			mv.setViewName("/mobile/reward_list");
 		}else{
 			mv.setViewName("/reward/reward_list");
 		}
@@ -71,7 +78,7 @@ public class RewardController extends BaseController{
 	
 	
 	/**
-	 * 调整到新增悬赏页面
+	 * 跳转到新增悬赏页面
 	 * @return
 	 * @throws Exception
 	 */
@@ -79,8 +86,14 @@ public class RewardController extends BaseController{
 	public ModelAndView toSaveReward() throws Exception{
 		String userId =super.getRequest().getParameter("userId");
 		ModelAndView mv = this.getModelAndView();
+		List<String> provinceList = ProvinceEnum.takeAllValues();//省份list
+		mv.addObject("provinceList", provinceList);
 		mv.addObject("userId", userId);
-		mv.setViewName("/user/user_credit_disposal_add");
+		if(MozillaUtil.isMobileDevice(super.getRequest())){
+			mv.setViewName("/mobile/reward_add");
+		}else{
+			mv.setViewName("/user/user_credit_disposal_add");
+		}
 		return mv;
 	}
 	
@@ -91,11 +104,28 @@ public class RewardController extends BaseController{
 	 * @throws Exception
 	 */
 	@RequestMapping(value="/saveReward",method =RequestMethod.POST)
-	public String saveReward() throws Exception{
-		PageData pd =super.getPageData();
-		pd.put("rewardStatus", 1);
-		rewardWebService.rewardSave(pd);
-		return "redirect:/reward/list";
+	public String saveReward(Reward reward) throws Exception{
+		
+		HttpServletRequest request = super.getRequest();
+		
+		reward.setRewardStatus((short)1);
+		reward.setCreateTime(new Date());
+		String path = request.getSession().getServletContext().getRealPath("/");
+		Boolean bool = false;
+		if(null!= reward.getUploadFile()){
+			bool = uploadFileService.uploadFile(path+"uploadFile\\reward", reward.getUploadFile(), reward.getUploadFile().getOriginalFilename());
+		}
+		
+		rewardWebService.rewardSave(reward);
+		if(MozillaUtil.isMobileDevice(request)){
+			if(bool){//如果上传保存成功 
+				return "redirect:/reward/navlist";
+			}else{
+				return "redirect:/mobile/reward_add.jsp";
+			}
+		}else{
+			return "redirect:/reward/list";
+		}
 	}
 	
 	/**
@@ -130,6 +160,22 @@ public class RewardController extends BaseController{
 			mv.addObject("reward", reward);
 			mv.setViewName("/reward/reward_details");
 			return mv;
+		}
+		return null;
+	}
+	
+	/**
+	 * 查询悬赏详情(未登录时查看)(异步)
+	 * @return
+	 * @throws Exception
+	 */
+	@RequestMapping(value="/mlRewardInfo")
+	@ResponseBody
+	public Reward mlRewardDetails(String id) throws Exception{
+		Reward reward = null;
+		if(id!=null&&id!=""){
+			reward = rewardWebService.findById(Integer.valueOf(id));
+			return reward;
 		}
 		return null;
 	}

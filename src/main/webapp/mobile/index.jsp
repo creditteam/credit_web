@@ -101,31 +101,40 @@ pageContext.setAttribute("basePath",basePath);
 	<div class="row" style="background-color: #fff">
 		<div class="col-xs-4" style="height: 100px; ">
 		<a href="${basePath }credit/navlist?creditType=1">
-			<div class="text-center" style="margin: 8 8 8 8; width: 90%; height: 84%; ; border-radius:25px;">
+			<div class="text-center" style="margin: 8 8 8 8; width: 90%; height: 84%; ; border-radius:15px;">
 				<img alt="" src="${basePath }hplus/img/bj03.png">
-				<p style="color: #666666" >债权信息 </p>
+				<p style="color: #666666" >债权转让 </p>
+			</div>
+		</a>
+		</div>
+		<div class="col-xs-4" style="height: 100px; ">
+		<a href="${basePath }credit/navlist?creditType=2">
+			<div class="text-center" style="margin: 8 8 8 8; width: 90%; height: 84%; ; border-radius:15px;">
+				<img alt="" src="${basePath }hplus/img/bj03.png">
+				<p style="color: #666666" >债权处置 </p>
 			</div>
 		</a>
 		</div>
 		<div class="col-xs-4" style="height: 100px;">
-		<a href="${basePath }mobile/reward.jsp">
-			<div class="text-center" style="margin: 8 8 8 8; width: 90%; height: 84%; ; border-radius:25px;">
+		<a href="${basePath }reward/navlist">
+			<div class="text-center" style="margin: 8 8 8 8; width: 90%; height: 84%; ; border-radius:15px;">
 				<img alt="" style="" src="${basePath }hplus/img/bj10.png">
 				<p style="color: #666666" >线索悬赏</p>
 			</div>
 		</a></div>
+		
+	</div>
+	<div class="row">
 		<div class="col-xs-4" style="height: 100px; ">
 		<a href="${basePath }user/expertList">
-			<div class="text-center" style="margin: 8 8 8 8; width: 90%; height: 84%; border-radius:25px;">
+			<div class="text-center" style="margin: 8 8 8 8; width: 90%; height: 84%; border-radius:15px;">
 				<img alt="" src="${basePath }hplus/img/bj04.png">
 				<p style="color: #666666" >专家顾问库</p>
 			</div>
 		</a></div>
-	</div>
-	<div class="row">
 		<div class="col-xs-4" style="height: 100px; ">
 			<a href="${basePath }mobile/chuzhi.jsp">
-			<div class="text-center" style="margin: 8 8 8 8; width: 90%; height: 84%; border-radius:25px;">
+			<div class="text-center" style="margin: 8 8 8 8; width: 90%; height: 84%; border-radius:15px;">
 				<img alt="" src="${basePath }hplus/img/bj05.png">
 				<p style="color: #666666" >服务产品</p>
 			</div>
@@ -134,48 +143,49 @@ pageContext.setAttribute("basePath",basePath);
 		
 		<div class="col-xs-4" style="height: 100px; ">
 			<a href="${basePath }blog/mlList">
-			<div class="text-center" style="margin: 8 8 8 8; width: 90%; height: 84%; border-radius:25px;">
+			<div class="text-center" style="margin: 8 8 8 8; width: 90%; height: 84%; border-radius:15px;">
 				<img alt="" src="${basePath }hplus/img/bj08.png">
 				<p style="color: #666666" >业务咨讯</p>
 			</div>
 		</a>
 		</div>
+	</div>
+	<div class="row">
 		<div class="col-xs-4" style="height: 100px; ">
 		<a href="${basePath }mobile/swhz.jsp">
-			<div class="text-center" style="margin: 8 8 8 8; width: 90%; height: 84%; border-radius:25px;">
+			<div class="text-center" style="margin: 8 8 8 8; width: 90%; height: 84%; border-radius:15px;">
 				<img alt="" src="${basePath }hplus/img/bj02.png">
 				<p style="color: #666666" >商务合作</p>
 			</div>
 		</a></div>
-	</div>
-	<div class="row">
 		<div class="col-xs-4" style="height: 100px; ">
-		<a href="${basePath }user/tologin">
-			<div class="text-center" style="margin:e 8 8 8 8; width: 90%; height: 84%; border-radius:25px;">
-				<img alt="" src="${basePath }hplus/img/yh_02.png" width="70px" height="70px">
-				<p style="color: #666666" >用户中心</p>
+			<a href="${basePath }user/tologin">
+			<div class="text-center" style="margin: 8 8 8 8; width: 90%; height: 84%; border-radius:15px;">
+				<img alt="" src="${basePath }hplus/img/bj04.png">
+				<p style="color: #666666" >业务咨讯</p>
 			</div>
-		</a></div>
+		</a>
+		</div>
 	</div>
 	<div class="row">
 		
 		<%-- <div class="col-xs-4" style="height: 100px; ">
 		<a href="${basePath }mobile/swhz.jsp">
-			<div class="text-center" style="margin: 8 8 8 8; width: 90%; height: 84%; border-radius:25px;">
+			<div class="text-center" style="margin: 8 8 8 8; width: 90%; height: 84%; border-radius:15px;">
 				<img alt="" src="${basePath }hplus/img/bj02.png">
 				<p style="color: #666666" >商务合作</p>
 			</div>
 		</a></div> --%>
 		<div class="col-xs-4" style="height: 100px; display: none">
 		<a href="om?method=403">
-			<div class="text-center" style="margin: 8 8 8 8; width: 90%; height: 84%; border-radius:25px;">
+			<div class="text-center" style="margin: 8 8 8 8; width: 90%; height: 84%; border-radius:15px;">
 				<img alt="" src="${basePath }hplus/img/bj06.png">
 				<p style="color: #666666" >关于我们</p>
 			</div>
 		</a></div>
 		<%-- <div class="col-xs-4" style="height: 100px; ">
 		<a href="om?method=420">
-			<div class="text-center" style="margin: 8 8 8 8; width: 90%; height: 84%; border-radius:25px;">
+			<div class="text-center" style="margin: 8 8 8 8; width: 90%; height: 84%; border-radius:15px;">
 				<img alt="" src="${basePath }hplus/img/bj09.png">
 				<p style="color: #666666" >资源下载</p>
 			</div>

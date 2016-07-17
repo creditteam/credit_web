@@ -83,8 +83,8 @@ public class RewardWebService {
 	 * @return
 	 * @throws Exception
 	 */
-	public Boolean rewardSave(PageData pd) throws Exception {
-		int num = dao.save("RewardMapper.rewardSave", pd);
+	public Boolean rewardSave(Reward reward) throws Exception {
+		int num = dao.save("RewardMapper.rewardSave", reward);
 		if(num>0){
 			return true;
 		}

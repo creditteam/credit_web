@@ -108,11 +108,9 @@ public class CreditController extends BaseController{
 		
 		if(MozillaUtil.isMobileDevice(request)){
 			if(bool){//如果上传保存成功 
-				return "redirect:/mobile/credit_disList.jsp";
+				return "redirect:/credit/navlist?creditType="+credit.getCreditType();
 			}else{
 				return "redirect:/mobile/credit_add.jsp";
-				
-				
 			}
 		}else{
 			return "redirect:/credit/list?creditType="+credit.getCreditType();

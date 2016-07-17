@@ -43,7 +43,7 @@ pageContext.setAttribute("basePath",basePath);
 						style="color: blue"> <span class="glyphicon glyphicon-list-alt"></span><b
 							class="text-left">业务文章</b>
 					</a></li>
-					<li><a href="#zyhome" data-toggle="tab"
+					<li><a href="${basePath}filemanager/list" 
 						style="color: blue"> <span class="glyphicon glyphicon-circle-arrow-down"></span><b
 							class="text-left">资源下载</b>
 					</a></li>
