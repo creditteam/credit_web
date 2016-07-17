@@ -52,11 +52,11 @@ pageContext.setAttribute("basePath",basePath);
                                 <form role="form" action="${basePath }user/login" method="post" target="_self">
                                     <div class="form-group">
                                         <label>用户名</label>
-                                        <input type="email" name="loginName" placeholder="请输入您注册的E-mail" class="form-control">
+                                        <input type="email" name="loginName" placeholder="请输入您注册的E-mail" class="form-control" required="" aria-required="true">
                                     </div>
                                     <div class="form-group">
                                         <label>密码</label>
-                                        <input type="password" name="password" placeholder="请输入密码" class="form-control">
+                                        <input type="password" name="password" placeholder="请输入密码" class="form-control" required="" aria-required="true">
                                     </div>
                                     <div>
                                         <button class="btn btn-sm btn-primary pull-right m-t-n-xs" type="submit"><strong>登 录</strong>

@@ -47,7 +47,7 @@ pageContext.setAttribute("basePath",basePath);
                             <div class="form-group">
                                 <label class="col-sm-3 control-label">债权类型：</label>
                                 <div class="col-sm-8">
-                                        <select  name="crType" class="form-control">
+                                        <select  name="crType" class="form-control" required="required">
 													<option value="0">银行资产包转让</option>
 													<option value="1">资产公司资产包转让</option>
 													<option value="2">企业单笔债权的转让</option>
@@ -57,14 +57,14 @@ pageContext.setAttribute("basePath",basePath);
                             <div class="form-group">
                                 <label class="col-sm-3 control-label">债权金额：</label>
                                 <div class="col-sm-8">
-                                    <input id="crAmount" name="crAmount" class="form-control" type="text" aria-required="true" aria-invalid="false" class="valid">
+                                    <input id="crAmount" name="crAmount" class="form-control" type="text" required="required" class="valid">
                                     <span class="help-block m-b-none"><i class="fa fa-info-circle"></i> 注意：金额币种人民币(￥)</span>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="col-sm-3 control-label">支付佣金范围：</label>
                                 <div class="col-sm-8">
-                                     <select name="commisionRange" class="form-control">
+                                     <select name="commisionRange" class="form-control" required="required">
 									 <option value="1%-3%">1%-3%</option>
 									 <option value="3%-5%">3%-5%</option>
 									 <option value="5%-8%" selected="selected">5%-8%</option>
@@ -76,14 +76,14 @@ pageContext.setAttribute("basePath",basePath);
                             <div class="form-group">
                                 <label class="col-sm-3 control-label">联系人姓名：</label>
                                 <div class="col-sm-8">
-                                    <input id="contactName" name="contactName" class="form-control" type="text" placeholder="可以是本人也可以委托他人">
+                                    <input id="contactName" name="contactName" class="form-control" type="text" placeholder="可以是本人也可以委托他人" required="required">
                                     <span class="help-block m-b-none"><i class="fa fa-info-circle"></i>可以是本人也可以委托他人</span>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="col-sm-3 control-label">联系人电话：</label>
                                 <div class="col-sm-8">
-                                    <input id="contactNumber" name="contactNumber" class="form-control" type="text" placeholder="请输入联系人的联系电话">
+                                    <input id="contactNumber" name="contactNumber" class="form-control" type="text" placeholder="请输入联系人的联系电话" required="required">
                                 </div>
                             </div>
                            <div class="hr-line-dashed"></div>
@@ -95,14 +95,14 @@ pageContext.setAttribute("basePath",basePath);
                          <div class="form-group">
                                 <label class="col-sm-3 control-label">债务方名称：</label>
                                 <div class="col-sm-8">
-                                    <input id="debtName" name="debtName" class="form-control" type="text">
+                                    <input id="debtName" name="debtName" class="form-control" type="text" required="required">
                                     <span class="help-block m-b-none"><i class="fa fa-info-circle"></i> 这里写点提示的内容</span>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="col-sm-3 control-label">债务方地址：</label>
                                 <div class="col-sm-4">
-												   <select onchange="loadCity(this)" id="debtProvince" name="debtProvince" class="form-control input-sm" >
+												   <select onchange="loadCity(this)" id="debtProvince" name="debtProvince" class="form-control input-sm"  required="required">
 													 <option value="1">请选择</option>
 													 <c:forEach items="${provinceList}" var="item">
 													 <option value="${item}">${item}</option>
@@ -120,7 +120,7 @@ pageContext.setAttribute("basePath",basePath);
                             <div class="form-group">
                                 <label class="col-sm-3 control-label">债务方联系电话：</label>
                                 <div class="col-sm-8">
-                                    <input id="debtPhone" name="debtPhone" class="form-control" type="text" aria-required="true" aria-invalid="true" class="error">
+                                    <input id="debtPhone" name="debtPhone" class="form-control" type="text" required="required" class="error">
                                 </div>
                             </div>
                             <div class="form-group">
@@ -132,7 +132,7 @@ pageContext.setAttribute("basePath",basePath);
                             <div class="form-group">
                                 <label class="col-sm-3 control-label">债权开始日期：</label>
                                 <div class="col-sm-8">
-                                    <input class="form-control" type="text" name="openDate" id="datetimepicker">
+                                    <input class="form-control" type="text" name="openDate" id="datetimepicker" required="required">
                                 </div>
                             </div>
                             <div class="form-group">

@@ -46,7 +46,7 @@ pageContext.setAttribute("basePath",basePath);
                             <div class="form-group">
                                 <label class="col-sm-3 control-label">悬赏类型：</label>
                                 <div class="col-sm-8">
-                                        <select  name="rewardType" class="form-control">
+                                        <select  name="rewardType" class="form-control" required="required" aria-required="true">
 													<option value="0">个人债权</option>
 													<option value="1">企业债权</option>
 													<option value="2">预期贷款</option>
@@ -58,20 +58,20 @@ pageContext.setAttribute("basePath",basePath);
                             <div class="form-group">
                                 <label class="col-sm-3 control-label">悬赏金额：</label>
                                 <div class="col-sm-8">
-                                    <input id="rewardAmount" name="rewardAmount" class="form-control" type="text" aria-required="true" aria-invalid="false" class="valid">
+                                    <input id="rewardAmount" name="rewardAmount" class="form-control" type="text" required="required" aria-required="true" class="valid">
                                     <span class="help-block m-b-none"><i class="fa fa-info-circle"></i> 注意：金额币种人民币(￥)</span>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="col-sm-3 control-label">姓名：</label>
                                 <div class="col-sm-8">
-                                           <input id="rewardName" name="rewardName" class="form-control" type="text" aria-required="true" aria-invalid="false" class="valid">
+                                           <input id="rewardName" name="rewardName" class="form-control" type="text" required="required" aria-required="true" class="valid">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="col-sm-3 control-label">身份证：</label>
                                 <div class="col-sm-8">
-                                      <input id="cartId" name="cartId" class="form-control" type="text" aria-required="true" aria-invalid="false" class="valid">
+                                      <input id="cartId" name="cartId" class="form-control" type="text" required="required" aria-required="true" class="valid">
                                 </div>
                             </div>
                            <div class="hr-line-dashed"></div>
@@ -83,60 +83,30 @@ pageContext.setAttribute("basePath",basePath);
                             <div class="form-group">
                                 <label class="col-sm-3 control-label">所在地：</label>
                                 <div class="col-sm-4">
-												<select onchange="takeCity()" id="province"
-													name="province" class="form-control input-sm">
-													<option value="1">请选择</option>
-													<option>北京市</option>
-													<option>上海市</option>
-													<option>天津市</option>
-													<option>重庆市</option>
-													<option>香港</option>
-													<option>澳门</option>
-													<option>河北省</option>
-													<option>浙江省</option>
-													<option>辽宁省</option>
-													<option>湖北省</option>
-													<option>江苏省</option>
-													<option>内蒙古</option>
-													<option>江西省</option>
-													<option>山西省</option>
-													<option>甘肃省</option>
-													<option>山东省</option>
-													<option>黑龙江</option>
-													<option>福建省</option>
-													<option>广东省</option>
-													<option>四川省</option>
-													<option>湖南省</option>
-													<option>河南省</option>
-													<option>云南省</option>
-													<option>安徽省</option>
-													<option>宁夏</option>
-													<option>吉林省</option>
-													<option>广西省</option>
-													<option>贵州省</option>
-													<option>陕西省</option>
-													<option>青海省</option>
-													<option>海南省</option>
-													<option>西藏</option>
-												</select>
+											<select onchange="loadCity(this)" id="debtProvince" name="province" class="form-control input-sm"  required="required" aria-required="true">
+													 <option value="1">请选择</option>
+													 <c:forEach items="${provinceList}" var="item">
+													 <option value="${item}">${item}</option>
+													 </c:forEach>
+							                 </select>
 								</div>
 								<div class="col-sm-4">
-										<select id="city" name="city" class="form-control input-sm">
-											<option value="1">请选择</option>
-										</select>
+										<select id="debtCity" name="city" class="form-control input-sm">
+							              <option value="">请选择</option>
+							          </select>
 								</div>
                             </div>
                                 
                             <div class="form-group">
                                 <label class="col-sm-3 control-label">照片：</label>
                                 <div class="col-sm-8">
-                                     <input type="file" name="imagesFile" class="form-control">
+                                     <input class="form-control" type="file" name="uploadFile" id="uploadFile" onchange="uploadCheck();"/>
                                 </div>
                             </div>
                             <div class="form-group" id="data_1">
 	                            <label class="col-sm-3 control-label">悬赏日期：</label>
-	                            <div class="col-sm-8  input-group date">
-	                                <input type="text"  name="createTime" class="form-control" value="2014-11-11">
+	                           <div class="col-sm-8">
+	                                <input class="form-control" type="text" name="createTime" id="datetimepicker" required="required" aria-required="true">
 	                            </div>
                            </div>
                             <div class="form-group">
@@ -176,32 +146,40 @@ pageContext.setAttribute("basePath",basePath);
     <jsp:include page="/common/_script.jsp"></jsp:include>
     <script type="text/javascript" src="http://tajs.qq.com/stats?sId=9051096" charset="UTF-8"></script>
     
-	<script type="text/javascript">
-	function takeCity() {
-		var province = $("#provinceSel1").val();
+<script type="text/javascript">
+	function loadCity(obj) {
+		var proName = $(obj).val();
 		//$("#provinceSel1").val(province);
 		$.ajax({
-			url : 'ObligMsg?method=3100',
+			url : '${basePath}credit/loadCity',
 			async : false,
 			data : {
-				"province" : province
+				"proName" : proName
 			},
 			type : "POST",
 			success : function(data) {
 				
-				var a=JSON.parse(data);
-				$("#citySel").empty();
-				$('#citySel').append('<option>请选择</option>');
-				for (var int = 0; int < a.length; int++) {
-					$('#citySel').append('<option>'+a[int]+'</option>');
-				}
-				
+				$("#debtCity").empty();
+				$('#debtCity').append('<option>请选择</option>');
+				$.each(data, function (i,item) {
+					$('#debtCity').append('<option value='+item+'>'+item+'</option>');
+			    });
 			},
 			error : function() {
 				alert("获取城市数据失败");
 			}
 		});
 	}
+
+	$(function () {
+	    $('#datetimepicker').datetimepicker({
+	    	minView: "month",//选择日期后，不会再跳转去选择时分秒 
+	    	format: "yyyy-mm-dd",
+	    	language: 'zh-CN',
+	    	autoclose:true
+	    });
+	});
+
 </script>
 </body>
 

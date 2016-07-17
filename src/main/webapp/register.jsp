@@ -51,7 +51,9 @@ pageContext.setAttribute("basePath",basePath);
                         <div class="row">
                             <div class="col-sm-6 b-r">
                                 <p>欢迎您注册快易收债权管理系统会员</p>
-                                <form role="form" action="${basePath }user/register" method="post">
+                                <label >注册失败</label>
+                                
+                                <form role="form" action="${basePath }user/register" method="post" id="signupForm">
                                    <div class="form-group">
                                         <label>会员类型</label> 
                                         <select id="userType" name="userType" class="form-control">
@@ -61,23 +63,23 @@ pageContext.setAttribute("basePath",basePath);
 									</div>
                                     <div class="form-group">
                                         <label>用户名</label>
-                                        <input type="text" id="nickname" name="nickname" placeholder="请输入您用户名" class="form-control" required="">
+                                        <input type="text" id="nickname" name="nickname" placeholder="请输入您用户名" class="form-control"  required="required" aria-required="true">
                                     </div>
                                     <div class="form-group">
                                         <label>密码</label>
-                                        <input type="password" id="userPwd" name="userPwd" placeholder="请输入密码" class="form-control" required="">
+                                        <input type="password" id="userPwd" name="userPwd" placeholder="请输入密码" class="form-control"  required="required" aria-required="true">
                                     </div>
 					                <div class="form-group">
 					                    <label>确认密码</label>
-					                    <input type="password" id="cuserPwd" name="cuserPwd"  class="form-control" placeholder="请再次输入密码" required=""/>
+					                    <input type="password" id="cuserPwd" name="cuserPwd"  class="form-control" placeholder="请再次输入密码" required="required" aria-required="true"/>
 					                </div>
 					                <div class="form-group">
 					                    <label>手机</label>
-					                    <input type="phone" id="userPhone" name="userPhone" class="form-control" placeholder="请输入手机" required=""/>
+					                    <input type="phone" id="userPhone" name="userPhone" class="form-control" onblur="validatorPhone()" placeholder="请输入手机"  required="required" aria-required="true" />
 					                </div>					             
 					                <div class="form-group">
 					                    <label>Email</label>
-					                    <input type="email"  id="userEmail" name="userEmail" class="form-control" placeholder="请输入Email" required=""/>
+					                    <input type="email"  id="userEmail" name="userEmail" class="form-control" onblur="validaEmail()" placeholder="请输入Email"  required="required" aria-required="true"/>
 					                </div>
 					                
                                     <div>
@@ -108,5 +110,14 @@ pageContext.setAttribute("basePath",basePath);
 	<jsp:include page="/common/_footer.jsp"></jsp:include>
     <jsp:include page="/common/_script.jsp"></jsp:include>
 </body>
+<script type="text/javascript">
+function validatorPhone(){
+	
+}
+
+function validaEmail(){
+	
+}
+</script>
 
 </html>

@@ -1,5 +1,7 @@
 package com.credit.web.reward.controller;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 
@@ -10,6 +12,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.credit.web.entity.Reward;
 import com.credit.web.reward.service.RewardWebService;
+import com.credit.web.util.ProvinceEnum;
 import com.gvtv.manage.base.controller.BaseController;
 import com.gvtv.manage.base.util.MozillaUtil;
 import com.gvtv.manage.base.util.PageData;
@@ -78,9 +81,11 @@ public class RewardController extends BaseController{
 	@RequestMapping(value="/saveReward",method =RequestMethod.GET)
 	public ModelAndView toSaveReward() throws Exception{
 		String userId =super.getRequest().getParameter("userId");
+		List<String> provinceList = ProvinceEnum.takeAllValues();//省份list
 		ModelAndView mv = this.getModelAndView();
 		mv.addObject("userId", userId);
-		mv.setViewName("/user/user_credit_disposal_add");
+		mv.addObject("provinceList", provinceList);
+		mv.setViewName("/user/user_reward_add");
 		return mv;
 	}
 	
