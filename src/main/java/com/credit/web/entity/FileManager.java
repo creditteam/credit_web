@@ -8,19 +8,19 @@ public class FileManager {
 	// 文件名称
 	private String fileTitle;
 	// 文件下载路径
-	private String dowloadUrl;
+	private String downloadUrl;
 
 	public FileManager() {
 
 	}
 
 	public FileManager(Integer id, Short fileType, String fileTitle,
-			String dowloadUrl) {
+			String downloadUrl) {
 		super();
 		this.id = id;
 		this.fileType = fileType;
 		this.fileTitle = fileTitle;
-		this.dowloadUrl = dowloadUrl;
+		this.downloadUrl = downloadUrl;
 	}
 
 	public Integer getId() {
@@ -47,12 +47,14 @@ public class FileManager {
 		this.fileTitle = fileTitle;
 	}
 
-	public String getDowloadUrl() {
-		return dowloadUrl;
+	public String getDownloadUrl() {
+		return downloadUrl;
 	}
 
-	public void setDowloadUrl(String dowloadUrl) {
-		this.dowloadUrl = dowloadUrl;
+	public void setDownloadUrl(String downloadUrl) {
+		this.downloadUrl = downloadUrl;
 	}
+
+
 
 }

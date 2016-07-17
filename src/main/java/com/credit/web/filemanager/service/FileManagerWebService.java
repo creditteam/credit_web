@@ -37,9 +37,9 @@ public class FileManagerWebService {
 	 * @return
 	 * @throws Exception
 	 */
-	public List<FileManager> bloglist(PageData pd) throws Exception {
-		List<FileManager> blogList = dao.findForList("FileManagerMapper.list", pd);
-		return blogList;
+	public List<FileManager> fileList(PageData pd) throws Exception {
+		List<FileManager> fileList = dao.findForList("FileManagerMapper.list", pd);
+		return fileList;
 	}
 	
 }
