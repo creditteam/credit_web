@@ -1,1 +1,0 @@
-alter table cr_reward modify images varchar(200);

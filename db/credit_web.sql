@@ -77,7 +77,7 @@ CREATE TABLE `cr_file_manager` (
   `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '序号',
   `file_type` smallint(3) DEFAULT NULL COMMENT '文件类型',
   `file_title` varchar(32) DEFAULT NULL COMMENT '文件名称',
-  `dowload_url` varchar(128) DEFAULT NULL COMMENT '文件下载路径',
+  `download_url` varchar(128) DEFAULT NULL COMMENT '文件下载路径',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 

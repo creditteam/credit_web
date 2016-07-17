@@ -15,5 +15,3 @@ INSERT INTO `cr_credit` VALUES (14, 1, 1, 2000, 1, 1, '10%-20%', '张三', '1555
 INSERT INTO `cr_credit` VALUES (15, 1, 1, 300, 1, 1, '10%-20%', '礼物', '1665552222', '第一债权', '江西', '江西', '135222222', '湛*市雄立房产有限公司', '普通债权', '2016-7-28 14:23:03', NULL, NULL, NULL);
 
 
-alter table cr_credit modify disposal_type varchar(10);
-alter table cr_credit modify debt_proof varchar(200);

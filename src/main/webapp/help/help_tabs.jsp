@@ -462,11 +462,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 															  </div>
 															  <div class="tab-pane fade" id="idea">
 															  
-														      <form class="form-horizontal" action="Feedback?method=3505" method="post">
+				<form class="form-horizontal" action="${basePath }feedback/feedbackSave" method="post" target="_self" onsubmit="validate_form(this)">
 				<div class="col-md-offset-4 col-md-4">
 					<div class="form-group">
 						<p>内容反馈(必填)：</p>
-						<textarea class="form-control" rows="4" name="feedtext" id="inputText" required="required" placeholder="欢迎提出您在使用过程中遇到的问题或宝贵建议（200字以内），感谢您对快易收债权的支持。" autofocus="autofocus"></textarea>	
+						<textarea class="form-control" rows="4" name="context" id="inputText" required="required" placeholder="欢迎提出您在使用过程中遇到的问题或宝贵建议（200字以内），感谢您对快易收债权的支持。" autofocus="autofocus"></textarea>	
 					</div>
 					<div class="form-group">
 						<p>联系方式：</p>
@@ -476,7 +476,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							<span class="input-group-addon">
 								<span class="glyphicon glyphicon-user"></span>
 							</span>
-							<input class="form-control" id="inputName" type="text" name="feedname" placeholder="请输入姓名" required="required"/>
+							<input class="form-control" id="inputName" type="text" name="userName" placeholder="请输入姓名" required="required"/>
 						</div>
 					</div>
 					<div class="form-group err">
@@ -484,7 +484,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							<span class="input-group-addon">
 								<span class="glyphicon glyphicon-earphone"></span>
 							</span>
-							<input class="form-control" id="inputTel" type="tel" name="feedtel" placeholder="请输入手机号码" required="required"/>
+							<input class="form-control" id="inputTel" type="tel" name="phone" placeholder="请输入手机号码" required="required"/>
 						</div>
 					</div>
 					<div class="form-group">
@@ -492,7 +492,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							<span class="input-group-addon">
 								<span class="glyphicon glyphicon-envelope"></span>
 							</span>
-							<input class="form-control" id="inputEmail" type="email" name="feedemail" placeholder="请输入email" required="required" />
+							<input class="form-control" id="inputEmail" type="email" name="userEmail" placeholder="请输入email" required="required" />
 						</div>
 					</div>	
 					<div class="form-group">
@@ -510,6 +510,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	                                       </div>
 			
 
+		<script type="text/javascript">
+	    function validate_form(thisform){
+	       return false;
+	    }
+		
+		</script>
+		
+		
 		
 
 		<!-- JavaScript files placed at the end of the document so the pages load faster

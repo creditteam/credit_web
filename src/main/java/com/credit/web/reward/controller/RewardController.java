@@ -85,14 +85,15 @@ public class RewardController extends BaseController{
 	@RequestMapping(value="/saveReward",method =RequestMethod.GET)
 	public ModelAndView toSaveReward() throws Exception{
 		String userId =super.getRequest().getParameter("userId");
-		ModelAndView mv = this.getModelAndView();
 		List<String> provinceList = ProvinceEnum.takeAllValues();//省份list
+		
+		ModelAndView mv = this.getModelAndView();
 		mv.addObject("provinceList", provinceList);
 		mv.addObject("userId", userId);
 		if(MozillaUtil.isMobileDevice(super.getRequest())){
 			mv.setViewName("/mobile/reward_add");
 		}else{
-			mv.setViewName("/user/user_credit_disposal_add");
+			mv.setViewName("/user/user_reward_add");
 		}
 		return mv;
 	}
