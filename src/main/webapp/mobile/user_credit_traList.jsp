@@ -28,18 +28,23 @@ pageContext.setAttribute("basePath",basePath);
 	<jsp:include page="mobile_top_logo.jsp"></jsp:include>
 	<div class="row">
 	<div class="col-md-12" >
+		<table width="99%">
+			<tr>
+				<td align="left"><h4>&nbsp;&nbsp;债权转让</h4></td>
+				<td align="right"><a href="${basePath }credit/saveCredit?userId=${userInfo.id}&creditType=${creditType}" class="btn btn-success btn-sm" target="_self">发布项目</a></td>
+			</tr>
+		</table>
 		<table class="table table-striped" style=" text-align:center; ">
-		   <caption style="text-align:center;">债权信息</caption>
 		   <thead>
 		      <tr>
 		         <th style="text-align:center;">所在地</th>
 		         <th style="text-align:center;">金额(万元)</th>
 		         <th style="text-align:center;">佣金</th>
-		         <th style="text-align:center;"><a class="btn btn-success" href="javascript:publishInfo();" ><i class="lyphicon glyphicon-plus"></i>发布项目</a></th>
+		         <th style="text-align:center;"></th>
 		      </tr>
 		   </thead>
 		   <tbody id="obltb_body">
-			   <c:forEach items="${pd.data }" var="credit">
+			   <c:forEach items="${pd.data}" var="credit">
 					<tr onclick="javascript:window.location.href = '${basePath}credit/creditDetails?id=${credit.id}'">
 						<td><span class="label label-warning">${credit.debtProvince}</span></td>
 						<td><i class="fa fa-clock-o"></i> ${credit.crAmount}</td>
@@ -63,21 +68,10 @@ pageContext.setAttribute("basePath",basePath);
 	</div>
 	</div>
 	<gvtv:newPage href="${basePath }credit/navlist?creditType=2"></gvtv:newPage>
-	<div style="height:55px;"></div>
+	<div style="height:80px;"></div>
 </div>
 
 <jsp:include page="mobile_footer.jsp"></jsp:include>
 
-<script type="text/javascript">
-function publishInfo(){
-	if('${userInfo}' == null || '${userInfo}' == ''){
-		alert("请先登录后发布!");
-		window.location.href = "${basePath}user/tologin";
-	}else{
-		window.location.href = "${basePath }credit/saveCredit?userId=${userInfo.id}";
-	}
-}
-
-</script>
-  </body>
+</body>
 </html>

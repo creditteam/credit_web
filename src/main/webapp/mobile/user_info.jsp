@@ -57,7 +57,7 @@ pageContext.setAttribute("basePath",basePath);
 	    </table>
 	    <div class="form-group">
 					<div class="col-xs-12">
-						<button type="button" class="btn btn-sm btn-info btn-block" onclick="javascript:history.go(-1)">返回
+						<button type="button" class="btn btn-sm btn-info btn-block" onclick="toUserHome()">返回
 						</button>
 					</div>
 				</div>
@@ -65,5 +65,11 @@ pageContext.setAttribute("basePath",basePath);
     	
 </div>
     <jsp:include page="mobile_footer.jsp"></jsp:include>
+    <script type="text/javascript">
+    	function toUserHome(){
+    		window.location.href = "${basePath}user/tologin";
+    	}
+    </script>
+    
   </body>
 </html>

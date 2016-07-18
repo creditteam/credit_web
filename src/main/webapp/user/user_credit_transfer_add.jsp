@@ -47,11 +47,11 @@ pageContext.setAttribute("basePath",basePath);
                             <div class="form-group">
                                 <label class="col-sm-3 control-label">债权类型：</label>
                                 <div class="col-sm-8">
-                                        <select  name="crType" class="form-control" required="required">
-													<option value="0">银行资产包转让</option>
-													<option value="1">资产公司资产包转让</option>
-													<option value="2">企业单笔债权的转让</option>
-										</select>
+                                    <select  name="crType" class="form-control" required="required">
+										<option value="7">银行资产包转让</option>
+										<option value="8">资产公司资产包转让</option>
+										<option value="9">企业单笔债权的转让</option>
+									</select>
                                 </div>
                             </div>
                             <div class="form-group">

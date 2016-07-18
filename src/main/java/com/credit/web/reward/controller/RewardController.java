@@ -70,9 +70,13 @@ public class RewardController extends BaseController{
 		pd = rewardWebService.pageList(pd);
 		
 		ModelAndView mv = this.getModelAndView();
-//		mv.addObject("rewardList", rewardList);
+		Boolean isMobile = MozillaUtil.isMobileDevice(super.getRequest());
 		mv.addObject("pd", pd);
-		mv.setViewName("/user/user_reward_list");
+		if(isMobile){
+			mv.setViewName("/mobile/user_reward_list");
+		}else{
+			mv.setViewName("/user/user_reward_list");
+		}
 		return mv;
 	}
 	
@@ -120,9 +124,9 @@ public class RewardController extends BaseController{
 		rewardWebService.rewardSave(reward);
 		if(MozillaUtil.isMobileDevice(request)){
 			if(bool){//如果上传保存成功 
-				return "redirect:/reward/navlist";
+				return "redirect:/reward/list";
 			}else{
-				return "redirect:/mobile/reward_add.jsp";
+				return "redirect:/reward/saveReward";
 			}
 		}else{
 			return "redirect:/reward/list";

@@ -44,7 +44,7 @@ pageContext.setAttribute("basePath",basePath);
 	    	<div class="col-md-12">
 	   			<table class="table table-bordered" width="98%" style="margin-top: 10px;border-left: 0px;border-right: 0px;">
 	   				<tbody>
-		   				<tr valign="middle">
+		   				<tr valign="middle" onclick="toDisList()">
 		   					<td align="left" style="border-left: 0px;border-right: 0px;">
 		   						&nbsp;&nbsp;<img alt="" src="${basePath}hplus/img/bj03.png" class="img-circle" style="width: 30px;height:30px;">&nbsp;债权信息
 		   					</td>
@@ -52,7 +52,7 @@ pageContext.setAttribute("basePath",basePath);
 		   						<span><b>></b>&nbsp;&nbsp;</span>
 		   					</td>
 		   				</tr>
-		   				<tr valign="middle">
+		   				<tr valign="middle" onclick="toTraList()">
 		   					<td align="left" style="border-left: 0px;border-right: 0px;">
 		   						&nbsp;&nbsp;<img alt="" src="${basePath}hplus/img/bj02.png" class="img-circle" style="width: 30px;height:30px;">&nbsp;债权转让
 		   					</td>
@@ -60,7 +60,7 @@ pageContext.setAttribute("basePath",basePath);
 		   						<span><b>></b>&nbsp;&nbsp;</span>
 		   					</td>
 		   				</tr>
-		   				<tr valign="middle">
+		   				<tr valign="middle" onclick="toRewardList()">
 		   					<td align="left" style="border-left: 0px;border-right: 0px;" valign="middle">
 		   						&nbsp;&nbsp;<img alt="" src="${basePath }hplus/img/bj10.png" class="img-circle" style="width: 30px;height:30px;">&nbsp;悬赏信息
 		   					</td>
@@ -156,7 +156,15 @@ pageContext.setAttribute("basePath",basePath);
     	function showDetails(){
     		window.location.href = "${basePath}user/userdetails?id=${userInfo.id}";
     	}
-    	
+    	function toDisList(){
+    		window.location.href = "${basePath}credit/list?userId=${userInfo.id}&creditType=1";
+    	}
+    	function toTraList(){
+    		window.location.href = "${basePath}credit/list?userId=${userInfo.id}&creditType=2";
+    	}
+    	function toRewardList(){
+    		window.location.href = "${basePath}reward/list?userId=${userInfo.id}";
+    	}
     	
     	$(function(){
     		$('#upPassForm').bootstrapValidator({

@@ -161,11 +161,20 @@ pageContext.setAttribute("basePath",basePath);
 		<div class="col-xs-4" style="height: 100px; ">
 			<a href="${basePath }user/tologin">
 			<div class="text-center" style="margin: 8 8 8 8; width: 90%; height: 84%; border-radius:15px;">
-				<img alt="" src="${basePath }hplus/img/bj04.png">
-				<p style="color: #666666" >业务咨讯</p>
+				<img alt="" src="${basePath }hplus/img/bj06.png">
+				<p style="color: #666666" >资源查询</p>
 			</div>
 		</a>
 		</div>
+		<div class="col-xs-4" style="height: 100px; ">
+			<a href="${basePath }user/tologin">
+			<div class="text-center" style="margin: 8 8 8 8; width: 90%; height: 84%; border-radius:15px;">
+				<img alt="" src="${basePath }hplus/img/bj11.png">
+				<p style="color: #666666" >用户中心</p>
+			</div>
+		</a>
+		</div>
+		
 	</div>
 	<div class="row">
 		

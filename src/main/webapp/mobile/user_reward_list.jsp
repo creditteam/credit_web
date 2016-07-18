@@ -11,7 +11,7 @@ pageContext.setAttribute("basePath",basePath);
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
   <head>
-    <title>快易收债权管理|悬赏</title>
+    <title>快易收债权管理|线索悬赏</title>
     
 	<meta name="description" content="Worthy a Bootstrap-based, Responsive HTML5 Template">
 	<meta name="author" content="htmlcoder.me">
@@ -29,16 +29,20 @@ pageContext.setAttribute("basePath",basePath);
     <jsp:include page="mobile_top_logo.jsp"></jsp:include>
 	    <div class="row">
 	    	<div class="col-md-12" >
+	    		<table width="99%">
+					<tr>
+						<td align="left"><h4>&nbsp;&nbsp;线索悬赏</h4></td>
+						<td align="right"><a href="${basePath }reward/saveReward?userId=${userInfo.id}" class="btn btn-success btn-sm" target="_self">发布项目</a></td>
+					</tr>
+				</table>
 		    	<table class="table table-striped">
-		    	<caption style="text-align:center;"><h4>线索悬赏</h4></caption>
 				   <thead>
 				      <tr>
 				         <th style="text-align:center;">类型</th>
 				         <th style="text-align:center;">所在地</th>
 				         <th style="text-align:center;">悬赏金额(万元)</th>
 				         <th style="text-align:center;">状态</th>
-				         <th style="text-align:center;"  align="right">
-				         <a class="btn btn-success" href="${basePath}reward/saveReward?userId=${userInfo.id}">发布悬赏</a></th>
+				         <th style="text-align:center;"  align="right"></th>
 				      </tr>
 				   </thead>
 				   <tbody>
@@ -57,7 +61,7 @@ pageContext.setAttribute("basePath",basePath);
 								<c:if test="${reward.rewardStatus==1}">发布中</c:if>
 						        <c:if test="${reward.rewardStatus==0}">已结束</c:if>
 								</span></td>
-								<td  align="right"><button class="btn btn-primary" onclick="showRewardInfo('${reward.id}')"> 查看</button></td>
+								<td  align="right"><button class="btn btn-primary btn-xs" onclick="showRewardInfo('${reward.id}')">查看</button></td>
 							</tr>
 						</c:forEach>
 				   </tbody>

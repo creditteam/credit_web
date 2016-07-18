@@ -53,10 +53,18 @@ public class CreditController extends BaseController{
 		ModelAndView mv = this.getModelAndView();
 		mv.addObject("pd", pd);
 		mv.addObject("creditType", creditType);
-		if(creditType!=null&&creditType.equals("1")){
-			mv.setViewName("/user/user_credit_disposal_list");
-		}else if(creditType.equals("2")){
-			mv.setViewName("/user/user_credit_transfer_list");
+		if(MozillaUtil.isMobileDevice(request)){
+			if(creditType!=null&&creditType.equals("1")){
+				mv.setViewName("/mobile/user_credit_disList");
+			}else if(creditType.equals("2")){
+				mv.setViewName("/mobile/user_credit_traList");
+			}
+		}else{
+			if(creditType!=null&&creditType.equals("1")){
+				mv.setViewName("/user/user_credit_disposal_list");
+			}else if(creditType.equals("2")){
+				mv.setViewName("/user/user_credit_transfer_list");
+			}
 		}
 		return mv;
 	}
@@ -73,7 +81,11 @@ public class CreditController extends BaseController{
 		mv.addObject("creditType", creditType);
 		mv.addObject("provinceList", provinceList);
 		if(MozillaUtil.isMobileDevice(super.getRequest())){
-			mv.setViewName("/mobile/credit_add");
+			if(creditType.equals("1")){
+				mv.setViewName("/mobile/user_credit_disAdd");
+			}else if(creditType.equals("2")){
+				mv.setViewName("/mobile/user_credit_traAdd");
+			}
 		}else{
 			if(creditType.equals("1")){
 				mv.setViewName("/user/user_credit_disposal_add");
@@ -106,14 +118,15 @@ public class CreditController extends BaseController{
 		credit.setCrStatus((short)1);
 		creditWebService.creditSave(credit);
 		
-		if(MozillaUtil.isMobileDevice(request)){
+		if(MozillaUtil.isMobileDevice(super.getRequest())){
 			if(bool){//如果上传保存成功 
-				return "redirect:/credit/navlist?creditType="+credit.getCreditType();
+				return "redirect:/credit/list?creditType="+credit.getCreditType();
 			}else{
-				return "redirect:/mobile/credit_add.jsp";
+				return "redirect:/mobile/saveCredit?creditType="+credit.getCreditType();
 			}
 		}else{
 			return "redirect:/credit/list?creditType="+credit.getCreditType();
+			
 		}
 	}
 	

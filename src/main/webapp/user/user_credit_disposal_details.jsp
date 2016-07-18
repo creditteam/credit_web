@@ -45,11 +45,11 @@
                   		    <dl class="dl-horizontal">
                                     <dt>债权类型：</dt>
                                     <dd>
-                                    			    <c:if test="${credit.crType==0 }">个人债权</c:if>
-													<c:if test="${credit.crType==1 }">企业债权</c:if>
-													<c:if test="${credit.crType==2 }">预期贷款</c:if>
-													<c:if test="${credit.crType==3 }">固定资产</c:if>
-													<c:if test="${credit.crType==4 }">国际债权</c:if>
+                                    			    <c:if test="${credit.crType==1 }">个人债权</c:if>
+													<c:if test="${credit.crType==2 }">企业债权</c:if>
+													<c:if test="${credit.crType==3 }">预期贷款</c:if>
+													<c:if test="${credit.crType==4 }">固定资产</c:if>
+													<c:if test="${credit.crType==5 }">国际债权</c:if>
                                     </dd>
                                 </dl>
                   

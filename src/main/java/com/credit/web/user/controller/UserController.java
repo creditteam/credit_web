@@ -72,7 +72,7 @@ public class UserController extends BaseController{
 	}
 	
 	/**
-	 * 调整到登录页面
+	 * 转到登录页面
 	 * @return
 	 * @throws Exception
 	 */

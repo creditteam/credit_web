@@ -89,7 +89,7 @@
 					<div class="col-xs-12">
 						<label class="col-sm-2 control-label">所在城市:</label>
 						<div class="col-sm-4">
-							<select id="province" onchange="loadCity(this)" name="province" class="form-control">
+							<select id="province" onchange="loadCity()" name="province" class="form-control">
 								<option value="">请选择</option>
 								<c:forEach items="${provinceList}" var="prov">
 									<option>${prov}</option>
@@ -128,7 +128,7 @@
 						<label class="col-sm-2 control-label">描述:</label>
 						<div class="col-sm-10">
 							<textarea id="description" name="description" class="form-control"
-								rows="3" style="margin: 0px 0px 30px 0px !important;"></textarea>
+								rows="3" style="margin: 0px 0px 30px 0px !important;" maxlength="150"></textarea>
 						</div>
 					</div>
 				</div>
@@ -176,8 +176,8 @@
 		}
 	}
 	
-	function loadCity(obj) {
-		var proName = $(obj).val();
+	function loadCity() {
+		var proName = $("#province").val();
 		$.ajax({
 			url : '${basePath}credit/loadCity',
 			async : false,
@@ -281,7 +281,7 @@ $(document).ready(function () {
             	validators: {
             		stringLength: {
             			min: 0,
-            			max: 8,
+            			max: 150,
                         message: '输入文字超过限制'
                     }
                 }

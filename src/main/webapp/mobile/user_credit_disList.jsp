@@ -29,8 +29,13 @@ pageContext.setAttribute("basePath",basePath);
 	<jsp:include page="mobile_top_logo.jsp"></jsp:include>
 	<div class="row">
 		<div class="col-md-12" >
+			<table width="99%">
+				<tr>
+					<td align="left"><h4>&nbsp;&nbsp;债权处置</h4></td>
+					<td align="right"><a href="${basePath }credit/saveCredit?userId=${userInfo.id}&creditType=${creditType}" class="btn btn-success btn-sm" target="_self">发布项目</a></td>
+				</tr>
+			</table>
 			<table class="table table-striped" style=" text-align:center; ">
-			   <caption style="text-align:center;">债权信息</caption>
 			   <thead>
 			      <tr>
 			         <th style="text-align:center;">所在地</th>
@@ -63,7 +68,8 @@ pageContext.setAttribute("basePath",basePath);
 			   </tbody>
 			</table>
 		</div>
-		<gvtv:newPage href="${basePath }credit/navlist?creditType=1"></gvtv:newPage>
+		<gvtv:newPage href="${basePath }credit/list?creditType=1"></gvtv:newPage>
+		<div class="hr-line-dashed" style="padding-bottom: 40px;"></div>
 	</div>
 </div>
 
