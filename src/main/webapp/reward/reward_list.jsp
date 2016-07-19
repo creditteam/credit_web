@@ -79,24 +79,6 @@ pageContext.setAttribute("basePath",basePath);
 											<td><a href="${basePath }reward/navRewardDetails?id=${reward.id}">查看</a></td>
 										</tr>
 										</c:forEach>
-										<%--
-										<tr>
-											<td><span class="label label-warning">找车</span></td>
-											<td>2016-07-08 11:22:33</td>
-											<td>张三</td>
-											<td>5.00金额(万元)</td>
-											<td><span class="label label-warning">招标中</span></td>
-											<td><a href="${basePath }reward/reward_details.jsp">查看</a></td>
-										</tr>
-										<tr>
-											<td><span class="label label-warning">找房产</span></td>
-											<td>2016-07-08 11:22:33</td>
-											<td>湛*市</td>
-											<td>11.00金额(万元)</td>
-											<td><span class="label label-warning">招标中</span></td>
-											<td><a href="${basePath }reward/reward_details.jsp">查看</a></td>
-										</tr>
-										 --%>
 									</tbody>
 								</table>
 							</div>
@@ -105,7 +87,7 @@ pageContext.setAttribute("basePath",basePath);
 					
 					 <!-- page begin-->
 					 <div class="hr-line-dashed"></div>
-					 <gvtv:newPage href="reward/navlist"></gvtv:newPage>
+					 <gvtv:newPage href="reward/navlist" pageType="pc"></gvtv:newPage>
 				</div>
 			</div>
 		   </div>

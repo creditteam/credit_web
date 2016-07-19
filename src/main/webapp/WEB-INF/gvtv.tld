@@ -23,12 +23,7 @@
 			<rtexprvalue>true</rtexprvalue>
 		</attribute>
 		<attribute>
-		   <name>pageNo</name>
-			<required>false</required>
-			<rtexprvalue>false</rtexprvalue>
-		</attribute>
-		<attribute>
-		   <name>pageSize</name>
+		   <name>pageType</name>
 			<required>false</required>
 			<rtexprvalue>false</rtexprvalue>
 		</attribute>
