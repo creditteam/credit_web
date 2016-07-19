@@ -35,7 +35,7 @@ pageContext.setAttribute("basePath",basePath);
 		         <th style="text-align:center;">所在地</th>
 		         <th style="text-align:center;">金额(万元)</th>
 		         <th style="text-align:center;">佣金</th>
-		         <th style="text-align:center;"><a class="btn btn-success" href="javascript:publishInfo();" ><i class="lyphicon glyphicon-plus"></i>发布项目</a></th>
+		         <th style="text-align:center;"></th>
 		      </tr>
 		   </thead>
 		   <tbody id="obltb_body">

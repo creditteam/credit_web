@@ -95,7 +95,7 @@ public class RewardController extends BaseController{
 		mv.addObject("provinceList", provinceList);
 		mv.addObject("userId", userId);
 		if(MozillaUtil.isMobileDevice(super.getRequest())){
-			mv.setViewName("/mobile/reward_add");
+			mv.setViewName("/mobile/user_reward_add");
 		}else{
 			mv.setViewName("/user/user_reward_add");
 		}

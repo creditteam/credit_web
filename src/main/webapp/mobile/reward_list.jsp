@@ -37,24 +37,23 @@ pageContext.setAttribute("basePath",basePath);
 				         <th style="text-align:center;">所在地</th>
 				         <th style="text-align:center;">悬赏金额(万元)</th>
 				         <th style="text-align:center;">状态</th>
-				         <th style="text-align:center;"  align="right">
-				         <a class="btn btn-success" href="${basePath}reward/saveReward?userId=${userInfo.id}">发布悬赏</a></th>
+				         <th style="text-align:center;"></th>
 				      </tr>
 				   </thead>
 				   <tbody>
 						<c:forEach items="${pd.data}" var="reward">
 						    <tr>
-								<td><span class="label label-warning">
+								<td align="center"><span class="label label-warning">
 								    <c:if test="${reward.rewardType==1}">找人</c:if>
 			                        <c:if test="${reward.rewardType==2}">找车辆</c:if>
 			                        <c:if test="${reward.rewardType==3}">找房产</c:if>
 			                        <c:if test="${reward.rewardType==4}">找应收款</c:if>
 			                        <c:if test="${reward.rewardType==5}">其他</c:if>
 								</span></td>
-								<td>${reward.province }</td>
-								<td>${reward.rewardAmount }</td>
-								<td><span class="label label-warning">
-								<c:if test="${reward.rewardStatus==1}">发布中</c:if>
+								<td align="center">${reward.province}</td>
+								<td align="center">${reward.rewardAmount}</td>
+								<td align="center"><span class="label label-warning">
+								<c:if test="${reward.rewardStatus==1}">悬赏中</c:if>
 						        <c:if test="${reward.rewardStatus==0}">已结束</c:if>
 								</span></td>
 								<td  align="right"><button class="btn btn-primary" onclick="showRewardInfo('${reward.id}')"> 查看</button></td>

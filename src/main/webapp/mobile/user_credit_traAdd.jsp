@@ -24,7 +24,23 @@ pageContext.setAttribute("basePath",basePath);
     <script src="${basePath}hplus/js/bootstrap.min.js"></script>
     <script src="${basePath}hplus/js/bootstrap-datetimepicker.js"></script>
     <script src="${basePath}hplus/js/bootstrap-datetimepicker.zh-CN.js"></script>
-
+<style type="text/css">
+	.navbar-nav>li>a {
+		padding-top: 10px;
+		padding-bottom: 10px;
+	}
+	.navbar-brand {
+		height: 38px;
+		padding-top: 9px;
+	}
+	.navbar {
+		min-height: 38px;
+	}
+	.navbar-toggle {
+		margin-top: 4px;
+		margin-bottom: 4px;
+	}
+</style>
 </head>
 
 <body class="gray-bg top-navigation">

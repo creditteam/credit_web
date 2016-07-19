@@ -15,18 +15,17 @@ pageContext.setAttribute("basePath",basePath);
 	<meta name="description" content="Worthy a Bootstrap-based, Responsive HTML5 Template">
 	<meta name="author" content="htmlcoder.me">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
-	<style type="text/css">
-		html,body {
-			height: 100%;
-		}
-	</style>
   </head>
 	<jsp:include page="mobile_meta.jsp"></jsp:include>
-	<link href="${basePath }hplus/css/kkpager_orange.css" rel="stylesheet">
 <body>
 
 <div class="main-container" style="height:100%">
 	<jsp:include page="mobile_top_logo.jsp"></jsp:include>
+	<nav class="navbar navbar-default" role="navigation">
+	   <div class="navbar-header">
+	      <a class="navbar-brand" href="javascript:goBack()">&lt;返回</a>
+	   </div>
+	</nav>
 	<div class="row">
 		<div class="col-md-12" >
 			<table width="99%">
@@ -74,6 +73,27 @@ pageContext.setAttribute("basePath",basePath);
 </div>
 
 <jsp:include page="mobile_footer.jsp"></jsp:include>
-
+<style type="text/css">
+	.navbar-nav>li>a {
+		padding-top: 10px;
+		padding-bottom: 10px;
+	}
+	.navbar-brand {
+		height: 38px;
+		padding-top: 9px;
+	}
+	.navbar {
+		min-height: 38px;
+	}
+	.navbar-toggle {
+		margin-top: 4px;
+		margin-bottom: 4px;
+	}
+	</style>
+	<script type="text/javascript">
+		function goBack(){
+			window.location.href = "${basePath }user/tologin";
+		}
+	</script>
 </body>
 </html>

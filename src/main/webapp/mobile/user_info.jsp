@@ -19,8 +19,12 @@ pageContext.setAttribute("basePath",basePath);
   
   <body>
   <div class="main-container" style="height: 100%">
-  
     <jsp:include page="mobile_top_logo.jsp"></jsp:include><br/>
+    <nav class="navbar navbar-default" role="navigation">
+		   <div class="navbar-header">
+		      <a class="navbar-brand" href="javascript:toUserHome()">&lt;返回</a>
+		   </div>
+		</nav>
    	<div class="col-sm-12">
 	    <table width="99%" style="line-height: 40px">
 	         <tr>
@@ -55,16 +59,26 @@ pageContext.setAttribute("basePath",basePath);
 	         	<td colspan="2" height="20px;"></td>
 	         </tr>
 	    </table>
-	    <div class="form-group">
-					<div class="col-xs-12">
-						<button type="button" class="btn btn-sm btn-info btn-block" onclick="toUserHome()">返回
-						</button>
-					</div>
-				</div>
-		</div>
     	
 </div>
     <jsp:include page="mobile_footer.jsp"></jsp:include>
+    <style type="text/css">
+	.navbar-nav>li>a {
+		padding-top: 10px;
+		padding-bottom: 10px;
+	}
+	.navbar-brand {
+		height: 38px;
+		padding-top: 9px;
+	}
+	.navbar {
+		min-height: 38px;
+	}
+	.navbar-toggle {
+		margin-top: 4px;
+		margin-bottom: 4px;
+	}
+</style>
     <script type="text/javascript">
     	function toUserHome(){
     		window.location.href = "${basePath}user/tologin";

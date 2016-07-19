@@ -27,6 +27,11 @@ pageContext.setAttribute("basePath",basePath);
   <body>
     <div class="main-container" style="height:100%">
     <jsp:include page="mobile_top_logo.jsp"></jsp:include>
+    	<nav class="navbar navbar-default" role="navigation">
+		   <div class="navbar-header">
+		      <a class="navbar-brand" href="javascript:goBack()">&lt;返回</a>
+		   </div>
+		</nav>
 	    <div class="row">
 	    	<div class="col-md-12" >
 	    		<table width="99%">
@@ -35,19 +40,18 @@ pageContext.setAttribute("basePath",basePath);
 						<td align="right"><a href="${basePath }reward/saveReward?userId=${userInfo.id}" class="btn btn-success btn-sm" target="_self">发布项目</a></td>
 					</tr>
 				</table>
-		    	<table class="table table-striped">
+		    	<table class="table table-striped" style="text-align: center">
 				   <thead>
 				      <tr>
 				         <th style="text-align:center;">类型</th>
 				         <th style="text-align:center;">所在地</th>
 				         <th style="text-align:center;">悬赏金额(万元)</th>
 				         <th style="text-align:center;">状态</th>
-				         <th style="text-align:center;"  align="right"></th>
 				      </tr>
 				   </thead>
 				   <tbody>
 						<c:forEach items="${pd.data}" var="reward">
-						    <tr>
+						    <tr onclick="showRewardInfo('${reward.id}')">
 								<td><span class="label label-warning">
 								    <c:if test="${reward.rewardType==1}">找人</c:if>
 			                        <c:if test="${reward.rewardType==2}">找车辆</c:if>
@@ -61,7 +65,6 @@ pageContext.setAttribute("basePath",basePath);
 								<c:if test="${reward.rewardStatus==1}">发布中</c:if>
 						        <c:if test="${reward.rewardStatus==0}">已结束</c:if>
 								</span></td>
-								<td  align="right"><button class="btn btn-primary btn-xs" onclick="showRewardInfo('${reward.id}')">查看</button></td>
 							</tr>
 						</c:forEach>
 				   </tbody>
@@ -105,7 +108,23 @@ pageContext.setAttribute("basePath",basePath);
 	<div class="hr-line-dashed"></div>
 	<gvtv:newPage href="reward/navlist"></gvtv:newPage>
 <jsp:include page="mobile_footer.jsp"></jsp:include>
-
+<style type="text/css">
+	.navbar-nav>li>a {
+		padding-top: 10px;
+		padding-bottom: 10px;
+	}
+	.navbar-brand {
+		height: 38px;
+		padding-top: 9px;
+	}
+	.navbar {
+		min-height: 38px;
+	}
+	.navbar-toggle {
+		margin-top: 4px;
+		margin-bottom: 4px;
+	}
+	</style>
 <script type="text/javascript">
 function showRewardInfo(id){
 	 
@@ -166,6 +185,9 @@ function showRewardInfo(id){
 			 $("#xuansModal").modal("show");
 		 }
 	 });
+}
+function goBack(){
+	window.location.href = "${basePath }user/tologin";
 }
 </script>
   </body>
