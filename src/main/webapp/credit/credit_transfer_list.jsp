@@ -83,7 +83,7 @@ pageContext.setAttribute("basePath",basePath);
 												
 								 <div class="hr-line-dashed"></div>
 								  <!-- page begin-->
-			                     <gvtv:newPage href="${basePath }credit/navlist?creditType=${creditType }"></gvtv:newPage>
+			                     <gvtv:newPage href="${basePath }credit/navlist?creditType=${creditType }" pageType="pc"></gvtv:newPage>
 								 <!-- page end -->
 							</div>
 						</div>

@@ -63,8 +63,8 @@ pageContext.setAttribute("basePath",basePath);
 				</table>
 			</div>
 	    </div>
+<gvtv:newPage href="${basePath}reward/navlist" pageType="mobile"></gvtv:newPage>
     </div>
-
 	<div class="modal fade" id="xuansModal" tabindex="-1" role="dialog"
 		aria-labelledby="xuansModalLabel" aria-hidden="true">
 		<div class="modal-dialog">
@@ -97,8 +97,6 @@ pageContext.setAttribute("basePath",basePath);
 			</div>
 		</div>
 	</div>
-	<div class="hr-line-dashed"></div>
-	<gvtv:newPage href="reward/navlist"></gvtv:newPage>
 <jsp:include page="mobile_footer.jsp"></jsp:include>
 
 <script type="text/javascript">

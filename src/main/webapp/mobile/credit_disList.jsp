@@ -22,7 +22,6 @@ pageContext.setAttribute("basePath",basePath);
 	</style>
   </head>
 	<jsp:include page="mobile_meta.jsp"></jsp:include>
-	<link href="${basePath }hplus/css/kkpager_orange.css" rel="stylesheet">
 <body>
 
 <div class="main-container" style="height:100%">
@@ -30,7 +29,7 @@ pageContext.setAttribute("basePath",basePath);
 	<div class="row">
 		<div class="col-md-12" >
 			<table class="table table-striped" style=" text-align:center; ">
-			   <caption style="text-align:center;">债权信息</caption>
+			   <caption style="text-align:center;">债权处置</caption>
 			   <thead>
 			      <tr>
 			         <th style="text-align:center;">所在地</th>
@@ -63,7 +62,7 @@ pageContext.setAttribute("basePath",basePath);
 			   </tbody>
 			</table>
 		</div>
-		<gvtv:newPage href="${basePath }credit/navlist?creditType=1"></gvtv:newPage>
+		<gvtv:newPage href="${basePath }credit/navlist?creditType=1" pageType="mobile"></gvtv:newPage>
 	</div>
 </div>
 

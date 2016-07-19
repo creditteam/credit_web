@@ -99,14 +99,13 @@ pageContext.setAttribute("basePath",basePath);
 					<input type="hidden" id="xslsg14" />
 				</div>
 				<div class="modal-footer">
-					<button type="button" class="btn btn-primary" data-dismiss="modal"
-						style="font-size: 16px">关闭</button>
+					<button type="button" class="btn btn-primary" data-dismiss="modal" style="font-size: 16px">关闭</button>
 				</div>
 			</div>
 		</div>
 	</div>
 	<div class="hr-line-dashed"></div>
-	<gvtv:newPage href="reward/navlist"></gvtv:newPage>
+	<gvtv:newPage href="${basePath}reward/navlist" pageType="mobile"></gvtv:newPage>
 <jsp:include page="mobile_footer.jsp"></jsp:include>
 <style type="text/css">
 	.navbar-nav>li>a {

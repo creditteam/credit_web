@@ -53,7 +53,7 @@ public class PageTag extends BodyTagSupport {
 		html.append("<li><a href='javascript:void(0)' onclick='pageSubmit("+(pageInfo.getPageNo()-1)+")'>&laquo;</a></li>");
 		for (int i=first;i<=end;i++)
 		{
-			html.append("<li><a href='javascript:void(0)' onclick='pageSubmit("+i+")'>1</a></li>");
+			html.append("<li><a href='javascript:void(0)' onclick='pageSubmit("+i+")'>"+i+"</a></li>");
 		}
 		html.append("<li><a href='javascript:void(0)' onclick='pageSubmit("+(pageInfo.getPageNo()+1)+")'>&raquo;</a></li>");
 		html.append("</ul>");

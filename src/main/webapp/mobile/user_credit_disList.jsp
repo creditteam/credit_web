@@ -67,7 +67,7 @@ pageContext.setAttribute("basePath",basePath);
 			   </tbody>
 			</table>
 		</div>
-		<gvtv:newPage href="${basePath }credit/list?creditType=1"></gvtv:newPage>
+		<gvtv:newPage href="${basePath }credit/list?creditType=1" pageType="mobile"></gvtv:newPage>
 		<div class="hr-line-dashed" style="padding-bottom: 40px;"></div>
 	</div>
 </div>

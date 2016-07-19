@@ -21,7 +21,8 @@
 		 create_date,
 		 end_date,
 		 open_date,
-		 agreed_date 
+		 agreed_date,
+		 credit_type 
 	</sql>
 
 	<resultMap type="Credit" id="CreditResultMap">
@@ -44,6 +45,7 @@
 		<result column="end_date" property="endDate"/>
 		<result column="open_date" property="openDate"/>
 		<result column="agreed_date" property="agreedDate"/>
+		<result column="credit_type" property="creditType"/>
 	</resultMap>
     
     <!-- 根据id获取债权信息 -->
@@ -60,6 +62,15 @@
 		where u.cr_status != -1
 		<if test="userId != null and userId != ''">
 		and user_id=#{userId}
+		</if>
+		<if test="crStatus != null and crStatus != ''">
+		and cr_status=#{crStatus}
+		</if>
+		<if test="crType != null and crType != ''">
+		and cr_type=#{crType}
+		</if>
+		<if test="creditType != null and creditType != ''">
+		and credit_type=#{creditType}
 		</if>
 		<if test="contactName!=nul and contactName!=''">
 		and contact_name like CONCAT(CONCAT('%',#{contactName}),'%')
@@ -78,6 +89,9 @@
 		</if>
 		<if test="crType != null and crType != ''">
 		and cr_type=#{crType}
+		</if>
+		<if test="creditType != null and creditType != ''">
+		and credit_type=#{creditType}
 		</if>
 		<if test="contactName!=nul and contactName!=''">
 		and contact_name like CONCAT(CONCAT('%',#{contactName}),'%')
@@ -105,7 +119,8 @@
 			 create_date,
 			 end_date,
 			 open_date,
-			 agreed_date
+			 agreed_date,
+			 credit_type
 		) values (
 			#{userId},
 			#{crType},
@@ -124,7 +139,8 @@
 			#{createDate},
 			#{endDate},
 			#{openDate},
-			#{agreedDate}
+			#{agreedDate},
+			#{creditType}
 		)
 	</insert>	
 

@@ -103,7 +103,7 @@ pageContext.setAttribute("basePath",basePath);
 		<a href="${basePath }credit/navlist?creditType=1">
 			<div class="text-center" style="margin: 8 8 8 8; width: 90%; height: 84%; ; border-radius:15px;">
 				<img alt="" src="${basePath }hplus/img/bj03.png">
-				<p style="color: #666666" >债权转让 </p>
+				<p style="color: #666666" >债权处置</p>
 			</div>
 		</a>
 		</div>
@@ -111,7 +111,7 @@ pageContext.setAttribute("basePath",basePath);
 		<a href="${basePath }credit/navlist?creditType=2">
 			<div class="text-center" style="margin: 8 8 8 8; width: 90%; height: 84%; ; border-radius:15px;">
 				<img alt="" src="${basePath }hplus/img/bj03.png">
-				<p style="color: #666666" >债权处置 </p>
+				<p style="color: #666666" >债权转让 </p>
 			</div>
 		</a>
 		</div>

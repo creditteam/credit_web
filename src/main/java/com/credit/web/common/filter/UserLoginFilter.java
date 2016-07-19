@@ -1,6 +1,7 @@
 package com.credit.web.common.filter;
 
 import java.io.IOException;
+
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
 import javax.servlet.FilterConfig;
@@ -10,6 +11,8 @@ import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+
+import com.credit.web.entity.User;
 /**
  * 用户登录过滤器
  * @author huixiong 
@@ -49,7 +52,7 @@ public class UserLoginFilter implements Filter {
         String path = request.getRequestURI();
         
         // 从session里取员工工号信息
-        String userInfo = (String) session.getAttribute("userInfo");
+        User userInfo = (User) session.getAttribute("userInfo");
 
         /*创建类Constants.java，里面写的是无需过滤的页面
         for (int i = 0; i < Constants.NoFilter_Pages.length; i++) {

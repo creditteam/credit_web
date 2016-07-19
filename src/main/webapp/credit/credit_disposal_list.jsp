@@ -81,7 +81,7 @@ pageContext.setAttribute("basePath",basePath);
 					
 					<div class="hr-line-dashed"></div>
 					 <!-- page begin -->
-                     <gvtv:newPage href="${basePath }credit/navlist?creditType=1"></gvtv:newPage>
+                     <gvtv:newPage href="${basePath }credit/navlist?creditType=1" pageType="pc"></gvtv:newPage>
 					 <!-- page end -->
 					 <%--
 					 <div id="kkpager"></div>

@@ -29,7 +29,7 @@ pageContext.setAttribute("basePath",basePath);
 	<div class="row">
 	<div class="col-md-12" >
 		<table class="table table-striped" style=" text-align:center; ">
-		   <caption style="text-align:center;">债权信息</caption>
+		   <caption style="text-align:center;">债权转让</caption>
 		   <thead>
 		      <tr>
 		         <th style="text-align:center;">所在地</th>
@@ -62,7 +62,7 @@ pageContext.setAttribute("basePath",basePath);
 		</table>
 	</div>
 	</div>
-	<gvtv:newPage href="${basePath }credit/navlist?creditType=2"></gvtv:newPage>
+	<gvtv:newPage href="${basePath }credit/navlist?creditType=2" pageType="mobile"></gvtv:newPage>
 	<div style="height:55px;"></div>
 </div>
 
