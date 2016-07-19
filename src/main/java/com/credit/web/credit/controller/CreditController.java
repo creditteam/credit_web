@@ -191,6 +191,49 @@ public class CreditController extends BaseController{
 	}
 	
 	/**
+	 * 查询债权详情(已登录)
+	 * @return
+	 * @throws Exception
+	 */
+	@RequestMapping(value="/creditInfo",method =RequestMethod.GET)
+	public ModelAndView creditInfo() throws Exception{
+		String id =super.getRequest().getParameter("id");
+		if(id!=null&&id!=""){
+			Credit credit = creditWebService.findById(Integer.valueOf(id));
+			User user = null;
+			if(null != credit){
+				user = userWerService.getUserById(credit.getUserId());
+				/*credit.setDebtName(SensitiveUtil.shieldName(credit.getDebtName()));
+				credit.setDebtPhone(SensitiveUtil.shieldPhone(credit.getDebtPhone()));
+				credit.setContactName(SensitiveUtil.shieldName(credit.getContactName()));
+				credit.setContactNumber(SensitiveUtil.shieldPhone(credit.getContactNumber()));*/
+				if(StringUtils.isNotEmpty(credit.getDisposalType())){
+					String[] types = credit.getDisposalType().split(",");
+					credit.setDisTypes(types);
+				}
+			}
+			if(null == user){
+				user = new User();
+				user.setNickname("未找到债权人信息");
+			}else{
+				/*user.setNickname(SensitiveUtil.shieldName(user.getNickname()));
+				user.setUserPhone(SensitiveUtil.shieldPhone(user.getUserPhone()));*/
+			}
+			ModelAndView mv = this.getModelAndView();
+			mv.addObject("credit", credit);
+			mv.addObject("user",user);
+			if(MozillaUtil.isMobileDevice(super.getRequest())){//如果是手机
+				mv.setViewName("/mobile/credit_details");
+			}else{
+				mv.setViewName("/credit/credit_disposal_detail");
+			}
+			
+			return mv;
+		}
+		return null;
+	}
+	
+	/**
 	 * 查询债权列表
 	 * @return
 	 * @throws Exception
