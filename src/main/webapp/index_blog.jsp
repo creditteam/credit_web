@@ -52,4 +52,4 @@ pageContext.setAttribute("basePath", basePath);
 		</div>
 	</div>
 </div>
-<b />
+<br/>

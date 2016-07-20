@@ -4,8 +4,10 @@
 	<div class="col-md-12">
 		<div class="ibox float-e-margins">
 			<div class="ibox-content">
+			     <%--
 				<h2>合作伙伴</h2>
 				<div class="hr-line-dashed"></div>
+				 --%>
 				<div class="search-result">
 					<table>
 						<tr>
@@ -19,6 +21,5 @@
 				</div>
 			</div>
 		</div>
-
 	</div>
 </div>
