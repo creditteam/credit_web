@@ -23,7 +23,7 @@ pageContext.setAttribute("basePath", basePath);
 	                        </div>
                         </c:forEach>
                         <div class="hr-line-dashed"></div>
-                        <gvtv:newPage href="${basePath }blog/list?blogType=1"></gvtv:newPage>
+                        <gvtv:newPage href="${basePath }blog/list?blogType=1" pageType="pc"></gvtv:newPage>
                     </div>
                 </div>
             </div>

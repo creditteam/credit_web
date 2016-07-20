@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.credit.web.entity.User;
+import com.credit.web.util.Constants;
 /**
  * 用户登录过滤器
  * @author huixiong 
@@ -54,32 +55,36 @@ public class UserLoginFilter implements Filter {
         // 从session里取员工工号信息
         User userInfo = (User) session.getAttribute("userInfo");
 
-        /*创建类Constants.java，里面写的是无需过滤的页面
+        /*创建类Constants.java，里面写的是无需过滤的页面*/
         for (int i = 0; i < Constants.NoFilter_Pages.length; i++) {
-
             if (path.indexOf(Constants.NoFilter_Pages[i]) > -1) {
-                chain.doFilter(servletRequest, servletResponse);
+            	chain.doFilter(request, response);
                 return;
             }
         }
-        */
         
-        // 登陆页面无需过滤
-//        if(path.indexOf("/login.jsp") > -1
-//          ||path.indexOf("index_main.jsp")>-1) {
-//            chain.doFilter(servletRequest, servletResponse);
-//            return;
-//        }
+        // 过滤无序验证的文件
+		if (path.indexOf(".css")>-1
+				||path.contains(".css") 
+				|| path.contains(".js") 
+				|| path.contains(".jpg")
+				|| path.contains(".JPG") 
+				|| path.contains(".png")
+				|| path.contains(".ttf")
+				|| path.contains(".woff")
+				|| path.contains(".html")) {
+			chain.doFilter(request, response);
+			return;
+		}
 
         // 判断如果没有取到员工信息,就跳转到登陆页面
-//        if (userInfo == null || "".equals(userInfo)) {
-//            // 跳转到登陆页面
-//        	response.sendRedirect(basePath+"/user/tologin");
-//        } else {
-//            // 已经登陆,继续此次请求
-//            chain.doFilter(request, response);
-//        }
-        chain.doFilter(request, response);
+        if (userInfo == null || "".equals(userInfo)) {
+            // 跳转到登陆页面
+        	response.sendRedirect(basePath+"/user/tologin");
+        } else {
+            // 已经登陆,继续此次请求
+            chain.doFilter(request, response);
+        }
 	}
 
 	/**

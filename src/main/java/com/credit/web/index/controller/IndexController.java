@@ -38,7 +38,9 @@ public class IndexController extends BaseController{
 		pd.put("from", 0);
 		pd.put("size", 6);
 		
+		pd.put("creditType", 1);
 		List<Credit> creditdisposalList = creditWebService.creditlist(pd);//债权信息
+		pd.put("creditType", 2);
 		List<Credit> credittransferList = creditWebService.creditlist(pd);//债权转让
 		
 		//行业动态、业务文章 
