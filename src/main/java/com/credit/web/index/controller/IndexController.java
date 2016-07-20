@@ -76,4 +76,21 @@ public class IndexController extends BaseController{
 		
 		return mv;
 	}
+	
+	@RequestMapping(value="/product")
+	public String to_product(){
+		return "/mobile/product";
+	}
+	@RequestMapping(value="/cooperate")
+	public String to_cooperate(){
+		return "/mobile/cooperate";
+	}
+	@RequestMapping(value="/zixin")
+	public String to_zixin(){
+		return "/mobile/zixin_index";
+	}
+	@RequestMapping(value="/flow")
+	public String to_handflow(){
+		return "/mobile/handFlow";
+	}
 }

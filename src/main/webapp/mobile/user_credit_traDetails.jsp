@@ -10,7 +10,7 @@ pageContext.setAttribute("basePath",basePath);
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
   <head>
-    <title>快易收债权管理|债权信息</title>
+    <title>快易收债权管理|债权转让信息</title>
     
 	<meta name="description" content="Worthy a Bootstrap-based, Responsive HTML5 Template">
 	<meta name="author" content="htmlcoder.me">
@@ -33,7 +33,7 @@ pageContext.setAttribute("basePath",basePath);
 			      <div class="modal-content">
 			         <div class="modal-header">
 			            <h4 class="modal-title" id="oblModalLabel" >
-			               	债权详细信息
+			               	债权转让详细信息
 			            </h4>
 			         </div>
 			         <div class="modal-body">
@@ -41,21 +41,13 @@ pageContext.setAttribute("basePath",basePath);
 						  债权基本信息
 						</span>
 						<span class="list-group-item" >债权类型：
-							<c:if test="${credit.crType==1 }">个人债权</c:if>
-						    <c:if test="${credit.crType==2 }">企业债权</c:if>
-						    <c:if test="${credit.crType==3 }">预期贷款</c:if>
-						    <c:if test="${credit.crType==4 }">固定资产</c:if>
-						    <c:if test="${credit.crType==5 }">资产包</c:if>
-						    <c:if test="${credit.crType==6 }">国际债权</c:if></span>
+						    <c:if test="${credit.crType==7 }">银行资产包转让</c:if>
+						    <c:if test="${credit.crType==8 }">资产公司资产包转让</c:if>
+						    <c:if test="${credit.crType==9 }">企业单笔债权的转让</c:if>
+						</span>
 						<span class="list-group-item" >债务人名称：${credit.debtName}</span>
 						<span class="list-group-item" >所在省份：${credit.debtProvince}</span>
 						<span class="list-group-item" >所在城市：${credit.debtCity}</span>
-						<span class="list-group-item" >处置方式：
-							<c:forEach items="${credit.disTypes}" var="item">
-								<c:if test="${item eq '1'}">诉讼</c:if>
-								<c:if test="${item eq '2'}">催收</c:if>
-								<c:if test="${item eq '3'}">债权转让</c:if>
-							</c:forEach></span>
 						<span class="list-group-item" style=" color: #f0841d">债权金额：${credit.crAmount} (万元)</span>
 						<span class="list-group-item" >佣金范围：${credit.commisionRange}</span>
 						<span class="list-group-item" >发布日期：<fmt:formatDate value="${credit.openDate}" type="date" dateStyle="long"/></span>
@@ -74,7 +66,7 @@ pageContext.setAttribute("basePath",basePath);
 			
 			         </div>
 			         <div class="modal-footer">
-			            <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="javascript:history.go(-1)">
+			            <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="javascript:goBack()">
 			              	 返回
 			            </button>
 			         </div>
@@ -87,6 +79,10 @@ pageContext.setAttribute("basePath",basePath);
 </div>
 
 <jsp:include page="mobile_footer.jsp"></jsp:include>
-
+<script type="text/javascript">
+function goBack(){
+	window.location.href = "${basePath}credit/list?userId=${userInfo.id}&creditType=2";
+}
+</script>
 </body>
 </html>

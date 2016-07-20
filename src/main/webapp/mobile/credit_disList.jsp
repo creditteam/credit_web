@@ -58,11 +58,14 @@ pageContext.setAttribute("basePath",basePath);
 							</td>
 						</tr>
 					</c:forEach>
-			   
+			   	<tr>
+			   		<td colspan="4"><gvtv:newPage href="${basePath }credit/navlist?creditType=1" pageType="mobile"></gvtv:newPage></td>
+			   	</tr>
 			   </tbody>
 			</table>
+		
 		</div>
-		<gvtv:newPage href="${basePath }credit/navlist?creditType=1" pageType="mobile"></gvtv:newPage>
+		<div style="height:50px"></div>
 	</div>
 </div>
 
