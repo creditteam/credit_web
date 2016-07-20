@@ -40,8 +40,6 @@ public class RewardController extends BaseController{
 	public ModelAndView navlist(HttpServletRequest request) throws Exception{
 		String userId =request.getParameter("userId");
 		PageData pd =super.getPageData();
-		pd.put("from", 0);
-		pd.put("size", 10);
 		pd = rewardWebService.pageList(pd);
 		
 		ModelAndView mv = this.getModelAndView();

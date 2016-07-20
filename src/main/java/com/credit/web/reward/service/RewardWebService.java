@@ -50,15 +50,19 @@ public class RewardWebService {
 			pd.put("keyword", "%" + search + "%");
 		}
 		int totalNum = (int) dao.findForObject("RewardMapper.count", pd);
-		
-		pd.put("from", pd.getInteger("from"));
-		pd.put("size", pd.getInteger("size"));
-		List<Reward> pds = dao.findForList("RewardMapper.list", pd);
-		
-		PageUtil pu = new PageUtil(totalNum,1,10);
+				
+		Integer pageNo=  pd.getInteger("pageNo");
+		PageUtil pu = new PageUtil(totalNum,pageNo,10);
 		PageInfo pageInfo = pu.getPageInfo();
 		pageInfo.setRangeSize(20);
-		
+		if(pageNo==0){
+			pd.put("from",0);
+			pd.put("size", 10);	
+		}else{
+			pd.put("from",(pageInfo.getPageNo()-1)*pageInfo.getPageSize());
+			pd.put("size", pageInfo.getPageNo()*pageInfo.getPageSize());	
+		}
+		List<Reward> pds = dao.findForList("RewardMapper.list", pd);
 		result.put("pageInfo", pageInfo);
 		result.put(Const.NDATA, pds);
 		return result;

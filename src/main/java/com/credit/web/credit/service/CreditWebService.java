@@ -49,12 +49,8 @@ public class CreditWebService {
 			pd.put("from",(pageInfo.getPageNo()-1)*pageInfo.getPageSize());
 			pd.put("size", pageInfo.getPageNo()*pageInfo.getPageSize());	
 		}
-
-		
 		List<Credit> pds = dao.findForList("CreditMapper.list", pd);
 		
-		
-	
 		result.put("pageInfo", pageInfo);
 		result.put(Const.NDATA, pds);
 		return result; 

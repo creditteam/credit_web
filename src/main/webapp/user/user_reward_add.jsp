@@ -47,11 +47,11 @@ pageContext.setAttribute("basePath",basePath);
                                 <label class="col-sm-3 control-label">悬赏类型：</label>
                                 <div class="col-sm-8">
                                         <select  name="rewardType" class="form-control" required="required" aria-required="true">
-													<option value="0">个人债权</option>
-													<option value="1">企业债权</option>
-													<option value="2">预期贷款</option>
-													<option value="3">固定资产</option>
-													<option value="4">国际债权</option>
+													<option value="0">找人</option>
+													<option value="1">找车辆</option>
+													<option value="2">找房产</option>
+													<option value="3">找应收款</option>
+													<option value="4">其他</option>
 										</select>
                                 </div>
                             </div>

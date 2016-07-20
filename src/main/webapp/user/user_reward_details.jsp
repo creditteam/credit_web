@@ -40,11 +40,11 @@
                     <dl class="dl-horizontal">
                                     <dt>悬赏类型：</dt>
                                     <dd>
-                                    <c:if test="${reward.rewardType==0}">个人债权</c:if>
-                                    <c:if test="${reward.rewardType==1}">企业债权</c:if>
-                                    <c:if test="${reward.rewardType==2}">预期贷款</c:if>
-                                    <c:if test="${reward.rewardType==3}">固定资产</c:if>
-                                    <c:if test="${reward.rewardType==4}">国际债权</c:if>
+											    <c:if test="${reward.rewardType==0}">找人</c:if>
+			                                    <c:if test="${reward.rewardType==1}">找车辆</c:if>
+			                                    <c:if test="${reward.rewardType==2}">找房产</c:if>
+			                                    <c:if test="${reward.rewardType==3}">找应收款</c:if>
+			                                    <c:if test="${reward.rewardType==4}">其他</c:if>
                                     </dd>
                                 </dl>
                   

@@ -87,7 +87,7 @@ pageContext.setAttribute("basePath",basePath);
 					
 					 <!-- page begin-->
 					 <div class="hr-line-dashed"></div>
-					 <gvtv:newPage href="reward/navlist" pageType="pc"></gvtv:newPage>
+					 <gvtv:newPage href="${basePath }reward/navlist" pageType="pc"></gvtv:newPage>
 				</div>
 			</div>
 		   </div>
