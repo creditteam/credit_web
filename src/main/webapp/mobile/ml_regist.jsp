@@ -119,7 +119,7 @@
 			 type: "POST", //用POST方式传输
 			 dataType: "json", //数据格式:JSON
 			 url: '${basePath}user/sendPhone', //目标地址
-			 data: {"phone":phone},
+			 data: {"phoneNum":phone},
 			 error: function (XMLHttpRequest, textStatus, errorThrown) {
 				 alert("手机号码填写有误或系统繁忙，请再次尝试");
 			 },

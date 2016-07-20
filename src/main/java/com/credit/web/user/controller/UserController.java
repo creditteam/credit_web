@@ -377,7 +377,7 @@ public class UserController extends BaseController{
 				map.put("result", "false");
 			}
 		}
-		map.put("phoneInt", "phoneInt");
+		map.put("phoneInt", phoneInt);
 		return map;
 	}
 	
