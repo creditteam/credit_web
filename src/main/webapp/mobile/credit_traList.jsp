@@ -57,27 +57,17 @@ pageContext.setAttribute("basePath",basePath);
 						</td>
 					</tr>
 				</c:forEach>
-		   
+		   		<tr>
+			   		<td colspan="4"><gvtv:newPage href="${basePath }credit/navlist?creditType=2" pageType="mobile"></gvtv:newPage></td>
+			   	</tr>
 		   </tbody>
 		</table>
 	</div>
 	</div>
-	<gvtv:newPage href="${basePath }credit/navlist?creditType=2" pageType="mobile"></gvtv:newPage>
 	<div style="height:55px;"></div>
 </div>
 
 <jsp:include page="mobile_footer.jsp"></jsp:include>
 
-<script type="text/javascript">
-function publishInfo(){
-	if('${userInfo}' == null || '${userInfo}' == ''){
-		alert("请先登录后发布!");
-		window.location.href = "${basePath}user/tologin";
-	}else{
-		window.location.href = "${basePath }credit/saveCredit?userId=${userInfo.id}";
-	}
-}
-
-</script>
   </body>
 </html>

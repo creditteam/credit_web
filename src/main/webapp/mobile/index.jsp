@@ -133,10 +133,10 @@ pageContext.setAttribute("basePath",basePath);
 			</div>
 		</a></div>
 		<div class="col-xs-4" style="height: 100px; ">
-			<a href="${basePath }mobile/chuzhi.jsp">
+			<a href="${basePath }product">
 			<div class="text-center" style="margin: 8 8 8 8; width: 90%; height: 84%; border-radius:15px;">
 				<img alt="" src="${basePath }hplus/img/bj05.png">
-				<p style="color: #666666" >服务产品</p>
+				<p style="color: #666666" >处置方式</p>
 			</div>
 		</a>
 		</div>
@@ -152,17 +152,17 @@ pageContext.setAttribute("basePath",basePath);
 	</div>
 	<div class="row">
 		<div class="col-xs-4" style="height: 100px; ">
-		<a href="${basePath }mobile/swhz.jsp">
+		<a href="${basePath }cooperate">
 			<div class="text-center" style="margin: 8 8 8 8; width: 90%; height: 84%; border-radius:15px;">
 				<img alt="" src="${basePath }hplus/img/bj02.png">
 				<p style="color: #666666" >商务合作</p>
 			</div>
 		</a></div>
 		<div class="col-xs-4" style="height: 100px; ">
-			<a href="${basePath }user/tologin">
+			<a href="${basePath }zixin">
 			<div class="text-center" style="margin: 8 8 8 8; width: 90%; height: 84%; border-radius:15px;">
 				<img alt="" src="${basePath }hplus/img/bj06.png">
-				<p style="color: #666666" >资源查询</p>
+				<p style="color: #666666" >资信查询</p>
 			</div>
 		</a>
 		</div>

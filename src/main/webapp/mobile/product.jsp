@@ -49,7 +49,7 @@ body {background:url(<%=basePath%>hplus/img/bg.gif) top center no-repeat; backgr
     		<div class="col-md-12 text-center">
     		<span class="glyphicon glyphicon-chevron-down" style="color: #ffa800"></span><br>
     		<span class="glyphicon glyphicon-chevron-down" style="color: #ffa800"></span><br>
-    			<a href="<%=basePath%>mobile/liucheng.jsp" class="btn btn-success" style="width: 50%">查看处置流程</a><br><br><br><br>
+    			<a href="<%=basePath%>flow" class="btn btn-success" style="width: 50%">查看处置流程</a><br><br><br><br>
     		</div>
     		
     	</div>
@@ -68,7 +68,7 @@ body {background:url(<%=basePath%>hplus/img/bg.gif) top center no-repeat; backgr
     		<div class="col-md-12 text-center">
     		<span class="glyphicon glyphicon-chevron-down" style="color: #ffa800"></span><br>
     		<span class="glyphicon glyphicon-chevron-down" style="color: #ffa800"></span><br>
-    			<a id="apdivfr" name="apdiv" type="button" id="casbutton" class="btn btn-success" style="width:50%;" onclick="checkUser()">免费发布信息</a><br><br><br><br><br>
+    			<!-- <a id="apdivfr" name="apdiv" type="button" id="casbutton" class="btn btn-success" style="width:50%;" onclick="checkUser()">免费发布信息</a><br><br><br><br><br> -->
     		</div>
     		
     	</div>
@@ -76,16 +76,5 @@ body {background:url(<%=basePath%>hplus/img/bg.gif) top center no-repeat; backgr
     
  <jsp:include page="mobile_footer.jsp"></jsp:include>
 
-<script type="text/javascript">
-function checkUser() {
-	if (${user == null} || ${user.userid < 0}) {
-		alert("请先登录系统，再点击招标");
-		window.location.href="om?method=410";
-		return false;
-	} else {window.location.href="ObligMsg?method=3000";}
-	
-	return true;
-}
-</script>
   </body>
 </html>

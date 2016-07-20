@@ -111,6 +111,7 @@
 								</td>
 								<td>
 									<input class="btn btn-primary" id="regiohonebtn" type="button" value="发送验证码" onclick="sendPhone()"/>
+									<input type="hidden" id="phoneNum"/>
 								</td>
 							</tr>
 							<tr>
@@ -152,9 +153,46 @@ function sendPhone(){
 	$("#registerZm").removeAttr("disabled");
 	InterValObj = window.setInterval(SetRemainTime, 1000); //启动计时器，1秒执行一次
 	//调用发送短信
+	$.ajax({
+		 type: "POST", //用POST方式传输
+		 dataType: "json", //数据格式:JSON
+		 url: '${basePath}user/sendPhone', //目标地址
+		 data: {"phone":phone},
+		 error: function (XMLHttpRequest, textStatus, errorThrown) {
+			 alert("手机号码填写有误或系统繁忙，请再次尝试");
+		 },
+		 success: function (msg){
+			 if (msg.result = "true") {
+				 $("#phoneNum").val(msg.phoneInt);
+			} else {
+				alert("短信发送失败!");
+			}
+		 }
+	 });
 }
 
 function subBackInof(){
+	var phoneNum = $("#phoneNum").val();
+	var registerZm = $("#registerZm").val();
+	var phone = $("#userPhone").val();
+	var newpassowrd = $("#newpassowrd").val();
+	
+	if(phone == ''){
+		alert('请输入手机号');
+		return false;
+	}
+	if(phoneNum ==''){
+		alert("请输入验证码!");
+		return false;
+	}
+	if(phoneNum !='' && phoneNum != registerZm){
+		alert("验证码输入错误!");
+		return false;
+	}
+	if(newpassowrd == ''){
+		alert("请输入新密码!");
+		return false;
+	}
 	$("#getBackForm").submit();
 }
 
@@ -171,12 +209,6 @@ function SetRemainTime() {
         $("#regiohonebtn").attr("disabled", "disabled");
     }
 };
-$(function(){
-	var result = '${result}';
-	if(result != ''){
-		alert(result);
-	}
-});
 </script>
 </body>
 </html>

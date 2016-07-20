@@ -67,6 +67,12 @@ pageContext.setAttribute("basePath",basePath);
 								</span></td>
 							</tr>
 						</c:forEach>
+						<tr>
+							<td colspan="4">
+								<div class="hr-line-dashed"></div>
+								<gvtv:newPage href="${basePath}reward/list?userId=${userInfo.id}" pageType="mobile"></gvtv:newPage>
+							</td>
+						</tr>
 				   </tbody>
 				</table>
 			</div>
@@ -104,8 +110,6 @@ pageContext.setAttribute("basePath",basePath);
 			</div>
 		</div>
 	</div>
-	<div class="hr-line-dashed"></div>
-	<gvtv:newPage href="${basePath}reward/navlist" pageType="mobile"></gvtv:newPage>
 <jsp:include page="mobile_footer.jsp"></jsp:include>
 <style type="text/css">
 	.navbar-nav>li>a {

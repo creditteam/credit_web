@@ -58,6 +58,7 @@
 								</td>
 								<td>
 									<input class="btn btn-primary" id="regiohonebtn" type="button" value="发送验证码" onclick="registPhone()"/>
+									<input type="hidden" id="phoneNum"/>
 								</td>
 							</tr>
 						</table>
@@ -114,7 +115,22 @@
 		}
 		$("#registerZm").removeAttr("disabled");
 		InterValObj = window.setInterval(SetRemainTime, 1000); //启动计时器，1秒执行一次
-		
+		$.ajax({
+			 type: "POST", //用POST方式传输
+			 dataType: "json", //数据格式:JSON
+			 url: '${basePath}user/sendPhone', //目标地址
+			 data: {"phone":phone},
+			 error: function (XMLHttpRequest, textStatus, errorThrown) {
+				 alert("手机号码填写有误或系统繁忙，请再次尝试");
+			 },
+			 success: function (msg){
+				 if (msg.result == "true") {
+					 $("#phoneNum").val(msg.phoneInt);
+				} else {
+					alert("短信发送失败!");
+				}
+			 }
+		 });
 	}
 	function SetRemainTime() {
 	    if (curCount == 0) {                
@@ -177,16 +193,8 @@
 	                    remote: {//ajax验证。server result:{"valid",true or false} 向服务发送当前input name值，获得一个json数据。例表示正确：{"valid",true}  
 	                         url: '${basePath }user/validaEmail',//验证地址
 	                         message: '该邮箱已注册',//提示消息
-	                         delay :  1000,//每输入一个字符，就发ajax请求，服务器压力还是太大，设置2秒发送一次ajax
+	                         delay :  1000,//每输入一个字符，就发ajax请求，设置1秒发送一次ajax
 	                         type: 'POST'//请求方式
-	                         /**自定义提交数据，默认值提交当前input value
-	                          *  data: function(validator) {
-	                               return {
-	                                   password: $('[name="passwordNameAttributeInYourForm"]').val(),
-	                                   whatever: $('[name="whateverNameAttributeInYourForm"]').val()
-	                               };
-	                            }
-	                          */
 	                     }
 	                }
 	            },
@@ -216,11 +224,17 @@
 	            	validators: {
 	            		notEmpty: {
 	                        message: '验证码不能为空'
+	                    },
+	                    callback: {
+	                        message: '验证码错误',
+	                        callback: function(value, validator) {
+	                        	var phoneNum = $("#phoneNum").val();
+	                            if(phoneNum != null && phoneNum != ''){
+		                            return value == phoneNum;
+	                            }
+	                        }
 	                    }
 	            	}
-	            },
-	            submitHandler: function (validator, form, submitButton) {
-	                alert("submit");
 	            }
 	        }
 	    });

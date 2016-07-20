@@ -117,14 +117,17 @@ public class RewardController extends BaseController{
 		reward.setCreateTime(new Date());
 		String path = request.getSession().getServletContext().getRealPath("/");
 		Boolean bool = false;
-		if(null!= reward.getUploadFile()){
+		if(0 != reward.getUploadFile().getSize()){
 			bool = uploadFileService.uploadFile(path+"uploadFile\\reward", reward.getUploadFile(), reward.getUploadFile().getOriginalFilename());
+			reward.setImages(path+"uploadFile\\credit\\"+reward.getUploadFile().getOriginalFilename());
+		}else{
+			bool = true;
 		}
-		
+		reward.setCreateTime(new Date());
 		rewardWebService.rewardSave(reward);
 		if(MozillaUtil.isMobileDevice(request)){
 			if(bool){//如果上传保存成功 
-				return "redirect:/reward/list";
+				return "redirect:/reward/list?userId="+reward.getUserId();
 			}else{
 				return "redirect:/reward/saveReward";
 			}

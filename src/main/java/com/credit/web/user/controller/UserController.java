@@ -16,11 +16,14 @@ import org.springframework.web.servlet.ModelAndView;
 import com.alibaba.fastjson.JSONArray;
 import com.credit.web.entity.User;
 import com.credit.web.user.service.UserWebService;
+import com.credit.web.util.AliSendMsg;
+import com.credit.web.util.DataUtil;
 import com.gvtv.manage.base.controller.BaseController;
 import com.gvtv.manage.base.util.AjaxUtil;
 import com.gvtv.manage.base.util.MD5;
 import com.gvtv.manage.base.util.MozillaUtil;
 import com.gvtv.manage.base.util.PageData;
+import com.taobao.api.ApiException;
 
 @Controller
 @RequestMapping(value="/user")
@@ -354,6 +357,28 @@ public class UserController extends BaseController{
 		//}
 		return mv;
 		
+	}
+	
+	/**
+	 * 发送手机验证码
+	 * @param phoneNum
+	 * @return
+	 */
+	@RequestMapping(value="/sendPhone")
+	@ResponseBody
+	public Map<String , Object> sendPhoneValidNum(String phoneNum){
+		int phoneInt = DataUtil.nextInt();
+		Map<String , Object> map = new HashMap<String , Object>();
+		if (phoneNum != null) {
+			try{
+				AliSendMsg.SendMsg(String.valueOf(phoneInt), phoneNum, "SMS_7505878");
+				map.put("result", "true");
+			}catch(ApiException a){
+				map.put("result", "false");
+			}
+		}
+		map.put("phoneInt", "phoneInt");
+		return map;
 	}
 	
 }

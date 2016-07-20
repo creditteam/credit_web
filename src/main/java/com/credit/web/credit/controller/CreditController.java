@@ -110,22 +110,24 @@ public class CreditController extends BaseController{
 		String creditType =request.getParameter("creditType");
 		String path = request.getSession().getServletContext().getRealPath("/");
 		Boolean bool = false;
-		if(null!= credit.getUploadFile()){
+		if(0 != credit.getUploadFile().getSize()){
 			bool = uploadFileService.uploadFile(path+"uploadFile\\credit", credit.getUploadFile(), credit.getUploadFile().getOriginalFilename());
+			credit.setDebtProof(path+"uploadFile\\credit\\"+credit.getUploadFile().getOriginalFilename());
+		}else{
+			bool = true;
 		}
-		credit.setDebtProof(path+"uploadFile\\credit\\"+credit.getUploadFile().getOriginalFilename());
 		credit.setCreateDate(new Date());
 		credit.setCrStatus((short)1);
 		creditWebService.creditSave(credit);
 		
 		if(MozillaUtil.isMobileDevice(super.getRequest())){
 			if(bool){//如果上传保存成功 
-				return "redirect:/credit/list?creditType="+credit.getCreditType();
+				return "redirect:/credit/list?creditType="+credit.getCreditType()+"&userId="+credit.getUserId();
 			}else{
-				return "redirect:/mobile/saveCredit?creditType="+credit.getCreditType();
+				return "redirect:/credit/saveCredit?userId="+credit.getUserId()+"&creditType="+credit.getCreditType();
 			}
 		}else{
-			return "redirect:/credit/list?creditType="+credit.getCreditType();
+			return "redirect:/credit/list?creditType="+credit.getCreditType()+"&userId="+credit.getUserId();
 			
 		}
 	}
@@ -223,7 +225,11 @@ public class CreditController extends BaseController{
 			mv.addObject("credit", credit);
 			mv.addObject("user",user);
 			if(MozillaUtil.isMobileDevice(super.getRequest())){//如果是手机
-				mv.setViewName("/mobile/credit_details");
+				if(null != credit.getCreditType() && credit.getCreditType() == 1){
+					mv.setViewName("/mobile/user_credit_disDetails");
+				}else if(null != credit.getCreditType() && credit.getCreditType() == 2){
+					mv.setViewName("/mobile/user_credit_traDetails");
+				}
 			}else{
 				mv.setViewName("/credit/credit_disposal_detail");
 			}
