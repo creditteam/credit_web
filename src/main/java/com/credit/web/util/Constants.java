@@ -30,7 +30,8 @@ public class Constants {
 			"/disposal.jsp",
 			"/reward/navlist",
 			"/blog/list",
-			"/blog/details"
+			"/blog/details",
+			"/filemanager/list"
 			};
 }
   

@@ -15,11 +15,11 @@ pageContext.setAttribute("basePath",basePath);
 			<p class="text-center" style="color: #A1ACB4;">
 			   <c:if test="${empty userInfo }">
 				<a href="${basePath }user/tologin" style="margin-bottom: 1px; color: #A1ACB4;">登录</a>
-				<a href="${basePath }register.jsp" style="margin-bottom: 1px; color: #A1ACB4;">免费注册</a>
+				<a href="${basePath }user/toRegister" style="margin-bottom: 1px; color: #A1ACB4;">免费注册</a>
 				</c:if>
 				<c:if test="${not empty userInfo }">
 				欢迎你，${userInfo.userEmail } &nbsp;&nbsp;&nbsp;
-				<a  href="${basePath }user/user_main.jsp" target="_blank" style="color: #A1ACB4">用户中心</a>
+				<a  href="${basePath }user/index" target="_blank" style="color: #A1ACB4">用户中心</a>
 				| <a  href="${basePath }/user/loginout" target="_blank" style="color: #A1ACB4">退出</a>
 				</c:if> 
 				| <a  href="${basePath }help/help.jsp"  target="_blank" style="color: #A1ACB4">帮助中心</a> 

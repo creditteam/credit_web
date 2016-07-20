@@ -33,6 +33,26 @@ public class UserController extends BaseController{
 	private UserWebService userWebService;
 	
 	/**
+	 * 退出用户登录
+	 * @return
+	 */
+	@RequestMapping(value="/index")
+	public ModelAndView index(){
+		HttpServletRequest request= this.getRequest();
+		User user=(User) request.getSession().getAttribute("userInfo");
+		ModelAndView mv = this.getModelAndView();
+		Boolean isMobile = MozillaUtil.isMobileDevice(request);
+		if(user!=null){
+			if(isMobile){
+				mv.setViewName("/mobile/userHome.jsp");
+			}else{
+				mv.setViewName("/user/user_main.jsp");
+			}
+		}
+		return mv;
+	}
+	
+	/**
 	 * 用户登录
 	 * @return
 	 * @throws Exception
@@ -54,11 +74,7 @@ public class UserController extends BaseController{
 			Boolean isMobile = MozillaUtil.isMobileDevice(request);
 			if(user!=null){
 				request.getSession().setAttribute("userInfo",user);
-				if(isMobile){
-					mv.setViewName("redirect:/mobile/userHome.jsp");
-				}else{
-					mv.setViewName("redirect:/user/user_main.jsp");
-				}
+				mv.setViewName("redirect:/user/index");
 			}else{
 				mv.addObject("result","用户名或密码错误");
 				if(isMobile){
