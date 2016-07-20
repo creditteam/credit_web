@@ -70,6 +70,7 @@ public class UserLoginFilter implements Filter {
 				|| path.contains(".jpg")
 				|| path.contains(".JPG") 
 				|| path.contains(".png")
+				|| path.contains(".gif")
 				|| path.contains(".ttf")
 				|| path.contains(".woff")
 				|| path.contains(".html")) {
