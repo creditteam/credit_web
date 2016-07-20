@@ -74,7 +74,11 @@ public class UserController extends BaseController{
 			Boolean isMobile = MozillaUtil.isMobileDevice(request);
 			if(user!=null){
 				request.getSession().setAttribute("userInfo",user);
-				mv.setViewName("redirect:/user/index");
+				if(isMobile){
+					mv.setViewName("redirect:/mobile/userHome.jsp");
+				}else{
+					mv.setViewName("redirect:/user/index");
+				}
 			}else{
 				mv.addObject("result","用户名或密码错误");
 				if(isMobile){

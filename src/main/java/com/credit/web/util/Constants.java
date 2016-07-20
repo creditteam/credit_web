@@ -26,11 +26,21 @@ public class Constants {
 			"/register.jsp",
 			"/help/help.jsp",
 			"/index",
+			"/user/expertList",
+			"/user/passBack",
+			"/user/login",
+			"/product",
+			"/cooperate",
+			"/zixin",
+			"/flow",
+			"/credit/creditDetails",
 			"/credit/navlist",
 			"/disposal.jsp",
 			"/reward/navlist",
+			"/reward/navRewardDetails",
 			"/blog/list",
 			"/blog/details",
+			"/blog/mlList",
 			"/filemanager/list"
 			};
 }
