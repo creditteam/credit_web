@@ -2,7 +2,8 @@
 SQLyog v10.2 
 MySQL - 5.6.21-log : Database - credit_web
 *********************************************************************
-*/
+*/
+
 
 /*!40101 SET NAMES utf8 */;
 
@@ -39,7 +40,7 @@ CREATE TABLE `cr_credit` (
   `cr_type` smallint(3) DEFAULT NULL COMMENT '债权类型',
   `cr_amount` double DEFAULT NULL COMMENT '债权金额',
   `cr_status` smallint(3) DEFAULT NULL COMMENT '债权转让',
-  `disposal_type` smallint(3) DEFAULT NULL COMMENT '处置方式',
+  `disposal_type` varchar(16) DEFAULT NULL,
   `commision_range` varchar(32) DEFAULT NULL COMMENT '佣金范围',
   `contact_name` varchar(32) DEFAULT NULL COMMENT '联系人',
   `contact_number` varchar(32) DEFAULT NULL COMMENT '联系电话',
@@ -47,14 +48,15 @@ CREATE TABLE `cr_credit` (
   `debt_province` varchar(32) DEFAULT NULL COMMENT '债权方省份',
   `debt_city` varchar(32) DEFAULT NULL COMMENT '债权方城市',
   `debt_phone` varchar(32) DEFAULT NULL COMMENT '债权方电话',
-  `debt_proof` varchar(256) DEFAULT NULL COMMENT '债权方凭证',
+  `debt_proof` varchar(256) DEFAULT NULL,
   `description` varchar(256) DEFAULT NULL COMMENT '债权方描述',
   `create_date` datetime DEFAULT NULL COMMENT '创建日期',
   `end_date` datetime DEFAULT NULL COMMENT '结束日期',
   `open_date` datetime DEFAULT NULL COMMENT '开启日期',
   `agreed_date` datetime DEFAULT NULL COMMENT '约定日期',
+  `credit_type` smallint(3) DEFAULT NULL COMMENT '债权类型(1债权处置，2债权转让)',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8;
 
 /*Table structure for table `cr_feedback` */
 
@@ -67,7 +69,7 @@ CREATE TABLE `cr_feedback` (
   `user_email` varchar(32) DEFAULT NULL COMMENT '反馈者邮件',
   `context` text COMMENT '反馈内容',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 
 /*Table structure for table `cr_file_manager` */
 
@@ -77,9 +79,9 @@ CREATE TABLE `cr_file_manager` (
   `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '序号',
   `file_type` smallint(3) DEFAULT NULL COMMENT '文件类型',
   `file_title` varchar(32) DEFAULT NULL COMMENT '文件名称',
-  `download_url` varchar(128) DEFAULT NULL COMMENT '文件下载路径',
+  `download_url` varchar(128) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=34 DEFAULT CHARSET=utf8;
 
 /*Table structure for table `cr_reward` */
 
@@ -94,14 +96,14 @@ CREATE TABLE `cr_reward` (
   `car_brand` varchar(32) DEFAULT NULL COMMENT '车牌',
   `province` varchar(32) DEFAULT NULL COMMENT '省份',
   `city` varchar(32) DEFAULT NULL COMMENT '城市',
-  `images` varchar(64) DEFAULT NULL COMMENT '照片',
+  `images` varchar(256) DEFAULT NULL,
   `create_time` datetime DEFAULT NULL COMMENT '创建日期',
   `end_time` datetime DEFAULT NULL COMMENT '悬赏有效日期',
   `description` varchar(256) DEFAULT NULL COMMENT '悬赏描述',
   `reward_status` smallint(3) DEFAULT NULL COMMENT '悬赏状态',
   `user_id` int(11) DEFAULT NULL COMMENT '登录用户编号',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 /*Table structure for table `cr_user` */
 
@@ -120,7 +122,7 @@ CREATE TABLE `cr_user` (
   `description` text COMMENT '用户描述',
   `user_status` smallint(3) DEFAULT NULL COMMENT '用户状态',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=utf8;
 
 /*Table structure for table `sys_button` */
 

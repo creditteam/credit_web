@@ -49,7 +49,7 @@ pageContext.setAttribute("basePath",basePath);
                             <div class="col-sm-6 b-r">
                                 <h3 class="m-t-none m-b">登录</h3>
                                 <p>欢迎登录本站(⊙o⊙)</p>
-                                ${result }
+                                <span class="label label-warning">${result }</span><br/>
                                 <form role="form" action="${basePath }user/login" method="post" target="_self">
                                     <div class="form-group">
                                         <label>用户名</label>

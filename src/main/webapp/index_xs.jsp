@@ -1,7 +1,7 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!-- 用户心声 -->
-<div class="row" class="text-center">
+<div class="row">
 	<div class="col-md-12">
 		<div id="myCarousel2" class="carousel slide" data-ride="carousel">
 			<!-- 轮播（Carousel）指标 -->
@@ -14,19 +14,19 @@
 			<!-- 轮播（Carousel）项目 -->
 			<div class="carousel-inner">
 				<div class="item active">
-					<img src="hplus/img/ad_24.jpg" width="100%" alt="First slide">
+					<img src="hplus/img/ad_31.png" width="100%" alt="First slide">
 					<div class="carousel-caption"></div>
 				</div>
 				<div class="item">
-					<img src="hplus/img/ad_25.jpg" width="100%" alt="Second slide">
+					<img src="hplus/img/ad_32.png" width="100%" alt="Second slide">
 					<div class="carousel-caption"></div>
 				</div>
 				<div class="item">
-					<img src="hplus/img/ad_26.jpg" width="100%" alt="Third slide">
+					<img src="hplus/img/ad_33.png" width="100%" alt="Third slide">
 					<div class="carousel-caption"></div>
 				</div>
 				<div class="item">
-					<img src="hplus/img/ad_27.jpg" width="100%" alt="fourth slide">
+					<img src="hplus/img/ad_34.png" width="100%" alt="fourth slide">
 					<div class="carousel-caption"></div>
 				</div>
 			</div>

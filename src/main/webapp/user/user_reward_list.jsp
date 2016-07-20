@@ -78,7 +78,10 @@ pageContext.setAttribute("basePath",basePath);
 											<td><fmt:formatDate value="${reward.createTime }" pattern="yyyy-MM-dd HH:mm:ss"/></td>
 											<td>${reward.province }</td>
 											<td>${reward.rewardAmount }金额(万元)</td>
-											<td><span class="label label-warning">${reward.rewardStatus }</span></td>
+											<td><span class="label label-warning">
+											<c:if test="${reward.rewardStatus==1}">发布中</c:if>
+									        <c:if test="${reward.rewardStatus==0}">已结束</c:if>
+											</span></td>
 											<td><a href="${basePath }reward/rewardDetails?id=${reward.id}" target="_self">查看</a></td>
 										</tr>
 										</c:forEach>
@@ -86,11 +89,8 @@ pageContext.setAttribute("basePath",basePath);
 								</table>
 
 							    <div class="hr-line-dashed"></div>
-							    <!-- 
-			                    <jsp:include page="/common/_pagination.jsp"></jsp:include>
-			                     -->
-			                     
-			                     <gvtv:newPage href="${basePath }reward/list"></gvtv:newPage>
+							    <!-- 分页信息 -->			                     
+			                    <gvtv:newPage href="${basePath }reward/list" pageType="pc"></gvtv:newPage>
 								</div>
                 </div>
             </div>

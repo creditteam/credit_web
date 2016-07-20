@@ -44,10 +44,12 @@ public class UserController extends BaseController{
 		Boolean isMobile = MozillaUtil.isMobileDevice(request);
 		if(user!=null){
 			if(isMobile){
-				mv.setViewName("/mobile/userHome.jsp");
+				mv.setViewName("/mobile/userHome");
 			}else{
-				mv.setViewName("/user/user_main.jsp");
+				mv.setViewName("/user/user_main");
 			}
+		}else{
+			mv.setViewName("redirect:/index");
 		}
 		return mv;
 	}

@@ -63,18 +63,19 @@ pageContext.setAttribute("basePath",basePath);
 										<c:forEach items="${pd.data }" var="credit">
 											<tr>
 											    <td><span class="label label-warning">
-												    <c:if test="${credit.crType==1 }">个人债权</c:if>
-												    <c:if test="${credit.crType==2 }">企业债权</c:if>
-												    <c:if test="${credit.crType==3 }">预期贷款</c:if>
-												    <c:if test="${credit.crType==4 }">固定资产</c:if>
-												    <c:if test="${credit.crType==5 }">资产包</c:if>
-												    <c:if test="${credit.crType==6 }">国际债权</c:if>
+													    <c:if test="${credit.crType==7 }">银行资产包转让</c:if>
+													    <c:if test="${credit.crType==8 }">资产公司资产包转让</c:if>
+													    <c:if test="${credit.crType==9 }">企业单笔债权的转让</c:if>
 											    </span></td>
 												<td><span class="label label-warning">${credit.debtProvince }</span></td>
 												<td>${credit.debtName }</td>
 												<td><i class="fa fa-clock-o"></i> ${credit.crAmount }</td>
 												<td class="text-navy"><i class="fa fa-level-up"></i>${credit.commisionRange}</td>
-												<td><span class="label label-warning">${credit.crStatus }</span></td>
+												<td><span class="label label-warning">
+												<c:if test="${credit.crStatus==1 }">招标中</c:if>
+												<c:if test="${credit.crStatus==2 }">处置中</c:if>
+												<c:if test="${credit.crStatus==3 }">已结束</c:if>
+												</span></td>
 												<td><a href="${basePath }credit/creditDetails?id=${credit.id}" target="_self">查看</a></td>
 											</tr>
 										</c:forEach>

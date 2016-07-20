@@ -50,9 +50,8 @@ pageContext.setAttribute("basePath",basePath);
                     <div class="ibox-content">
                         <div class="row">
                             <div class="col-sm-6 b-r">
-                                <p>欢迎您注册快易收债权管理系统会员</p>
-                                <label >注册失败</label>
-                                
+                                <p>欢迎您注册快易收债权管理系统会员</p>    
+                                <span class="label label-warning">${result }</span><br/>                  
                                 <form role="form" action="${basePath }user/register" method="post" id="signupForm">
                                    <div class="form-group">
                                         <label>会员类型</label> 

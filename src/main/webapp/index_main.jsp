@@ -45,10 +45,11 @@
                 </div>
 
             </div>
-
+        
 			<!-- 底部文件 -->
+			<div class="gray-bg">
 			<jsp:include page="/common/_footer.jsp"></jsp:include>
-            
+            </div>
         </div>
     </div>
 

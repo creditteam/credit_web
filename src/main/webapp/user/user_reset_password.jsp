@@ -44,7 +44,7 @@ pageContext.setAttribute("basePath",basePath);
                         </div>
                     </div>
                     <div class="ibox-content">
-                    <span id="error" class="help-block m-b-none"><i class="fa fa-times-circle"></i>  用户密码错误</span>
+                    <span class="label label-warning" id="resultPwd">${result }</span><br/>    
                     <form class="form-horizontal m-t" id="commentForm" method="post" target="_self">
                     <input type="hidden" name="userId"  id="userId" value="${user.id }">
                             <div class="form-group">
@@ -100,14 +100,13 @@ pageContext.setAttribute("basePath",basePath);
 		 $.ajax({
 			 type: "POST", //用POST方式传输
 			 dataType: "text", //数据格式:字符串
-			 url: "${basePath}user/updatePwd", //目标地址
-			 data: "password=" + newpassowrd+"&oldpassowrd="+oldpassowrd+"&id="+userId,
+			 url: "${basePath}user/updUsePwd", //目标地址
+			 data: "newpassowrd=" + newpassowrd+"&userPwd="+oldpassowrd+"&id="+userId,
 			 error: function (XMLHttpRequest, textStatus, errorThrown) {
 				 alert("修改密码异常，请稍候再试");
 			 },
 			 success: function (msg){
-				 alert(msg);
-				 document.getElementById("backinputyzm").disabled=false;
+				 $("#resultPwd").html(msg);
 			 }
 		 });
 	});

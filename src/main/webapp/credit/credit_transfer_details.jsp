@@ -90,8 +90,12 @@
                     <div class="ibox-content">
                   		    <dl class="dl-horizontal">
                                     <dt>债权类型：</dt>
-                                    <dd>个人债权</dd>
-                                </dl>
+									<dd>
+										<c:if test="${credit.crType==7 }">银行资产包转让</c:if>
+										<c:if test="${credit.crType==8 }">资产公司资产包转让</c:if>
+										<c:if test="${credit.crType==9 }">企业单笔债权的转让</c:if>
+									</dd>
+								</dl>
                   
                               <dl class="dl-horizontal">
                                     <dt>债务人名称：</dt>

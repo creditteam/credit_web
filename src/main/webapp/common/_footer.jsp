@@ -47,18 +47,22 @@ pageContext.setAttribute("basePath",basePath);
 	</div>
 </div>
 <!-- .subfooter end -->
-
-<div class="row">
-	<div class="col-md-12">
+<!-- 安全认证图标 -->
+ <div class="container">
+<div class="row" class="text-center">
+    <div class="col-md-4"></div>
+	<div class="col-md-4">
 	<a href=" "><img border="0" src="http://img.webscan.360.cn/status/pai/hash/ac5112035c900037431cc40fe17f7969"/></a >
 	<script id="ebsgovicon" src="http://szcert.ebs.org.cn/govicon.js?id=1f60b8a5-0561-43ce-ba2c-2ec54daec656&width=100&height=137&type=1" type="text/javascript" charset="utf-8"></script>
-	<script type="text/javascript">
+		<script type="text/javascript">
 		var locationUrl = escape(document.location.href);
 		document.write(unescape("%3Cscript")
 						+ " charset='utf-8' src='http://union.rising.com.cn//InfoManage/TrojanInspect.aspx?p1=9NUNHAs6vfTrGtonWGdgx2GntAdbY4/Rk0Hh-U8plhc=&p2=ApY1LZ2B38I=&p3=9NUNHAs6vfTrGtonWGdgx/zHr1Jsh2fq&url="
 						+ locationUrl + "' type='text/javascript'"
 						+ unescape("%3E%3C/script%3E"));
-	</script> 
+	</script>
 	</div>
+	<div class="col-md-4"></div>
+</div>
 </div>
 
