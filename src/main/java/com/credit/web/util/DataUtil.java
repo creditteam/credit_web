@@ -1,6 +1,5 @@
-package com.realize.common.utils;
+package com.credit.web.util;
 
-import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
