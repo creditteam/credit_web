@@ -32,7 +32,7 @@ pageContext.setAttribute("basePath",basePath);
 			alert("请先登录后发布!");
 			window.location.href = "${basePath}user/tologin";
 		}else{
-			window.location.href = "${basePath }credit/saveCredit?userId=${userInfo.id}";
+			window.location.href = "${basePath }credit/saveCredit?creditType=1&userId=${userInfo.id}";
 		}
 	}
 </script>
