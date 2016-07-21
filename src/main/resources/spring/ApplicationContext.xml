@@ -14,7 +14,7 @@
 						http://www.springframework.org/schema/tx/spring-tx.xsd
 	">
 	
-	<bean id="propertyConfigurer" class="com.gvtv.manage.projectname.spring.ConfigPropertyPlaceholderConfigurer">  
+	<bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">  
 		<property name="locations">  
 			<list>  
                  <value>/WEB-INF/classes/dbconfig.properties</value>

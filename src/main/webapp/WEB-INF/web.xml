@@ -74,10 +74,6 @@
 		<url-pattern>/druid/*</url-pattern>
 	</servlet-mapping>
 	<!-- 连接池 启用Web监控统计功能   end-->
-
-	<listener>
-		<listener-class>com.gvtv.manage.projectname.spring.LogbackConfigListener</listener-class>
-	</listener>
 	<listener>
 		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
 	</listener>
