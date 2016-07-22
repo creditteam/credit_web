@@ -24,6 +24,7 @@ public class Constants {
 			"/user/tologin",
 			"/toRegister",
 			"/register.jsp",
+			"/user/register",
 			"/help/help.jsp",
 			"/index",
 			"/user/expertList",

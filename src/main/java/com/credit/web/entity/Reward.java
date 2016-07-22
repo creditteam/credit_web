@@ -44,7 +44,7 @@ public class Reward {
 	public Reward(Integer id, Short rewardType, Double rewardAmount,
 			String rewardName, String cartId, String carBrand, String province,
 			String city, String images, Date createTime, Date endTime,
-			String description, Short rewardStatus, Integer userId) {
+			String description, Short rewardStatus, Integer userId,MultipartFile uploadFile) {
 		super();
 		this.id = id;
 		this.rewardType = rewardType;
@@ -60,6 +60,7 @@ public class Reward {
 		this.description = description;
 		this.rewardStatus = rewardStatus;
 		this.userId = userId;
+		this.uploadFile = uploadFile;
 	}
 
 	public Integer getId() {

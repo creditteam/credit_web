@@ -39,53 +39,61 @@ public class UserLoginFilter implements Filter {
 	/**
 	 * @see Filter#doFilter(ServletRequest, ServletResponse, FilterChain)
 	 */
-	public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain chain) throws IOException, ServletException {
-		   // 获得在下面代码中要用的request,response,session对象
-        HttpServletRequest request = (HttpServletRequest) servletRequest;
-        HttpServletResponse response = (HttpServletResponse) servletResponse;
-        HttpSession session = request.getSession();
-        
-        String contextPath = request.getContextPath();
-        // 获得本项目的地址(例如: http://localhost:8080/MyApp/)赋值给basePath变量
-        String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+contextPath;
+	public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain chain) {
+		   try {
+			// 获得在下面代码中要用的request,response,session对象
+			HttpServletRequest request = (HttpServletRequest) servletRequest;
+			HttpServletResponse response = (HttpServletResponse) servletResponse;
+			HttpSession session = request.getSession();
+			
+			String contextPath = request.getContextPath();
+			// 获得本项目的地址(例如: http://localhost:8080/MyApp/)赋值给basePath变量
+			String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+contextPath;
 
-        // 获得用户请求的URI
-        String path = request.getRequestURI();
-        
-        // 从session里取员工工号信息
-        User userInfo = (User) session.getAttribute("userInfo");
+			// 获得用户请求的URI
+			String path = request.getRequestURI();
+			
+			// 从session里取员工工号信息
+			User userInfo = (User) session.getAttribute("userInfo");
 
-        /*创建类Constants.java，里面写的是无需过滤的页面*/
-        for (int i = 0; i < Constants.NoFilter_Pages.length; i++) {
-            if (path.indexOf(Constants.NoFilter_Pages[i]) > -1) {
-            	chain.doFilter(request, response);
-                return;
-            }
-        }
-        
-        // 过滤无序验证的文件
-		if (path.indexOf(".css")>-1
-				||path.contains(".css") 
-				|| path.contains(".js") 
-				|| path.contains(".jpg")
-				|| path.contains(".JPG") 
-				|| path.contains(".png")
-				|| path.contains(".gif")
-				|| path.contains(".ttf")
-				|| path.contains(".woff")
-				|| path.contains(".html")) {
-			chain.doFilter(request, response);
-			return;
+			/*创建类Constants.java，里面写的是无需过滤的页面*/
+			for (int i = 0; i < Constants.NoFilter_Pages.length; i++) {
+			    if (path.indexOf(Constants.NoFilter_Pages[i]) > -1) {
+			    	chain.doFilter(request, response);
+			        return;
+			    }
+			}
+			
+			// 过滤无序验证的文件
+			if (path.indexOf(".css")>-1
+					||path.contains(".css") 
+					|| path.contains(".js") 
+					|| path.contains(".jpg")
+					|| path.contains(".JPG") 
+					|| path.contains(".png")
+					|| path.contains(".gif")
+					|| path.contains(".ttf")
+					|| path.contains(".woff")
+					|| path.contains(".html")) {
+				chain.doFilter(request, response);
+				return;
+			}
+
+			// 判断如果没有取到员工信息,就跳转到登陆页面
+			if (userInfo == null || "".equals(userInfo)) {
+			    // 跳转到登陆页面
+				response.sendRedirect(basePath+"/user/tologin");
+			} else {
+			    // 已经登陆,继续此次请求
+			    chain.doFilter(servletRequest, servletResponse);
+			}
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (ServletException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
-
-        // 判断如果没有取到员工信息,就跳转到登陆页面
-        if (userInfo == null || "".equals(userInfo)) {
-            // 跳转到登陆页面
-        	response.sendRedirect(basePath+"/user/tologin");
-        } else {
-            // 已经登陆,继续此次请求
-            chain.doFilter(request, response);
-        }
 	}
 
 	/**

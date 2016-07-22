@@ -36,7 +36,7 @@ pageContext.setAttribute("basePath",basePath);
                     </div>
                     <div class="ibox-content">
                    
-                       <form class="form-horizontal m-t" id="signupForm" action="${basePath }reward/saveReward" method="post" target="_self">
+                       <form class="form-horizontal m-t" id="signupForm" action="${basePath }reward/saveReward" method="post" target="_self" enctype="multipart/form-data">
                        <input type="hidden" name="userId" value="${userInfo.id }"> 
                           <a class="list-group-item active">
 					      <h4 class="list-group-item-heading">
