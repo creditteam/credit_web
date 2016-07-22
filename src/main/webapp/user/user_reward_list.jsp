@@ -90,7 +90,7 @@ pageContext.setAttribute("basePath",basePath);
 
 							    <div class="hr-line-dashed"></div>
 							    <!-- 分页信息 -->			                     
-			                    <gvtv:newPage href="${basePath }reward/list?userId=${userInfo.id}" pageType="pc"></gvtv:newPage>
+			                    <gvtv:newPage href="${basePath }reward/list" pageType="pc"></gvtv:newPage>
 								</div>
                 </div>
             </div>
