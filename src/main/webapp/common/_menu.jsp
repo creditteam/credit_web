@@ -44,8 +44,8 @@ pageContext.setAttribute("basePath",basePath);
 				<li class="active"><a aria-expanded="false" role="button" href="${basePath }index" target="_self">首页</a></li>
 				<li class="dropdown"><a aria-expanded="false" role="button" href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown"> 债权信息 <span class="caret"></span></a>
 					<ul role="menu" class="dropdown-menu">
-						<li><a href="${basePath }credit/navlist?creditType=1"  role="button" onclick="javacript:void()">债权处置</a></li>
-						<li><a href="${basePath }credit/navlist?creditType=2"  role="button" onclick="javacript:void()">债权转让</a></li>
+						<li><a href="${basePath }credit/navlist?creditType=1"  role="button" onclick="javacript:void(0)">债权处置</a></li>
+						<li><a href="${basePath }credit/navlist?creditType=2"  role="button" onclick="javacript:void(0)">债权转让</a></li>
 					</ul>
 				</li>
 				<li><a aria-expanded="false" role="button" href="${basePath }disposal.jsp">处置方式 </a></li>
