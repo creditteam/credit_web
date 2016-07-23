@@ -51,6 +51,9 @@
 		select count(1)
 		from cr_reward u
 		where u.reward_status != -1
+		<if test="userId != null and userId != ''">
+		and user_id=#{userId}
+		</if>
 		<if test="keyword != null and keyword != ''">
 	  	and	CONCAT(IFNULL(u.login_name,''),IFNULL(u.name,'')) like #{keyword}
 		</if>

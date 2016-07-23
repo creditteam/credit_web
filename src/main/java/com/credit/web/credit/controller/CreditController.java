@@ -45,9 +45,12 @@ public class CreditController extends BaseController{
 	 */
 	@RequestMapping(value="/list")
 	public ModelAndView list(HttpServletRequest request) throws Exception{
-		String userId =request.getParameter("userId");
 		String creditType =request.getParameter("creditType");
 		PageData pd =super.getPageData();
+		User user =(User) request.getSession().getAttribute("userInfo");
+		if(user!=null){
+			pd.put("userId", user.getId());
+		}
 		pd = creditWebService.pageList(pd);
 		
 		ModelAndView mv = this.getModelAndView();

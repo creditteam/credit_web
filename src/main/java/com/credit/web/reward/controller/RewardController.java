@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.credit.web.entity.Reward;
+import com.credit.web.entity.User;
 import com.credit.web.filemanager.service.UploadFileService;
 import com.credit.web.reward.service.RewardWebService;
 import com.credit.web.util.ProvinceEnum;
@@ -38,8 +39,11 @@ public class RewardController extends BaseController{
 	 */
 	@RequestMapping(value="/navlist")
 	public ModelAndView navlist(HttpServletRequest request) throws Exception{
-		String userId =request.getParameter("userId");
 		PageData pd =super.getPageData();
+		User user =(User) request.getSession().getAttribute("userInfo");
+		if(user!=null){
+			pd.put("userId", user.getId());
+		}
 		pd = rewardWebService.pageList(pd);
 		
 		ModelAndView mv = this.getModelAndView();
@@ -61,8 +65,11 @@ public class RewardController extends BaseController{
 	 */
 	@RequestMapping(value="/list")
 	public ModelAndView list(HttpServletRequest request) throws Exception{
-		String userId =request.getParameter("userId");
 		PageData pd =super.getPageData();
+		User user =(User) request.getSession().getAttribute("userInfo");
+		if(user!=null){
+			pd.put("userId", user.getId());
+		}
 		pd.put("from", 0);
 		pd.put("size", 10);
 		pd = rewardWebService.pageList(pd);

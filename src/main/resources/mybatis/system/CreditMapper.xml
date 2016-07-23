@@ -96,6 +96,7 @@
 		<if test="contactName!=nul and contactName!=''">
 		and contact_name like CONCAT(CONCAT('%',#{contactName}),'%')
 		</if>
+		order by u.create_date desc
 		limit #{from},#{size}
 	</select>
 	
