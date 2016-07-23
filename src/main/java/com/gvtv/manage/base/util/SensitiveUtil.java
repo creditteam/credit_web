@@ -39,6 +39,14 @@ public class SensitiveUtil {
 		return result;
 	}
 	
+	public static String shieldCartID(String cartId){
+		String result = "";
+		if(cartId.length()>4){
+			result = cartId.substring(0,cartId.length()-4)+"****";
+		}
+		return result;
+	}
+	
 	public static String shieldFirmName(String firmName){
 		if(null == firmName || "".equals(firmName)){
 			return "";

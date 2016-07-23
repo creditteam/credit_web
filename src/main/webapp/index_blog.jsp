@@ -11,7 +11,7 @@ pageContext.setAttribute("basePath", basePath);
 		<div class="tabs-container">
 			<ul class="nav nav-tabs">
 				<li class="active"><a data-toggle="tab" href="#tab-blog1"
-					aria-expanded="true">行业动态</a></li>
+					aria-expanded="true">媒体新闻</a></li>
 				<li class=""><a data-toggle="tab" href="#tab-blog2"
 					aria-expanded="false">业务文章</a></li>
 				<li class=""><a href="${basePath}filemanager/list">资源下载</a></li>

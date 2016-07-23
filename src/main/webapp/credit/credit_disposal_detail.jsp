@@ -153,8 +153,8 @@
 									<dd>${credit.contactNumber}</dd>
 								</dl>
 								<dl class="dl-horizontal">
-									<dt>债权凭证、债务人联系电话及债权人联系电话：</dt>
-									<dd>请在抢标后联系快易收平台方获取</dd>
+									<dt>债权凭证：</dt>
+									<dd><img src="${credit.debtProof }"/> ${credit.debtProof }</dd>
 								</dl>
 								<dl class="dl-horizontal">
 									<dt>债权描述：</dt>

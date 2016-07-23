@@ -20,6 +20,7 @@ import com.credit.web.util.ProvinceEnum;
 import com.gvtv.manage.base.controller.BaseController;
 import com.gvtv.manage.base.util.MozillaUtil;
 import com.gvtv.manage.base.util.PageData;
+import com.gvtv.manage.base.util.SensitiveUtil;
 
 @Controller
 @RequestMapping(value="/reward")
@@ -169,6 +170,10 @@ public class RewardController extends BaseController{
 		String id =super.getRequest().getParameter("id");
 		if(id!=null&&id!=""){
 			Reward reward = rewardWebService.findById(Integer.valueOf(id));
+			if(reward!=null){
+				reward.setRewardName(SensitiveUtil.shieldName(reward.getRewardName()));
+				reward.setCartId(SensitiveUtil.shieldCartID(reward.getCartId()));
+			}			
 			ModelAndView mv = this.getModelAndView();
 			mv.addObject("reward", reward);
 			mv.setViewName("/reward/reward_details");

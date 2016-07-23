@@ -42,6 +42,7 @@ public class Constants {
 			"/blog/list",
 			"/blog/details",
 			"/blog/mlList",
+			"/uploadFile",
 			"/filemanager/list"
 			};
 }
