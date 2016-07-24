@@ -11,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.credit.web.credit.service.CreditWebService;
@@ -113,12 +114,28 @@ public class CreditController extends BaseController{
 		String creditType =request.getParameter("creditType");
 		String path = request.getSession().getServletContext().getRealPath("/");
 		Boolean bool = false;
-		if(0 != credit.getUploadFile().getSize()){
+		String debtProof = "";
+		if(null != credit.getUploadFiles()){
+			for(int i=0;i< credit.getUploadFiles().length;i++){
+				if(0 != credit.getUploadFiles()[i].getSize()){
+					bool = uploadFileService.uploadFile(path+"uploadFile/credit", credit.getUploadFiles()[i], credit.getUploadFiles()[i].getOriginalFilename());
+					if(i == 0){
+						debtProof += "uploadFile/credit/"+credit.getUploadFiles()[i].getOriginalFilename();
+					}else{
+						debtProof += ";uploadFile/credit/"+credit.getUploadFiles()[i].getOriginalFilename();
+					}
+				}else{
+					bool = true;
+				}
+			}
+		}
+		credit.setDebtProof(debtProof);
+		/*if(0 != credit.getUploadFile().getSize()){
 			bool = uploadFileService.uploadFile(path+"uploadFile\\credit", credit.getUploadFile(), credit.getUploadFile().getOriginalFilename());
 			credit.setDebtProof(path+"uploadFile\\credit\\"+credit.getUploadFile().getOriginalFilename());
 		}else{
 			bool = true;
-		}
+		}*/
 		credit.setCreateDate(new Date());
 		credit.setCrStatus((short)1);
 		creditWebService.creditSave(credit);
@@ -141,6 +158,14 @@ public class CreditController extends BaseController{
 		String id =super.getRequest().getParameter("id");
 		if(id!=null&&id!=""){
 			Credit credit = creditWebService.findById(Integer.valueOf(id));
+			if(StringUtils.isNotEmpty(credit.getDisposalType())){
+				String[] types = credit.getDisposalType().split(",");
+				credit.setDisTypes(types);
+			}
+			if(StringUtils.isNotEmpty(credit.getDebtProof())){
+				String[] Proofs = credit.getDebtProof().split(";");
+				credit.setDebtProofs(Proofs);
+			}
 			mv.addObject("credit", credit);
 			if(MozillaUtil.isMobileDevice(super.getRequest())){//如果是手机
 				//待完成
@@ -215,6 +240,10 @@ public class CreditController extends BaseController{
 				if(StringUtils.isNotEmpty(credit.getDisposalType())){
 					String[] types = credit.getDisposalType().split(",");
 					credit.setDisTypes(types);
+				}
+				if(StringUtils.isNotEmpty(credit.getDebtProof())){
+					String[] Proofs = credit.getDebtProof().split(";");
+					credit.setDebtProofs(Proofs);
 				}
 			}
 			if(null == user){

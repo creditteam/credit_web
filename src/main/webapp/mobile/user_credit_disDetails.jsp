@@ -64,7 +64,15 @@ pageContext.setAttribute("basePath",basePath);
 						<span class="list-group-item active" >高级信息</span>
 						<span id="lsg10" class="list-group-item" >债权方联系人：${user.nickname}</span>
 						<span id="lsg11" class="list-group-item" >债权方联系电话：${user.userPhone}</span>
-						<span id="lsg12" class="list-group-item" >债权凭证：请在抢标后联系快易收平台方获取</span>
+						<span id="lsg12" class="list-group-item" >债权凭证：
+							<c:forEach items="${credit.debtProofs}" var="item">
+								<c:if test="${not empty item}">
+								<a href="javascript:void(0)" onclick="showBigImage('${basePath}${item}')">
+									<img alt="" src="${basePath}${item}" width="50px" height="50px"/>&nbsp;&nbsp;
+								</a>
+								</c:if>
+							</c:forEach>
+						</span>
 						<span id="lsg13" class="list-group-item" >债权描述：${user.description}</span>
 						<!-- <div class="row">
 							<div id="zqfbxy" style="margin-left: 20px"><input id="zqfbxycb" type="checkbox" checked="checked">
@@ -85,9 +93,29 @@ pageContext.setAttribute("basePath",basePath);
 	</div>
 	<div style="height:55px;"></div>
 </div>
-
+<div class="modal fade" id="creditImgModal" tabindex="-1" role="dialog"
+		aria-labelledby="xuansModalLabel" aria-hidden="true" >
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+				<h4 class="modal-title" id="xuansModalLabel">债权凭证</h4>
+			</div>
+			<div class="modal-body">
+				<img alt="" src="" id="creditBigImg" class="carousel-inner img-responsive img-rounded"/>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-primary" data-dismiss="modal" style="font-size: 16px">关闭</button>
+			</div>
+		</div>
+	</div>
+</div>
 <jsp:include page="mobile_footer.jsp"></jsp:include>
 <script type="text/javascript">
+function showBigImage(url){
+	$("#creditBigImg").attr("src",url);
+	$("#creditImgModal").modal('show');
+}
 function goBack(){
 	window.location.href = "${basePath}credit/list?userId=${userInfo.id}&creditType=1";
 }

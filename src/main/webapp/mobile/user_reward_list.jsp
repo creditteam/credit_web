@@ -53,11 +53,11 @@ pageContext.setAttribute("basePath",basePath);
 						<c:forEach items="${pd.data}" var="reward">
 						    <tr onclick="showRewardInfo('${reward.id}')">
 								<td><span class="label label-warning">
-								    <c:if test="${reward.rewardType==1}">找人</c:if>
-			                        <c:if test="${reward.rewardType==2}">找车辆</c:if>
-			                        <c:if test="${reward.rewardType==3}">找房产</c:if>
-			                        <c:if test="${reward.rewardType==4}">找应收款</c:if>
-			                        <c:if test="${reward.rewardType==5}">其他</c:if>
+								    <c:if test="${reward.rewardType==0}">找人</c:if>
+			                        <c:if test="${reward.rewardType==1}">找车辆</c:if>
+			                        <c:if test="${reward.rewardType==2}">找房产</c:if>
+			                        <c:if test="${reward.rewardType==3}">找应收款</c:if>
+			                        <c:if test="${reward.rewardType==4}">其他</c:if>
 								</span></td>
 								<td>${reward.province }</td>
 								<td>${reward.rewardAmount }</td>
@@ -101,6 +101,7 @@ pageContext.setAttribute("basePath",basePath);
 					<span class="list-group-item active"><h4>高级信息</h4> </span>
 					<span id="xslsg10" class="list-group-item" style="font-size: 16px"></span>
 					<span id="xslsg12" class="list-group-item" style="font-size: 16px"></span>
+					<span id="xslsg15" class="list-group-item" style="font-size: 16px"></span>
 					<span id="xslsg13" class="list-group-item" style="font-size: 16px"></span>
 					<input type="hidden" id="xslsg14" />
 				</div>
@@ -110,6 +111,23 @@ pageContext.setAttribute("basePath",basePath);
 			</div>
 		</div>
 	</div>
+	<div class="modal fade" id="rewardImgModal" tabindex="-1" role="dialog"
+		aria-labelledby="xuansModalLabel" aria-hidden="true" >
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+				<h4 class="modal-title" id="xuansModalLabel">图片</h4>
+			</div>
+			<div class="modal-body">
+				<img alt="" src="" id="rewardBigImg"  class="carousel-inner img-responsive img-rounded"/>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-primary" data-dismiss="modal" style="font-size: 16px">关闭</button>
+			</div>
+		</div>
+	</div>
+</div>
 <jsp:include page="mobile_footer.jsp"></jsp:include>
 <style type="text/css">
 	.navbar-nav>li>a {
@@ -129,6 +147,10 @@ pageContext.setAttribute("basePath",basePath);
 	}
 	</style>
 <script type="text/javascript">
+function showBigImage(url){
+	$("#rewardBigImg").attr("src",url);
+	$("#rewardImgModal").modal('show');
+}
 function showRewardInfo(id){
 	 
 	 $.ajax({
@@ -141,15 +163,15 @@ function showRewardInfo(id){
 		 },
 		 success: function (msg){
 			 var reType = msg.rewardType;
-			 if(msg.rewardType == 1){
+			 if(msg.rewardType == 0){
 				 reType = "找人";
-			 }else if(msg.rewardType == 2){
+			 }else if(msg.rewardType == 1){
 				 reType = "找车辆";
-			 }else if(msg.rewardType == 3){
+			 }else if(msg.rewardType == 2){
 				 reType = "找房产";
-			 }else if(msg.rewardType == 4){
+			 }else if(msg.rewardType == 3){
 				 reType = "找应收款";
-			 }else if(msg.rewardType == 5){
+			 }else if(msg.rewardType == 4){
 				 reType = "其他";
 			 }
 			 var rewardStatus = "";
@@ -180,8 +202,16 @@ function showRewardInfo(id){
 			 $("#xslsg7").text("有效日期：        "+ endTime);
 			 $("#xslsg8").text("状态：    "+rewardStatus);
 			 
-			 $("#xslsg10").text("发布者：    请抢标后联系平台获取");
-			 $("#xslsg12").text("联系电话：请在抢标后联系快易收平台方获取");
+			 $("#xslsg10").text("发布者：    请联系平台获取");
+			 $("#xslsg12").text("联系电话：请在联系快易收平台方获取");
+			 if(msg.imagesArry != ''){
+				 $.each(msg.imagesArry, function (key, val) {
+					 $("#xslsg15").html("<img src='${basePath}"+val+"' width='50px' heitht='50px' id='img"+key+"'/>&nbsp;&nbsp;");
+					 $("#img"+key).click(function(){
+						 showBigImage('${basePath}'+val);
+					 });
+			        });
+			 }
 			 $("#xslsg13").text("悬赏描述：        "+msg.description);
 			 
 			 $("#xslsg14").val(msg.id);

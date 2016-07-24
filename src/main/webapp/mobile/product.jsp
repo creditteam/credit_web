@@ -30,18 +30,18 @@ body {background:url(<%=basePath%>hplus/img/bg.gif) top center no-repeat; backgr
   <div class="main-container">
   
     <div class="container" style="border: thin solid #ffeeee; background-color: #fff">
-    <jsp:include page="mobile_top_logo.jsp"></jsp:include>
     	<div class="row">
+    <jsp:include page="mobile_top_logo.jsp"></jsp:include>
     		
     		<div class="col-md-12">
-    			<img alt="" src="<%=basePath%>hplus/img/cz1.png" style="width: 100%">
+    			<img alt="" src="<%=basePath%>hplus/img/cz1.png" style="width: 99%">
     		</div>
     		
     	</div>
     	
     	<div class="row">
     		<div class="col-md-12">
-    			<img alt="" src="<%=basePath%>hplus/img/cz2.png" style="width: 100%">
+    			<img alt="" src="<%=basePath%>hplus/img/cz2.png" style="width: 99%">
     		</div>
     	</div>
     	
@@ -60,7 +60,7 @@ body {background:url(<%=basePath%>hplus/img/bg.gif) top center no-repeat; backgr
     <div class="container" style="border: thin solid #ffeeee; background-color: #fff">
     	<div class="row">
     		<div class="col-md-12">
-    			<img alt="" src="<%=basePath%>hplus/img/cz3.png" style="width: 100%">
+    			<img alt="" src="<%=basePath%>hplus/img/cz3.png" style="width: 99%">
     		</div>
     	</div>
     	

@@ -6,4 +6,9 @@ alter table cr_credit add COLUMN credit_type smallint(3)COMMENT '债权类型(1�
 alter table cr_reward modify images varchar(256);
 /** cr_file_manager table change*/
 alter table cr_file_manager change dowload_url download_url varchar(128);
+/**---2016-7-24---**/
+ALTER TABLE `cr_reward`
+MODIFY COLUMN `images`  varchar(1024);
 
+ALTER TABLE `cr_credit`
+MODIFY COLUMN `debt_proof`  varchar(1024);

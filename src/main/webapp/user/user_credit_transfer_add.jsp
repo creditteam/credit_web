@@ -127,7 +127,11 @@ pageContext.setAttribute("basePath",basePath);
                             <div class="form-group">
                                 <label class="col-sm-3 control-label">债务凭证：</label>
                                 <div class="col-sm-8">
-                                     <input class="form-control" type="file" name="uploadFile" id="uploadFile" onchange="uploadCheck();"/>
+                                     <input class="form-control" type="file" name="uploadFiles" accept=".jpg,.png,.jpeg,.gif,.bmp"/>
+                                     <div id="addFileUpload"></div>
+                                     <span class="help-block m-b-none">
+                                     	<a href="javascript:void(0)" onclick="addFileUpload()"><span class="glyphicon glyphicon-plus-sign">继续添加</span></a>
+                                     </span>
                                 </div>
                             </div>
                             <div class="form-group">
@@ -174,6 +178,9 @@ pageContext.setAttribute("basePath",basePath);
     <script type="text/javascript" src="http://tajs.qq.com/stats?sId=9051096" charset="UTF-8"></script>
     
 	<script type="text/javascript">
+	function addFileUpload(){
+		$("#addFileUpload").append('<input class="form-control" type="file" name="uploadFiles" accept=".jpg,.png,.jpeg,.gif,.bmp"/>');
+	}
 	function loadCity(obj) {
 		var proName = $(obj).val();
 		//$("#provinceSel1").val(province);

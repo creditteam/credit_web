@@ -123,12 +123,28 @@ public class RewardController extends BaseController{
 		reward.setCreateTime(new Date());
 		String path = request.getSession().getServletContext().getRealPath("/");
 		Boolean bool = false;
-		if(0 != reward.getUploadFile().getSize()){
+		String images = "";
+		if(null != reward.getUploadFiles()){
+			for(int i=0;i< reward.getUploadFiles().length;i++){
+				if(0 != reward.getUploadFiles()[i].getSize()){
+					bool = uploadFileService.uploadFile(path+"uploadFile/reward", reward.getUploadFiles()[i], reward.getUploadFiles()[i].getOriginalFilename());
+					if(i == 0){
+						images += "uploadFile/reward/"+reward.getUploadFiles()[i].getOriginalFilename();
+					}else{
+						images += ";uploadFile/reward/"+reward.getUploadFiles()[i].getOriginalFilename();
+					}
+				}else{
+					bool = true;
+				}
+			}
+		}
+		reward.setImages(images);
+		/*if(0 != reward.getUploadFile().getSize()){
 			bool = uploadFileService.uploadFile(path+"uploadFile\\reward", reward.getUploadFile(), reward.getUploadFile().getOriginalFilename());
 			reward.setImages(path+"uploadFile\\credit\\"+reward.getUploadFile().getOriginalFilename());
 		}else{
 			bool = true;
-		}
+		}*/
 		reward.setCreateTime(new Date());
 		rewardWebService.rewardSave(reward);
 		if(MozillaUtil.isMobileDevice(request)){
@@ -152,6 +168,10 @@ public class RewardController extends BaseController{
 		String id =super.getRequest().getParameter("id");
 		if(id!=null&&id!=""){
 			Reward reward = rewardWebService.findById(Integer.valueOf(id));
+			
+			if(null != reward.getImages()){
+				reward.setImagesArry(reward.getImages().split(";"));
+			}
 			ModelAndView mv = this.getModelAndView();
 			mv.addObject("reward", reward);
 			mv.setViewName("/user/user_reward_details");
@@ -193,6 +213,9 @@ public class RewardController extends BaseController{
 		Reward reward = null;
 		if(id!=null&&id!=""){
 			reward = rewardWebService.findById(Integer.valueOf(id));
+			if(null != reward.getImages()){
+				reward.setImagesArry(reward.getImages().split(";"));
+			}
 			return reward;
 		}
 		return null;

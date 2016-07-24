@@ -35,8 +35,10 @@ public class Reward {
 	private Integer userId;
 	
 	//表单上传的文件
-	private MultipartFile uploadFile;
-
+	private MultipartFile[] uploadFiles;
+	// 照片(单个切分数组)
+	private String[] imagesArry;
+	
 	public Reward() {
 
 	}
@@ -44,7 +46,7 @@ public class Reward {
 	public Reward(Integer id, Short rewardType, Double rewardAmount,
 			String rewardName, String cartId, String carBrand, String province,
 			String city, String images, Date createTime, Date endTime,
-			String description, Short rewardStatus, Integer userId,MultipartFile uploadFile) {
+			String description, Short rewardStatus, Integer userId,MultipartFile[] uploadFiles) {
 		super();
 		this.id = id;
 		this.rewardType = rewardType;
@@ -60,7 +62,7 @@ public class Reward {
 		this.description = description;
 		this.rewardStatus = rewardStatus;
 		this.userId = userId;
-		this.uploadFile = uploadFile;
+		this.uploadFiles = uploadFiles;
 	}
 
 	public Integer getId() {
@@ -175,12 +177,21 @@ public class Reward {
 		this.userId = userId;
 	}
 
-	public MultipartFile getUploadFile() {
-		return uploadFile;
+	public MultipartFile[] getUploadFiles() {
+		return uploadFiles;
 	}
 
-	public void setUploadFile(MultipartFile uploadFile) {
-		this.uploadFile = uploadFile;
+	public void setUploadFiles(MultipartFile[] uploadFiles) {
+		this.uploadFiles = uploadFiles;
 	}
+
+	public String[] getImagesArry() {
+		return imagesArry;
+	}
+
+	public void setImagesArry(String[] imagesArry) {
+		this.imagesArry = imagesArry;
+	}
+
  
 }

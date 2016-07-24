@@ -170,7 +170,11 @@ pageContext.setAttribute("basePath",basePath);
                             <div class="form-group">
                                 <label class="col-sm-3 control-label">债务凭证：</label>
                                 <div class="col-sm-8">
-                                     <input class="form-control" type="file" name="uploadFile" id="uploadFile" />
+                                     <input class="form-control" type="file" name="uploadFiles" accept=".jpg,.png,.jpeg,.gif,.bmp" />
+                                     <div id="addFileUpload"></div>
+                                     <span class="help-block m-b-none">
+                                     	<a href="javascript:void(0)" onclick="addFileUpload()"><span class="glyphicon glyphicon-plus-sign">继续添加</span></a>
+                                     </span>
                                 </div>
                             </div>
                             <div class="form-group">
@@ -227,6 +231,9 @@ pageContext.setAttribute("basePath",basePath);
 </div>
 
 <script type="text/javascript">
+function addFileUpload(){
+	$("#addFileUpload").append('<input class="form-control" type="file" name="uploadFiles" accept=".jpg,.png,.jpeg,.gif,.bmp"/>');
+}
 function goBack(){
 	window.location.href = "${basePath}credit/list?userId=${userInfo.id}&creditType=1";
 }

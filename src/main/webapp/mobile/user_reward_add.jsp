@@ -73,11 +73,11 @@ pageContext.setAttribute("basePath",basePath);
 								<label class="col-sm-3 control-label">悬赏类型:</label>
 								<div class="col-sm-8">
 									<select name="rewardType" id="rewardType" class="form-control" onchange="checkSelectType()">
-										<option value="1">找人</option>
-										<option value="2">找车辆</option>
-										<option value="3">找房产</option>
-										<option value="4">找应收账款</option>
-										<option value="5">其它</option>
+										<option value="0">找人</option>
+										<option value="1">找车辆</option>
+										<option value="2">找房产</option>
+										<option value="3">找应收账款</option>
+										<option value="4">其它</option>
 									</select>
 								</div>
 							</div>
@@ -128,7 +128,11 @@ pageContext.setAttribute("basePath",basePath);
 									<label class="col-sm-3 control-label">
 									<b>照片</b><small>(身份证、个人近照等)</small></label>
 									<div class="col-sm-8">
-										<input class="form-control" type="file" name="uploadFile" id="uploadFile" />
+										<input class="form-control" type="file" name="uploadFiles" accept=".jpg,.png,.jpeg,.gif,.bmp"/>
+										<div id="addFileUpload"></div>
+	                                     <span class="help-block m-b-none">
+	                                     	<a href="javascript:void(0)" onclick="addFileUpload()"><span class="glyphicon glyphicon-plus-sign">继续添加</span></a>
+	                                     </span>
 									</div>
 							</div>
 			
@@ -188,6 +192,9 @@ pageContext.setAttribute("basePath",basePath);
 	}
 	</style>
 	<script type="text/javascript">
+	function addFileUpload(){
+		$("#addFileUpload").append('<input class="form-control" type="file" name="uploadFiles" accept=".jpg,.png,.jpeg,.gif,.bmp"/>');
+	}
 	
 	function checkSelectType(obj){
 		var rewardType = $("#rewardType").val();

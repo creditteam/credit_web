@@ -44,9 +44,11 @@ public class Credit {
 	// 约定日期
 	private Date agreedDate;
 	//表单上传的文件
-	private MultipartFile uploadFile;
+	private MultipartFile[] uploadFiles;
 	//债权处置方式单个切分
 	private String[] disTypes;
+	//债权方凭证单个切分
+	private String[] debtProofs;
 	// 债权类型（1债权处置，2债权转让）
 	private Integer creditType;
 	
@@ -59,7 +61,7 @@ public class Credit {
 			String contactName, String contactNumber, String debtName,
 			String debtProvince, String debtCity, String debtPhone,
 			String debtProof, String description, Date createDate,
-			Date endDate, Date openDate, Date agreedDate,MultipartFile uploadFile,Integer creditType) {
+			Date endDate, Date openDate, Date agreedDate,MultipartFile[] uploadFiles,Integer creditType) {
 		super();
 		this.id = id;
 		this.userId = userId;
@@ -80,7 +82,7 @@ public class Credit {
 		this.endDate = endDate;
 		this.openDate = openDate;
 		this.agreedDate = agreedDate;
-		this.uploadFile = uploadFile;
+		this.uploadFiles = uploadFiles;
 		this.creditType = creditType;
 	}
 
@@ -236,12 +238,12 @@ public class Credit {
 		this.agreedDate = agreedDate;
 	}
 
-	public MultipartFile getUploadFile() {
-		return uploadFile;
+	public MultipartFile[] getUploadFiles() {
+		return uploadFiles;
 	}
 
-	public void setUploadFile(MultipartFile uploadFile) {
-		this.uploadFile = uploadFile;
+	public void setUploadFiles(MultipartFile[] uploadFiles) {
+		this.uploadFiles = uploadFiles;
 	}
 
 	public String[] getDisTypes() {
@@ -259,6 +261,15 @@ public class Credit {
 	public void setCreditType(Integer creditType) {
 		this.creditType = creditType;
 	}
+
+	public String[] getDebtProofs() {
+		return debtProofs;
+	}
+
+	public void setDebtProofs(String[] debtProofs) {
+		this.debtProofs = debtProofs;
+	}
+
 
 	
 }

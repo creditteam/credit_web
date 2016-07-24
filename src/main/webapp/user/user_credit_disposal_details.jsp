@@ -1,6 +1,13 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %> 
+<%
+String path = request.getContextPath();
+// 获得本项目的地址(例如: http://localhost:8080/MyApp/)赋值给basePath变量
+String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+// 将 "项目路径basePath" 放入pageContext中，待以后用EL表达式读出。
+pageContext.setAttribute("basePath",basePath);
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -70,7 +77,11 @@
 
 								<dl class="dl-horizontal">
 									<dt>处置方式：</dt>
-									<dd>${credit.disposalType }</dd>
+									<dd><c:forEach items="${credit.disTypes}" var="item">
+										<c:if test="${item eq '1'}">诉讼</c:if>
+										<c:if test="${item eq '2'}">催收</c:if>
+										<c:if test="${item eq '3'}">债权转让</c:if>
+									</c:forEach></dd>
 								</dl>
 
 								<dl class="dl-horizontal">
@@ -111,8 +122,18 @@
 									<dd>${credit.debtPhone }</dd>
 								</dl>
 								<dl class="dl-horizontal">
-									<dt>债权凭证、债务人联系电话及债权人联系电话：</dt>
-									<dd> 请在抢标后联系快易收平台方获取</dd>
+									<dt>债权凭证：</dt>
+									<dd><c:forEach items="${credit.debtProofs}" var="item">
+										<c:if test="${not empty item}">
+										<a href="javascript:void(0)" onclick="showBigImage('${basePath}${item}')">
+											<img alt="" src="${basePath}${item}" width="50px" height="50px"/>&nbsp;&nbsp;
+										</a>
+										</c:if>
+									</c:forEach></dd>
+								</dl>
+								<dl class="dl-horizontal">
+									<dt>债务人联系电话及债权人联系电话：</dt>
+									<dd> 请联系快易收平台方获取</dd>
 								</dl>
 								<dl class="dl-horizontal">
 									<dt>债权描述：</dt>
@@ -124,15 +145,6 @@
                   </div>
                   <!-- 债权信息  end-->
                     
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
                     <!-- 债权处置详情结束 -->
                 </div>
 
@@ -143,9 +155,31 @@
             
         </div>
     </div>
-
+<div class="modal fade" id="creditImgModal" tabindex="-1" role="dialog"
+		aria-labelledby="xuansModalLabel" aria-hidden="true" >
+		<div class="modal-dialog" style="width:720px">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+					<h4 class="modal-title" id="xuansModalLabel">债权凭证</h4>
+				</div>
+				<div class="modal-body">
+					<img alt="" src="" id="creditBigImg" width="650px" height="550px"/>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-primary" data-dismiss="modal" style="font-size: 16px">关闭</button>
+				</div>
+			</div>
+		</div>
+	</div>
     <jsp:include page="/common/_script.jsp"></jsp:include>
     <script type="text/javascript" src="http://tajs.qq.com/stats?sId=9051096" charset="UTF-8"></script>
+    <script type="text/javascript">
+    	function showBigImage(url){
+    		$("#creditBigImg").attr("src",url);
+    		$("#creditImgModal").modal('show');
+    	}
+    </script>
 </body>
 
 </html>
