@@ -11,7 +11,28 @@ pageContext.setAttribute("basePath",basePath);
 <!-- 头部 -->
  <div class="row border-bottom" style="background-color: #555555;">
         <div class="row">      
-		<div class="col-md-4 text-center" style=" float: right; vertical-align:top;">
+        <div class="col-md-4 text-center" style=" float: left; vertical-align:top;">
+	        <table>
+			<tr>
+			<td><span style="color: #A1ACB4">服务热线 ： 4008-338-997</span></td>
+				<td>
+                    <img id="weixem" alt="weixin" src="hplus/img/weixin88.png" style="height: 20px; padding-left: 50px">
+                    <%--
+                    <em id="wxewm" class="wxewmc"><img style="top: -20px" class="carousel-inner img-responsive img-rounded" alt="" src="hplus/img/kuaiyishou.jpg"></em>
+                     --%>
+				</td>
+				<td><a target="_blank" href="http://www.weibo.com/p/1005055902432730/home?from=page_100505&mod=TAB&is_all=1#place" style=""><img height="20px" alt="微博" src="hplus/img/weibo88.png"></a></td>
+				<td>
+                    <img id="shoujiem" alt="" src="hplus/img/shouji88.png" style="height: 20px; width: 20px;padding-left: -2px">
+                    <%--
+                    <em id="sjewm" class="wxewmc"><img style="top: -20px" class="carousel-inner img-responsive img-rounded" alt="" src="hplus/img/yidashouji.png"></em>
+                     --%>
+                 </td>
+                  <td></td>
+			</tr>
+		    </table>
+        </div>
+        <div class="col-md-4 text-center" style=" float: right; vertical-align:top;">
 			<p class="text-center" style="color: #A1ACB4;">
 			   <c:if test="${empty userInfo }">
 				<a href="${basePath }user/tologin" style="margin-bottom: 1px; color: #A1ACB4;">登录</a>
@@ -23,7 +44,7 @@ pageContext.setAttribute("basePath",basePath);
 				| <a  href="${basePath }/user/loginout" target="_blank" style="color: #A1ACB4">退出</a>
 				</c:if> 
 				| <a  href="${basePath }help/help.jsp"  target="_blank" style="color: #A1ACB4">帮助中心</a> 
-			</p>
+			</table>
 		</div> 
 		</div>
 </div> 
@@ -32,12 +53,7 @@ pageContext.setAttribute("basePath",basePath);
 <div class="row border-bottom white-bg">
 	<nav class="navbar navbar-static-top" role="navigation">
 		<div class="navbar-header">
-			<button aria-controls="navbar" aria-expanded="false"
-				data-target="#navbar" data-toggle="collapse"
-				class="navbar-toggle collapsed" type="button">
-				<i class="fa fa-reorder"></i>
-			</button>
-			<a href="#" class="navbar-brand red-bg">快易收</a>
+		    <img alt="" src="${basePath }hplus/img/logo.jpg">
 		</div>
 		<div class="navbar-collapse collapse" id="navbar">
 			<ul class="nav navbar-nav">
