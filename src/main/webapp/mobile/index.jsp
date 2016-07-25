@@ -277,7 +277,7 @@ pageContext.setAttribute("basePath",basePath);
 		</div>
 	</div>
 
-<div class="subfooter" style="background-color: #0b6070; margin-top: 50px">
+<div class="subfooter" style="background-color: #FF7F50; margin-top: 50px">
 	<div class="main-container">
 		<div class="row">
 			<div class="col-md-12" style="color: #fff;">

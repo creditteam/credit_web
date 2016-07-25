@@ -8,7 +8,7 @@ pageContext.setAttribute("basePath",basePath);
 %>
 <div style="height: 70px">
 <div class="container-fluid">
-	<nav class="navbar navbar-default navbar-fixed-bottom" style="background-color: #0b6070;">
+	<nav class="navbar navbar-default navbar-fixed-bottom" style="background-color: #FF7F50;">
 	<ul class="nav text-center">
 		<li role="presentation" class="col-xs-3 " style="padding: 0px;">
 			<a href="${basePath }index" style="color: #fff"><i style="color: #fff" class="glyphicon glyphicon-home"></i><br>主页</a>
