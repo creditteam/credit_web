@@ -92,9 +92,8 @@
                   		    <dl class="dl-horizontal">
                                     <dt>债权类型：</dt>
 									<dd>
-										<c:if test="${credit.crType==7 }">银行资产包转让</c:if>
-										<c:if test="${credit.crType==8 }">资产公司资产包转让</c:if>
-										<c:if test="${credit.crType==9 }">企业单笔债权的转让</c:if>
+													    <c:if test="${credit.crType==8 }">资产包债权</c:if>
+													    <c:if test="${credit.crType==9 }">单笔债权</c:if>
 									</dd>
 								</dl>
                   

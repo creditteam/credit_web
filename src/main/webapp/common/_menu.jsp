@@ -40,12 +40,12 @@ $(document).ready(function(){
 });
 </script>
 <!-- 头部 -->
- <div class="row border-bottom" style="background-color: #555555;">
+ <div class="row border-bottom" style="background-color: #FF7F50;">
         <div class="row">      
         <div class="col-md-4 text-center" style=" float: left;line-height: 30px;padding-left: 100px">
 	        <table>
 			<tr>
-				<td align="right"><span style="color: #A1ACB4">服务热线 ：<b style="font-size: 16px">4008-338-997</b></span></td>
+				<td align="right"><span style="color: #fff">服务热线 ：<b style="font-size: 16px">4008-338-997</b></span></td>
 				<td>
                     <img id="weixem" alt="weixin" src="${basePath}hplus/img/weixin88.png" style="height: 23px; padding-left: 50px">
                     <em id="wxewm" class="wxewmc"><img style="top: -20px" class="carousel-inner img-responsive img-rounded" alt="" src="${basePath}hplus/img/kuaiyishou.jpg"></em>
@@ -61,18 +61,18 @@ $(document).ready(function(){
         </div>
         <div class="col-md-4 text-center" style=" float: right;line-height: 30px;">
 			   <c:if test="${empty userInfo }">
-				<a href="${basePath }user/tologin" style="margin-bottom: 1px; color: #A1ACB4;">会员登录</a>
-				<a href="${basePath }user/toRegister" style="margin-bottom: 1px; color: #A1ACB4;">免费注册</a>
+				<a href="${basePath }user/tologin" style="margin-bottom: 1px; color: #fff">会员登录</a>
+				<a href="${basePath }user/toRegister" style="margin-bottom: 1px; color: #fff">免费注册</a>
 				</c:if>
 				<c:if test="${not empty userInfo }">
 				欢迎你，${userInfo.userEmail } &nbsp;&nbsp;&nbsp;
-				<a  href="${basePath }user/index" target="_blank" style="color: #A1ACB4">用户中心</a>
-				| <a  href="${basePath }/user/loginout" target="_blank" style="color: #A1ACB4">退出</a>
+				<a  href="${basePath }user/index" target="_blank" style="color: #fff">用户中心</a>
+				| <a  href="${basePath }/user/loginout" target="_blank" style="color: #fff">退出</a>
 				</c:if> 
-				| <a  href="${basePath }help/help.jsp#about_us"  target="_blank" style="color: #A1ACB4">关于我们</a>
-				| <a  href="${basePath }help/help.jsp#service_us"  target="_blank" style="color: #A1ACB4">法律声明</a>
-				| <a  href="${basePath }help/help.jsp#idea"  target="_blank" style="color: #A1ACB4">意见反馈</a> 
-				| <a  href="${basePath }help/help.jsp"  target="_blank" style="color: #A1ACB4">帮助中心</a>
+				| <a  href="${basePath }help/help.jsp#about_us"  target="_blank" style="color: #fff">关于我们</a>
+				| <a  href="${basePath }help/help.jsp#service_us"  target="_blank" style="color: #fff">法律声明</a>
+				| <a  href="${basePath }help/help.jsp#idea"  target="_blank" style="color: #fff">意见反馈</a> 
+				| <a  href="${basePath }help/help.jsp"  target="_blank" style="color: #fff">帮助中心</a>
 			</table>
 		</div> 
 		</div>

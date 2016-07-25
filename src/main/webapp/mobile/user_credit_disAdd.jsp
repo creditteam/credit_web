@@ -79,11 +79,13 @@ pageContext.setAttribute("basePath",basePath);
                                 <label class="col-sm-3 control-label">债权类型：</label>
                                 <div class="col-sm-8">
                                     <select  name="crType" class="form-control">
-										<option value="1">个人债权</option>
-										<option value="2">企业债权</option>
-										<option value="3">预期贷款</option>
-										<option value="4">固定资产</option>
-										<option value="5">国际债权</option>
+													<option value="1">民间借贷</option>
+													<option value="2">应收账款</option>
+													<option value="3">银行借贷</option>
+													<option value="4">互联网金融</option>
+													<option value="5">小额信贷</option>
+													<option value="6">典当担保</option>
+													<option value="7">司法裁决</option>
 									</select>
                                 </div>
                             </div>

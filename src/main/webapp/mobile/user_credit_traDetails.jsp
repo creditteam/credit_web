@@ -41,9 +41,8 @@ pageContext.setAttribute("basePath",basePath);
 						  债权基本信息
 						</span>
 						<span class="list-group-item" >债权类型：
-						    <c:if test="${credit.crType==7 }">银行资产包转让</c:if>
-						    <c:if test="${credit.crType==8 }">资产公司资产包转让</c:if>
-						    <c:if test="${credit.crType==9 }">企业单笔债权的转让</c:if>
+											<c:if test="${credit.crType==8 }">资产包债权</c:if>
+											<c:if test="${credit.crType==9 }">单笔债权</c:if>
 						</span>
 						<span class="list-group-item" >债务人名称：${credit.debtName}</span>
 						<span class="list-group-item" >所在省份：${credit.debtProvince}</span>

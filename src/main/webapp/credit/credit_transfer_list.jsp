@@ -63,9 +63,8 @@ pageContext.setAttribute("basePath",basePath);
 										<c:forEach items="${pd.data }" var="credit">
 											<tr>
 											    <td><span class="label label-warning">
-													    <c:if test="${credit.crType==7 }">银行资产包转让</c:if>
-													    <c:if test="${credit.crType==8 }">资产公司资产包转让</c:if>
-													    <c:if test="${credit.crType==9 }">企业单笔债权的转让</c:if>
+													    <c:if test="${credit.crType==8 }">资产包债权</c:if>
+													    <c:if test="${credit.crType==9 }">单笔债权</c:if>
 											    </span></td>
 												<td><span class="label label-warning">${credit.debtProvince }</span></td>
 												<td>${credit.debtName }</td>

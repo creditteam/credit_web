@@ -74,9 +74,8 @@ pageContext.setAttribute("basePath",basePath);
                                 <label class="col-sm-3 control-label">债权类型：</label>
                                 <div class="col-sm-8">
                                     <select  name="crType" class="form-control" required="required">
-										<option value="7">银行资产包转让</option>
-										<option value="8">资产公司资产包转让</option>
-										<option value="9">企业单笔债权的转让</option>
+										<option value="8">资产包债权</option>
+										<option value="9">单笔债权</option>
 									</select>
                                 </div>
                             </div>
