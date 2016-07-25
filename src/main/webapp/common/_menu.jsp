@@ -8,32 +8,58 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 // 将 "项目路径basePath" 放入pageContext中，待以后用EL表达式读出。
 pageContext.setAttribute("basePath",basePath);
 %>
+<style>
+<!--
+.wxewmc {
+  height: 200px; 
+  width: 200px;
+  position: absolute;
+  top: 25px;
+  text-align: center;
+  padding: 25px 12px 10px;
+  font-style: normal;
+  z-index: 9999;
+  display: none;
+ }
+-->
+</style>
+<script type="text/javascript">
+$(document).ready(function(){
+	  $("#weixem").hover(function() {
+		  //alert("1a");
+	   	  $("#wxewm").animate({opacity: "show", left: "35%"}, "fast");
+	  }, function() {
+		  $("#wxewm").hide();
+	  });
+	  $("#shoujiem").hover(function() {
+		  //alert("1a");
+	   	  $("#sjewm").animate({opacity: "show", right: "25%"}, "fast");
+	  }, function() {
+		  $("#sjewm").hide();
+	  });
+});
+</script>
 <!-- 头部 -->
  <div class="row border-bottom" style="background-color: #555555;">
         <div class="row">      
-        <div class="col-md-4 text-center" style=" float: left; vertical-align:top;">
+        <div class="col-md-4 text-center" style=" float: left;line-height: 30px;padding-left: 100px">
 	        <table>
 			<tr>
-			<td><span style="color: #A1ACB4">服务热线 ： 4008-338-997</span></td>
+				<td align="right"><span style="color: #A1ACB4">服务热线 ：<b style="font-size: 16px">4008-338-997</b></span></td>
 				<td>
-                    <img id="weixem" alt="weixin" src="hplus/img/weixin88.png" style="height: 20px; padding-left: 50px">
-                    <%--
-                    <em id="wxewm" class="wxewmc"><img style="top: -20px" class="carousel-inner img-responsive img-rounded" alt="" src="hplus/img/kuaiyishou.jpg"></em>
-                     --%>
+                    <img id="weixem" alt="weixin" src="${basePath}hplus/img/weixin88.png" style="height: 23px; padding-left: 50px">
+                    <em id="wxewm" class="wxewmc"><img style="top: -20px" class="carousel-inner img-responsive img-rounded" alt="" src="${basePath}hplus/img/kuaiyishou.jpg"></em>
 				</td>
-				<td><a target="_blank" href="http://www.weibo.com/p/1005055902432730/home?from=page_100505&mod=TAB&is_all=1#place" style=""><img height="20px" alt="微博" src="hplus/img/weibo88.png"></a></td>
+				<td><a target="_blank" href="http://www.weibo.com/p/1005055902432730/home?from=page_100505&mod=TAB&is_all=1#place" style="">
+					<img height="23px" alt="微博" src="${basePath}hplus/img/weibo88.png"></a></td>
 				<td>
-                    <img id="shoujiem" alt="" src="hplus/img/shouji88.png" style="height: 20px; width: 20px;padding-left: -2px">
-                    <%--
+                    <img id="shoujiem" alt="" src="${basePath}hplus/img/shouji88.png" style="height: 23px; width: 23px;padding-left: -2px">
                     <em id="sjewm" class="wxewmc"><img style="top: -20px" class="carousel-inner img-responsive img-rounded" alt="" src="hplus/img/yidashouji.png"></em>
-                     --%>
                  </td>
-                  <td></td>
 			</tr>
 		    </table>
         </div>
-        <div class="col-md-4 text-center" style=" float: right; vertical-align:top;">
-			<p class="text-center" style="color: #A1ACB4;">
+        <div class="col-md-4 text-center" style=" float: right;line-height: 30px;">
 			   <c:if test="${empty userInfo }">
 				<a href="${basePath }user/tologin" style="margin-bottom: 1px; color: #A1ACB4;">会员登录</a>
 				<a href="${basePath }user/toRegister" style="margin-bottom: 1px; color: #A1ACB4;">免费注册</a>
@@ -55,13 +81,13 @@ pageContext.setAttribute("basePath",basePath);
 <!-- 导航菜单信息  bgein -->
 <div class="row border-bottom white-bg">
 	<nav class="navbar navbar-static-top" role="navigation">
-		<div class="navbar-header">
+		<div class="col-md-4">
 		    <img alt="" src="${basePath }hplus/img/logo.jpg">
 		</div>
-		<div class="navbar-collapse collapse" id="navbar">
-			<ul class="nav navbar-nav">
+		<div class="navbar-collapse collapse" id="navbar" style="float: right;">
+			<ul class="nav navbar-nav" style="font-size: 14px;padding-right: 50px">
 				<li class="active"><a aria-expanded="false" role="button" href="${basePath }index" target="_self">首页</a></li>
-				<li class="dropdown"><a aria-expanded="false" role="button" href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown"> 债权大厅 <span class="caret"></span></a>
+				<li class="dropdown"><a aria-expanded="false" role="button" href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown">债权大厅 <span class="caret"></span></a>
 					<ul role="menu" class="dropdown-menu">
 						<li><a href="${basePath }credit/navlist?creditType=1"  role="button" onclick="javacript:void(0)">债权追收</a></li>
 						<li><a href="${basePath }credit/navlist?creditType=2"  role="button" onclick="javacript:void(0)">债权转让</a></li>

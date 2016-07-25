@@ -19,8 +19,8 @@
         <div id="page-wrapper" class="gray-bg">
             <jsp:include page="/common/_menu.jsp"></jsp:include>
             
-            <div class="wrapper wrapper-content">
-                <div class="container">
+            <div class="wrapper">
+                <div class="container" style="padding-top: 5px">
                    <!-- 图片轮播 -->
                    <jsp:include page="index_ad.jsp"></jsp:include>
 

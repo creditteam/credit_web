@@ -10,15 +10,17 @@ pageContext.setAttribute("basePath",basePath);
 <!-- .subfooter start -->
 <div class="subfooter" style="background-color: #555555;">
 	<div  class="container">
-		<div class="row" style="margin-top: 50px">
-			<div class="col-md-3" style="color: #fff">
-				<p class="text-left">Copyright © 2016 易收（深圳）网络科技有限公司 版权所有</p>
-				<p>
-					备案号：<a target="_blank" href="http://www.miitbeian.gov.cn/state/outPortal/loginPortal.action">粤ICP备16039401号-1</a>
-				</p>
+		<div class="row" style="margin-top: 10px">
+			<div class="col-md-2" style="color: #fff;">
+				<div class="thum22">
+				 	<img src="${basePath }hplus/img/kuaiyishou.jpg" class="img-rounded" width="100px" height="100px"  style="margin-left:10px "/>
+		            <div>
+		              <h5>微信扫一扫，关注我们</h5>
+		            </div>
+		         </div>
 			</div>
 			<div class="col-md-2" style="color: #fff;">
-				<ul class="">
+				<ul class="" style="margin-top: 20px">
 					<li><a target="_blank" href="${basePath }help/help.jsp#about_us"
 						style="color: #fff">关于我们</a></li>
 					<li><a target="_blank" href="${basePath }help/help.jsp#service_us"
@@ -30,18 +32,17 @@ pageContext.setAttribute("basePath",basePath);
 				</ul>
 
 			</div>
-			<div class="col-md-3" style="color: #fff;">
+			<div class="col-md-3" style="color: #fff;margin-top: 20px">
 				<p>客服热线</p>
 				<p style="font-size: 30">4008-338-997</p>
 				<p>服务时间：09:00-21:00</p>
 			</div>
-			<div class="col-md-4" style="color: #fff">
-				<p class="text-left">
-					<img alt="" height="100px" src="${basePath }hplus/img/kuaiyishou.jpg">
+			<div class="col-md-4" style="color: #fff;margin-top: 35px">
+				<p class="text-left">Copyright © 2016 易收（深圳）网络科技有限公司 版权所有</p>
+				<p>
+					备案号：<a target="_blank" href="http://www.miitbeian.gov.cn/state/outPortal/loginPortal.action" style="color: #fff;">粤ICP备16039401号-1</a>
 				</p>
-				<p>微信扫一扫，关注我们</p>
 			</div>
-
 		</div>
 	</div>
 </div>
@@ -63,10 +64,8 @@ pageContext.setAttribute("basePath",basePath);
 
 
 <!-- 统计代码 -->
-<div style="display:none">
 <script type="text/javascript">
 	var cnzz_protocol = (("https:" == document.location.protocol) ? " https://": " http://");
 	document.write(unescape("%3Cspan id='cnzz_stat_icon_1259017486'%3E%3C/span%3E%3Cscript src='"+ cnzz_protocol
 		                  + "s11.cnzz.com/z_stat.php%3Fid%3D1259017486%26show%3Dpic' type='text/javascript'%3E%3C/script%3E"));
 </script>
-</div>

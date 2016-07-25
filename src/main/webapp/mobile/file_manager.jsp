@@ -44,7 +44,7 @@ pageContext.setAttribute("basePath",basePath);
 										<td>
 											<a target="_blank" style="color: #666666" href="${basePath }${htfile.downloadUrl}">${htfile.fileTitle}</a>
 										</td>
-										<td align="right"><a class="btn btn-success" href="${basePath }${htfile.downloadUrl}">下载</a></td>
+										<td align="right"><a class="btn btn-success" href="${basePath }${htfile.downloadUrl}"  target="_blank">下载</a></td>
 									</tr>
 								</c:forEach>
 							</tbody>
@@ -66,7 +66,7 @@ pageContext.setAttribute("basePath",basePath);
 										<td>
 											<a target="_blank" style="color: #666666" href="${basePath }${htfile.downloadUrl}">${htfile.fileTitle}</a>
 										</td>
-										<td align="right"><a class="btn btn-success" href="${basePath }${htfile.downloadUrl}">下载</a></td>
+										<td align="right"><a class="btn btn-success" href="${basePath }${htfile.downloadUrl}" target="_blank">下载</a></td>
 									</tr>
 								</c:forEach>
 							</tbody>
@@ -88,7 +88,7 @@ pageContext.setAttribute("basePath",basePath);
 										<td>
 											<a target="_blank" style="color: #666666" href="${basePath }${htfile.downloadUrl}">${htfile.fileTitle}</a>
 										</td>
-										<td align="right"><a class="btn btn-success" href="${basePath }${htfile.downloadUrl}">下载</a></td>
+										<td align="right"><a class="btn btn-success" href="${basePath }${htfile.downloadUrl}" target="_blank">下载</a></td>
 									</tr>
 								</c:forEach>
 							</tbody>

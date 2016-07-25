@@ -11,7 +11,7 @@ pageContext.setAttribute("basePath", basePath);
                         <div class="file-manager">
                             <h5>新闻资讯</h5>
                             <ul class="folder-list" style="padding: 0">
-                                <li><a href="${basePath}blog/list?blogType=1&from=0" target="_parent"><i class="fa fa-folder"></i> 行业动态</a>
+                                <li><a href="${basePath}blog/list?blogType=1&from=0" target="_parent"><i class="fa fa-folder"></i> 媒体报道</a>
                                 </li>
                                 <li><a href="${basePath}blog/list?blogType=2&from=0" target="_parent"><i class="fa fa-folder"></i> 业务文章</a>
                                 </li>

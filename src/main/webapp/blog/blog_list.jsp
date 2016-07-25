@@ -11,7 +11,7 @@ pageContext.setAttribute("basePath", basePath);
             <div class="col-sm-12">
                 <div class="ibox float-e-margins">
                     <div class="ibox-content">
-                        <h2><c:if test="${pd.blogType eq 1}">行业动态</c:if>
+                        <h2><c:if test="${pd.blogType eq 1}">媒体报道</c:if>
                         	<c:if test="${pd.blogType eq 2}">业务文章</c:if></h2>
                         <c:forEach items="${pd.data}" var="item">
 	                        <div class="hr-line-dashed"></div>

@@ -9,19 +9,23 @@ public class Blog {
 	private String blogTitle;
 	private String blogContext;
 	private Date createTime;
+	private String blogSource;
+	private String blogAuthor;
 
 	public Blog() {
 
 	}
 
 	public Blog(Integer id, Short blogType, String blogTitle,
-			String blogContext, Date createTime) {
+			String blogContext, Date createTime,String blogSource,String blogAuthor) {
 		super();
 		this.id = id;
 		this.blogType = blogType;
 		this.blogTitle = blogTitle;
 		this.blogContext = blogContext;
 		this.createTime = createTime;
+		this.blogSource = blogSource;
+		this.blogAuthor = blogAuthor;
 	}
 
 	public Integer getId() {
@@ -62,6 +66,22 @@ public class Blog {
 
 	public void setCreateTime(Date createTime) {
 		this.createTime = createTime;
+	}
+
+	public String getBlogSource() {
+		return blogSource;
+	}
+
+	public void setBlogSource(String blogSource) {
+		this.blogSource = blogSource;
+	}
+
+	public String getBlogAuthor() {
+		return blogAuthor;
+	}
+
+	public void setBlogAuthor(String blogAuthor) {
+		this.blogAuthor = blogAuthor;
 	}
 
 }

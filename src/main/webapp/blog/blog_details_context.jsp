@@ -5,18 +5,19 @@
             <div class="col-sm-12">
                 <div class="ibox">
                     <div class="ibox-content">
-                        <div class="pull-right">
-                            <button class="btn btn-white btn-xs" type="button"></button>
-                            <button class="btn btn-white btn-xs" type="button"></button>
-                            <button class="btn btn-white btn-xs" type="button">
-                            <fmt:formatDate value="${blog.createTime}" type="date" dateStyle="long"/></button>
-                        </div>
                         <div class="text-center article-title">
                             <h1>
                             	${blog.blogTitle }
                             </h1>
                         </div>
+                        <div class="pull-right">
+                            <button class="btn btn-white btn-xs" type="button">来源：${blog.blogSource}</button>
+                            <button class="btn btn-white btn-xs" type="button">作者：${blog.blogAuthor}</button>
+                            <button class="btn btn-white btn-xs" type="button">
+                            <fmt:formatDate value="${blog.createTime}" type="date" dateStyle="long"/></button>
+                        </div><br/>
                         <p style="font-size: 16px">
+                        <hr>
                         	${blog.blogContext }
                         </p>
                         <hr>

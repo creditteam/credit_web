@@ -37,7 +37,7 @@ pageContext.setAttribute("basePath",basePath);
 			<ul id="dtTab" class="nav nav-tabs">
 					<li class="active"><a href="#dthome" data-toggle="tab"
 						style="color: blue"> <span class="glyphicon glyphicon-film"></span><b
-							class="text-left">行业动态</b>
+							class="text-left">媒体报道</b>
 					</a></li>
 					<li><a href="#ywhome" data-toggle="tab"
 						style="color: blue"> <span class="glyphicon glyphicon-list-alt"></span><b

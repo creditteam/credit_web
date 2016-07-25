@@ -12,3 +12,8 @@ MODIFY COLUMN `images`  varchar(1024);
 
 ALTER TABLE `cr_credit`
 MODIFY COLUMN `debt_proof`  varchar(1024);
+
+/**-----2016-07-25-----**/
+ALTER TABLE `cr_blog`
+ADD COLUMN `blog_source`  varchar(60) NULL COMMENT '来源' AFTER `create_time`,
+ADD COLUMN `blog_author`  varchar(60) NULL COMMENT '作者' AFTER `blog_source`;
