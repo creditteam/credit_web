@@ -43,9 +43,9 @@ pageContext.setAttribute("basePath",basePath);
 				<a  href="${basePath }user/index" target="_blank" style="color: #A1ACB4">用户中心</a>
 				| <a  href="${basePath }/user/loginout" target="_blank" style="color: #A1ACB4">退出</a>
 				</c:if> 
-				| <a  href="${basePath }help/help.jsp"  target="_blank" style="color: #A1ACB4">关于我们</a>
-				| <a  href="${basePath }help/help.jsp"  target="_blank" style="color: #A1ACB4">法律声明</a>
-				| <a  href="${basePath }help/help.jsp"  target="_blank" style="color: #A1ACB4">已经反馈</a> 
+				| <a  href="${basePath }help/help.jsp#about_us"  target="_blank" style="color: #A1ACB4">关于我们</a>
+				| <a  href="${basePath }help/help.jsp#service_us"  target="_blank" style="color: #A1ACB4">法律声明</a>
+				| <a  href="${basePath }help/help.jsp#idea"  target="_blank" style="color: #A1ACB4">意见反馈</a> 
 				| <a  href="${basePath }help/help.jsp"  target="_blank" style="color: #A1ACB4">帮助中心</a>
 			</table>
 		</div> 

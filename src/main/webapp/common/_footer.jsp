@@ -14,8 +14,7 @@ pageContext.setAttribute("basePath",basePath);
 			<div class="col-md-3" style="color: #fff">
 				<p class="text-left">Copyright © 2016 易收（深圳）网络科技有限公司 版权所有</p>
 				<p>
-					备案号：<a target="_blank"
-						href="http://www.miitbeian.gov.cn/state/outPortal/loginPortal.action">粤ICP备16039401号-1</a>
+					备案号：<a target="_blank" href="http://www.miitbeian.gov.cn/state/outPortal/loginPortal.action">粤ICP备16039401号-1</a>
 				</p>
 			</div>
 			<div class="col-md-2" style="color: #fff;">
@@ -54,7 +53,7 @@ pageContext.setAttribute("basePath",basePath);
 	<div class="col-md-7">
 	<a href="#"><img border="0" src="http://img.webscan.360.cn/status/pai/hash/ac5112035c900037431cc40fe17f7969"/></a >
 	<a href="#"><img border="0" src="${basePath }hplus/img/r_315new.gif"/></a >
-	<a href="http://szcert.ebs.org.cn/1f60b8a5-0561-43ce-ba2c-2ec54daec656"><img border="0" src="${basePath }hplus/img/r_gongshang.gif"/></a >
+	<a href="http://szcert.ebs.org.cn/1f60b8a5-0561-43ce-ba2c-2ec54daec656"><img border="0" src="${basePath }hplus/img/r_gongshang.gif" /></a >
 	<a href="http://union.rising.com.cn/InfoManage/attestation.aspx?p0=9NUNHAs6vfTrGtonWGdgx2GntAdbY4/Rk0Hh-U8plhc="><img border="0" src="${basePath }hplus/img/r_rxjianche.jpg"/></a >
 	<a href="#"><img border="0" src="${basePath }hplus/img/r_cnnic.gif"/></a >
 	</div>
