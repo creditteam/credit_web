@@ -44,8 +44,11 @@
                   
                               <dl class="dl-horizontal">
                                     <dt>债务人名称：</dt>
-                                    <dd> 李*良</dd>
-                               </dl>
+										<dd>
+											<c:if test="${credit.crType==8 }">资产包债权</c:if>
+											<c:if test="${credit.crType==9 }">单笔债权</c:if>
+										</dd>
+									</dl>
                   
                                 <dl class="dl-horizontal">
                                     <dt>所在省份：</dt>

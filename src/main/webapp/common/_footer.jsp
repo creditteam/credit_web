@@ -8,7 +8,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 pageContext.setAttribute("basePath",basePath);
 %>
 <!-- .subfooter start -->
-<div class="subfooter" style="background-color: #555555;">
+<div class="subfooter" style="background-color: #FF7F50;">
 	<div  class="container">
 		<div class="row" style="margin-top: 10px">
 			<div class="col-md-2" style="color: #fff;">

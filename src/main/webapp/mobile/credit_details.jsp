@@ -39,14 +39,14 @@ pageContext.setAttribute("basePath",basePath);
 			         <div class="modal-body">
 			           	<span class="list-group-item active" >
 						  债权基本信息
-						</span>
-						<span class="list-group-item" >债权类型：
-							<c:if test="${credit.crType==1 }">个人债权</c:if>
-						    <c:if test="${credit.crType==2 }">企业债权</c:if>
-						    <c:if test="${credit.crType==3 }">预期贷款</c:if>
-						    <c:if test="${credit.crType==4 }">固定资产</c:if>
-						    <c:if test="${credit.crType==5 }">资产包</c:if>
-						    <c:if test="${credit.crType==6 }">国际债权</c:if></span>
+						</span> <span class="list-group-item">债权类型： <c:if
+										test="${credit.crType==1 }">民间借贷</c:if> <c:if
+										test="${credit.crType==2 }">应收账款</c:if> <c:if
+										test="${credit.crType==3 }">银行借贷</c:if> <c:if
+										test="${credit.crType==4 }">互联网金融</c:if> <c:if
+										test="${credit.crType==5 }">小额信贷</c:if> <c:if
+										test="${credit.crType==6 }">典当担保</c:if> <c:if
+										test="${credit.crType==7 }">司法裁决</c:if></span> 
 						<span class="list-group-item" >债务人名称：${credit.debtName}</span>
 						<span class="list-group-item" >所在省份：${credit.debtProvince}</span>
 						<span class="list-group-item" >所在城市：${credit.debtCity}</span>

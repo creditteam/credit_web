@@ -58,12 +58,13 @@ pageContext.setAttribute("basePath",basePath);
 										<c:forEach items="${pd.data }" var="credit">
 											<tr>
 											    <td><span class="label label-warning">
-												    <c:if test="${credit.crType==1 }">个人债权</c:if>
-												    <c:if test="${credit.crType==2 }">企业债权</c:if>
-												    <c:if test="${credit.crType==3 }">预期贷款</c:if>
-												    <c:if test="${credit.crType==4 }">固定资产</c:if>
-												    <c:if test="${credit.crType==5 }">资产包</c:if>
-												    <c:if test="${credit.crType==6 }">国际债权</c:if>
+												    <c:if test="${credit.crType==1 }">民间借贷</c:if>
+												    <c:if test="${credit.crType==2 }">应收账款</c:if>
+												    <c:if test="${credit.crType==3 }">银行借贷</c:if>
+												    <c:if test="${credit.crType==4 }">互联网金融</c:if>
+												    <c:if test="${credit.crType==5 }">小额信贷</c:if>
+												    <c:if test="${credit.crType==6 }">典当担保</c:if>
+												    <c:if test="${credit.crType==7 }">司法裁决</c:if>
 											    </span></td>
 												<td><span class="label label-warning">${credit.debtProvince }</span></td>
 												<td>${credit.debtName }</td>
