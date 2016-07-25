@@ -56,7 +56,7 @@ pageContext.setAttribute("basePath",basePath);
                                 <form role="form" action="${basePath }user/register" method="post" id="signupForm">
                                    <div class="form-group">
                                         <label>会员类型</label> 
-                                        <select id="userType" name="userType" class="form-control">
+                                        <select id="userType" name="userType" class="form-control" onchange="changeUserType()">
 													<option value="0">债权方</option>
 													<option value="1">处置方</option>
 										</select>
@@ -85,7 +85,8 @@ pageContext.setAttribute("basePath",basePath);
                                     <div>
                                         <button class="btn btn-sm btn-primary pull-right m-t-n-xs" type="submit"><strong>注册</strong>
                                         </button>
-                                        <label> <input type="checkbox" class="i-checks">我同意注册协议</label>
+                                        <label id="userType_fb" > <input type="checkbox" class="i-checks">我同意《用户服务协议》（债权发布方版）</label>
+                                        <label id="userType_cz" style="display: none"> <input type="checkbox" class="i-checks">我同意《用户服务协议》（债权处置方版）</label>
                                     </div>
                                 </form>
                             </div>
@@ -117,6 +118,17 @@ function validatorPhone(){
 
 function validaEmail(){
 	
+}
+
+function changeUserType(){
+	var userType =$("#userType").val();
+	if(userType==0){
+		$("#userType_fb").show();
+		$("#userType_cz").hide();
+	}else{
+		$("#userType_fb").hide();
+		$("#userType_cz").show();
+	}
 }
 </script>
 

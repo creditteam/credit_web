@@ -9,6 +9,7 @@
                             <h1>
                             	${blog.blogTitle }
                             </h1>
+                                                                      作者：立马    来源：www.baidu.com
                         </div>
                         <div class="pull-right">
                             <button class="btn btn-white btn-xs" type="button">来源：${blog.blogSource}</button>
