@@ -213,6 +213,10 @@ public class RewardController extends BaseController{
 		Reward reward = null;
 		if(id!=null&&id!=""){
 			reward = rewardWebService.findById(Integer.valueOf(id));
+			if(reward!=null){
+				//reward.setRewardName(SensitiveUtil.shieldName(reward.getRewardName()));
+				reward.setCartId(SensitiveUtil.shieldCartID(reward.getCartId()));
+			}
 			if(null != reward.getImages()){
 				reward.setImagesArry(reward.getImages().split(";"));
 			}

@@ -10,7 +10,7 @@ pageContext.setAttribute("basePath",basePath);
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
   <head>
-    <title>快易收债权管理|债权处置信息</title>
+    <title>快易收债权管理|债权追收信息</title>
     
 	<meta name="description" content="Worthy a Bootstrap-based, Responsive HTML5 Template">
 	<meta name="author" content="htmlcoder.me">
@@ -33,7 +33,7 @@ pageContext.setAttribute("basePath",basePath);
 			      <div class="modal-content">
 			         <div class="modal-header">
 			            <h4 class="modal-title" id="oblModalLabel" >
-			               	债权处置详细信息
+			               	债权追收详细信息
 			            </h4>
 			         </div>
 			         <div class="modal-body">

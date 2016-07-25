@@ -28,7 +28,7 @@ pageContext.setAttribute("basePath",basePath);
             
             <div class="wrapper wrapper-content">
                 <div class="container">
-                    <!-- 债权处置详情开始 -->
+                    <!-- 债权追收详情开始 -->
                   <div class="row">
                   <jsp:include page="/user/user_left.jsp"></jsp:include>
                   <div class="col-sm-9">
@@ -145,7 +145,7 @@ pageContext.setAttribute("basePath",basePath);
                   </div>
                   <!-- 债权信息  end-->
                     
-                    <!-- 债权处置详情结束 -->
+                    <!-- 债权追收详情结束 -->
                 </div>
 
             </div>

@@ -39,8 +39,8 @@ pageContext.setAttribute("basePath",basePath);
 		    <div id="expert_tab1" class="tab-pane fade in active">
 			    <c:forEach items="${userList1}" var="item">
 			    	<hr/>
-				    <div class="media">
-					  <a class="pull-left" data-toggle="modal" onclick="openExpertWin('${item.userHeadImages}','${item.nickname}','${item.description}')">
+				    <div class="media" onclick="openExpertWin('${item.userHeadImages}','${item.nickname}','${item.description}')">
+					  <a class="pull-left" data-toggle="modal" >
 					  <img src="${item.userHeadImages}" style="width: 64px; height: 80px" alt="" class="img-circle"/>
 					  </a>
 					  <div class="media-body">
@@ -54,8 +54,8 @@ pageContext.setAttribute("basePath",basePath);
 			<div id="expert_tab2" class="tab-pane fade">
 			    <c:forEach items="${userList2}" var="item">
 			    	<hr/>
-				    <div class="media">
-					  <a class="pull-left" data-toggle="modal" onclick="openExpertWin('${item.userHeadImages}','${item.nickname}','${item.description}')">
+				    <div class="media" onclick="openExpertWin('${item.userHeadImages}','${item.nickname}','${item.description}')">
+					  <a class="pull-left" data-toggle="modal">
 					  <img src="${item.userHeadImages}" style="width: 64px; height: 80px" alt="" class="img-circle"/>
 					  </a>
 					  <div class="media-body">
@@ -69,8 +69,8 @@ pageContext.setAttribute("basePath",basePath);
 			<div id="expert_tab3" class="tab-pane fade">
 			    <c:forEach items="${userList3}" var="item">
 			    	<hr/>
-				    <div class="media">
-					  <a class="pull-left" data-toggle="modal" onclick="openExpertWin('${item.userHeadImages}','${item.nickname}','${item.description}')">
+				    <div class="media"  onclick="openExpertWin('${item.userHeadImages}','${item.nickname}','${item.description}')">
+					  <a class="pull-left" data-toggle="modal">
 					  <img src="${item.userHeadImages}" style="width: 64px; height: 80px" alt="" class="img-circle"/>
 					  </a>
 					  <div class="media-body">

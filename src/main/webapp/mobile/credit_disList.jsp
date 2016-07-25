@@ -29,7 +29,7 @@ pageContext.setAttribute("basePath",basePath);
 	<div class="row">
 		<div class="col-md-12" >
 			<table class="table table-striped" style=" text-align:center; ">
-			   <caption style="text-align:center;">债权处置</caption>
+			   <caption style="text-align:center;">债权追收</caption>
 			   <thead>
 			      <tr>
 			         <th style="text-align:center;">所在地</th>

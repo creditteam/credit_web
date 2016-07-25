@@ -46,7 +46,7 @@ pageContext.setAttribute("basePath",basePath);
 	   				<tbody>
 		   				<tr valign="middle" onclick="toDisList()">
 		   					<td align="left" style="border-left: 0px;border-right: 0px;">
-		   						&nbsp;&nbsp;<img alt="" src="${basePath}hplus/img/bj03.png" class="img-circle" style="width: 30px;height:30px;">&nbsp;债权处置
+		   						&nbsp;&nbsp;<img alt="" src="${basePath}hplus/img/bj03.png" class="img-circle" style="width: 30px;height:30px;">&nbsp;债权追收
 		   					</td>
 		   					<td align="right" style="border-left: 0px;border-right: 0px;">
 		   						<span><b>></b>&nbsp;&nbsp;</span>

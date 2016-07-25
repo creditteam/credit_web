@@ -39,6 +39,7 @@ public class Constants {
 			"/disposal.jsp",
 			"/reward/navlist",
 			"/reward/navRewardDetails",
+			"/reward/mlRewardInfo",
 			"/blog/list",
 			"/blog/details",
 			"/blog/mlList",

@@ -44,11 +44,11 @@ pageContext.setAttribute("basePath",basePath);
 						<c:forEach items="${pd.data}" var="reward">
 						    <tr>
 								<td align="center"><span class="label label-warning">
-								    <c:if test="${reward.rewardType==1}">找人</c:if>
-			                        <c:if test="${reward.rewardType==2}">找车辆</c:if>
-			                        <c:if test="${reward.rewardType==3}">找房产</c:if>
-			                        <c:if test="${reward.rewardType==4}">找应收款</c:if>
-			                        <c:if test="${reward.rewardType==5}">其他</c:if>
+								    <c:if test="${reward.rewardType==0}">找人</c:if>
+			                        <c:if test="${reward.rewardType==1}">找车辆</c:if>
+			                        <c:if test="${reward.rewardType==2}">找房产</c:if>
+			                        <c:if test="${reward.rewardType==3}">找应收款</c:if>
+			                        <c:if test="${reward.rewardType==4}">其他</c:if>
 								</span></td>
 								<td align="center">${reward.province}</td>
 								<td align="center">${reward.rewardAmount}</td>
@@ -112,15 +112,15 @@ function showRewardInfo(id){
 		 },
 		 success: function (msg){
 			 var reType = msg.rewardType;
-			 if(msg.rewardType == 1){
+			 if(msg.rewardType == 0){
 				 reType = "找人";
-			 }else if(msg.rewardType == 2){
+			 }else if(msg.rewardType == 1){
 				 reType = "找车辆";
-			 }else if(msg.rewardType == 3){
+			 }else if(msg.rewardType == 2){
 				 reType = "找房产";
-			 }else if(msg.rewardType == 4){
+			 }else if(msg.rewardType == 3){
 				 reType = "找应收款";
-			 }else if(msg.rewardType == 5){
+			 }else if(msg.rewardType == 4){
 				 reType = "其他";
 			 }
 			 var rewardStatus = "";
@@ -151,8 +151,8 @@ function showRewardInfo(id){
 			 $("#xslsg7").text("有效日期：        "+ endTime);
 			 $("#xslsg8").text("状态：    "+rewardStatus);
 			 
-			 $("#xslsg10").text("发布者：    请抢标后联系平台获取");
-			 $("#xslsg12").text("联系电话：请在抢标后联系快易收平台方获取");
+			 $("#xslsg10").text("发布者：    请联系平台获取");
+			 $("#xslsg12").text("联系电话：请联系快易收平台方获取");
 			 $("#xslsg13").text("悬赏描述：        "+msg.description);
 			 
 			 $("#xslsg14").val(msg.id);

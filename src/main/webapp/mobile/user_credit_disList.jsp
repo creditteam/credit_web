@@ -30,7 +30,7 @@ pageContext.setAttribute("basePath",basePath);
 		<div class="col-md-12" >
 			<table width="99%">
 				<tr>
-					<td align="left"><h4>&nbsp;&nbsp;债权处置</h4></td>
+					<td align="left"><h4>&nbsp;&nbsp;债权追收</h4></td>
 					<td align="right"><a href="${basePath }credit/saveCredit?userId=${userInfo.id}&creditType=${creditType}" class="btn btn-success btn-sm" target="_self">发布项目</a></td>
 				</tr>
 			</table>

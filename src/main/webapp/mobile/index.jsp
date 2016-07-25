@@ -103,7 +103,7 @@ pageContext.setAttribute("basePath",basePath);
 		<a href="${basePath }credit/navlist?creditType=1">
 			<div class="text-center" style="margin: 8 8 8 8; width: 90%; height: 84%; ; border-radius:15px;">
 				<img alt="" src="${basePath }hplus/img/bj03.png">
-				<p style="color: #666666" >债权处置</p>
+				<p style="color: #666666" >债权追收</p>
 			</div>
 		</a>
 		</div>
@@ -280,11 +280,11 @@ pageContext.setAttribute("basePath",basePath);
 <div class="subfooter" style="background-color: #0b6070; margin-top: 50px">
 	<div class="main-container">
 		<div class="row">
-			<div class="col-md-12" style="color: #fff">
-				<p class="text-left">
-					Copyright © 2016 易收（深圳）网络科技有限公司  版权所有 
-					</p>
-				<p>备案号：<a target="_blank" href="http://www.miitbeian.gov.cn/state/outPortal/loginPortal.action">粤ICP备16039401号-1</a></p>
+			<div class="col-md-12" style="color: #fff;">
+				<p class="text-center">
+					Copyright © 2016 易收（深圳）网络科技有限公司<br/>
+					备案号：<a target="_blank" href="http://www.miitbeian.gov.cn/state/outPortal/loginPortal.action" style="color:#fff">粤ICP备16039401号-1</a>
+				</p>
 			</div>
 		</div>
 	</div>

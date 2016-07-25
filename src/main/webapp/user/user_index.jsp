@@ -18,7 +18,7 @@
                     <div class="ibox-content">
 
                               <dl class="dl-horizontal">
-                                    <dt>债权处置统计：</dt>
+                                    <dt>债权追收统计：</dt>
                                     <dd>共100 条</dd>
                               </dl>
                   
