@@ -11,7 +11,7 @@ pageContext.setAttribute("basePath", basePath);
 		<div class="tabs-container">
 			<ul class="nav nav-tabs">
 				<li class="active"><a data-toggle="tab" href="#nav-tabs1" aria-expanded="true">用户心声</a></li>
-				<li class=""><a data-toggle="tab" href="#nav-tabs2" aria-expanded="false">咨信查询</a></li>
+				<li class=""><a data-toggle="tab" href="#nav-tabs2" aria-expanded="false">资信查询</a></li>
 				<li class=""><a data-toggle="tab" href="#nav-tabs3" aria-expanded="false">合作机构</a></li>
 			</ul>
 			<div class="tab-content">

@@ -35,7 +35,7 @@ pageContext.setAttribute("basePath",basePath);
         <div class="col-md-4 text-center" style=" float: right; vertical-align:top;">
 			<p class="text-center" style="color: #A1ACB4;">
 			   <c:if test="${empty userInfo }">
-				<a href="${basePath }user/tologin" style="margin-bottom: 1px; color: #A1ACB4;">登录</a>
+				<a href="${basePath }user/tologin" style="margin-bottom: 1px; color: #A1ACB4;">会员登录</a>
 				<a href="${basePath }user/toRegister" style="margin-bottom: 1px; color: #A1ACB4;">免费注册</a>
 				</c:if>
 				<c:if test="${not empty userInfo }">
@@ -43,7 +43,10 @@ pageContext.setAttribute("basePath",basePath);
 				<a  href="${basePath }user/index" target="_blank" style="color: #A1ACB4">用户中心</a>
 				| <a  href="${basePath }/user/loginout" target="_blank" style="color: #A1ACB4">退出</a>
 				</c:if> 
-				| <a  href="${basePath }help/help.jsp"  target="_blank" style="color: #A1ACB4">帮助中心</a> 
+				| <a  href="${basePath }help/help.jsp"  target="_blank" style="color: #A1ACB4">关于我们</a>
+				| <a  href="${basePath }help/help.jsp"  target="_blank" style="color: #A1ACB4">法律声明</a>
+				| <a  href="${basePath }help/help.jsp"  target="_blank" style="color: #A1ACB4">已经反馈</a> 
+				| <a  href="${basePath }help/help.jsp"  target="_blank" style="color: #A1ACB4">帮助中心</a>
 			</table>
 		</div> 
 		</div>
@@ -58,15 +61,17 @@ pageContext.setAttribute("basePath",basePath);
 		<div class="navbar-collapse collapse" id="navbar">
 			<ul class="nav navbar-nav">
 				<li class="active"><a aria-expanded="false" role="button" href="${basePath }index" target="_self">首页</a></li>
-				<li class="dropdown"><a aria-expanded="false" role="button" href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown"> 债权信息 <span class="caret"></span></a>
+				<li class="dropdown"><a aria-expanded="false" role="button" href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown"> 债权大厅 <span class="caret"></span></a>
 					<ul role="menu" class="dropdown-menu">
-						<li><a href="${basePath }credit/navlist?creditType=1"  role="button" onclick="javacript:void(0)">债权处置</a></li>
+						<li><a href="${basePath }credit/navlist?creditType=1"  role="button" onclick="javacript:void(0)">债权追收</a></li>
 						<li><a href="${basePath }credit/navlist?creditType=2"  role="button" onclick="javacript:void(0)">债权转让</a></li>
 					</ul>
 				</li>
 				<li><a aria-expanded="false" role="button" href="${basePath }disposal.jsp">处置方式 </a></li>
-				<li><a aria-expanded="false" role="button" href="${basePath }reward/navlist" target="_self"> 线索悬赏 </a></li>
-				<li><a aria-expanded="false" role="button" href="${basePath }blog/list?from=0&blogType=1" target="_self">业务资讯 </a></li>
+				<li><a aria-expanded="false" role="button" href="${basePath }reward/navlist" target="_self">线索悬赏 </a></li>
+				<li><a aria-expanded="false" role="button" href="${basePath }${basePath }credit/saveCredit?creditType=1" target="_self">一键发布</a></li>
+				<li><a aria-expanded="false" role="button" href="${basePath }reward/navlist" target="_self">专家顾问库</a></li>
+				<li><a aria-expanded="false" role="button" href="${basePath }blog/list?from=0&blogType=1" target="_self">资讯资源 </a></li>
 			</ul>
 		</div>
 	</nav>
