@@ -16,14 +16,14 @@ pageContext.setAttribute("basePath",basePath);
 			<tr>
 			<td><span style="color: #A1ACB4">服务热线 ： 4008-338-997</span></td>
 				<td>
-                    <img id="weixem" alt="weixin" src="hplus/img/weixin88.png" style="height: 20px; padding-left: 50px">
+                    <img id="weixem" alt="weixin" src="${basePath }hplus/img/weixin88.png" style="height: 20px; padding-left: 50px">
                     <%--
                     <em id="wxewm" class="wxewmc"><img style="top: -20px" class="carousel-inner img-responsive img-rounded" alt="" src="hplus/img/kuaiyishou.jpg"></em>
                      --%>
 				</td>
-				<td><a target="_blank" href="http://www.weibo.com/p/1005055902432730/home?from=page_100505&mod=TAB&is_all=1#place" style=""><img height="20px" alt="微博" src="hplus/img/weibo88.png"></a></td>
+				<td><a target="_blank" href="http://www.weibo.com/p/1005055902432730/home?from=page_100505&mod=TAB&is_all=1#place" style=""><img height="20px" alt="微博" src="${basePath }hplus/img/weibo88.png"></a></td>
 				<td>
-                    <img id="shoujiem" alt="" src="hplus/img/shouji88.png" style="height: 20px; width: 20px;padding-left: -2px">
+                    <img id="shoujiem" alt="" src="${basePath }hplus/img/shouji88.png" style="height: 20px; width: 20px;padding-left: -2px">
                     <%--
                     <em id="sjewm" class="wxewmc"><img style="top: -20px" class="carousel-inner img-responsive img-rounded" alt="" src="hplus/img/yidashouji.png"></em>
                      --%>

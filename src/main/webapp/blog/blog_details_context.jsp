@@ -15,6 +15,7 @@
                             <h1>
                             	${blog.blogTitle }
                             </h1>
+                                                                      作者：立马    来源：www.baidu.com
                         </div>
                         <p style="font-size: 16px">
                         	${blog.blogContext }
