@@ -29,12 +29,14 @@
 				                    <div class="ibox-content">
 				                        
 				                        <div class="text-center article-title">
-				                            <h1>
+				                            <h3>
 				                            	${blog.blogTitle }
-				                            </h1>
+				                            </h3>
 				                        </div>
 				                        <div class="pull-right">
-				                            <span class="btn btn-white btn-xs" type="button">
+				                        	<span class="btn btn-white btn-xs">来源：${blog.blogSource}</span>
+				                        	<span class="btn btn-white btn-xs">作者：${blog.blogAuthor}</span>
+				                            <span class="btn btn-white btn-xs">
 				                            <fmt:formatDate value="${blog.createTime}" type="date" dateStyle="long"/></span>
 				                        </div><br/>
 				                        <p style="font-size: 16px">

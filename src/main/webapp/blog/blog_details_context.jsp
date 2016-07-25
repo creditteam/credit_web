@@ -9,17 +9,16 @@
                             <h1>
                             	${blog.blogTitle }
                             </h1>
-                                                                      作者：立马    来源：www.baidu.com
                         </div>
                         <div class="pull-right">
-                            <button class="btn btn-white btn-xs" type="button">来源：${blog.blogSource}</button>
-                            <button class="btn btn-white btn-xs" type="button">作者：${blog.blogAuthor}</button>
-                            <button class="btn btn-white btn-xs" type="button">
-                            <fmt:formatDate value="${blog.createTime}" type="date" dateStyle="long"/></button>
+                            <span class="btn btn-white btn-xs">来源：${blog.blogSource}</span>
+                            <span class="btn btn-white btn-xs">作者：${blog.blogAuthor}</span>
+                            <span class="btn btn-white btn-xs">
+                            <fmt:formatDate value="${blog.createTime}" type="date" dateStyle="long"/></span>
                         </div><br/>
                         <p style="font-size: 16px">
                         <hr>
-                        	${blog.blogContext }
+                        	${blog.blogContext}
                         </p>
                         <hr>
 
