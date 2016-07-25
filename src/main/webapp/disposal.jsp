@@ -27,6 +27,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <jsp:include page="/common/_menu.jsp"></jsp:include>
   <div class="main-container">
     <div class="container" style="border: thin solid #ffeeee; background-color: #fff">
+        <div class="row">
+    		<div class="col-md-12">
+    			<img alt="" src="${basePath }hplus/img/cz_new.jpg" style="width: 100%">
+    		</div>
+    	</div>
+        <%-- 
     	<div class="row">
     		
     		<div class="col-md-12">
@@ -49,10 +55,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     		</div>
     		<div style="height: 50px"></div>
     	</div>
-    	
+    	--%>
     	
     </div>
-    
+     <%-- 
     <div class="container" style="border: thin solid #ffeeee; background-color: #fff">
     	<div class="row">
     		<div class="col-md-12">
@@ -60,7 +66,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     		</div>
     	</div>
     </div>
-    
+    --%> 
     <div class="container"></div>
     <!-- 底部文件 -->
 <jsp:include page="/common/_footer.jsp"></jsp:include>

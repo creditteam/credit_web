@@ -27,54 +27,19 @@ body {background:url(<%=basePath%>hplus/img/bg.gif) top center no-repeat; backgr
   </head>
   
   <body>
-  <div class="main-container">
-  
-    <div class="container" style="border: thin solid #ffeeee; background-color: #fff">
-    	<div class="row">
-    <jsp:include page="mobile_top_logo.jsp"></jsp:include>
-    		
-    		<div class="col-md-12">
-    			<img alt="" src="<%=basePath%>hplus/img/cz1.png" style="width: 99%">
-    		</div>
-    		
-    	</div>
-    	
-    	<div class="row">
-    		<div class="col-md-12">
-    			<img alt="" src="<%=basePath%>hplus/img/cz2.png" style="width: 99%">
-    		</div>
-    	</div>
-    	
-    	<div class="row" style="background-color: #fff">
-    		<div class="col-md-12 text-center">
-    		<span class="glyphicon glyphicon-chevron-down" style="color: #ffa800"></span><br>
-    		<span class="glyphicon glyphicon-chevron-down" style="color: #ffa800"></span><br>
-    			<a href="<%=basePath%>flow" class="btn btn-success" style="width: 50%">查看处置流程</a><br><br><br><br>
-    		</div>
-    		
-    	</div>
-    	
-    	
-    </div>
-    
-    <div class="container" style="border: thin solid #ffeeee; background-color: #fff">
-    	<div class="row">
-    		<div class="col-md-12">
-    			<img alt="" src="<%=basePath%>hplus/img/cz3.png" style="width: 99%">
-    		</div>
-    	</div>
-    	
-    	<div class="row" style="background-color: #fff">
-    		<div class="col-md-12 text-center">
-    		<span class="glyphicon glyphicon-chevron-down" style="color: #ffa800"></span><br>
-    		<span class="glyphicon glyphicon-chevron-down" style="color: #ffa800"></span><br>
-    			<!-- <a id="apdivfr" name="apdiv" type="button" id="casbutton" class="btn btn-success" style="width:50%;" onclick="checkUser()">免费发布信息</a><br><br><br><br><br> -->
-    		</div>
-    		
-    	</div>
-    </div>
-    
- <jsp:include page="mobile_footer.jsp"></jsp:include>
+	<div class="main-container">
+		<div class="container"
+			style="border: thin solid #ffeeee; background-color: #fff">
+			<div class="row">
+				<jsp:include page="mobile_top_logo.jsp"></jsp:include>
+				<div class="col-md-12">
+					<img alt="" src="${basePath }hplus/img/cz_new.jpg" style="width: 100%">
+				</div>
+			</div>
+
+		</div>
+	</div>
+	<jsp:include page="mobile_footer.jsp"></jsp:include>
 
   </body>
 </html>
