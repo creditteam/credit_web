@@ -108,9 +108,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			                        </div>
 						<div class="row">
 							<div id="zqfbxy"><input id="zqfbxycb" type="checkbox" checked="checked">
-							<a target="_blank" href="ft?method=463#xieyi2" style="color: #666666; margin-left: 20px">“快易收债权管理”O2O平台用户服务协议（债权发布方版）</a></div>
+							<a target="_blank" href="${basePath }hplus/uploadFile/docs/fwxy_fbb.docx" style="color: #666666; margin-left: 20px">“快易收债权管理”O2O平台用户服务协议（债权发布方版）</a></div>
 							<div id="zqczxy" style="display: none"><input id="zqczxycb" type="checkbox" checked="checked">
-							<a target="_blank" href="ft?method=463" style="color: #666666; margin-left: 20px">“快易收债权管理”O2O平台用户服务协议（债权处置方版）</a></div>
+							<a target="_blank" href="${basePath }hplus/uploadFile/docs/fwxy_czb.docx" style="color: #666666; margin-left: 20px">“快易收债权管理”O2O平台用户服务协议（债权处置方版）</a></div>
 						</div>
 						<div class="row">
 							<button id="regsubbtn" type="submit" class="btn btn-success" disabled="disabled">完成</button>

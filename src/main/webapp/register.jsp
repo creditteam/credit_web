@@ -70,23 +70,23 @@ pageContext.setAttribute("basePath",basePath);
                                         <input type="password" id="userPwd" name="userPwd" placeholder="请输入密码" class="form-control"  required="required" aria-required="true">
                                     </div>
 					                <div class="form-group">
-					                    <label>确认密码</label>
-					                    <input type="password" id="cuserPwd" name="cuserPwd"  class="form-control" placeholder="请再次输入密码" required="required" aria-required="true"/>
+					              	    <label>手机</label>
+					                    <input type="phone" id="userPhone" name="userPhone" class="form-control" size="32" onblur="validatorPhone()" placeholder="请输入手机"  required="required" aria-required="true" />
+					                    <input id="regiohonebtn" type="button" class="btn btn-primary" value="验证手机" />
 					                </div>
 					                <div class="form-group">
-					                    <label>手机</label>
-					                    <input type="phone" id="userPhone" name="userPhone" class="form-control" onblur="validatorPhone()" placeholder="请输入手机"  required="required" aria-required="true" />
-					                </div>					             
+					                    <label>验证码</label>
+					                    <input type="text" id="registerPhoneyzm" name = "registerPhoneyzm" class="form-control" placeholder="验证码" required="required">
+					                </div>						             
 					                <div class="form-group">
 					                    <label>Email</label>
 					                    <input type="email"  id="userEmail" name="userEmail" class="form-control" onblur="validaEmail()" placeholder="请输入Email"  required="required" aria-required="true"/>
 					                </div>
-					                
                                     <div>
                                         <button class="btn btn-sm btn-primary pull-right m-t-n-xs" type="submit"><strong>注册</strong>
                                         </button>
-                                        <label id="userType_fb" > <input type="checkbox" class="i-checks">我同意《用户服务协议》（债权发布方版）</label>
-                                        <label id="userType_cz" style="display: none"> <input type="checkbox" class="i-checks">我同意《用户服务协议》（债权处置方版）</label>
+                                        <label id="userType_fb" > <input type="checkbox" class="i-checks"><a href="${basePath }hplus/uploadFile/docs/fwxy_fbb.docx">我同意《用户服务协议》（债权发布方版）</a></label>
+                                        <label id="userType_cz" style="display: none"> <input type="checkbox" class="i-checks"><a href="${basePath }hplus/uploadFile/docs/fwxy_czb.docx">我同意《用户服务协议》（债权处置方版）</a></label>
                                     </div>
                                 </form>
                             </div>

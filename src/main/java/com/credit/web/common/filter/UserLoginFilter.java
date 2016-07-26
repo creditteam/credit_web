@@ -74,6 +74,7 @@ public class UserLoginFilter implements Filter {
 					|| path.contains(".gif")
 					|| path.contains(".ttf")
 					|| path.contains(".woff")
+					|| path.contains(".woff2")
 					|| path.contains(".eot")
 					|| path.contains(".html")) {
 				chain.doFilter(request, response);
