@@ -372,11 +372,11 @@ public class UserController extends BaseController{
 		mv.addObject("userList1",userList1);
 		mv.addObject("userList2",userList2);
 		mv.addObject("userList3",userList3);
-		//if(MozillaUtil.isMobileDevice(request)){
+		if(MozillaUtil.isMobileDevice(request)){
 			mv.setViewName("mobile/expert");
-		//}else{
-			//待完成
-		//}
+		}else{
+			mv.setViewName("/expert_list");
+		}
 		return mv;
 		
 	}
@@ -397,7 +397,7 @@ public class UserController extends BaseController{
 		if(MozillaUtil.isMobileDevice(super.getRequest())){
 			mv.setViewName("mobile/expert_detail");
 		}else{
-			//PC待开发
+			mv.setViewName("/expert_details");
 		}
 		return mv;
 	}

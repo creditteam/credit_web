@@ -96,7 +96,7 @@ $(document).ready(function(){
 				<li><a aria-expanded="false" role="button" href="${basePath }disposal.jsp">处置方式 </a></li>
 				<li><a aria-expanded="false" role="button" href="${basePath }reward/navlist" target="_self">线索悬赏 </a></li>
 				<li><a aria-expanded="false" role="button" href="${basePath }credit/saveCredit?creditType=1" target="_self">一键发布</a></li>
-				<li><a aria-expanded="false" role="button" href="${basePath }reward/navlist" target="_self">专家顾问库</a></li>
+				<li><a aria-expanded="false" role="button" href="${basePath }user/expertList" target="_self">专家顾问库</a></li>
 				<li><a aria-expanded="false" role="button" href="${basePath }blog/list?from=0&blogType=1" target="_self">资讯资源 </a></li>
 			</ul>
 		</div>
