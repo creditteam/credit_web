@@ -54,7 +54,7 @@ pageContext.setAttribute("basePath",basePath);
                                   <div class="col-sm-8">
                                     <div class="row">
                                        <div class="col-sm-8">
-                                    <input id="regbakphone" name="regbakphone" class="form-control" type="text" placeholder="注册手机">   
+                                    <input id="userPhone" name="userPhone" class="form-control" type="text" placeholder="注册手机">   
                                        </div>
                                        <div class="col-sm-4">
                                      <button id="regbakmailsend" type="button" class="btn btn-primary" onclick="sendMail()" style="display: none">发送邮件</button><button type="button" id="regbakphonesend" class="btn btn-primary" onclick="sendPhone()" >发送短信</button>  
@@ -125,5 +125,60 @@ pageContext.setAttribute("basePath",basePath);
 
     <jsp:include page="/common/_script.jsp"></jsp:include>
     <script type="text/javascript" src="http://tajs.qq.com/stats?sId=9051096" charset="UTF-8"></script>
+    <script>
+    var InterValObj; //timer变量，控制时间
+    var count = 5; //间隔函数，1秒执行
+    var curCount = 40;//当前剩余秒数
+    function registPhone(){
+    	var phone = $("#userPhone").val();
+    	if(phone == ''){
+    		alert('请输入手机号');
+    		return false;
+    	}
+    	$("#registerZm").removeAttr("disabled");
+    	InterValObj = window.setInterval(SetRemainTime, 1000); //启动计时器，1秒执行一次
+    	$.ajax({
+    		 type: "POST", //用POST方式传输
+    		 dataType: "json", //数据格式:JSON
+    		 url: '${basePath}user/sendPhone', //目标地址
+    		 data: {"phoneNum":phone},
+    		 error: function (XMLHttpRequest, textStatus, errorThrown) {
+    			 alert("手机号码填写有误或系统繁忙，请再次尝试");
+    		 },
+    		 success: function (msg){
+    			 if (msg.result == "true") {
+    				 $("#phoneNum").val(msg.phoneInt);
+    			} else {
+    				alert("短信发送失败!");
+    			}
+    		 }
+    	 });
+    }
+    function SetRemainTime() {
+        if (curCount == 0) {                
+            window.clearInterval(InterValObj);//停止计时器
+            $("#regiohonebtn").removeAttr("disabled");//启用按钮
+            $("#regiohonebtn").val("发送验证码");
+            curCount = 40;
+        }
+        else {
+            curCount--;
+            $("#regiohonebtn").val(curCount);
+            $("#regiohonebtn").attr("disabled", "disabled");
+        }
+    }
+
+    function changeUserType(){
+    	var userType =$("#userType").val();
+    	if(userType==0){
+    		$("#userType_fb").show();
+    		$("#userType_cz").hide();
+    	}else{
+    		$("#userType_fb").hide();
+    		$("#userType_cz").show();
+    	}
+    }
+    
+    </script>
 </body>
 </html>

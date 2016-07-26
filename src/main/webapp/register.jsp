@@ -17,6 +17,7 @@ pageContext.setAttribute("basePath",basePath);
     <meta name="keywords" content="H+后台主题,后台bootstrap框架,会员中心主题,后台HTML,响应式后台">
     <meta name="description" content="H+是一个完全响应式，基于Bootstrap3最新版本开发的扁平化主题，她采用了主流的左右两栏式布局，使用了Html5+CSS3等现代技术">
     <jsp:include page="/common/_meta.jsp"></jsp:include>
+    <jsp:include page="/common/_script.jsp"></jsp:include>
 </head>
 
 <body class="gray-bg top-navigation">
@@ -53,7 +54,7 @@ pageContext.setAttribute("basePath",basePath);
                             <div class="col-sm-6 b-r">
                                 <p>欢迎您注册快易收债权管理系统会员</p>    
                                 <span class="label label-warning">${result }</span><br/>                  
-                                <form role="form" action="${basePath }user/register" method="post" id="signupForm">
+                                <form role="form" action="${basePath }user/register" method="post" id="registForm" novalidate>
                                    <div class="form-group">
                                         <label>会员类型</label> 
                                         <select id="userType" name="userType" class="form-control" onchange="changeUserType()">
@@ -63,24 +64,25 @@ pageContext.setAttribute("basePath",basePath);
 									</div>
                                     <div class="form-group">
                                         <label>用户名</label>
-                                        <input type="text" id="nickname" name="nickname" placeholder="请输入您用户名" class="form-control"  required="required" aria-required="true">
+                                        <input type="text" id="nickname" name="nickname" placeholder="请输入您用户名" class="form-control"  >
                                     </div>
                                     <div class="form-group">
                                         <label>密码</label>
-                                        <input type="password" id="userPwd" name="userPwd" placeholder="请输入密码" class="form-control"  required="required" aria-required="true">
+                                        <input type="password" id="userPwd" name="userPwd" placeholder="请输入密码" class="form-control"  >
                                     </div>
 					                <div class="form-group">
 					              	    <label>手机</label>
-					                    <input type="phone" id="userPhone" name="userPhone" class="form-control" size="32" onblur="validatorPhone()" placeholder="请输入手机"  required="required" aria-required="true" />
-					                    <input id="regiohonebtn" type="button" class="btn btn-primary" value="验证手机" />
+					                    <input type="phone" id="userPhone" name="userPhone" class="form-control" size="32" onblur="validatorPhone()" placeholder="请输入手机"  />
+					                    <input id="regiohonebtn" type="button" class="btn btn-primary" value="验证手机"  onclick="registPhone()"/>
+					                    <input type="hidden" id="phoneNum" name="phoneNum">
 					                </div>
 					                <div class="form-group">
 					                    <label>验证码</label>
-					                    <input type="text" id="registerPhoneyzm" name = "registerPhoneyzm" class="form-control" placeholder="验证码" required="required">
+					                    <input type="text" id="registerZm" name = "registerZm" class="form-control" placeholder="验证码" >
 					                </div>						             
 					                <div class="form-group">
 					                    <label>Email</label>
-					                    <input type="email"  id="userEmail" name="userEmail" class="form-control" onblur="validaEmail()" placeholder="请输入Email"  required="required" aria-required="true"/>
+					                    <input type="email"  id="userEmail" name="userEmail" class="form-control" onblur="validaEmail()" placeholder="请输入Email" />
 					                </div>
                                     <div>
                                         <button class="btn btn-sm btn-primary pull-right m-t-n-xs" type="submit"><strong>注册</strong>
@@ -109,15 +111,49 @@ pageContext.setAttribute("basePath",basePath);
     </div>
     <!-- 底部文件 -->
 	<jsp:include page="/common/_footer.jsp"></jsp:include>
-    <jsp:include page="/common/_script.jsp"></jsp:include>
+
 </body>
 <script type="text/javascript">
-function validatorPhone(){
-	
+var InterValObj; //timer变量，控制时间
+var count = 5; //间隔函数，1秒执行
+var curCount = 40;//当前剩余秒数
+function registPhone(){
+	var phone = $("#userPhone").val();
+	if(phone == ''){
+		alert('请输入手机号');
+		return false;
+	}
+	$("#registerZm").removeAttr("disabled");
+	InterValObj = window.setInterval(SetRemainTime, 1000); //启动计时器，1秒执行一次
+	$.ajax({
+		 type: "POST", //用POST方式传输
+		 dataType: "json", //数据格式:JSON
+		 url: '${basePath}user/sendPhone', //目标地址
+		 data: {"phoneNum":phone},
+		 error: function (XMLHttpRequest, textStatus, errorThrown) {
+			 alert("手机号码填写有误或系统繁忙，请再次尝试");
+		 },
+		 success: function (msg){
+			 if (msg.result == "true") {
+				 $("#phoneNum").val(msg.phoneInt);
+			} else {
+				alert("短信发送失败!");
+			}
+		 }
+	 });
 }
-
-function validaEmail(){
-	
+function SetRemainTime() {
+    if (curCount == 0) {                
+        window.clearInterval(InterValObj);//停止计时器
+        $("#regiohonebtn").removeAttr("disabled");//启用按钮
+        $("#regiohonebtn").val("发送验证码");
+        curCount = 40;
+    }
+    else {
+        curCount--;
+        $("#regiohonebtn").val(curCount);
+        $("#regiohonebtn").attr("disabled", "disabled");
+    }
 }
 
 function changeUserType(){
@@ -130,6 +166,62 @@ function changeUserType(){
 		$("#userType_cz").show();
 	}
 }
+
+
+
+$(function(){
+    var validate = $("#registForm").validate({
+        debug: true, //调试模式取消submit的默认提交功能   
+        //errorClass: "label.error", //默认为错误的样式类为：error   
+        focusInvalid: false, //当为false时，验证无效时，没有焦点响应  
+        onkeyup: false,   
+        submitHandler: function(form){   //表单提交句柄,为一回调函数，带一个参数：form   
+            alert("提交表单");   
+            form.submit();   //提交表单   
+        },   
+        rules:{
+        	nickname:{
+                required:true
+            },
+            userPwd:{
+                required:true
+            },
+            userEmail:{
+                required:true,
+                email:true
+            },
+            userPhone:{
+                required:true,
+                rangelength:[3,10]
+            },
+            registerZm:{
+                equalTo:"#phoneNum"
+            }                    
+        },
+        messages:{
+        	nickname:{
+                required:"必填"
+            },
+        	nickname:{
+                required:"必填"
+            },
+            userEmail:{
+                required:"必填",
+                email:"E-Mail格式不正确"
+            },
+            password:{
+                required: "不能为空",
+                rangelength: $.format("密码最小长度:{0}, 最大长度:{1}。")
+            },
+            registerZm:{
+                equalTo:"输入的验证码有错误！"
+            }                                    
+        }
+    });    
+});
+
+
+
 </script>
 
 </html>

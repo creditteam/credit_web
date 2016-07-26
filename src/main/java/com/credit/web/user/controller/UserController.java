@@ -161,7 +161,10 @@ public class UserController extends BaseController{
 		pd.put("userLevel", 0);
 		pd.put("userStatus", 1);
 		pd.put("userPwd", newEncodePwd);
-		//判断当前用户和邮箱是否存在
+		//判断邮箱是否存在
+		//this.validatorEmail(userEmail);
+		//判断手机号是否存在
+		//this.validatorPhone(userPhone);
 		
 		Boolean isFlag=userWebService.register(pd);
 		ModelAndView mv = this.getModelAndView();
