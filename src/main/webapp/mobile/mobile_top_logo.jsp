@@ -6,5 +6,5 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 %>
 <div class="row">
 	<div class="col-xs-6"><img style="height: 24px" id="logo" src="<%=basePath%>hplus/img/logo.jpg"  alt="快易收"></div>
-	<div class="col-xs-6"><p style="color: #5f5d5d">服务热线 ： 4008-338-997</p></div>
+	<div class="col-xs-6"><p style="color: #5f5d5d;margin-right:2px;">服务热线 ：4008-338-997</p></div>
 </div>

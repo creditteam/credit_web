@@ -39,7 +39,7 @@ pageContext.setAttribute("basePath",basePath);
 		    <div id="expert_tab1" class="tab-pane fade in active">
 			    <c:forEach items="${userList1}" var="item">
 			    	<hr/>
-				    <div class="media" onclick="openExpertWin('${item.userHeadImages}','${item.nickname}','${item.description}')">
+				    <div class="media" onclick="openExpertDetail('${item.id}')">
 					  <a class="pull-left" data-toggle="modal" >
 					  <img src="${item.userHeadImages}" style="width: 64px; height: 80px" alt="" class="img-circle"/>
 					  </a>
@@ -54,7 +54,7 @@ pageContext.setAttribute("basePath",basePath);
 			<div id="expert_tab2" class="tab-pane fade">
 			    <c:forEach items="${userList2}" var="item">
 			    	<hr/>
-				    <div class="media" onclick="openExpertWin('${item.userHeadImages}','${item.nickname}','${item.description}')">
+				    <div class="media" onclick="openExpertDetail('${item.id}')">
 					  <a class="pull-left" data-toggle="modal">
 					  <img src="${item.userHeadImages}" style="width: 64px; height: 80px" alt="" class="img-circle"/>
 					  </a>
@@ -69,7 +69,7 @@ pageContext.setAttribute("basePath",basePath);
 			<div id="expert_tab3" class="tab-pane fade">
 			    <c:forEach items="${userList3}" var="item">
 			    	<hr/>
-				    <div class="media"  onclick="openExpertWin('${item.userHeadImages}','${item.nickname}','${item.description}')">
+				    <div class="media"  onclick="openExpertDetail('${item.id}')">
 					  <a class="pull-left" data-toggle="modal">
 					  <img src="${item.userHeadImages}" style="width: 64px; height: 80px" alt="" class="img-circle"/>
 					  </a>
@@ -118,11 +118,8 @@ pageContext.setAttribute("basePath",basePath);
 
 <jsp:include page="mobile_footer.jsp"></jsp:include>
 <script type="text/javascript">
-	function openExpertWin(url,name,rmk){
-		$("#expertImg").attr("src",url);
-		$("#expertName").html(name);
-		$("#expertRmk").html(rmk);
-		$("#mf_expert").modal("show");
+	function openExpertDetail(id){
+		window.location.href = "${basePath}user/expertDetail?id="+id;
 	}
 </script>
 </body>

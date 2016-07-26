@@ -6,7 +6,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 // 将 "项目路径basePath" 放入pageContext中，待以后用EL表达式读出。
 pageContext.setAttribute("basePath",basePath);
 %>
-<div style="height: 70px">
+<div style="height: 60px">
 <div class="container-fluid">
 	<nav class="navbar navbar-default navbar-fixed-bottom" style="background-color: #FF7F50;">
 	<ul class="nav text-center">

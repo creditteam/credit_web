@@ -30,6 +30,7 @@ public class Constants {
 			"/user/expertList",
 			"/user/passBack",
 			"/user/login",
+			"/user/expertDetail",
 			"/product",
 			"/cooperate",
 			"/zixin",

@@ -1,0 +1,25 @@
+diff a/src/main/webapp/mobile/blog.jsp b/src/main/webapp/mobile/blog.jsp	(rejected hunks)
+@@ -56,6 +57,11 @@
+ 								<div class="text-left" style="margin-left:20">
+ 									<a href="${basePath}blog/details?id=${item.id}" style=" padding-left: 20"><br>${item.blogTitle }</a>
+ 								</div>
++								<div class="pull-right">
++		                            <span class="btn btn-white btn-xs">来源：${blog.blogSource}</span>
++		                            <span class="btn btn-white btn-xs">作者：${blog.blogAuthor}</span>
++                                    <span class="btn btn-white btn-xs"><fmt:formatDate value="${item.createTime }" pattern="yyyy-MM-dd HH:mm:ss"/></span>
++                                </div>
+ 							</div>
+ 						</c:forEach>
+ 					</div>
+@@ -65,6 +71,11 @@
+ 								<div class="text-left" style="margin-left:20">
+ 									<a href="${basePath}blog/details?id=${item.id}" style=" padding-left: 20"><br>${item.blogTitle }</a>
+ 								</div>
++								<div class="pull-right">
++		                            <span class="btn btn-white btn-xs">来源：${blog.blogSource}</span>
++		                            <span class="btn btn-white btn-xs">作者：${blog.blogAuthor}</span>
++                                    <span class="btn btn-white btn-xs"><fmt:formatDate value="${item.createTime }" pattern="yyyy-MM-dd HH:mm:ss"/></span>
++                                </div>
+ 							</div>
+ 						</c:forEach>
+ 					</div>

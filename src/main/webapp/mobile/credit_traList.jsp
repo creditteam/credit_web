@@ -47,11 +47,14 @@ pageContext.setAttribute("basePath",basePath);
 						<td>
 							<c:if test="${credit.crStatus eq '1'}">
 								<button  style="background-color: red; border-radius:25px;" class="btn btn-yellow export btn-sm" disabled="disabled">招标中</button>
-								</c:if>
-								<c:if test="${credit.crStatus eq '2'}">
+							</c:if>
+							<c:if test="${credit.crStatus eq '2'}">
 								<button  style="border-radius:25px;" class="btn btn-yellow export btn-sm" disabled="disabled">处置中</button>
-								</c:if>
-								<c:if test="${credit.crStatus eq '3'}">
+							</c:if>
+							<c:if test="${credit.crStatus eq '3'}">
+								<button  style="border-radius:25px;" class="btn btn-yellow export btn-sm" disabled="disabled">还款中</button>
+							</c:if>
+							<c:if test="${credit.crStatus eq '4'}">
 								<button  style="border-radius:25px;" class="btn btn-yellow export btn-sm" disabled="disabled">已结束</button>
 							</c:if>
 						</td>

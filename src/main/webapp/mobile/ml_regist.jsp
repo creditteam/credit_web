@@ -67,13 +67,7 @@
 				<div class="form-group">
 					<div class="input-group input-group-xs">
 						<span class="input-group-addon">会员昵称</span>
-						<input type="text" class="form-control" name="nickname" placeholder="昵称长度不大于10" maxlength="10">
-					</div>
-				</div>
-				<div class="form-group">
-					<div class="input-group input-group-xs">
-						<span class="input-group-addon">注册邮箱</span>
-						<input type="text" class="form-control" name="userEmail" placeholder="请输入正确的邮箱" maxlength="30">
+						<input type="text" class="form-control" name="nickname" placeholder="请输入您的邮箱" maxlength="10">
 					</div>
 				</div>
 				
@@ -84,16 +78,32 @@
 					</div>
 				</div>
 				
-				<div class="form-group">
+				<!-- <div class="form-group">
 					<div class="input-group input-group-xs">
 						<span class="input-group-addon">确认密码</span>
 						<input type="password" id="userPwd2" name="userPwd2" class="form-control" placeholder="重复输入一次密码" maxlength="20">
+					</div>
+				</div> -->
+				<div class="form-group">
+					<div class="input-group input-group-xs">
+						<div class="checkbox" id="zqfbxy">
+	                        <label>
+	                        	<input id="zqfbxycb" name="zqfbxycb" type="checkbox"/>
+	                        	<a target="_blank" href="${basePath }hplus/uploadFile/docs/fwxy_fbb.docx" style="color: #666666; margin-left: 20px">“快易收债权管理”O2O平台用户服务协议（债权发布方版）</a>
+	                        </label>
+	                    </div>
+	                    <div class="checkbox" id="zqczxy" style="display: none">
+	                        <label>
+	                        	<input id="zqczxycb" name="zqfbxycb" type="checkbox">
+								<a target="_blank" href="${basePath }hplus/uploadFile/docs/fwxy_czb.docx" style="color: #666666; margin-left: 20px">“快易收债权管理”O2O平台用户服务协议（债权处置方版）</a>
+	                        </label>
+	                    </div>
 					</div>
 				</div>
 				<span id="userpassword" style="color: red" hidden="hidden"></span><br>
 				<div class="form-group">
 					<div class="col-xs-14">
-						<input type="submit" id="checksubbtn" class="btn btn-lg btn-success btn-block" value="提交" />
+						<input type="button" id="checksubbtn" class="btn btn-lg btn-success btn-block" value="提交" onclick="submitRegit()"/>
 					</div>
 				</div>
 			</form>
@@ -145,6 +155,42 @@
 	        $("#regiohonebtn").attr("disabled", "disabled");
 	    }
 	}
+	function changezqsel(){
+    	var selxy = $("#userType").val();
+    	if (selxy == 0) {
+    		$("#zqfbxycb").attr("checked","checked");
+    		$("#zqczxycb").attr("checked",false);
+    		$("#zqfbxy").css("display", "block");
+    		$("#zqczxy").css("display", "none");
+    	} else {
+    		$("#zqfbxycb").attr("checked",false);
+    		$("#zqczxycb").attr("checked","checked");
+    		$("#zqfbxy").css("display", "none");
+    		$("#zqczxy").css("display", "block");
+    	}
+    }
+    $("#userType").change(changezqsel);
+    $("#zqfbxycb").attr("checked","checked");
+    
+    function submitRegit(){
+    	var bootstrapValidator = $("#registForm").data('bootstrapValidator');
+   	    bootstrapValidator.validate();
+   	    if(bootstrapValidator.isValid()){
+   	    	var selxy = $("#userType").val();
+   	    	if (selxy == 0) {
+   	    		if($("#zqfbxycb").attr("checked") == 'checked'){
+   	    			alert("需要同意用户服务协议才能完成注册");
+   	    			return false;
+   	    		}
+   	    	} else {
+   	    		if($("#zqczxycb").attr("checked") == "checked"){
+   	    			alert("需要同意用户服务协议才能完成注册");
+   	    			return false;
+   	    		}
+   	    	}
+   	    	$("#registForm").submit();
+   	    }
+    }
 	
 	$(document).ready(function () {
 		$('#registForm').bootstrapValidator({
@@ -177,14 +223,7 @@
 	            nickname: {
 	                validators: {
 	                    notEmpty: {
-	                        message: '用户昵称不能为空!'
-	                    }
-	                }
-	            },
-	            userEmail: {
-	                validators: {
-	                    notEmpty: {
-	                        message: '注册邮箱不能为空'
+	                        message: '用户昵称请输入邮箱!'
 	                    },
 	                    emailAddress: {
 	                        message: '请输入正确的邮箱!'
@@ -202,14 +241,14 @@
 	                validators: {
 	                	notEmpty: {
 	                        message: '密码不能为空'
-	                    },
+	                    }/* ,
 	                    identical: {
 	                        field: 'userPwd2',
 	                        message: '密码和确认密码不一致!'
-	                    }
+	                    } */
 	                }
 	            },
-	            userPwd2: {
+	            /* userPwd2: {
 	                validators: {
 	                	notEmpty: {
 	                        message: '重复密码不能为空'
@@ -219,7 +258,7 @@
 	                        message: '密码和确认密码不一致!'
 	                    }
 	                }
-	            },
+	            }, */
 	            registerZm: {
 	            	validators: {
 	            		notEmpty: {

@@ -178,13 +178,6 @@ pageContext.setAttribute("basePath",basePath);
 	</div>
 	<div class="row">
 		
-		<%-- <div class="col-xs-4" style="height: 100px; ">
-		<a href="${basePath }mobile/swhz.jsp">
-			<div class="text-center" style="margin: 8 8 8 8; width: 90%; height: 84%; border-radius:15px;">
-				<img alt="" src="${basePath }hplus/img/bj02.png">
-				<p style="color: #666666" >商务合作</p>
-			</div>
-		</a></div> --%>
 		<div class="col-xs-4" style="height: 100px; display: none">
 		<a href="om?method=403">
 			<div class="text-center" style="margin: 8 8 8 8; width: 90%; height: 84%; border-radius:15px;">
@@ -192,18 +185,11 @@ pageContext.setAttribute("basePath",basePath);
 				<p style="color: #666666" >关于我们</p>
 			</div>
 		</a></div>
-		<%-- <div class="col-xs-4" style="height: 100px; ">
-		<a href="om?method=420">
-			<div class="text-center" style="margin: 8 8 8 8; width: 90%; height: 84%; border-radius:15px;">
-				<img alt="" src="${basePath }hplus/img/bj09.png">
-				<p style="color: #666666" >资源下载</p>
-			</div>
-		</a></div> --%>
 	</div>
 	
 </div>
 
-	<div class="row"><h4 class="text-center">专家顾问库</h4></div>
+<div class="row"  onclick="sssss()"><h4 class="text-center">专家顾问库</h4></div>
 <div class="main-container" id="yunxing" style="background-color: #f2f2f2; border-top:thick double #ff0000;height:196px;overflow-x:auto">
 	<ul class="test_ul">
 		<c:forEach items="${userList1}" var="item">
@@ -243,41 +229,40 @@ pageContext.setAttribute("basePath",basePath);
 	        </li>
 		</c:forEach>
       </ul>
-	
 </div>
- <div id="mf_expert" class="modal fade" tabindex="-1" role="dialog"
-		aria-labelledby="myModalLabel" aria-hidden="true">
-		<div class="modal-dialog modal-lg">
-			<div class="modal-content">
-				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal"
-						aria-hidden="true">
-						<span>&times;</span><span class="sr-only">关闭</span>
-					</button>
-					<h4 class="modal-title">个人简介</h4>
-				</div>
-				<div class="modal-body">
-					<div class="row">
-						<div class="col-md-4">
-							<img class="img-circle" src="" alt="" id="expertImg"
-								style="width: 120px; height: 160px; margin-top: 10px">
-						</div>
-						<div class="col-md-8">
-							<h3 id="expertName"></h3>
-							<b>简介：</b><p id="expertRmk" style="font-size: 16px;"></p>
-						</div>
-
+<div id="mf_expert" class="modal fade" tabindex="-1" role="dialog"
+	aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal"
+					aria-hidden="true">
+					<span>&times;</span><span class="sr-only">关闭</span>
+				</button>
+				<h4 class="modal-title">个人简介</h4>
+			</div>
+			<div class="modal-body">
+				<div class="row">
+					<div class="col-md-4">
+						<img class="img-circle" src="" alt="" id="expertImg"
+							style="width: 120px; height: 160px; margin-top: 10px">
 					</div>
+					<div class="col-md-8">
+						<h3 id="expertName"></h3>
+						<b>简介：</b><p id="expertRmk" style="font-size: 16px;"></p>
+					</div>
+
 				</div>
-				<div class="modal-footer">
-					<button type="button" class="btn btn-sm btn-primary"
-						class="btn btn-default" data-dismiss="modal">关闭</button>
-				</div>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-sm btn-primary"
+					class="btn btn-default" data-dismiss="modal">关闭</button>
 			</div>
 		</div>
 	</div>
+</div>
 
-<div class="subfooter" style="background-color: #FF7F50; margin-top: 50px">
+<div class="subfooter" style="background-color: #FF7F50; margin-top: 30px">
 	<div class="main-container">
 		<div class="row">
 			<div class="col-md-12" style="color: #fff;">
@@ -292,12 +277,19 @@ pageContext.setAttribute("basePath",basePath);
 
 <jsp:include page="mobile_footer.jsp"></jsp:include>
 <script type="text/javascript">
+	function scrollLeftRun(){
+		$("#yunxing").scrollLeft($("#yunxing").scrollLeft()+3);
+	}
+	function testXu(){
+		window.setInterval(scrollLeftRun, 200);
+	}
 	function openExpertWin(url,name,rmk){
 		$("#expertImg").attr("src",url);
 		$("#expertName").html(name);
 		$("#expertRmk").html(rmk);
 		$("#mf_expert").modal("show");
 	}
+	testXu();
 	$(document).ready(function(){var d1=[[1262304000000,6],[1264982400000,3057],[1267401600000,20434],[1270080000000,31982],[1272672000000,26602],[1275350400000,27826],[1277942400000,24302],[1280620800000,24237],[1283299200000,21004],[1285891200000,12144],[1288569600000,10577],[1291161600000,10295]];var d2=[[1262304000000,5],[1264982400000,200],[1267401600000,1605],[1270080000000,6129],[1272672000000,11643],[1275350400000,19055],[1277942400000,30062],[1280620800000,39197],[1283299200000,37000],[1285891200000,27000],[1288569600000,21000],[1291161600000,17000]];var data1=[{label:"数据1",data:d1,color:"#17a084"},{label:"数据2",data:d2,color:"#127e68"}];$.plot($("#flot-chart1"),data1,{xaxis:{tickDecimals:0},series:{lines:{show:true,fill:true,fillColor:{colors:[{opacity:1},{opacity:1}]},},points:{width:0.1,show:false},},grid:{show:false,borderWidth:0},legend:{show:false,}});var lineData={labels:["一月","二月","三月","四月","五月","六月","七月"],datasets:[{label:"示例数据",fillColor:"rgba(220,220,220,0.5)",strokeColor:"rgba(220,220,220,1)",pointColor:"rgba(220,220,220,1)",pointStrokeColor:"#fff",pointHighlightFill:"#fff",pointHighlightStroke:"rgba(220,220,220,1)",data:[65,59,40,51,36,25,40]},{label:"示例数据",fillColor:"rgba(26,179,148,0.5)",strokeColor:"rgba(26,179,148,0.7)",pointColor:"rgba(26,179,148,1)",pointStrokeColor:"#fff",pointHighlightFill:"#fff",pointHighlightStroke:"rgba(26,179,148,1)",data:[48,48,60,39,56,37,30]}]};var lineOptions={scaleShowGridLines:true,scaleGridLineColor:"rgba(0,0,0,.05)",scaleGridLineWidth:1,bezierCurve:true,bezierCurveTension:0.4,pointDot:true,pointDotRadius:4,pointDotStrokeWidth:1,pointHitDetectionRadius:20,datasetStroke:true,datasetStrokeWidth:2,datasetFill:true,responsive:true,};var ctx=document.getElementById("lineChart").getContext("2d");var myNewChart=new Chart(ctx).Line(lineData,lineOptions)});
 	var cnzz_protocol = (("https:" == document.location.protocol) ? " https://": " http://");
 	document.write(unescape("%3Cspan id='cnzz_stat_icon_1259017486'%3E%3C/span%3E%3Cscript src='"+ cnzz_protocol

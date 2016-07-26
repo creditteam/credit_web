@@ -66,7 +66,7 @@ pageContext.setAttribute("basePath",basePath);
 						<span id="lsg11" class="list-group-item" >债权方联系电话：${user.userPhone}</span>
 						<span id="lsg12" class="list-group-item" >债权凭证：请联系快易收平台方获取</span>
 						<span id="lsg13" class="list-group-item" >债权描述：${user.description}</span>
-						<span id="lsg14" class="list-group-item" >债权备注：请有意者与平台联系，获取更多详情</span>
+						<span id="lsg14" class="list-group-item" >备注：请有意者与平台联系，获取更多详情</span>
 
 						<!-- <div class="row">
 							<div id="zqfbxy" style="margin-left: 20px"><input id="zqfbxycb" type="checkbox" checked="checked">

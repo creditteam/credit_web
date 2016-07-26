@@ -33,12 +33,12 @@
 				                            	${blog.blogTitle }
 				                            </h3>
 				                        </div>
-				                        <div class="pull-right">
+				                        <div class="" style="text-align:center;">
 				                        	<span class="btn btn-white btn-xs">来源：${blog.blogSource}</span>
 				                        	<span class="btn btn-white btn-xs">作者：${blog.blogAuthor}</span>
 				                            <span class="btn btn-white btn-xs">
 				                            <fmt:formatDate value="${blog.createTime}" type="date" dateStyle="long"/></span>
-				                        </div><br/>
+				                        </div><hr>
 				                        <p style="font-size: 16px">
 				                        	${blog.blogContext }
 				                        </p>

@@ -382,6 +382,27 @@ public class UserController extends BaseController{
 	}
 	
 	/**
+	 * 专家顾问详情
+	 * @param id
+	 * @return
+	 * @throws Exception
+	 */
+	@RequestMapping(value="/expertDetail")
+	public ModelAndView expertDetail(String id) throws Exception{
+		ModelAndView mv = this.getModelAndView();
+		if(null != id && !"".equals(id)){
+			User user = userWebService.getUserById(Integer.valueOf(id));
+			mv.addObject("user",user);
+		}
+		if(MozillaUtil.isMobileDevice(super.getRequest())){
+			mv.setViewName("mobile/expert_detail");
+		}else{
+			//PC待开发
+		}
+		return mv;
+	}
+	
+	/**
 	 * 发送手机验证码
 	 * @param phoneNum
 	 * @return
