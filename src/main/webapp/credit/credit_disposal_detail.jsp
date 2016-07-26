@@ -161,6 +161,10 @@
 									<dt>债权描述：</dt>
 									<dd>${credit.description}</dd>
 								</dl>
+								<dl class="dl-horizontal">
+									<dt>债权备注：</dt>
+									<dd>请有意者与平台联系，获取更多详情</dd>
+								</dl>
 							</div>
                 </div>
             </div>
