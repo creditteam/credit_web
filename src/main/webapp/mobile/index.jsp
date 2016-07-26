@@ -145,7 +145,7 @@ pageContext.setAttribute("basePath",basePath);
 			<a href="${basePath }blog/mlList">
 			<div class="text-center" style="margin: 8 8 8 8; width: 90%; height: 84%; border-radius:15px;">
 				<img alt="" src="${basePath }hplus/img/bj08.png">
-				<p style="color: #666666" >业务咨讯</p>
+				<p style="color: #666666" >资讯资源</p>
 			</div>
 		</a>
 		</div>

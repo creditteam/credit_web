@@ -1,5 +1,6 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%> 
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -56,6 +57,11 @@ pageContext.setAttribute("basePath",basePath);
 								<div class="text-left" style="margin-left:20">
 									<a href="${basePath}blog/details?id=${item.id}" style=" padding-left: 20"><br>${item.blogTitle }</a>
 								</div>
+								<div class="pull-right">
+		                            <span class="btn btn-white btn-xs">来源：${blog.blogSource}</span>
+		                            <span class="btn btn-white btn-xs">作者：${blog.blogAuthor}</span>
+                                    <span class="btn btn-white btn-xs"><fmt:formatDate value="${item.createTime }" pattern="yyyy-MM-dd HH:mm:ss"/></span>
+                                </div>
 							</div>
 						</c:forEach>
 					</div>
@@ -65,6 +71,11 @@ pageContext.setAttribute("basePath",basePath);
 								<div class="text-left" style="margin-left:20">
 									<a href="${basePath}blog/details?id=${item.id}" style=" padding-left: 20"><br>${item.blogTitle }</a>
 								</div>
+								<div class="pull-right">
+		                            <span class="btn btn-white btn-xs">来源：${blog.blogSource}</span>
+		                            <span class="btn btn-white btn-xs">作者：${blog.blogAuthor}</span>
+                                    <span class="btn btn-white btn-xs"><fmt:formatDate value="${item.createTime }" pattern="yyyy-MM-dd HH:mm:ss"/></span>
+                                </div>
 							</div>
 						</c:forEach>
 					</div>
