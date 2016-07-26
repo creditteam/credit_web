@@ -23,7 +23,7 @@ pageContext.setAttribute("basePath",basePath);
         <div id="page-wrapper" class="gray-bg">
             <jsp:include page="/common/_menu.jsp"></jsp:include>
             
-            <div class="wrapper wrapper-content">
+            <div class="wrapper">
                 <div class="container">
      
 
