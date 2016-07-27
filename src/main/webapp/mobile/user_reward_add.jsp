@@ -198,7 +198,7 @@ pageContext.setAttribute("basePath",basePath);
 	
 	function checkSelectType(obj){
 		var rewardType = $("#rewardType").val();
-		if(rewardType == '2'){
+		if(rewardType == '1'){
 			$("#carBrandDiv").show();
 			/* $("#cartIdDiv").hide();
 			$('#rewardForm').bootstrapValidator('addField','carBrand',{

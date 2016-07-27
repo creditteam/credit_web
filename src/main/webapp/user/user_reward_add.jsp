@@ -47,7 +47,7 @@ pageContext.setAttribute("basePath",basePath);
                             <div class="form-group">
                                 <label class="col-sm-3 control-label">悬赏类型：</label>
                                 <div class="col-sm-8">
-                                        <select  name="rewardType" class="form-control" required="required" aria-required="true">
+                                        <select  name="rewardType" class="form-control" required="required" aria-required="true"  id="rewardType" onchange="changeRewardType()">
 													<option value="0">找人</option>
 													<option value="1">找车辆</option>
 													<option value="2">找房产</option>
@@ -73,6 +73,12 @@ pageContext.setAttribute("basePath",basePath);
                                 <label class="col-sm-3 control-label">身份证：</label>
                                 <div class="col-sm-8">
                                       <input id="cartId" name="cartId" class="form-control" type="text" required="required" aria-required="true" class="valid">
+                                </div>
+                            </div>
+                            <div class="form-group" style="display:none" id="carBrandDiv">
+                             <label class="col-sm-3 control-label">车牌号：</label>
+                                <div class="col-sm-8">
+                                      <input id="carBrand" name="carBrand" class="form-control" type="text"  >
                                 </div>
                             </div>
                            <div class="hr-line-dashed"></div>
@@ -188,6 +194,14 @@ pageContext.setAttribute("basePath",basePath);
 	    });
 	});
 
+	function changeRewardType(){
+		var rewardType =$("#rewardType").val();
+		if(rewardType==1){
+			$("#carBrandDiv").show();
+		}else{
+			$("#carBrandDiv").hide();
+		}
+	}
 </script>
 </body>
 
