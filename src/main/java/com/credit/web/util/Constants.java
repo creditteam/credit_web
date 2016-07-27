@@ -25,6 +25,8 @@ public class Constants {
 			"/toRegister",
 			"/register.jsp",
 			"/user/register",
+			"/user/sendPhone",
+			"/forgot_pwd.jsp",
 			"/help/help.jsp",
 			"/index",
 			"/user/expertList",

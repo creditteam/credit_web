@@ -156,16 +156,43 @@ public class UserController extends BaseController{
 	@RequestMapping(value="/register")
 	public ModelAndView register(HttpServletRequest request,HttpServletResponse response) throws Exception{
 		PageData pd= super.getPageData();
+		String userEmail =pd.getString("userEmail");
+		String userPhone =pd.getString("userPhone");
 		String password =request.getParameter("userPwd");
 		String newEncodePwd = MD5.md5(password);
 		pd.put("userLevel", 0);
 		pd.put("userStatus", 1);
 		pd.put("userPwd", newEncodePwd);
-		//判断当前用户和邮箱是否存在
+		Boolean isMobile = MozillaUtil.isMobileDevice(request);
+		//判断邮箱是否存在
+		Map<String,Object> resut=this.validatorEmail(userEmail);
+		Boolean valid=(Boolean) resut.get("valid");
+		ModelAndView mv = this.getModelAndView();
+		mv.addObject("pd",pd);
+		if(!valid){
+			mv.addObject("message","该邮箱已经注册");
+			
+			if(isMobile){//如果是手机注册
+				mv.setViewName("/mobile/ml_regist");
+			}else{
+				mv.setViewName("/register");
+			}
+			return mv;
+		}
+		//判断手机号是否存在
+		resut=this.validatorPhone(userPhone);
+		valid=(Boolean) resut.get("valid");
+		if(!valid){
+			mv.addObject("message","该手机已经注册");
+			if(isMobile){//如果是手机注册
+				mv.setViewName("/mobile/ml_regist");
+			}else{
+				mv.setViewName("/register");
+			}
+			return mv;
+		}
 		
 		Boolean isFlag=userWebService.register(pd);
-		ModelAndView mv = this.getModelAndView();
-		Boolean isMobile = MozillaUtil.isMobileDevice(request);
 		if(isFlag){//注册成功
 			if(isMobile){//如果是手机注册
 				mv.setViewName("/mobile/login");
@@ -372,11 +399,11 @@ public class UserController extends BaseController{
 		mv.addObject("userList1",userList1);
 		mv.addObject("userList2",userList2);
 		mv.addObject("userList3",userList3);
-		//if(MozillaUtil.isMobileDevice(request)){
+		if(MozillaUtil.isMobileDevice(request)){
 			mv.setViewName("mobile/expert");
-		//}else{
-			//待完成
-		//}
+		}else{
+			mv.setViewName("/expert_list");
+		}
 		return mv;
 		
 	}
@@ -397,7 +424,7 @@ public class UserController extends BaseController{
 		if(MozillaUtil.isMobileDevice(super.getRequest())){
 			mv.setViewName("mobile/expert_detail");
 		}else{
-			//PC待开发
+			mv.setViewName("/expert_details");
 		}
 		return mv;
 	}

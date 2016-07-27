@@ -64,7 +64,7 @@ pageContext.setAttribute("basePath",basePath);
                                         <button class="btn btn-sm btn-primary pull-right m-t-n-xs" type="submit"><strong>登 录</strong>
                                         </button>
                                         <label><input type="checkbox" class="i-checks">自动登录</label>
-                                        <label><a  href="forgot_pwd.jsp">忘记密码?</a></label>
+                                        <label><a  href="${basePath }forgot_pwd.jsp">忘记密码?</a></label>
                                     </div>
                                 </form>
                             </div>
@@ -89,5 +89,6 @@ pageContext.setAttribute("basePath",basePath);
 	<jsp:include page="/common/_footer.jsp"></jsp:include>
     <jsp:include page="/common/_script.jsp"></jsp:include>
 </body>
+
 
 </html>
