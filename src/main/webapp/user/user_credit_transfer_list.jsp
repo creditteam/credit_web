@@ -42,6 +42,9 @@ pageContext.setAttribute("basePath",basePath);
                     </div>
                     <div class="ibox-content">
                       <!-- 搜索表单 -->
+                       <form id="signupForm" action="${basePath }credit/list" method="post" target="_self">
+                      <input type="hidden" name="userId" value="${userInfo.id }">
+                      <input type="hidden" name="creditType" value="${creditType }">
                       <div class="row m-b-sm m-t-sm">
                             <div class="col-md-1">
                                 <button type="button" id="loading-example-btn" class="btn btn-white btn-sm"><i class="fa fa-refresh"></i> 刷新</button>
@@ -53,6 +56,7 @@ pageContext.setAttribute("basePath",basePath);
                                 </div>
                             </div>
                         </div>
+                        </form>
                       <!-- 数据列表 -->
 
                      <table class="table table-hover no-margins">

@@ -59,13 +59,13 @@ $(document).ready(function(){
 			</tr>
 		    </table>
         </div>
-        <div class="col-md-4 text-center" style=" float: right;line-height: 30px;">
+        <div class="col-md-5 text-center" style=" float: right;line-height: 30px;">
 			   <c:if test="${empty userInfo }">
 				<a href="${basePath }user/tologin" style="margin-bottom: 1px; color: #fff">会员登录</a>
 				<a href="${basePath }user/toRegister" style="margin-bottom: 1px; color: #fff">免费注册</a>
 				</c:if>
 				<c:if test="${not empty userInfo }">
-				欢迎你，${userInfo.userEmail } &nbsp;&nbsp;&nbsp;
+				欢迎你，${userInfo.userEmail }
 				<a  href="${basePath }user/index" target="_blank" style="color: #fff">用户中心</a>
 				| <a  href="${basePath }/user/loginout" target="_blank" style="color: #fff">退出</a>
 				</c:if> 
