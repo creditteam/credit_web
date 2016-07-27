@@ -175,6 +175,7 @@ public class UserController extends BaseController{
 			}else{
 				mv.setViewName("/register");
 			}
+			return mv;
 		}
 		//判断手机号是否存在
 		resut=this.validatorPhone(userPhone);
@@ -186,6 +187,7 @@ public class UserController extends BaseController{
 			}else{
 				mv.setViewName("/register");
 			}
+			return mv;
 		}
 		
 		Boolean isFlag=userWebService.register(pd);

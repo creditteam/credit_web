@@ -54,7 +54,7 @@ pageContext.setAttribute("basePath",basePath);
                             <div class="col-sm-6 b-r">
                                 <p>欢迎您注册快易收债权管理系统会员</p>    
                                 <span class="label label-warning">${result }</span><br/>                  
-                                <form role="form" action="${basePath }user/register" method="post" id="registForm" novalidate>
+                                <form action="${basePath }user/register"  method="post" id="registForm">
                                    <div class="form-group">
                                         <label>会员类型</label> 
                                         <select id="userType" name="userType" class="form-control" onchange="changeUserType()">
@@ -72,8 +72,8 @@ pageContext.setAttribute("basePath",basePath);
                                     </div>
 					                <div class="form-group">
 					              	    <label>手机</label>
-					                    <input type="phone" id="userPhone" name="userPhone" class="form-control" size="32" onblur="validatorPhone()" placeholder="请输入手机"  />
-					                    <input id="regiohonebtn" type="button" class="btn btn-primary" value="验证手机"  onclick="registPhone()"/>
+					                    <input type="phone" id="userPhone" name="userPhone" class="form-control" size="32"  placeholder="请输入手机"  />
+					                    <input id="regiohonebtn" name="regiohonebtn" type="button" class="btn btn-primary" value="验证手机"  onclick="registPhone()"/>
 					                    <input type="hidden" id="phoneNum" name="phoneNum">
 					                </div>
 					                <div class="form-group">
@@ -82,13 +82,13 @@ pageContext.setAttribute("basePath",basePath);
 					                </div>						             
 					                <div class="form-group">
 					                    <label>Email</label>
-					                    <input type="email"  id="userEmail" name="userEmail" class="form-control" onblur="validaEmail()" placeholder="请输入Email" />
+					                    <input type="email"  id="userEmail" name="userEmail" class="form-control"  placeholder="请输入Email" />
 					                </div>
                                     <div>
-                                        <button class="btn btn-sm btn-primary pull-right m-t-n-xs" type="submit"><strong>注册</strong>
+                                        <button class="btn btn-sm btn-primary pull-right m-t-n-xs" type="button" id="regist"><strong>注册</strong>
                                         </button>
-                                        <label id="userType_fb" > <input type="checkbox" class="i-checks"><a href="${basePath }hplus/uploadFile/docs/fwxy_fbb.docx">我同意《用户服务协议》（债权发布方版）</a></label>
-                                        <label id="userType_cz" style="display: none"> <input type="checkbox" class="i-checks"><a href="${basePath }hplus/uploadFile/docs/fwxy_czb.docx">我同意《用户服务协议》（债权处置方版）</a></label>
+                                        <label id="userType_fb" > <input type="checkbox"  name="isAgreeProtocol" class="i-checks"><a href="${basePath }hplus/uploadFile/docs/fwxy_fbb.docx">我同意《用户服务协议》（债权发布方版）</a></label>
+                                        <label id="userType_cz" style="display: none"> <input type="checkbox" name="isAgreeProtocol" class="i-checks"><a href="${basePath }hplus/uploadFile/docs/fwxy_czb.docx">我同意《用户服务协议》（债权处置方版）</a></label>
                                     </div>
                                 </form>
                             </div>
@@ -173,12 +173,14 @@ $(function(){
     var validate = $("#registForm").validate({
         debug: true, //调试模式取消submit的默认提交功能   
         //errorClass: "label.error", //默认为错误的样式类为：error   
-        focusInvalid: false, //当为false时，验证无效时，没有焦点响应  
+        focusInvalid: true, //当为false时，验证无效时，没有焦点响应  
         onkeyup: false,   
         submitHandler: function(form){   //表单提交句柄,为一回调函数，带一个参数：form   
-            alert("提交表单");   
             form.submit();   //提交表单   
-        },   
+        },
+        invalidHandler: function(){
+        	alert("表单验证错误");
+        },
         rules:{
         	nickname:{
                 required:true
@@ -192,9 +194,16 @@ $(function(){
             },
             userPhone:{
                 required:true,
-                rangelength:[3,10]
+                rangelength:[3,10],
+                remote: {//ajax验证。server result:{"valid",true or false} 向服务发送当前input name值，获得一个json数据。例表示正确：{"valid",true}  
+                    url: '${basePath }user/validaPhone',//验证地址
+                    message: '该手机号已注册',//提示消息
+                    delay :  1000,//每输入一个字符，就发ajax请求，服务器压力还是太大，设置2秒发送一次ajax
+                    type: 'POST'
+                }
             },
             registerZm:{
+            	required:true,
                 equalTo:"#phoneNum"
             }                    
         },
@@ -211,15 +220,20 @@ $(function(){
             },
             password:{
                 required: "不能为空",
-                rangelength: $.format("密码最小长度:{0}, 最大长度:{1}。")
+                rangelength: $.validator.format("密码最小长度:{0}, 最大长度:{1}。")
             },
             registerZm:{
+            	required:"必填",
                 equalTo:"输入的验证码有错误！"
             }                                    
         }
     });    
 });
 
+$("#regist").click(function(){
+	var s=$("#registForm").validate().form();
+	$("#registForm").submit();
+});
 
 
 </script>
