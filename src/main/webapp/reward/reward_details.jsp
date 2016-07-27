@@ -9,7 +9,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <Link Rel="icon" href="/hplus/img/kuaiyishou.ico" type=”image/x-icon”>
 
-    <title>快易收-您的债权管理专家</title>
+    <title>
+		线索悬赏-<c:if test="${reward.rewardType==0}">找人</c:if>
+			<c:if test="${reward.rewardType==1}">找车辆</c:if>
+			<c:if test="${reward.rewardType==2}">找房产</c:if>
+			<c:if test="${reward.rewardType==3}">找应收款</c:if>
+			<c:if test="${reward.rewardType==4}">其他</c:if>
+	</title>
     <jsp:include page="/common/_meta.jsp"></jsp:include>
 
 </head>
@@ -92,6 +98,10 @@
 									<dt>联系电话：</dt>
 									<dd> 请在抢标后联系快易收平台方获取*</dd>
 								</dl>
+								<dl class="dl-horizontal">
+									<jsp:include page="/common/_share.jsp"></jsp:include>
+								</dl>
+								
 							</div>
                 </div>
             </div>

@@ -17,7 +17,7 @@ pageContext.setAttribute("basePath",basePath);
 				<li class=""><a data-toggle="tab" href="#tab-exp2"
 					aria-expanded="false">资深诉讼律师</a></li>
 				<li class=""><a data-toggle="tab" href="#tab-exp3"
-					aria-expanded="false">资深诉财经、法制媒体人</a></li>
+					aria-expanded="false">资深诉财经法制媒体人</a></li>
 			</ul>
 			<div class="tab-content">
 				<div id="tab-exp1" class="tab-pane active">

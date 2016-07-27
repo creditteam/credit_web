@@ -31,7 +31,7 @@ function shareQzone(_img,_desc,_summary,_site){
 	//_shareUrl += '&summary=' + encodeURIComponent(_summary);    //参数summary设置分享摘要，可选参数
 	_shareUrl += '&title=' + encodeURIComponent(document.title);    //参数title设置分享标题，可选参数
 	//_shareUrl += '&site=' + encodeURIComponent(_site);   //参数site设置分享来源，可选参数
-	//_shareUrl += '&pics=' + encodeURIComponent(_img);   //参数pics设置分享图片的路径，多张图片以＂|＂隔开，可选参数
+	_shareUrl += '&pics=' + encodeURIComponent(_img);   //参数pics设置分享图片的路径，多张图片以＂|＂隔开，可选参数
 	window.open(_shareUrl);
 }
 /**
