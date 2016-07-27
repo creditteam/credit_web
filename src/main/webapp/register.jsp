@@ -53,8 +53,8 @@ pageContext.setAttribute("basePath",basePath);
                         <div class="row">
                             <div class="col-sm-6 b-r">
                                 <p>欢迎您注册快易收债权管理系统会员</p>    
-                                <span class="label label-warning">${result }</span><br/>                  
-                                <form action="${basePath }user/register"  method="post" id="registForm">
+                                <span class="label label-warning">${message }</span><br/><br/>                 
+                                <form action="${basePath }user/register"  method="post" id="registForm"  role="form" target="_self">
                                    <div class="form-group">
                                         <label>会员类型</label> 
                                         <select id="userType" name="userType" class="form-control" onchange="changeUserType()">
@@ -85,7 +85,7 @@ pageContext.setAttribute("basePath",basePath);
 					                    <input type="email"  id="userEmail" name="userEmail" class="form-control"  placeholder="请输入Email" />
 					                </div>
                                     <div>
-                                        <button class="btn btn-sm btn-primary pull-right m-t-n-xs" type="button" id="regist"><strong>注册</strong>
+                                        <button class="btn btn-sm btn-primary pull-right m-t-n-xs" type="submit"  id="regist"><strong>注册</strong>
                                         </button>
                                         <label id="userType_fb" > <input type="checkbox"  name="isAgreeProtocol" class="i-checks"><a href="${basePath }hplus/uploadFile/docs/fwxy_fbb.docx">我同意《用户服务协议》（债权发布方版）</a></label>
                                         <label id="userType_cz" style="display: none"> <input type="checkbox" name="isAgreeProtocol" class="i-checks"><a href="${basePath }hplus/uploadFile/docs/fwxy_czb.docx">我同意《用户服务协议》（债权处置方版）</a></label>
@@ -171,9 +171,9 @@ function changeUserType(){
 
 $(function(){
     var validate = $("#registForm").validate({
-        debug: true, //调试模式取消submit的默认提交功能   
-        //errorClass: "label.error", //默认为错误的样式类为：error   
-        focusInvalid: true, //当为false时，验证无效时，没有焦点响应  
+        debug: false, //调试模式取消submit的默认提交功能   
+        errorClass: "label.error", //默认为错误的样式类为：error   
+        focusInvalid: false, //当为false时，验证无效时，没有焦点响应  
         onkeyup: false,   
         submitHandler: function(form){   //表单提交句柄,为一回调函数，带一个参数：form   
             form.submit();   //提交表单   
@@ -194,13 +194,7 @@ $(function(){
             },
             userPhone:{
                 required:true,
-                rangelength:[3,10],
-                remote: {//ajax验证。server result:{"valid",true or false} 向服务发送当前input name值，获得一个json数据。例表示正确：{"valid",true}  
-                    url: '${basePath }user/validaPhone',//验证地址
-                    message: '该手机号已注册',//提示消息
-                    delay :  1000,//每输入一个字符，就发ajax请求，服务器压力还是太大，设置2秒发送一次ajax
-                    type: 'POST'
-                }
+                rangelength:[3,11]
             },
             registerZm:{
             	required:true,
@@ -211,16 +205,16 @@ $(function(){
         	nickname:{
                 required:"必填"
             },
-        	nickname:{
+            userPwd:{
                 required:"必填"
             },
             userEmail:{
                 required:"必填",
                 email:"E-Mail格式不正确"
             },
-            password:{
+            userPhone:{
                 required: "不能为空",
-                rangelength: $.validator.format("密码最小长度:{0}, 最大长度:{1}。")
+                rangelength: $.validator.format("电话号码最小长度:{0}, 最大长度:{1}。")
             },
             registerZm:{
             	required:"必填",
@@ -229,12 +223,6 @@ $(function(){
         }
     });    
 });
-
-$("#regist").click(function(){
-	var s=$("#registForm").validate().form();
-	$("#registForm").submit();
-});
-
 
 </script>
 

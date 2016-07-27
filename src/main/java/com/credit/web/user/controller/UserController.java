@@ -168,8 +168,10 @@ public class UserController extends BaseController{
 		Map<String,Object> resut=this.validatorEmail(userEmail);
 		Boolean valid=(Boolean) resut.get("valid");
 		ModelAndView mv = this.getModelAndView();
+		mv.addObject("pd",pd);
 		if(!valid){
 			mv.addObject("message","该邮箱已经注册");
+			
 			if(isMobile){//如果是手机注册
 				mv.setViewName("/mobile/ml_regist");
 			}else{
