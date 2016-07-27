@@ -29,17 +29,7 @@ pageContext.setAttribute("basePath",basePath);
 					<div class="col-sm-12">
 						<div class="ibox float-e-margins">
 							<div class="ibox-title">
-								<h5>债权信息列表</h5>
-								<div class="ibox-tools">
-									<a class="dropdown-toggle" data-toggle="dropdown"
-										href="table_basic.html#"> <i class="fa fa-wrench"></i>
-									</a>
-									<ul class="dropdown-menu dropdown-user">
-										<li><a href="javascript:loadTable(0);">选项1</a></li>
-										<li><a href="table_basic.html#">选项2</a></li>
-									</ul>
-									
-								</div>
+								<h5>债权追收列表</h5>
 							</div>
 							<div class="ibox-content">
 								<table class="table table-hover" id="finishingTask" >
