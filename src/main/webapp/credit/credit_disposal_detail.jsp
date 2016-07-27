@@ -7,7 +7,15 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>快易收-您的债权管理专家</title>
+    <title>
+    	债权追收-<c:if test="${credit.crType==1 }">民间借贷</c:if>
+	    <c:if test="${credit.crType==2 }">应收账款</c:if>
+	    <c:if test="${credit.crType==3 }">银行借贷</c:if>
+	    <c:if test="${credit.crType==4 }">互联网金融</c:if>
+	    <c:if test="${credit.crType==5 }">小额信贷</c:if>
+	    <c:if test="${credit.crType==6 }">典当担保</c:if>
+	    <c:if test="${credit.crType==7 }">司法裁决</c:if>
+    </title>
     <jsp:include page="/common/_meta.jsp"></jsp:include>
 
 </head>
@@ -83,9 +91,6 @@
                         <div class="ibox-tools">
                             <a class="collapse-link">
                                 <i class="fa fa-chevron-up"></i>
-                            </a>
-                            <a class="close-link">
-                                <i class="fa fa-times"></i>
                             </a>
                         </div>
                     </div>
@@ -164,6 +169,9 @@
 								<dl class="dl-horizontal">
 									<dt>备注：</dt>
 									<dd>请有意者与平台联系，获取更多详情</dd>
+								</dl>
+								<dl class="dl-horizontal">
+								<jsp:include page="/common/_share.jsp"></jsp:include>
 								</dl>
 							</div>
                 </div>

@@ -10,13 +10,14 @@
                             	${blog.blogTitle }
                             </h1>
                         </div>
+                        <jsp:include page="/common/_share.jsp"></jsp:include>
                         <div style="text-align: center;">
                             <span class="btn btn-white btn-xs">来源：${blog.blogSource}</span>
                             <span class="btn btn-white btn-xs">作者：${blog.blogAuthor}</span>
                             <span class="btn btn-white btn-xs"><fmt:formatDate value="${blog.createTime}" type="date" dateStyle="long"/></span>
                         </div><br/>
-                        <p style="font-size: 16px">
                         <hr>
+                        <p style="font-size: 16px">
                         	${blog.blogContext}
                         </p>
                         <hr>
