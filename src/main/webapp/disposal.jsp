@@ -20,7 +20,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<link rel="stylesheet" type="text/css" href="styles.css">
 	-->
     <jsp:include page="/common/_meta.jsp"></jsp:include>
-
+    <jsp:include page="/common/_script.jsp"></jsp:include>
   </head>
   
   <body class="gray-bg top-navigation">

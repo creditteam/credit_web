@@ -23,22 +23,7 @@ pageContext.setAttribute("basePath",basePath);
  }
 -->
 </style>
-<script type="text/javascript">
-$(document).ready(function(){
-	  $("#weixem").hover(function() {
-		  //alert("1a");
-	   	  $("#wxewm").animate({opacity: "show", left: "35%"}, "fast");
-	  }, function() {
-		  $("#wxewm").hide();
-	  });
-	  $("#shoujiem").hover(function() {
-		  //alert("1a");
-	   	  $("#sjewm").animate({opacity: "show", right: "25%"}, "fast");
-	  }, function() {
-		  $("#sjewm").hide();
-	  });
-});
-</script>
+
 <!-- 头部 -->
  <div class="row border-bottom" style="background-color: #FF7F50;">
         <div class="row">      
@@ -54,7 +39,7 @@ $(document).ready(function(){
 					<img height="23px" alt="微博" src="${basePath}hplus/img/weibo88.png"></a></td>
 				<td>
                     <img id="shoujiem" alt="" src="${basePath}hplus/img/shouji88.png" style="height: 23px; width: 23px;padding-left: -2px">
-                    <em id="sjewm" class="wxewmc"><img style="top: -20px" class="carousel-inner img-responsive img-rounded" alt="" src="hplus/img/yidashouji.png"></em>
+                    <em id="sjewm" class="wxewmc"><img style="top: -20px" class="carousel-inner img-responsive img-rounded" alt="" src="${basePath}hplus/img/yidashouji.png"></em>
 				</td>
 			</tr>
 		    </table>

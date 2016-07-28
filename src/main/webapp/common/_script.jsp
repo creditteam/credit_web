@@ -24,3 +24,4 @@ pageContext.setAttribute("basePath",basePath);
 <script src="${basePath}hplus/js/bootstrap-datetimepicker.zh-CN.js"></script>
 <script src="${basePath }hplus/js/gvtv.common.js"></script>
 <script src="${basePath }hplus/js/share_bank.js"></script>
+<script src="${basePath }hplus/js/gvtv.menu.top.js"></script>
