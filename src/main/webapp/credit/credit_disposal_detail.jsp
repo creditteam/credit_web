@@ -15,6 +15,8 @@
 	    <c:if test="${credit.crType==5 }">小额信贷</c:if>
 	    <c:if test="${credit.crType==6 }">典当担保</c:if>
 	    <c:if test="${credit.crType==7 }">司法裁决</c:if>
+	    <c:if test="${credit.crType==8 }">资产包债权</c:if>
+	    <c:if test="${credit.crType==9 }">单笔债权</c:if>
     </title>
     <jsp:include page="/common/_meta.jsp"></jsp:include>
 

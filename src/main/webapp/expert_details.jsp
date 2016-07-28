@@ -49,7 +49,14 @@ pageContext.setAttribute("basePath",basePath);
 						<div class="col-md-4">
 							<img class="img-circle" src="${basePath}${user.userHeadImages}" alt="" id="expertImg"
 								style="width: 120px; height: 160px; margin-top: 10px">
-								<jsp:include page="/common/_share.jsp"></jsp:include>
+								<div class="bdsharebuttonbox bdshare-button-style0-16" style="margin-left: 43%;" data-bd-bind="1469635014810">
+								<!-- <a href="#" class="bds_more" data-cmd="more"></a> -->
+								<a class="bds_qzone" title="分享到QQ空间" onclick="shareQzone('${basePath}${user.userHeadImages}','','','快易收')"></a>
+								<a class="bds_tsina" title="分享到新浪微博" onclick="shareSina('${basePath}${user.userHeadImages}')"></a>
+								<a class="bds_tqq"  title="分享到腾讯微博" onclick="shareQQWeibo('快易收','${basePath}${user.userHeadImages}')"></a>
+								<a class="bds_renren" title="分享到人人网" onclick="shareRenren()"></a>
+								<!-- <a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a> -->		
+							</div>
 						</div>
 						<div class="col-md-8">
 							<h3 id="expertName">${user.nickname}</h3>
