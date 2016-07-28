@@ -29,7 +29,7 @@ pageContext.setAttribute("basePath",basePath);
 									<a href="${basePath }user/expertDetail?id=${item.id}">
 										<div class="col-sm-4">
 											<div class="text-center">
-												<img alt="image" class="img-circle m-t-xs img-responsive"
+												<img alt="image" class="img-circle m-t-xs img-responsive" width="112" height="163"
 													src="${basePath }${item.userHeadImages}">
 												<div class="m-t-xs font-bold"></div>
 											</div>
@@ -59,7 +59,7 @@ pageContext.setAttribute("basePath",basePath);
 									<a href="${basePath }user/expertDetail?id=${item.id}">
 										<div class="col-sm-4">
 											<div class="text-center">
-												<img alt="image" class="img-circle m-t-xs img-responsive"
+												<img alt="image" class="img-circle m-t-xs img-responsive" width="112" height="163"
 													src="${basePath }${item.userHeadImages}">
 												<div class="m-t-xs font-bold"></div>
 											</div>
@@ -89,7 +89,7 @@ pageContext.setAttribute("basePath",basePath);
 									<a href="${basePath }user/expertDetail?id=${item.id}">
 										<div class="col-sm-4">
 											<div class="text-center">
-												<img alt="image" class="img-circle m-t-xs img-responsive"
+												<img alt="image" class="img-circle m-t-xs img-responsive" width="112" height="163"
 													src="${basePath }${item.userHeadImages}">
 												<div class="m-t-xs font-bold"></div>
 											</div>
