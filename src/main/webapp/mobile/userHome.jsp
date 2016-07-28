@@ -137,7 +137,7 @@ pageContext.setAttribute("basePath",basePath);
     		b.validate();
     		if(b.isValid()){
     			$.ajax({
-    				url: "${basePath}user/updUsePwd",    //请求的url地址
+    				url: "${basePath}user/updatePwd",    //请求的url地址
     			    dataType: "json",   //返回格式为json
     			    async: true, //请求是否异步
     			    data: { "userPwd": $("#userPwd").val(),"newpassowrd":$("#newpassowrd").val()},//参数值

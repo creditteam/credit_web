@@ -77,12 +77,10 @@ pageContext.setAttribute("basePath",basePath);
 												<label>注册邮箱:</label>
 												<div class="row">
 													<div class="col-sm-8">
-														<input id="regbakmail" type="text" placeholder="注册邮箱"
-															class="form-username form-control" name="backinputEmail1">
+														<input id="userEmail" type="text" placeholder="注册邮箱" class="form-username form-control" name="userEmail">
 													</div>
 													<div class="col-sm-4">
-														<button id="regbakmailsend" type="button"
-															class="btn btn-primary" onclick="sendMail()">发送邮件</button>
+														<button id="regbakmailsend" type="button" class="btn btn-primary" onclick="sendEmail()">发送邮件</button>
 													</div>
 												</div>
 										</div>
@@ -155,6 +153,34 @@ pageContext.setAttribute("basePath",basePath);
     		 }
     	 });
     }
+    
+    function sendEmail(){
+    	var userEmail = $("#userEmail").val();
+    	if(userEmail == ''){
+    		alert('请输入邮箱');
+    		return false;
+    	}
+    	$("#registerZm").removeAttr("disabled");
+    	InterValObj = window.setInterval(SetRemainTime, 1000); //启动计时器，1秒执行一次
+    	//调用发送短信
+    	$.ajax({
+    		 type: "POST", //用POST方式传输
+    		 dataType: "json", //数据格式:JSON
+    		 url: '${basePath}user/sendEmail', //目标地址
+    		 data: {"userEmail":userEmail},
+    		 error: function (XMLHttpRequest, textStatus, errorThrown) {
+    			 alert("Email填写有误或系统繁忙，请再次尝试");
+    		 },
+    		 success: function (msg){
+    			 if (msg.result = true) {
+    				 $("#phoneNum").val(msg.phoneInt);
+    			} else {
+    				alert("Email邮件发送失败!");
+    			}
+    		 }
+    	 });
+    }
+    
     function SetRemainTime() {
         if (curCount == 0) {                
             window.clearInterval(InterValObj);//停止计时器

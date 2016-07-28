@@ -93,7 +93,7 @@ pageContext.setAttribute("basePath",basePath);
 		 $.ajax({
 			 type: "POST", //用POST方式传输
 			 dataType: "text", //数据格式:字符串
-			 url: "${basePath}user/updUsePwd", //目标地址
+			 url: "${basePath}user/updatePwd", //目标地址
 			 data: "newpassowrd=" + newpassowrd+"&userPwd="+oldpassowrd+"&id="+userId,
 			 error: function (XMLHttpRequest, textStatus, errorThrown) {
 				 alert("修改密码异常，请稍候再试");

@@ -250,23 +250,6 @@ public class UserController extends BaseController{
 		return mv;
 	}
 	
-	/**
-	 * 修改用户密码
-	 * @param request
-	 * @param response
-	 * @throws Exception
-	 */
-	@RequestMapping(value="/updatePwd")
-	public void updatePwd(HttpServletRequest request,HttpServletResponse response) throws Exception{
-		PageData params= super.getPageData();
-		
-		String newEncodePwd = MD5.md5(String.valueOf(params.get("newpassowrd")));
-		params.put("newEncodePwd", newEncodePwd);
-		Boolean isFlag = userWebService.updatePassword(params);
-		
-		String responseText = JSONArray.toJSONString(params);
-		AjaxUtil.ajaxResponse(response, responseText, AjaxUtil.RESPONCE_TYPE_JSON);
-	}
 	
 	/**
 	 * 修改用户密码
@@ -274,7 +257,7 @@ public class UserController extends BaseController{
 	 * @param response
 	 * @throws Exception
 	 */
-	@RequestMapping(value="/updUsePwd")
+	@RequestMapping(value="/updatePwd")
 	@ResponseBody
 	public String updateUserPwd(String userPwd,String newpassowrd) throws Exception{
 		PageData pd= super.getPageData();
@@ -431,7 +414,7 @@ public class UserController extends BaseController{
 	}
 	
 	/**
-	 * 发送手机验证码
+	 * 发送手机验证码（用于找回密码）
 	 * @param phoneNum
 	 * @return
 	 */
@@ -452,6 +435,11 @@ public class UserController extends BaseController{
 		return map;
 	}
 	
+	/**
+	 * 找回密码发送邮件验证码
+	 * @param userEmail
+	 * @return
+	 */
 	@RequestMapping(value="/sendEmail")
 	@ResponseBody
 	public Map<String , Object> sendEmailValidNum(String userEmail){
@@ -471,7 +459,7 @@ public class UserController extends BaseController{
 		        Boolean isFlag=sendmail.sendMail();  
 				map.put("result", isFlag);
 			}catch(Exception a){
-				map.put("result", "false");
+				map.put("result", false);
 			}
 		}
 		map.put("phoneInt", phoneInt);
