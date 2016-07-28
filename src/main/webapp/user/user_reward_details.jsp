@@ -58,7 +58,7 @@ pageContext.setAttribute("basePath",basePath);
                   
                               <dl class="dl-horizontal">
                                     <dt>金额：</dt>
-                                    <dd>${reward.rewardAmount }</dd>
+                                    <dd>${reward.rewardAmount }(万元)</dd>
                                </dl>
                   
                                 <dl class="dl-horizontal">
@@ -89,24 +89,27 @@ pageContext.setAttribute("basePath",basePath);
 								</dl>
                                <hr/>
 								<dl class="dl-horizontal">
-									<dt> 发布者：</dt>
-									<dd>请联系平台获取</dd>
+									<dt>发布者：</dt>
+									<dd>${user.nickname}</dd>
 								</dl>
 								<dl class="dl-horizontal">
 									<dt>联系电话：</dt>
-									<dd>请联系平台获取</dd>
+									<dd>${user.userPhone}</dd>
 								</dl>
 								<dl class="dl-horizontal">
 									<dt> 图片：</dt>
 									<dd><c:forEach items="${reward.imagesArry}" var="item">
 										<c:if test="${not empty item}">
-										<a href="javascript:void(0)" onclick="showBigImage('${basePath}${item}')">
-											<img alt="" src="${basePath}${item}" width="50px" height="50px"/>&nbsp;&nbsp;
-										</a>
+										<span onclick="showBigImage('${basePath}${item}')">
+											<img alt="" src="${basePath}${item}" onclick="showBigImage('${basePath}${item}')" width="50px" height="50px"/>&nbsp;&nbsp;
+										</span>
 										</c:if>
 									</c:forEach></dd>
 								</dl>
-								
+								<dl class="dl-horizontal">
+									<dt>悬赏描述：</dt>
+									<dd>${user.description}</dd>
+								</dl>
 							</div>
                 </div>
             </div>

@@ -129,7 +129,7 @@ pageContext.setAttribute("basePath",basePath);
                                      <input class="form-control" type="file" name="uploadFiles" accept=".jpg,.png,.jpeg,.gif,.bmp"/>
                                      <div id="addFileUpload"></div>
                                      <span class="help-block m-b-none">
-                                     	<a href="javascript:void(0)" onclick="addFileUpload()"><span class="glyphicon glyphicon-plus-sign">继续添加</span></a>
+                                     	<button type="button" class="btn btn-white btn-xs" onclick="addFileUpload()"><span class="glyphicon glyphicon-plus-sign">继续添加</span></button>
                                      </span>
                                 </div>
                             </div>

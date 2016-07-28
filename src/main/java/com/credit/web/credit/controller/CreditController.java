@@ -11,7 +11,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.credit.web.credit.service.CreditWebService;
@@ -20,6 +19,7 @@ import com.credit.web.entity.User;
 import com.credit.web.filemanager.service.UploadFileService;
 import com.credit.web.user.service.UserWebService;
 import com.credit.web.util.CitiesEnum;
+import com.credit.web.util.DataUtil;
 import com.credit.web.util.ProvinceEnum;
 import com.gvtv.manage.base.controller.BaseController;
 import com.gvtv.manage.base.util.MozillaUtil;
@@ -118,11 +118,16 @@ public class CreditController extends BaseController{
 		if(null != credit.getUploadFiles()){
 			for(int i=0;i< credit.getUploadFiles().length;i++){
 				if(0 != credit.getUploadFiles()[i].getSize()){
-					bool = uploadFileService.uploadFile(path+"uploadFile/credit", credit.getUploadFiles()[i], credit.getUploadFiles()[i].getOriginalFilename());
+					
+					String newFileName = DataUtil.getRandomStr();
+					String fileName = credit.getUploadFiles()[i].getOriginalFilename();
+					fileName = "credit"+newFileName + fileName.substring(fileName.lastIndexOf("."), fileName.length());
+					
+					bool = uploadFileService.uploadFile(path+"uploadFile/credit", credit.getUploadFiles()[i], fileName);
 					if(i == 0){
-						debtProof += "uploadFile/credit/"+credit.getUploadFiles()[i].getOriginalFilename();
+						debtProof += "uploadFile/credit/"+fileName;
 					}else{
-						debtProof += ";uploadFile/credit/"+credit.getUploadFiles()[i].getOriginalFilename();
+						debtProof += ";uploadFile/credit/"+fileName;
 					}
 				}else{
 					bool = true;

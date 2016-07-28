@@ -16,6 +16,8 @@ import com.credit.web.entity.Reward;
 import com.credit.web.entity.User;
 import com.credit.web.filemanager.service.UploadFileService;
 import com.credit.web.reward.service.RewardWebService;
+import com.credit.web.user.service.UserWebService;
+import com.credit.web.util.DataUtil;
 import com.credit.web.util.ProvinceEnum;
 import com.gvtv.manage.base.controller.BaseController;
 import com.gvtv.manage.base.util.MozillaUtil;
@@ -31,6 +33,8 @@ public class RewardController extends BaseController{
 	
 	@Resource
 	UploadFileService uploadFileService;
+	@Resource
+	private UserWebService userWerService;
 	
 	/**
 	 * 导航债权首页
@@ -127,11 +131,16 @@ public class RewardController extends BaseController{
 		if(null != reward.getUploadFiles()){
 			for(int i=0;i< reward.getUploadFiles().length;i++){
 				if(0 != reward.getUploadFiles()[i].getSize()){
-					bool = uploadFileService.uploadFile(path+"uploadFile/reward", reward.getUploadFiles()[i], reward.getUploadFiles()[i].getOriginalFilename());
+					
+					String newFileName = DataUtil.getRandomStr();
+					String fileName = reward.getUploadFiles()[i].getOriginalFilename();
+					fileName = "reward"+newFileName + fileName.substring(fileName.lastIndexOf("."), fileName.length());
+					
+					bool = uploadFileService.uploadFile(path+"uploadFile/reward", reward.getUploadFiles()[i], fileName);
 					if(i == 0){
-						images += "uploadFile/reward/"+reward.getUploadFiles()[i].getOriginalFilename();
+						images += "uploadFile/reward/"+fileName;
 					}else{
-						images += ";uploadFile/reward/"+reward.getUploadFiles()[i].getOriginalFilename();
+						images += ";uploadFile/reward/"+fileName;
 					}
 				}else{
 					bool = true;
@@ -167,12 +176,23 @@ public class RewardController extends BaseController{
 	public ModelAndView rewardDetails() throws Exception{
 		String id =super.getRequest().getParameter("id");
 		if(id!=null&&id!=""){
+			User user = null;
 			Reward reward = rewardWebService.findById(Integer.valueOf(id));
-			
+			if(null != reward.getUserId()){
+				user = userWerService.getUserById(reward.getUserId());
+			}
 			if(null != reward.getImages()){
 				reward.setImagesArry(reward.getImages().split(";"));
 			}
+			if(null == user){
+				user = new User();
+				user.setNickname("未找到发布者信息");
+			}else{
+				/*user.setNickname(SensitiveUtil.shieldName(user.getNickname()));
+				user.setUserPhone(SensitiveUtil.shieldPhone(user.getUserPhone()));*/
+			}
 			ModelAndView mv = this.getModelAndView();
+			mv.addObject("user",user);
 			mv.addObject("reward", reward);
 			mv.setViewName("/user/user_reward_details");
 			return mv;
@@ -190,12 +210,24 @@ public class RewardController extends BaseController{
 		String id =super.getRequest().getParameter("id");
 		if(id!=null&&id!=""){
 			Reward reward = rewardWebService.findById(Integer.valueOf(id));
+			User user = null;
 			if(reward!=null){
 				reward.setRewardName(SensitiveUtil.shieldName(reward.getRewardName()));
 				reward.setCartId(SensitiveUtil.shieldCartID(reward.getCartId()));
+				if(null != reward.getUserId()){
+					user = userWerService.getUserById(reward.getUserId());
+				}
 			}			
+			if(null == user){
+				user = new User();
+				user.setNickname("未找到发布者信息");
+			}else{
+				user.setNickname(SensitiveUtil.shieldName(user.getNickname()));
+				user.setUserPhone(SensitiveUtil.shieldPhone(user.getUserPhone()));
+			}
 			ModelAndView mv = this.getModelAndView();
 			mv.addObject("reward", reward);
+			mv.addObject("user",user);
 			mv.setViewName("/reward/reward_details");
 			return mv;
 		}

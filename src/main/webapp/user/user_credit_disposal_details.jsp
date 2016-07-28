@@ -127,16 +127,16 @@ pageContext.setAttribute("basePath",basePath);
 									<dt>债权凭证：</dt>
 									<dd><c:forEach items="${credit.debtProofs}" var="item">
 										<c:if test="${not empty item}">
-										<a href="javascript:void(0)" onclick="showBigImage('${basePath}${item}')">
+										<a onclick="showBigImage('${basePath}${item}')">
 											<img alt="" src="${basePath}${item}" width="50px" height="50px"/>&nbsp;&nbsp;
 										</a>
 										</c:if>
 									</c:forEach></dd>
 								</dl>
-								<dl class="dl-horizontal">
+								<!-- <dl class="dl-horizontal">
 									<dt>债务人联系电话及债权人联系电话：</dt>
-									<dd> 请联系快易收平台方获取</dd>
-								</dl>
+									<dd>请联系快易收平台方获取</dd>
+								</dl> -->
 								<dl class="dl-horizontal">
 									<dt>债权描述：</dt>
 									<dd> ${credit.description }</dd>

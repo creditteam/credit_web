@@ -83,13 +83,22 @@
                                <hr/>
 								<dl class="dl-horizontal">
 									<dt> 发布者：</dt>
-									<dd>请抢标后联系平台获取</dd>
+									<dd>${user.nickname}</dd>
 								</dl>
 
 								<dl class="dl-horizontal">
 									<dt>联系电话：</dt>
-									<dd> 请在抢标后联系快易收平台方获取*</dd>
+									<dd>${user.userPhone}</dd>
 								</dl>
+								<dl class="dl-horizontal">
+									<dt>悬赏描述：</dt>
+									<dd>${user.description}</dd>
+								</dl>
+								<dl class="dl-horizontal">
+									<dt>备注：</dt>
+									<dd>请有意者与平台联系，获取更多详情</dd>
+								</dl>
+								
 								<dl class="dl-horizontal">
 									<jsp:include page="/common/_share.jsp"></jsp:include>
 								</dl>

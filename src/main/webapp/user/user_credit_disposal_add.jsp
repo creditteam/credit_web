@@ -144,9 +144,9 @@ pageContext.setAttribute("basePath",basePath);
                                 <label class="col-sm-3 control-label">债务凭证：</label>
                                 <div class="col-sm-8">
                                      <input class="form-control" type="file" name="uploadFiles" id="uploadFile" accept=".jpg,.png,.jpeg,.gif,.bmp"/>
-                                     <div id="addFileUpload"></div>
+                                     <div id="addFileUploadDiv"></div>
                                      <span class="help-block m-b-none">
-                                     	<a href="javascript:void(0)" onclick="addFileUpload()"><span class="glyphicon glyphicon-plus-sign">继续添加</span></a>
+                                     	<button type="button" class="btn btn-white btn-xs" onclick="addUploadFile()"><span class="glyphicon glyphicon-plus-sign">继续添加</span></button>
                                      </span>
                                 </div>
                             </div>
@@ -187,11 +187,10 @@ pageContext.setAttribute("basePath",basePath);
 </div>
 
     <jsp:include page="/common/_script.jsp"></jsp:include>
-    <script type="text/javascript" src="http://tajs.qq.com/stats?sId=9051096" charset="UTF-8"></script>
     
 	<script type="text/javascript">
-	function addFileUpload(){
-		$("#addFileUpload").append('<input class="form-control" type="file" name="uploadFiles" accept=".jpg,.png,.jpeg,.gif,.bmp"/>');
+	function addUploadFile(){
+		$("#addFileUploadDiv").append("<input class='form-control' type='file' name='uploadFiles' accept='.jpg,.png,.jpeg,.gif,.bmp'/>");
 	}
 	function loadCity(obj) {
 		var proName = $(obj).val();

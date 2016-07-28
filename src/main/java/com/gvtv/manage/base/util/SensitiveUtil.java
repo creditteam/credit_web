@@ -41,8 +41,12 @@ public class SensitiveUtil {
 	
 	public static String shieldCartID(String cartId){
 		String result = "";
-		if(cartId.length()>4){
+		if(cartId.length() >= 14){
+			result = cartId.substring(0,6)+"********"+cartId.substring(14,cartId.length());
+		}else if(cartId.length() > 4 && cartId.length() < 14){
 			result = cartId.substring(0,cartId.length()-4)+"****";
+		}else{
+			result = cartId;
 		}
 		return result;
 	}
@@ -58,6 +62,12 @@ public class SensitiveUtil {
 			result = "* " + firmName.substring(firmName.length()-3,firmName.length());
 		}
 		return result;
+	}
+	
+	public static void main(String[] args) {
+		String cartId = "432524198812281917";
+		String result = cartId.substring(0,6)+"********"+cartId.substring(14,cartId.length());
+		System.out.println(result);
 	}
 	
 }

@@ -2,6 +2,7 @@ package com.credit.web.util;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.Random;
 
@@ -56,11 +57,29 @@ public final class DataUtil {
 		return x;
 	}
 	
+	public static String getRandomStr(){
+		Calendar cal = Calendar.getInstance();
+        int year = cal.get(Calendar.YEAR);//获取年份
+        int month=cal.get(Calendar.MONTH);//获取月份 
+        int day=cal.get(Calendar.DATE);//获取日 
+        int hour=cal.get(Calendar.HOUR);//小时 
+        int minute=cal.get(Calendar.MINUTE);//分            
+        int second=cal.get(Calendar.SECOND);//秒
+        
+        Random random = new Random();
+		int x = random.nextInt(900)+100;
+		
+        StringBuffer sb = new StringBuffer();
+        sb.append(year).append(month).append(day).append(hour).append(minute).append(second).append(x);
+        return sb.toString();
+	}
+	
 	public static void main(String[] args) {
 		Date date = new Date(); 
-		System.out.println(getCurrrentDateTime());
-		System.out.println(date.getMonth());
-		System.out.println(date.getDay());
+		System.out.println(getRandomStr());
+		String fileName = "aadasdasda.xls";
+		fileName = fileName.substring(fileName.lastIndexOf("."), fileName.length());
+		System.out.println(fileName);
 	}
 
 }
