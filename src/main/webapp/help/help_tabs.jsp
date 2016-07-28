@@ -4,6 +4,7 @@
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+pageContext.setAttribute("basePath",basePath);
 %>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
@@ -91,8 +92,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 														   
 															</div>
 														   <div class="tab-pane fade" id="atten_us">
-														   <div class="col-md-3">快易收债权管理微信公众号：<img class="carousel-inner img-responsive img-rounded" style="height:200px; width: 200px" src="hplus/img/IMG_0132.JPG"></img></div>
-														  <div class="col-md-3"> 快易收债权管理手机站：<img class="carousel-inner img-responsive img-rounded" style="height:200px; width: 200px" carousel-inner img-responsive img-rounded src="hplus/img/yidashouji.png"></img></div>
+														   <div class="col-md-3">快易收债权管理微信公众号：<img class="carousel-inner img-responsive img-rounded" style="height:200px; width: 200px" src="${basePath }hplus/img/IMG_0132.JPG"></img></div>
+														  <div class="col-md-3"> 快易收债权管理手机站：<img class="carousel-inner img-responsive img-rounded" style="height:200px; width: 200px" carousel-inner img-responsive img-rounded src="${basePath }hplus/img/yidashouji.png"></img></div>
 														   
 															</div>
 														   <div class="tab-pane fade" id="service_us">
