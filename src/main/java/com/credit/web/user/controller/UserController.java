@@ -18,6 +18,7 @@ import com.credit.web.entity.User;
 import com.credit.web.user.service.UserWebService;
 import com.credit.web.util.AliSendMsg;
 import com.credit.web.util.DataUtil;
+import com.credit.web.util.MailUtils;
 import com.gvtv.manage.base.controller.BaseController;
 import com.gvtv.manage.base.util.AjaxUtil;
 import com.gvtv.manage.base.util.MD5;
@@ -444,6 +445,32 @@ public class UserController extends BaseController{
 				AliSendMsg.SendMsg(String.valueOf(phoneInt), phoneNum, "SMS_7505878");
 				map.put("result", "true");
 			}catch(ApiException a){
+				map.put("result", "false");
+			}
+		}
+		map.put("phoneInt", phoneInt);
+		return map;
+	}
+	
+	@RequestMapping(value="/sendEmail")
+	@ResponseBody
+	public Map<String , Object> sendEmailValidNum(String userEmail){
+		int phoneInt = DataUtil.nextInt();
+		Map<String , Object> map = new HashMap<String , Object>();
+		if (userEmail != null) {
+			try{
+				MailUtils sendmail = new MailUtils();  
+		        sendmail.setHost("smtp.mxhichina.com");  
+		        sendmail.setUserName("kefu@eshou360.com");  
+		        sendmail.setPassWord("4g3spkxm6i_xiaop");  
+		        sendmail.setTo(userEmail);  
+		        sendmail.setFrom("kefu@eshou360.com");  
+		        sendmail.setSubject("快易收债权管理平台！");  
+		        sendmail.setContent("你好这是一个找回密码的邮件，验证码为！"+phoneInt+" 请勿将验证码告诉别人。");
+		          
+		        Boolean isFlag=sendmail.sendMail();  
+				map.put("result", isFlag);
+			}catch(Exception a){
 				map.put("result", "false");
 			}
 		}

@@ -265,7 +265,7 @@ public class MailUtils {
         sendmail.setHost("smtp.mxhichina.com");  
         sendmail.setUserName("kefu@eshou360.com");  
         sendmail.setPassWord("4g3spkxm6i_xiaop");  
-        sendmail.setTo("61540428@qq.com,owenxiao999@163.com");  
+        sendmail.setTo("550726727@qq.com");  
         sendmail.setFrom("kefu@eshou360.com");  
         sendmail.setSubject("快易收债权管理平台！");  
         sendmail.setContent("你好这是一个带多附件的测试！");
