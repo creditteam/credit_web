@@ -31,23 +31,6 @@ pageContext.setAttribute("basePath",basePath);
                 <div class="ibox float-e-margins">
                     <div class="ibox-title">
                         <h5>注册表单 </h5>
-                        <div class="ibox-tools">
-                            <a class="collapse-link">
-                                <i class="fa fa-chevron-up"></i>
-                            </a>
-                            <a class="dropdown-toggle" data-toggle="dropdown" href="form_basic.html#">
-                                <i class="fa fa-wrench"></i>
-                            </a>
-                            <ul class="dropdown-menu dropdown-user">
-                                <li><a href="form_basic.html#">选项1</a>
-                                </li>
-                                <li><a href="form_basic.html#">选项2</a>
-                                </li>
-                            </ul>
-                            <a class="close-link">
-                                <i class="fa fa-times"></i>
-                            </a>
-                        </div>
                     </div>
                     <div class="ibox-content">
                         <div class="row">

@@ -35,14 +35,6 @@ pageContext.setAttribute("basePath",basePath);
                   <div class="ibox float-e-margins">
                     <div class="ibox-title">
                         <h5>线索悬赏信息</h5>
-                        <div class="ibox-tools">
-                            <a class="collapse-link">
-                                <i class="fa fa-chevron-up"></i>
-                            </a>
-                            <a class="close-link">
-                                <i class="fa fa-times"></i>
-                            </a>
-                        </div>
                     </div>
                     <div class="ibox-content">
                     <dl class="dl-horizontal">
@@ -70,6 +62,13 @@ pageContext.setAttribute("basePath",basePath);
 									<dd>${reward.cartId }</dd>
 								</dl>
 
+
+                               <c:if test="${reward.rewardType==1}">
+                               	<dl class="dl-horizontal">
+									<dt>车牌号：</dt>
+									<dd>${reward.carBrand }</dd>
+								</dl>
+                               </c:if>
 								<dl class="dl-horizontal">
 									<dt>发布日期：</dt>
 									<dd><fmt:formatDate value="${reward.createTime }" pattern="yyyy-MM-dd HH:mm:ss"/> </dd>
