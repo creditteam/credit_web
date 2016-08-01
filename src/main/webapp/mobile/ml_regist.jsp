@@ -67,14 +67,14 @@
 				<div class="form-group">
 					<div class="input-group input-group-xs">
 						<span class="input-group-addon">会员昵称</span>
-						<input type="text" class="form-control" name="nickname" placeholder="请输入您的邮箱" maxlength="10">
+						<input type="text" class="form-control" name="userEmail" placeholder="请输入您的邮箱" maxlength="20">
 					</div>
 				</div>
 				
 				<div class="form-group">
 					<div class="input-group input-group-xs">
 						<span class="input-group-addon">登录密码</span>
-						<input type="password" id="userPwd" name="userPwd" class="form-control" placeholder="输入登录密码" maxlength="20">
+						<input type="password" id="userPwd" name="userPwd" class="form-control" placeholder="输入登录密码" maxlength="30">
 					</div>
 				</div>
 				
