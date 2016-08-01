@@ -33,16 +33,9 @@
                    <!-- 业务资讯-->                   
                    <jsp:include page="index_blog.jsp"></jsp:include>
                     
+                    <!-- 成功案例，用户心声，合作机构等信息 -->
                    <jsp:include page="index_hz.jsp"></jsp:include>
-                   <%--
-                   
-
-                   <!-- 咨信查询-->       
-                   <jsp:include page="index_zx.jsp"></jsp:include>
-                   <!-- 合作机构-->
-                   <jsp:include page="index_footer.jsp"></jsp:include>
-                   <!-- 用户心声 -->
-                         --%>        
+   
                 </div>
 
             </div>
