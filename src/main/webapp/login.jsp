@@ -40,7 +40,7 @@ pageContext.setAttribute("basePath",basePath);
                                 <form role="form" action="${basePath }user/login" method="post" target="_self">
                                     <div class="form-group">
                                         <label>用户名</label>
-                                        <input type="email" name="loginName" placeholder="请输入您注册的E-mail或手机号码" class="form-control" required="" aria-required="true">
+                                        <input type="text" name="loginName" placeholder="请输入您注册的E-mail或手机号码" class="form-control" required="" aria-required="true">
                                     </div>
                                     <div class="form-group">
                                         <label>密码</label>

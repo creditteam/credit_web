@@ -30,6 +30,8 @@ public class Constants {
 			"/forgot_pwd.jsp",
 			"/help/help.jsp",
 			"/index",
+			"/index.jsp",
+			"/index.html",
 			"/user/expertList",
 			"/user/passBack",
 			"/user/login",

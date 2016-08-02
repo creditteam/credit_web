@@ -56,6 +56,11 @@ public class UserLoginFilter implements Filter {
 			// 从session里取员工工号信息
 			User userInfo = (User) session.getAttribute("userInfo");
 
+			// 空连接时默认跳转到首页
+			if(path.equals("")||path.equals("/")||path.equals("/credit_web/")){
+				response.sendRedirect(basePath+"/index.html");
+				return;
+			}
 			/*创建类Constants.java，里面写的是无需过滤的页面*/
 			for (int i = 0; i < Constants.NoFilter_Pages.length; i++) {
 			    if (path.indexOf(Constants.NoFilter_Pages[i]) > -1) {

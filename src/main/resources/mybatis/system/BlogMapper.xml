@@ -39,6 +39,7 @@
 		<if test="blogType != null and blogType != ''">
 			and u.blog_type = #{blogType}
 		</if>
+		order by id desc
 		limit #{from},#{size}
 	</select>
 	
