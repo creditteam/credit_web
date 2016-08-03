@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
+
 <div class="bdsharebuttonbox bdshare-button-style0-16" style="margin-left: 43%;" data-bd-bind="1469635014810">
 	<!-- <a href="#" class="bds_more" data-cmd="more"></a> -->
 	<a class="bds_qzone" title="分享到QQ空间" onclick="shareQzone('','','','快易收')"></a>

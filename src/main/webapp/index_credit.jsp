@@ -6,9 +6,7 @@
 			<div class="ibox-title">
 				<h5>债权追收</h5>
 				<div class="ibox-tools">
-					<a class="collapse-link"> <i class="fa fa-chevron-up"></i>
-					</a> <a class="close-link"> <i class="fa fa-times"></i>
-					</a>
+					<a href="${basePath }credit/navlist?creditType=1">更多>></a>
 				</div>
 			</div>
 			<div class="ibox-content">
@@ -42,9 +40,7 @@
 			<div class="ibox-title">
 				<h5>债权转让</h5>
 				<div class="ibox-tools">
-					<a class="collapse-link"> <i class="fa fa-chevron-up"></i>
-					</a> <a class="close-link"> <i class="fa fa-times"></i>
-					</a>
+					<a href="${basePath }credit/navlist?creditType=2">更多>></a>
 				</div>
 			</div>
 			<div class="ibox-content">

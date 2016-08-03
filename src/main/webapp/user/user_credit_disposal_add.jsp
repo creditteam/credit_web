@@ -100,7 +100,7 @@ pageContext.setAttribute("basePath",basePath);
                             <div class="form-group">
                                 <label class="col-sm-3 control-label">联系人电话：</label>
                                 <div class="col-sm-8">
-                                    <input id="contactNumber" name="contactNumber" class="form-control" type="text" placeholder="请输入联系人的联系电话" required="required" aria-required="true">
+                                    <input id="contactNumber" name="contactNumber" class="form-control" type="text" placeholder="请填写有效的手机号码" required="required" aria-required="true">
                                 </div>
                             </div>
                            <div class="hr-line-dashed"></div>

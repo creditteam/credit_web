@@ -34,7 +34,8 @@ pageContext.setAttribute("basePath",basePath);
                     </div>
                     <div class="ibox-content">
                         <div class="row">
-                            <div class="col-sm-6 b-r">
+                            <div class="col-sm-1"></div>
+                            <div class="col-sm-5 b-r">
                                 <p>欢迎您注册快易收债权管理系统会员</p>    
                                 <span class="label label-warning">${message }</span><br/><br/>                 
                                 <form action="${basePath }user/register"  method="post" id="registForm"  role="form" target="_self">
@@ -55,8 +56,8 @@ pageContext.setAttribute("basePath",basePath);
                                     </div>
 					                <div class="form-group">
 					              	    <label>手机</label>
-					                    <input type="phone" id="userPhone" name="userPhone" class="form-control" size="32"  placeholder="请输入手机"  />
-					                    <input id="regiohonebtn" name="regiohonebtn" type="button" class="btn btn-primary" value="验证手机"  onclick="registPhone()"/>
+					                    <input type="phone" id="userPhone" name="userPhone" class="form-control" size="32"  placeholder="请输入有效手机号码"  />
+					                    <input id="regiohonebtn" name="regiohonebtn" type="button" class="btn btn-sm btn-primary" value="验证手机"  onclick="registPhone()"/>
 					                    <input type="hidden" id="phoneNum" name="phoneNum">
 					                </div>
 					                <div class="form-group">
@@ -65,13 +66,14 @@ pageContext.setAttribute("basePath",basePath);
 					                </div>						             
 					                <div class="form-group">
 					                    <label>Email</label>
-					                    <input type="email"  id="userEmail" name="userEmail" class="form-control"  placeholder="请输入Email" />
+					                    <input type="email"  id="userEmail" name="userEmail" class="form-control"  placeholder="请输入有效的Email" />
 					                </div>
                                     <div>
-                                        <button class="btn btn-sm btn-primary pull-right m-t-n-xs" type="submit"  id="regist"><strong>注册</strong>
-                                        </button>
                                         <label id="userType_fb" > <input type="checkbox"  name="isAgreeProtocol" class="i-checks"><a href="${basePath }hplus/uploadFile/docs/fwxy_fbb.docx">我同意《用户服务协议》（债权发布方版）</a></label>
                                         <label id="userType_cz" style="display: none"> <input type="checkbox" name="isAgreeProtocol" class="i-checks"><a href="${basePath }hplus/uploadFile/docs/fwxy_czb.docx">我同意《用户服务协议》（债权处置方版）</a></label>
+                                    </div>
+                                    <div>
+                                        <button class="btn btn-sm btn-primary  m-t-n-xs" type="submit"  id="regist"><strong>注册</strong></button>
                                     </div>
                                 </form>
                             </div>

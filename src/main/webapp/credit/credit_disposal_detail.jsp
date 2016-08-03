@@ -35,7 +35,7 @@
 					<div class="col-sm-4">
 						<div class="ibox float-e-margins">
 							<div class="ibox-title">
-								<h5>债权人信息</h5>
+								<h5>发布人信息</h5>
 							</div>
 							<div class="ibox-content">
 							
