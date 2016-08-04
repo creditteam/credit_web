@@ -8,7 +8,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <Link Rel="icon" href="/hplus/img/kuaiyishou.ico" type=”image/x-icon”>
 
-    <title>快易收-您的债权管理专家</title>
+    <title>快易收-专注债权处置</title>
     <jsp:include page="/common/_meta.jsp"></jsp:include>
     <jsp:include page="/common/_script.jsp"></jsp:include>
 </head>

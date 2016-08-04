@@ -5,7 +5,7 @@
 <html>
 <head>
 
-    <title>快易收-您的债权管理专家</title>
+    <title>快易收-专注债权处置</title>
     <meta name="description" content="Worthy a Bootstrap-based, Responsive HTML5 Template">
 	<meta name="author" content="htmlcoder.me">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">

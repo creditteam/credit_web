@@ -14,7 +14,7 @@ pageContext.setAttribute("basePath",basePath);
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>快易收-您的债权管理专家</title>
+    <title>快易收-专注债权处置</title>
     <jsp:include page="/common/_meta.jsp"></jsp:include>
     <jsp:include page="/common/_script.jsp"></jsp:include>
 </head>

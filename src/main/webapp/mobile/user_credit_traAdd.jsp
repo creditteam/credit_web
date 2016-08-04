@@ -16,7 +16,7 @@ pageContext.setAttribute("basePath",basePath);
 	<meta name="author" content="htmlcoder.me">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-    <title>快易收-您的债权管理专家</title>
+    <title>快易收-专注债权处置</title>
     <Link Rel="icon" href="${basePath}hplus/img/kuaiyishou.ico" type=”image/x-icon”>
 	<link href="${basePath}hplus/css/bootstrap.min.css" rel="stylesheet">
 	<link href="${basePath}hplus/css/bootstrap-datetimepicker.min.css" rel="stylesheet">

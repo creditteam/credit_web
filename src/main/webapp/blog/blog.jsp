@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <Link Rel="icon" href="/hplus/img/kuaiyishou.ico" type=”image/x-icon”>
 
-    <title>快易收-您的债权管理专家</title>
+    <title>快易收-专注债权处置</title>
     <jsp:include page="/common/_meta.jsp"></jsp:include>
 
 </head>
