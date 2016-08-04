@@ -34,7 +34,7 @@ pageContext.setAttribute("basePath",basePath);
 			</div>
 			<div class="col-md-3" style="color: #fff;margin-top: 20px">
 				<p>客服热线</p>
-				<p style="font-size: 30">4008-338-997</p>
+				<p style="font-size: 25px">4008-338-997</p>
 				<p>服务时间：09:00-21:00</p>
 			</div>
 			<div class="col-md-4" style="color: #fff;margin-top: 35px">
@@ -64,8 +64,10 @@ pageContext.setAttribute("basePath",basePath);
 
 
 <!-- 统计代码 -->
+<div align="center">
 <script type="text/javascript">
 	var cnzz_protocol = (("https:" == document.location.protocol) ? " https://": " http://");
 	document.write(unescape("%3Cspan id='cnzz_stat_icon_1259017486'%3E%3C/span%3E%3Cscript src='"+ cnzz_protocol
 		                  + "s11.cnzz.com/z_stat.php%3Fid%3D1259017486%26show%3Dpic' type='text/javascript'%3E%3C/script%3E"));
 </script>
+</div>

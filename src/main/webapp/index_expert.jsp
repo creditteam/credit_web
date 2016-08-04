@@ -17,7 +17,7 @@ pageContext.setAttribute("basePath",basePath);
 				<li class=""><a data-toggle="tab" href="#tab-exp2"
 					aria-expanded="false">资深诉讼律师</a></li>
 				<li class=""><a data-toggle="tab" href="#tab-exp3"
-					aria-expanded="false">资深诉财经法制媒体人</a></li>
+					aria-expanded="false">资深财经法治媒体人</a></li>
 			</ul>
 			<div class="tab-content">
 				<div id="tab-exp1" class="tab-pane active">
@@ -45,8 +45,10 @@ pageContext.setAttribute("basePath",basePath);
 										<div class="clearfix"></div>
 									</a>
 								</div>
+								
 							</div>
 						</c:forEach>
+						<a class="pull-right" href="${basePath }user/expertList">更多>>&nbsp;&nbsp;&nbsp;</a>
 						</div>
 					</div>
 				</div>
@@ -77,6 +79,7 @@ pageContext.setAttribute("basePath",basePath);
 								</div>
 							</div>
 						</c:forEach>
+						<a class="pull-right" href="${basePath }user/expertList">更多>>&nbsp;&nbsp;&nbsp;</a>
 						</div>
 					</div>
 				</div>
@@ -107,6 +110,7 @@ pageContext.setAttribute("basePath",basePath);
 								</div>
 							</div>
 						</c:forEach>
+						<a class="pull-right" href="${basePath }user/expertList">更多>>&nbsp;&nbsp;&nbsp;</a>
 					</div>
 				</div>
 			</div>
