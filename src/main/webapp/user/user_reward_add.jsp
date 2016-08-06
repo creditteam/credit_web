@@ -115,9 +115,9 @@ pageContext.setAttribute("basePath",basePath);
                                 </div>
                             </div>
                             <div class="form-group" id="data_1">
-	                            <label class="col-sm-3 control-label">悬赏日期：</label>
+	                            <label class="col-sm-3 control-label">悬赏有效日期：</label>
 	                           <div class="col-sm-8">
-	                                <input class="form-control" type="text" name="createTime" id="datetimepicker" required="required" aria-required="true">
+	                                <input class="form-control" type="text" name="endTime" id="datetimepicker" required="required" aria-required="true">
 	                            </div>
                            </div>
                             <div class="form-group">
