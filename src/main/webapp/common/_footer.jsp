@@ -52,13 +52,24 @@ pageContext.setAttribute("basePath",basePath);
 <div class="row" class="text-center">
     <div class="col-md-3"></div>
 	<div class="col-md-7">
-	<a href="#"><img border="0" src="http://img.webscan.360.cn/status/pai/hash/ac5112035c900037431cc40fe17f7969"/></a >
+	<a href="http://webscan.360.cn/index/checkwebsite/url/www.eshou360.com"><img border="0" src="http://img.webscan.360.cn/status/pai/hash/ac5112035c900037431cc40fe17f7969"/></a>
 	<a href="http://www.315online.com.cn"><img border="0" src="${basePath }hplus/img/r_315new.gif"/></a >
+	
+	
+	<%--
 	<a href="http://szcert.ebs.org.cn/1f60b8a5-0561-43ce-ba2c-2ec54daec656"><img border="0" src="${basePath }hplus/img/r_gongshang.gif" /></a >
 	<a href="http://union.rising.com.cn/InfoManage/attestation.aspx?p0=9NUNHAs6vfTrGtonWGdgx2GntAdbY4/Rk0Hh-U8plhc="><img border="0" src="${basePath }hplus/img/r_rxjianche.jpg"/></a >
-	<%--
 	<a href="#"><img border="0" src="${basePath }hplus/img/r_cnnic.gif"/></a >
 	 --%>
+
+	 <!-- 瑞星检测 -->
+	 <script type="text/javascript">    
+	 var locationUrl = escape(document.location.href);     
+	 document.write(unescape("%3Cscript")+" charset='utf-8' src='http://union.rising.com.cn//InfoManage/TrojanInspect.aspx?p1=9NUNHAs6vfTrGtonWGdgx2GntAdbY4/Rk0Hh-U8plhc=&amp;p2=ApY1LZ2B38I=&p3=9NUNHAs6vfTrGtonWGdgx/zHr1Jsh2fq&amp;url="+ locationUrl  + "' type='text/javascript'"+unescape("%3E%3C/script%3E"));
+	 </script>
+	 
+	 <!-- 工商网监 -->
+	 <script id="ebsgovicon" src="http://szcert.ebs.org.cn/govicon.js?id=1f60b8a5-0561-43ce-ba2c-2ec54daec656&width=100&height=137&;type=1" type="text/javascript" charset="utf-8"></script>
 	</div>
 	<div class="col-md-2"></div>
 </div>
