@@ -73,7 +73,7 @@ pageContext.setAttribute("basePath",basePath);
 			<ul class="nav navbar-nav" style="font-size: 14px;padding-right: 50px">
 				<li class="active"><a aria-expanded="false" role="button" href="${basePath }index" target="_self">首页</a></li>
 				<li class="dropdown"><a aria-expanded="false" role="button" href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown">债权大厅 <span class="caret"></span></a>
-					<ul role="menu" class="dropdown-menu">
+					<ul role="menu" class="dropdown-menu" aria-labelledby="dropdownMenu1">
 						<li><a href="${basePath }credit/navlist?creditType=1"  role="button" onclick="javacript:void(0)">债权追收</a></li>
 						<li><a href="${basePath }credit/navlist?creditType=2"  role="button" onclick="javacript:void(0)">债权转让</a></li>
 					</ul>
@@ -87,3 +87,11 @@ pageContext.setAttribute("basePath",basePath);
 		</div>
 	</nav>
 </div>
+<script>
+var $dropdownLi = $('li.dropdown');
+$dropdownLi.mouseover(function() {
+    $(this).addClass('open');
+}).mouseout(function() {
+    $(this).removeClass('open');
+});
+</script>

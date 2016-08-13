@@ -11,7 +11,7 @@ pageContext.setAttribute("basePath",basePath);
 <div class="row">
 	<div class="col-sm-12">
 		<div class="tabs-container">
-			<ul class="nav nav-tabs">
+			<ul class="nav nav-tabs" id="expertUl">
 				<li class="active"><a data-toggle="tab" href="#tab-exp1"
 					aria-expanded="true">资深不良处置专家</a></li>
 				<li class=""><a data-toggle="tab" href="#tab-exp2"
