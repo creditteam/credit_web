@@ -62,10 +62,10 @@ pageContext.setAttribute("basePath",basePath);
 						<span class="list-group-item" >债权开始日期：<fmt:formatDate value="${credit.agreedDate}" type="date" dateStyle="long"/></span>
 						
 						<span class="list-group-item active" >高级信息</span>
-						<span id="lsg10" class="list-group-item" >债权方联系人：${user.nickname}</span>
-						<span id="lsg11" class="list-group-item" >债权方联系电话：${user.userPhone}</span>
+						<span id="lsg10" class="list-group-item" >债权方联系人：${credit.contactName}</span>
+						<span id="lsg11" class="list-group-item" >债权方联系电话：${credit.contactNumber}</span>
 						<span id="lsg12" class="list-group-item" >债权凭证：请联系快易收平台方获取</span>
-						<span id="lsg13" class="list-group-item" >债权描述：${user.description}</span>
+						<span id="lsg13" class="list-group-item" >债权描述：${credit.description}</span>
 						<span id="lsg14" class="list-group-item" >备注：请有意者与平台联系，获取更多详情</span>
 
 						<!-- <div class="row">

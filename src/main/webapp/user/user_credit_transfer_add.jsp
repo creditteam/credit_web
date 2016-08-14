@@ -40,11 +40,8 @@ pageContext.setAttribute("basePath",basePath);
                           <form class="form-horizontal m-t" id="signupForm" action="${basePath }credit/saveCredit" method="post" target="_self"  enctype="multipart/form-data">
                           <input type="hidden"  name="userId" value="${userInfo.id}"/>
                           <input type="hidden"  name="creditType" value="${creditType }">
-                          <a class="list-group-item active">
-					      <h4 class="list-group-item-heading">
-					         债权人信息
-					      </h4>
-					      </a><br/>
+                          <b style="margin-left: 30px"><font color="blue">债权人信息</font></b>
+                 		 <hr>
                             <div class="form-group">
                                 <label class="col-sm-3 control-label">债权类型：</label>
                                 <div class="col-sm-8">
@@ -55,10 +52,9 @@ pageContext.setAttribute("basePath",basePath);
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="col-sm-3 control-label">债权金额：</label>
+                                <label class="col-sm-3 control-label">债权金额(万元)：</label>
                                 <div class="col-sm-8">
                                     <input id="crAmount" name="crAmount" class="form-control" type="text" required="required" class="valid">
-                                    <span class="help-block m-b-none"><i class="fa fa-info-circle"></i> 注意：金额币种人民币(￥)</span>
                                 </div>
                             </div>
                             <div class="form-group">
@@ -77,7 +73,6 @@ pageContext.setAttribute("basePath",basePath);
                                 <label class="col-sm-3 control-label">联系人姓名：</label>
                                 <div class="col-sm-8">
                                     <input id="contactName" name="contactName" class="form-control" type="text" placeholder="可以是本人也可以委托他人" required="required">
-                                    <span class="help-block m-b-none"><i class="fa fa-info-circle"></i>可以是本人也可以委托他人</span>
                                 </div>
                             </div>
                             <div class="form-group">
@@ -87,16 +82,12 @@ pageContext.setAttribute("basePath",basePath);
                                 </div>
                             </div>
                            <div class="hr-line-dashed"></div>
-                          <a class="list-group-item active">
-					      <h4 class="list-group-item-heading">
-					         债务方信息
-					      </h4>
-					      </a><br/>
+					      <b style="margin-left: 30px"><font color="blue"> 债务方信息</font></b>
+                 		 <hr>
                          <div class="form-group">
                                 <label class="col-sm-3 control-label">债务方名称：</label>
                                 <div class="col-sm-8">
                                     <input id="debtName" name="debtName" class="form-control" type="text" required="required">
-                                    <span class="help-block m-b-none"><i class="fa fa-info-circle"></i> 这里写点提示的内容</span>
                                 </div>
                             </div>
                             <div class="form-group">

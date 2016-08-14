@@ -50,7 +50,10 @@ pageContext.setAttribute("basePath",basePath);
                   
                               <dl class="dl-horizontal">
                                     <dt>金额：</dt>
-                                    <dd>${reward.rewardAmount }(万元)</dd>
+                                    <dd>
+                                    	<c:if test="${reward.rewardAmount eq '3000'}">${reward.rewardAmount } (元以上)</c:if>
+										<c:if test="${reward.rewardAmount ne '3000'}">${reward.rewardAmount } (元)</c:if>
+                                    </dd>
                                </dl>
                   
                                 <dl class="dl-horizontal">
@@ -71,12 +74,12 @@ pageContext.setAttribute("basePath",basePath);
                                </c:if>
 								<dl class="dl-horizontal">
 									<dt>发布日期：</dt>
-									<dd><fmt:formatDate value="${reward.createTime }" pattern="yyyy-MM-dd HH:mm:ss"/> </dd>
+									<dd><fmt:formatDate value="${reward.createTime }" pattern="yyyy-MM-dd"/> </dd>
 								</dl>
 
 								<dl class="dl-horizontal">
 									<dt>有效日期：</dt>
-									<dd><fmt:formatDate value="${reward.endTime }" pattern="yyyy-MM-dd HH:mm:ss"/></dd>
+									<dd><fmt:formatDate value="${reward.endTime }" pattern="yyyy-MM-dd"/></dd>
 								</dl>
 
 								<dl class="dl-horizontal">

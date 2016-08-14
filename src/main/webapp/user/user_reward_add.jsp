@@ -39,11 +39,8 @@ pageContext.setAttribute("basePath",basePath);
                    
                        <form class="form-horizontal m-t" id="signupForm" action="${basePath }reward/saveReward" method="post" target="_self" enctype="multipart/form-data">
                        <input type="hidden" name="userId" value="${userInfo.id }"> 
-                          <a class="list-group-item active">
-					      <h4 class="list-group-item-heading">
-					         基本信息
-					      </h4>
-					      </a><br/>
+                          <b style="margin-left: 30px"><font color="blue">基本信息</font></b>
+                 		 <hr>
                             <div class="form-group">
                                 <label class="col-sm-3 control-label">悬赏类型：</label>
                                 <div class="col-sm-8">
@@ -57,16 +54,24 @@ pageContext.setAttribute("basePath",basePath);
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="col-sm-3 control-label">悬赏金额：</label>
+                                <label class="col-sm-3 control-label">悬赏金额(元)：</label>
                                 <div class="col-sm-8">
-                                    <input id="rewardAmount" name="rewardAmount" class="form-control" type="text" required="required" aria-required="true" class="valid">
-                                    <span class="help-block m-b-none"><i class="fa fa-info-circle"></i> 注意：金额币种人民币(￥)</span>
+                                	<select id="amountSelect" class="form-control" onchange="amountChange(this.value)">
+                                		<option value="200-500">200-500元</option>
+                                		<option value="500-1000">500-1000元</option>
+                                		<option value="1000-1500">1000-1500元</option>
+                                		<option value="1500-2000">1500-2000元</option>
+                                		<option value="2000-3000">2000-3000元</option>
+                                		<option value="3000">3000元以上</option>
+                                		<option value="other">自定义</option>
+                                	</select>
+                                    <input id="rewardAmount" name="rewardAmount" class="form-control" type="text" required="required" aria-required="true" style="display:none" class="valid">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="col-sm-3 control-label">姓名：</label>
                                 <div class="col-sm-8">
-                                           <input id="rewardName" name="rewardName" class="form-control" type="text" required="required" aria-required="true" class="valid">
+                                     <input id="rewardName" name="rewardName" class="form-control" type="text" required="required" aria-required="true" class="valid">
                                 </div>
                             </div>
                             <div class="form-group">
@@ -82,11 +87,8 @@ pageContext.setAttribute("basePath",basePath);
                                 </div>
                             </div>
                            <div class="hr-line-dashed"></div>
-                          <a class="list-group-item active">
-					      <h4 class="list-group-item-heading">
-					         其他信息
-					      </h4>
-					      </a><br/>
+					       <b style="margin-left: 30px"><font color="blue">其他信息</font></b>
+                 		 <hr>
                             <div class="form-group">
                                 <label class="col-sm-3 control-label">所在地：</label>
                                 <div class="col-sm-4">
@@ -140,24 +142,28 @@ pageContext.setAttribute("basePath",basePath);
                 </div>
             </div>
         </div>
-                 
-                 
-                 
-                 
-                </div>
+      </div>
 
-            </div>
-            
+  </div>
 			<!-- 底部文件 -->
 			<jsp:include page="/common/_footer.jsp"></jsp:include>
-            
-        </div>
     </div>
+</div>
 
     <jsp:include page="/common/_script.jsp"></jsp:include>
     <script type="text/javascript" src="http://tajs.qq.com/stats?sId=9051096" charset="UTF-8"></script>
     
 <script type="text/javascript">
+
+	function amountChange(value){
+		if(value == 'other'){
+			$("#rewardAmount").show();
+			$("#rewardAmount").val('');
+		}else{
+			$("#rewardAmount").hide();
+			$("#rewardAmount").val(value);
+		}
+	}
 	function addFileUpload(){
 		$("#addFileUpload").append('<input class="form-control" type="file" name="uploadFiles" accept=".jpg,.png,.jpeg,.gif,.bmp"/>');
 	}
@@ -192,6 +198,7 @@ pageContext.setAttribute("basePath",basePath);
 	    	language: 'zh-CN',
 	    	autoclose:true
 	    });
+	    amountChange($("#amountSelect").val());
 	});
 
 	function changeRewardType(){

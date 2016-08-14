@@ -41,32 +41,32 @@ pageContext.setAttribute("basePath",basePath);
                                 <form action="${basePath }user/register"  method="post" id="registForm"  role="form" target="_self">
                                    <div class="form-group">
                                         <label>会员类型</label> 
-                                        <select id="userType" name="userType" class="form-control" onchange="changeUserType()">
+                                        <select id="userType" name="userType" class="form-control" onchange="changeUserType()" style="width:80%">
 													<option value="0">债权方</option>
 													<option value="1">处置方</option>
 										</select>
 									</div>
                                     <div class="form-group">
                                         <label>用户名</label>
-                                        <input type="text" id="nickname" name="nickname" placeholder="请输入您用户名" class="form-control"  >
+                                        <input type="text" id="nickname" name="nickname" placeholder="请输入您用户名" class="form-control"  style="width:80%"/>
                                     </div>
                                     <div class="form-group">
                                         <label>密码</label>
-                                        <input type="password" id="userPwd" name="userPwd" placeholder="请输入密码" class="form-control"  >
+                                        <input type="password" id="userPwd" name="userPwd" placeholder="请输入密码" class="form-control"  style="width:80%"/>
                                     </div>
 					                <div class="form-group">
 					              	    <label>手机</label>
-					                    <input type="phone" id="userPhone" name="userPhone" class="form-control" size="32"  placeholder="请输入有效手机号码"  />
+					                    <input type="phone" id="userPhone" name="userPhone" class="form-control" size="32"  placeholder="请输入有效手机号码"  style="width:80%"/>
 					                    <input id="regiohonebtn" name="regiohonebtn" type="button" class="btn btn-sm btn-primary" value="验证手机"  onclick="registPhone()"/>
 					                    <input type="hidden" id="phoneNum" name="phoneNum">
 					                </div>
 					                <div class="form-group">
 					                    <label>验证码</label>
-					                    <input type="text" id="registerZm" name = "registerZm" class="form-control" placeholder="验证码" >
+					                    <input type="text" id="registerZm" name = "registerZm" class="form-control" placeholder="验证码" style="width:80%"/>
 					                </div>						             
 					                <div class="form-group">
 					                    <label>Email</label>
-					                    <input type="email"  id="userEmail" name="userEmail" class="form-control"  placeholder="请输入有效的Email" />
+					                    <input type="email"  id="userEmail" name="userEmail" class="form-control"  placeholder="请输入有效的Email" style="width:80%"/>
 					                </div>
                                     <div>
                                         <label id="userType_fb" > <input type="checkbox"  name="isAgreeProtocol" class="i-checks"><a href="${basePath }hplus/uploadFile/docs/fwxy_fbb.docx">我同意《用户服务协议》（债权发布方版）</a></label>

@@ -45,7 +45,7 @@ pageContext.setAttribute("basePath",basePath);
 				      <tr>
 				         <th style="text-align:center;">类型</th>
 				         <th style="text-align:center;">所在地</th>
-				         <th style="text-align:center;">悬赏金额(万元)</th>
+				         <th style="text-align:center;">悬赏金额(元)</th>
 				         <th style="text-align:center;">状态</th>
 				      </tr>
 				   </thead>
@@ -60,7 +60,10 @@ pageContext.setAttribute("basePath",basePath);
 			                        <c:if test="${reward.rewardType==4}">其他</c:if>
 								</span></td>
 								<td>${reward.province }</td>
-								<td>${reward.rewardAmount }</td>
+								<td>
+									<c:if test="${reward.rewardAmount eq '3000'}">${reward.rewardAmount } (元以上)</c:if>
+									<c:if test="${reward.rewardAmount ne '3000'}">${reward.rewardAmount } (元)</c:if>
+								</td>
 								<td><span class="label label-warning">
 								<c:if test="${reward.rewardStatus==1}">发布中</c:if>
 						        <c:if test="${reward.rewardStatus==0}">已结束</c:if>
@@ -182,7 +185,11 @@ function showRewardInfo(id){
 			 }
 			 $("#xslsg1").text("悬赏类型：        "+reType);
 			 $("#xslsg2").text("所在地：    "+ msg.city);
-			 $("#xslsg3").text("金额 (元)   ：    "+msg.rewardAmount);
+			 if(msg.rewardAmount == '3000'){
+				$("#xslsg3").text("金额   ：    "+msg.rewardAmount + "元以上");
+			 }else{
+				$("#xslsg3").text("金额   ：    "+msg.rewardAmount + "元");
+			 }
 			 $("#xslsg4").text("姓名：        "+ msg.rewardName);
 			 if(msg.rewardType == '2'){
 				 $("#xslsg5").text("车牌号：        "+ msg.carBrand);

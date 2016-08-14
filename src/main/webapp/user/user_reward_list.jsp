@@ -78,9 +78,12 @@ pageContext.setAttribute("basePath",basePath);
                                     <c:if test="${reward.rewardType==3}">找应收款</c:if>
                                     <c:if test="${reward.rewardType==4}">其他</c:if>
 											</span></td>
-											<td><fmt:formatDate value="${reward.createTime }" pattern="yyyy-MM-dd HH:mm:ss"/></td>
+											<td><fmt:formatDate value="${reward.createTime }" pattern="yyyy-MM-dd"/></td>
 											<td>${reward.province }</td>
-											<td>${reward.rewardAmount }金额(万元)</td>
+											<td>
+												<c:if test="${reward.rewardAmount eq '3000'}">${reward.rewardAmount } (元以上)</c:if>
+												<c:if test="${reward.rewardAmount ne '3000'}">${reward.rewardAmount } (元)</c:if>
+											</td>
 											<td><span class="label label-warning">
 											<c:if test="${reward.rewardStatus==1}">发布中</c:if>
 									        <c:if test="${reward.rewardStatus==0}">已结束</c:if>

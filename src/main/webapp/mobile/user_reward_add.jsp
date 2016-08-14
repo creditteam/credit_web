@@ -83,10 +83,18 @@ pageContext.setAttribute("basePath",basePath);
 							</div>
 			
 							<div class="form-group">
-								<label class="col-sm-3 control-label">悬赏金额(万元):</label>
+								<label class="col-sm-3 control-label">悬赏金额(元):</label>
 								<div class="col-sm-8">
-									<input id="rewardAmount" name="rewardAmount" type="text" class="form-control" onchange="convertCurrency(this.value)">
-									<span class="help-block m-b-none" id="currAmt"></span>
+									<select id="amountSelect" class="form-control" onchange="amountChange(this.value)">
+                                		<option value="200-500">200-500元</option>
+                                		<option value="500-1000">500-1000元</option>
+                                		<option value="1000-1500">1000-1500元</option>
+                                		<option value="1500-2000">1500-2000元</option>
+                                		<option value="2000-3000">2000-3000元</option>
+                                		<option value="3000">3000元以上</option>
+                                		<option value="other">自定义</option>
+                                	</select>
+									<input id="rewardAmount" name="rewardAmount" type="text" class="form-control" style="display:none"/>
 								</div>
 							</div>
 			
@@ -192,6 +200,15 @@ pageContext.setAttribute("basePath",basePath);
 	}
 	</style>
 	<script type="text/javascript">
+	function amountChange(value){
+		if(value == 'other'){
+			$("#rewardAmount").show();
+			$("#rewardAmount").val('');
+		}else{
+			$("#rewardAmount").hide();
+			$("#rewardAmount").val(value);
+		}
+	}
 	function addFileUpload(){
 		$("#addFileUpload").append('<input class="form-control" type="file" name="uploadFiles" accept=".jpg,.png,.jpeg,.gif,.bmp"/>');
 	}
@@ -257,6 +274,7 @@ $(function () {
     	language: 'zh-CN',
     	autoclose:true
     });
+    amountChange($("#amountSelect").val());
 });
 $(document).ready(function () {
 	$('#rewardForm').bootstrapValidator({
@@ -272,13 +290,13 @@ $(document).ready(function () {
                 validators: {
                     notEmpty: {
                         message: '悬赏金额不能为空'
-                    },
+                    }/* ,
                     numeric : {
                     	message: '只能输入数字'
-                    }
+                    } */
                 }
             },
-            /* cartId:{
+            /*cartId:{
             	validators: {
                     notEmpty: {
                         message: '身份证不能为空!'

@@ -17,3 +17,8 @@ MODIFY COLUMN `debt_proof`  varchar(1024);
 ALTER TABLE `cr_blog`
 ADD COLUMN `blog_source`  varchar(60) NULL COMMENT '来源' AFTER `create_time`,
 ADD COLUMN `blog_author`  varchar(60) NULL COMMENT '作者' AFTER `blog_source`;
+
+/** 2016-08-14**/
+ALTER TABLE `cr_reward`
+MODIFY COLUMN `reward_amount`  varchar(32) NULL DEFAULT NULL COMMENT '悬赏金额' AFTER `reward_type`;
+
