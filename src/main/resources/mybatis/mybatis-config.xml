@@ -18,6 +18,7 @@
 		<typeAlias type="com.credit.web.entity.Reward" alias="Reward"/>
 		<typeAlias type="com.credit.web.entity.FileManager" alias="FileManager"/>
 		<typeAlias type="com.gvtv.manage.base.util.PageData" alias="PageData"/>
+		<typeAlias type="com.credit.web.entity.Sample" alias="sample"/>
 		<!-- 分页 -->
 		<typeAlias type="com.gvtv.manage.base.entity.Page" alias="Page"/>
 	</typeAliases>

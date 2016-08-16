@@ -386,6 +386,7 @@ public class UserController extends BaseController{
 		if(MozillaUtil.isMobileDevice(request)){
 			mv.setViewName("mobile/expert");
 		}else{
+			mv.addObject("allExpert","yes");
 			mv.setViewName("/expert_list");
 		}
 		return mv;

@@ -118,7 +118,7 @@
 									<dt>所在城市：</dt>
 									<dd>${credit.debtCity}</dd>
 								</dl>
-
+								<c:if test="${credit.creditType eq 1 }">
 								<dl class="dl-horizontal">
 									<dt>处置方式：</dt>
 									<dd><c:forEach items="${credit.disTypes}" var="item">
@@ -127,7 +127,7 @@
 										<c:if test="${item eq '3'}">债权转让</c:if>
 									</c:forEach></dd>
 								</dl>
-								
+								</c:if>
 								<dl class="dl-horizontal">
 									<dt>债权金额：</dt>
 									<dd>${credit.crAmount} (万元)</dd>
@@ -140,11 +140,11 @@
 
 								<dl class="dl-horizontal">
 									<dt>发布日期：</dt>
-									<dd><fmt:formatDate value="${credit.openDate}" type="date" dateStyle="long"/></dd>
+									<dd><fmt:formatDate value="${credit.createDate }" pattern="yyyy-MM-dd"/></dd>
 								</dl>
 								<dl class="dl-horizontal">
 									<dt>债权开始日期：</dt>
-									<dd><fmt:formatDate value="${credit.agreedDate}" type="date" dateStyle="long"/></dd>
+									<dd><fmt:formatDate value="${credit.openDate}" pattern="yyyy-MM-dd"/></dd>
 								</dl>
 
 								<dl class="dl-horizontal">

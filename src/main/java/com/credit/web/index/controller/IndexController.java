@@ -12,7 +12,9 @@ import com.credit.web.blog.service.BlogWebService;
 import com.credit.web.credit.service.CreditWebService;
 import com.credit.web.entity.Blog;
 import com.credit.web.entity.Credit;
+import com.credit.web.entity.Sample;
 import com.credit.web.entity.User;
+import com.credit.web.sample.service.SampleWebService;
 import com.credit.web.user.service.UserWebService;
 import com.gvtv.manage.base.controller.BaseController;
 import com.gvtv.manage.base.util.MozillaUtil;
@@ -29,6 +31,9 @@ public class IndexController extends BaseController{
 	
 	@Resource
 	private UserWebService userWebService;//专家、律师等(之前没有表设计，故共用用户表)
+	
+	@Resource
+	SampleWebService sampleWebService;
 	
 	@RequestMapping(value="/index")
 	public ModelAndView index()throws Exception{
@@ -57,6 +62,9 @@ public class IndexController extends BaseController{
 		pd.put("userStatus", 9);
 		List<User> userList3 = userWebService.findPartUserList(pd);
 		
+		pd.put("size", 0);
+		List<Sample> sampleList = sampleWebService.list(pd);
+		
 		mv.addObject("creditdisposalList",creditdisposalList);
 		mv.addObject("credittransferList",credittransferList);
 		
@@ -66,6 +74,8 @@ public class IndexController extends BaseController{
 		mv.addObject("userList1",userList1);
 		mv.addObject("userList2",userList2);
 		mv.addObject("userList3",userList3);
+		
+		mv.addObject("sampleList",sampleList);
 		
 		Boolean isMobile = MozillaUtil.isMobileDevice(super.getRequest());
 		if(isMobile){

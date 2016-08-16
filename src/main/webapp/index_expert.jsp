@@ -48,7 +48,7 @@ pageContext.setAttribute("basePath",basePath);
 								
 							</div>
 						</c:forEach>
-						<a class="pull-right" href="${basePath }user/expertList">更多>>&nbsp;&nbsp;&nbsp;</a>
+						<a class="pull-right" href="${basePath }user/expertList" <c:if test="${allExpert eq 'yes'}">style="display:none"</c:if> >更多>>&nbsp;&nbsp;&nbsp;</a>
 						</div>
 					</div>
 				</div>
@@ -79,7 +79,7 @@ pageContext.setAttribute("basePath",basePath);
 								</div>
 							</div>
 						</c:forEach>
-						<a class="pull-right" href="${basePath }user/expertList">更多>>&nbsp;&nbsp;&nbsp;</a>
+						<a class="pull-right" href="${basePath }user/expertList" <c:if test="${allExpert eq 'yes'}">style="display:none"</c:if>>更多>>&nbsp;&nbsp;&nbsp;</a>
 						</div>
 					</div>
 				</div>
@@ -110,7 +110,7 @@ pageContext.setAttribute("basePath",basePath);
 								</div>
 							</div>
 						</c:forEach>
-						<a class="pull-right" href="${basePath }user/expertList">更多>>&nbsp;&nbsp;&nbsp;</a>
+						<a class="pull-right" href="${basePath }user/expertList" <c:if test="${allExpert eq 'yes'}">style="display:none"</c:if>>更多>>&nbsp;&nbsp;&nbsp;</a>
 					</div>
 				</div>
 			</div>
@@ -118,3 +118,8 @@ pageContext.setAttribute("basePath",basePath);
 	</div>
 </div>
 </div>
+<script>
+$('ul a').hover(function () {
+    $(this).tab('show');
+  });
+</script>

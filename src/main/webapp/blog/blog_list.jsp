@@ -16,12 +16,23 @@ pageContext.setAttribute("basePath", basePath);
                         	<c:if test="${pd.blogType eq 2}">业务文章</c:if></h2>
                         <c:forEach items="${pd.data}" var="item">
 	                        <div class="hr-line-dashed"></div>
-	                        <div class="search-result">
-	                            <h3><a href="${basePath}/blog/details?id=${item.id}">&nbsp;&nbsp;${item.blogTitle}</a></h3>
-	                            <p>
-	                              &nbsp;&nbsp;&nbsp;&nbsp;${fn:substring(item.blogContext,0,65)}...
-	                            </p>
-	                        </div>
+	                        <c:if test="${pd.blogType eq 1}">
+		                        <div class="search-result">
+		                            <h3><a href="${item.blogSource}" style="color:#676A6C">${item.blogTitle}</a></h3>
+		                            <p>
+		                              <a href="${item.blogSource}"><img alt="" src="${basePath}${item.blogAuthor}" width="80px" height="60px"></a>
+										<span style="margin-left: 15px">${fn:substring(item.blogContext,0,50)}...</span>
+		                            </p>
+		                        </div>
+	                        </c:if>
+	                        <c:if test="${pd.blogType eq 2}">
+		                        <div class="search-result">
+		                            <h3><a href="${basePath}/blog/details?id=${item.id}">&nbsp;&nbsp;${item.blogTitle}</a></h3>
+		                            <p>
+		                              &nbsp;&nbsp;&nbsp;&nbsp;${fn:substring(item.blogContext,0,65)}...
+		                            </p>
+		                        </div>
+	                        </c:if>
                         </c:forEach>
                         <div class="hr-line-dashed"></div>
                         <gvtv:newPage href="${basePath }blog/list?blogType=1" pageType="pc"></gvtv:newPage>

@@ -23,9 +23,11 @@ pageContext.setAttribute("basePath", basePath);
 							<c:forEach items="${blogList1}" var="item">
 								<div class="search-result">
 									<h3>
-										<a href="${basePath}blog/details?id=${item.id}">&nbsp;&nbsp;${item.blogTitle}</a>
+										<a href="${item.blogSource}" style="color:#676A6C">&nbsp;&nbsp;${item.blogTitle}</a>
 									</h3>
-									<p>&nbsp;&nbsp;&nbsp;&nbsp;${fn:substring(item.blogContext,0,80)}...</p>
+									<p>&nbsp;&nbsp;&nbsp;
+										<a href="${item.blogSource}"><img alt="" src="${item.blogAuthor}" width="80px" height="60px"></a>
+										<span style="margin-left: 15px">${fn:substring(item.blogContext,0,60)}...</span></p>
 								</div>
 								<div class="hr-line-dashed"></div>
 							</c:forEach>
@@ -39,7 +41,7 @@ pageContext.setAttribute("basePath", basePath);
 							<c:forEach items="${blogList2}" var="item">
 								<div class="search-result">
 									<h3>
-										<a href="${basePath}blog/details?id=${item.id}">&nbsp;&nbsp;${item.blogTitle}</a>
+										<a href="${basePath}blog/details?id=${item.id}" style="color:#676A6C">&nbsp;&nbsp;${item.blogTitle}</a>
 									</h3>
 									<p>&nbsp;&nbsp;&nbsp;&nbsp;${fn:substring(item.blogContext,0,80)}...</p>
 								</div>
