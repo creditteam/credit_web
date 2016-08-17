@@ -57,7 +57,7 @@ pageContext.setAttribute("basePath",basePath);
 												    <c:if test="${credit.crType==7 }">司法裁决</c:if>
 											    </span></td>
 												<td><span class="label label-warning">${credit.debtProvince }</span></td>
-												<td>${credit.debtName }</td>
+												<td><a href="${basePath }credit/creditDetails?id=${credit.id}" target="_self">${credit.debtName }</a></td>
 												<td><i class="fa fa-clock-o"></i> ${credit.crAmount }</td>
 												<td class="text-navy"><i class="fa fa-level-up"></i>${credit.commisionRange}</td>
 												<td><span class="label label-warning">

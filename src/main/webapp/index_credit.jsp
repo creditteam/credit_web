@@ -24,7 +24,7 @@
 					<c:forEach items="${creditdisposalList}" var="item">
 						<tr>
 							<td><span class="label label-warning">${item.debtCity}</span></td>
-							<td>${item.debtName}</td>
+							<td><a href="${basePath }credit/creditDetails?id=${item.id}">${item.debtName}</a></td>
 							<td><i class="fa fa-clock-o"></i>${item.crAmount}</td>
 							<td class="text-navy"><i class="fa fa-level-up"></i>${item.commisionRange}</td>
 							<td><a href="${basePath }credit/creditDetails?id=${item.id}">查看</a></td>
@@ -58,7 +58,7 @@
 					<c:forEach items="${credittransferList}" var="item">
 						<tr>
 							<td><span class="label label-warning">${item.debtCity}</span></td>
-							<td>${item.debtName}</td>
+							<td><a href="${basePath }credit/creditDetails?id=${item.id}">${item.debtName}</a></td>
 							<td><i class="fa fa-clock-o"></i>${item.crAmount}</td>
 							<td class="text-navy"><i class="fa fa-level-up"></i>${item.commisionRange}</td>
 							<td><a href="${basePath }credit/creditDetails?id=${item.id}">查看</a></td>

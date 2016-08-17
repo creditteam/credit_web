@@ -22,7 +22,11 @@
 		 end_date,
 		 open_date,
 		 agreed_date,
-		 credit_type 
+		 credit_type,
+		 signed_path,
+		 legal_service_path,
+		 deal_team_name,
+		 dept_type
 	</sql>
 
 	<resultMap type="Credit" id="CreditResultMap">
@@ -35,6 +39,7 @@
 		<result column="commision_range" property="commisionRange"/>
 		<result column="contact_name" property="contactName"/>
 		<result column="contact_number" property="contactNumber"/>
+		<result column="dept_type" property="deptType"/>
 		<result column="debt_name" property="debtName"/>
 		<result column="debt_province" property="debtProvince"/>
 	    <result column="debt_city" property="debtCity"/>
@@ -46,6 +51,9 @@
 		<result column="open_date" property="openDate"/>
 		<result column="agreed_date" property="agreedDate"/>
 		<result column="credit_type" property="creditType"/>
+		<result column="signed_path" property="signedPath"/>
+		<result column="legal_service_path" property="legalServicePath"/>
+		<result column="deal_team_name" property="dealTeamName"/>
 	</resultMap>
     
     <!-- 根据id获取债权信息 -->
@@ -117,6 +125,7 @@
 			 commision_range,
 			 contact_name,
 			 contact_number,
+			 dept_type,
 			 debt_name,
 			 debt_province,
 			 debt_city,
@@ -138,6 +147,7 @@
 			#{commisionRange},
 			#{contactName},
 			#{contactNumber},
+			#{deptType},
 			#{debtName},
 			#{debtProvince},
 			#{debtCity},

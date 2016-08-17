@@ -1,5 +1,6 @@
 package com.credit.web.credit.controller;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -295,6 +296,10 @@ public class CreditController extends BaseController{
 		String creditType =request.getParameter("creditType");
 		PageData pd =super.getPageData();
 		pd = creditWebService.pageList(pd);
+		List<Credit> disposalList = new ArrayList<Credit>();
+		List<Credit> creditdisposalList =(List<Credit>) pd.get("data");
+		this.shieldDeptName(creditdisposalList, disposalList);
+		pd.put("data", disposalList);
 		
 		ModelAndView mv = this.getModelAndView();
 		mv.addObject("pd", pd);
@@ -328,4 +333,23 @@ public class CreditController extends BaseController{
 		return list;
 	}
 	
+	
+	/**
+	 * 屏蔽债权人名称
+	 * @param creditdisposalList
+	 * @param disposalList
+	 */
+	public void shieldDeptName(List<Credit> creditdisposalList, List<Credit> disposalList) {
+		for (int i = 0; i < creditdisposalList.size(); i++) {
+			Credit credit =creditdisposalList.get(i);
+			if(credit.getDeptType()==1){
+				String debtName = SensitiveUtil.shieldName(credit.getDebtName());
+				credit.setDebtName(debtName);
+			}else{
+				String debtName = SensitiveUtil.shieldCompany(credit.getDebtName());
+				credit.setDebtName(debtName);				
+			}
+			disposalList.add(credit);
+		}
+	}
 }

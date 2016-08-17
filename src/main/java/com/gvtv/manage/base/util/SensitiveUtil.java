@@ -24,6 +24,21 @@ public class SensitiveUtil {
 		return result;
 	}
 	
+	public static String shieldCompany(String name){
+		if(null == name || "".equals(name)){
+			return "";
+		}
+		String result = "";
+		if(name.length() >= 7){
+			result = name.substring(0,4)+"****"+name.substring(7,name.length());
+		}else if(name.length() > 4 && name.length() < 7){
+			result = name.substring(0,name.length()-4)+"****";
+		}else{
+			result = name;
+		}
+		return result;
+	}
+	
 	public static String shieldPhone(String phone){
 		if(null == phone || "".equals(phone)){
 			return "";

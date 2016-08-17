@@ -60,7 +60,11 @@ pageContext.setAttribute("basePath",basePath);
                             </div>
                             <div class="col-sm-6">
                                 <h4>还不是会员？</h4>
-                                <p>您可以注册一个新账户</p>
+                                <p>您可以注册一个新账户
+                                <a href="${basePath }register.jsp">
+                                <button class="btn btn-sm btn-primary m-t-n-xs" type="button"><strong> 注册</strong></button>
+                                </a>
+                                </p>
                                 <p class="text-center">
                                     <a href="${basePath }register.jsp"><i class="fa fa-sign-in big-icon"></i></a>
                                 </p>

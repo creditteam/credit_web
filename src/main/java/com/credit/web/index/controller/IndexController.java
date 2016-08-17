@@ -1,5 +1,6 @@
 package com.credit.web.index.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -19,6 +20,7 @@ import com.credit.web.user.service.UserWebService;
 import com.gvtv.manage.base.controller.BaseController;
 import com.gvtv.manage.base.util.MozillaUtil;
 import com.gvtv.manage.base.util.PageData;
+import com.gvtv.manage.base.util.SensitiveUtil;
 
 @Controller
 public class IndexController extends BaseController{
@@ -45,8 +47,13 @@ public class IndexController extends BaseController{
 		
 		pd.put("creditType", 1);
 		List<Credit> creditdisposalList = creditWebService.creditlist(pd);//债权信息
+		List<Credit> disposalList = new ArrayList<Credit>();
+		shieldDeptName(creditdisposalList, disposalList);
+		
 		pd.put("creditType", 2);
 		List<Credit> credittransferList = creditWebService.creditlist(pd);//债权转让
+		List<Credit> transferList = new ArrayList<Credit>();
+		shieldDeptName(credittransferList, transferList);
 		
 		//行业动态、业务文章 
 		pd.put("blogType", 1);
@@ -65,8 +72,8 @@ public class IndexController extends BaseController{
 		pd.put("size", 0);
 		List<Sample> sampleList = sampleWebService.list(pd);
 		
-		mv.addObject("creditdisposalList",creditdisposalList);
-		mv.addObject("credittransferList",credittransferList);
+		mv.addObject("creditdisposalList",disposalList);
+		mv.addObject("credittransferList",transferList);
 		
 		mv.addObject("blogList1",blogList1);
 		mv.addObject("blogList2",blogList2);
@@ -85,6 +92,25 @@ public class IndexController extends BaseController{
 		}
 		
 		return mv;
+	}
+
+	/**
+	 * 屏蔽债权人名称
+	 * @param creditdisposalList
+	 * @param disposalList
+	 */
+	private void shieldDeptName(List<Credit> creditdisposalList, List<Credit> disposalList) {
+		for (int i = 0; i < creditdisposalList.size(); i++) {
+			Credit credit =creditdisposalList.get(i);
+			if(credit.getDeptType()==1){
+				String debtName = SensitiveUtil.shieldName(credit.getDebtName());
+				credit.setDebtName(debtName);
+			}else{
+				String debtName = SensitiveUtil.shieldCompany(credit.getDebtName());
+				credit.setDebtName(debtName);				
+			}
+			disposalList.add(credit);
+		}
 	}
 	
 	@RequestMapping(value="/product")

@@ -140,6 +140,16 @@ pageContext.setAttribute("basePath",basePath);
 					         	债务方信息
 					      </h4>
 					      </a><br/>
+					        <div class="form-group">
+                                <label class="col-sm-3 control-label">债务方性质：</label>
+                                <div class="col-sm-8">
+                                    <select id="debtType" name="debtType" class="form-control input-sm"  required="required">
+							              <option value="">请选择</option>
+							              <option value="1">个人</option>
+							              <option value="2">企业</option>
+							          </select>
+                                </div>
+                            </div>
                          <div class="form-group">
                                 <label class="col-sm-3 control-label">债务方名称：</label>
                                 <div class="col-sm-8">
@@ -265,8 +275,9 @@ function loadCity() {
 
 $(function () {
     $('#datetimepicker').datetimepicker({
-    	minView: "month",//选择日期后，不会再跳转去选择时分秒 
-    	format: "yyyy-mm-dd",
+    	startView: 'decade',
+    	minView: 'decade',
+    	format: "yyyy",
     	language: 'zh-CN',
     	autoclose:true
     });
