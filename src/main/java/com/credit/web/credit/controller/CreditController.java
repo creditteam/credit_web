@@ -109,9 +109,7 @@ public class CreditController extends BaseController{
 	 */
 	@RequestMapping(value="/saveCredit",method =RequestMethod.POST)
 	public String saveCredit(Credit credit) throws Exception{
-		PageData pd =super.getPageData();
 		HttpServletRequest request = super.getRequest();
-		String creditType =request.getParameter("creditType");
 		String path = request.getSession().getServletContext().getRealPath("/");
 		Boolean bool = false;
 		String debtProof = "";
@@ -133,14 +131,8 @@ public class CreditController extends BaseController{
 					bool = true;
 				}
 			}
+			credit.setDebtProof(debtProof);
 		}
-		credit.setDebtProof(debtProof);
-		/*if(0 != credit.getUploadFile().getSize()){
-			bool = uploadFileService.uploadFile(path+"uploadFile\\credit", credit.getUploadFile(), credit.getUploadFile().getOriginalFilename());
-			credit.setDebtProof(path+"uploadFile\\credit\\"+credit.getUploadFile().getOriginalFilename());
-		}else{
-			bool = true;
-		}*/
 		credit.setCreateDate(new Date());
 		credit.setCrStatus((short)1);
 		creditWebService.creditSave(credit);

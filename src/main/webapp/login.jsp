@@ -33,25 +33,29 @@ pageContext.setAttribute("basePath",basePath);
                     </div>
                     <div class="ibox-content">
                         <div class="row">
-                            <div class="col-sm-6 b-r">
+                            <div class="col-sm-6 b-r" style="text-align: center;">
                                 <h3 class="m-t-none m-b">登录</h3>
                                 <p>欢迎登录本站(⊙o⊙)</p>
                                 <span class="label label-warning">${result }</span><br/>
                                 <form role="form" action="${basePath }user/login" method="post" target="_self">
-                                    <div class="form-group">
-                                        <label>用户名</label>
-                                        <input type="text" name="loginName" placeholder="请输入您注册的E-mail或手机号码" class="form-control" required="" aria-required="true">
+                                    <div class="form-group" style="line-height: 40px;">
+		                                <label class="col-sm-3 control-label" style="text-align: right">用户名：</label>
+		                                <div class="col-sm-3">
+		                                    <input type="text" name="loginName" placeholder="请输入您注册的E-mail或手机号码" class="form-control" required="" aria-required="true" style="width:360px"/>
+		                                </div>
+		                            </div>
+                                    <div class="form-group" style="padding-top: 60px;line-height: 40px;">
+                                        <label class="col-sm-3 control-label" style="text-align: right">密码：</label>
+                                        <div class="col-sm-3">
+                                        	<input type="password" name="password" placeholder="请输入密码" class="form-control" required="" aria-required="true" style="width:360px"/>
+                                        </div>
                                     </div>
-                                    <div class="form-group">
-                                        <label>密码</label>
-                                        <input type="password" name="password" placeholder="请输入密码" class="form-control" required="" aria-required="true">
-                                    </div>
-                                    <div>
-                                        <button class="btn btn-sm btn-primary pull-right m-t-n-xs" type="submit"><strong>登 录</strong>
-                                        </button>
-                                        <label><input type="checkbox" class="i-checks">自动登录</label>
-                                        <label><a  href="${basePath }forgot_pwd.jsp">忘记密码?</a></label>
-                                    </div>
+                                    <div class="form-group" style="padding-top: 40px;">
+		                                <label class="col-sm-5 control-label" style="text-align: right;"><input type="checkbox" class="i-checks">自动登录&nbsp; <a href="${basePath }forgot_pwd.jsp">忘记密码?</a></label>
+		                                <div class="col-sm-3" style="text-align: right">
+		                                	<button class="btn btn-sm btn-primary m-t-n-xs" type="submit"><strong>登 录</strong></button>
+		                                </div>
+		                            </div>
                                 </form>
                             </div>
                             <div class="col-sm-6">

@@ -59,42 +59,48 @@
    <select id="count" parameterType="PageData" resultType="int">
 		select count(1)
 		from cr_credit u
-		where u.cr_status != -1
+		where 1=1
+		<if test="userId == null or userId == ''">
+			and is_audit = 1
+		</if>
 		<if test="userId != null and userId != ''">
-		and user_id=#{userId}
+			and user_id=#{userId}
 		</if>
 		<if test="crStatus != null and crStatus != ''">
-		and cr_status=#{crStatus}
+			and cr_status=#{crStatus}
 		</if>
 		<if test="crType != null and crType != ''">
-		and cr_type=#{crType}
+			and cr_type=#{crType}
 		</if>
 		<if test="creditType != null and creditType != ''">
-		and credit_type=#{creditType}
+			and credit_type=#{creditType}
 		</if>
 		<if test="contactName!=nul and contactName!=''">
-		and contact_name like CONCAT(CONCAT('%',#{contactName}),'%')
+			and contact_name like CONCAT(CONCAT('%',#{contactName}),'%')
 		</if>
 	</select>
 	
 	<select id="list" parameterType="PageData" resultType="Credit">
 	   <include refid="creditColumns"></include>
 		 from cr_credit u
-		where u.cr_status != -1
+		where 1 = 1
+		<if test="userId == null or userId == ''">
+			and is_audit = 1
+		</if>
 		<if test="userId != null and userId != ''">
-		and user_id=#{userId}
+			and user_id=#{userId}
 		</if>
 		<if test="crStatus != null and crStatus != ''">
-		and cr_status=#{crStatus}
+			and cr_status=#{crStatus}
 		</if>
 		<if test="crType != null and crType != ''">
-		and cr_type=#{crType}
+			and cr_type=#{crType}
 		</if>
 		<if test="creditType != null and creditType != ''">
-		and credit_type=#{creditType}
+			and credit_type=#{creditType}
 		</if>
 		<if test="contactName!=nul and contactName!=''">
-		and contact_name like CONCAT(CONCAT('%',#{contactName}),'%')
+			and contact_name like CONCAT(CONCAT('%',#{contactName}),'%')
 		</if>
 		order by u.id desc
 		limit #{from},#{size}
@@ -121,7 +127,8 @@
 			 end_date,
 			 open_date,
 			 agreed_date,
-			 credit_type
+			 credit_type,
+			 is_audit
 		) values (
 			#{userId},
 			#{crType},
@@ -141,7 +148,8 @@
 			#{endDate},
 			#{openDate},
 			#{agreedDate},
-			#{creditType}
+			#{creditType},
+			0
 		)
 	</insert>	
 

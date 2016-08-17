@@ -51,7 +51,8 @@
                   
                               <dl class="dl-horizontal">
                                     <dt>金额：</dt>
-                                    <dd> ${reward.rewardAmount }金额(万元)</dd>
+                                    <dd><c:if test="${reward.rewardAmount eq '3000'}">${reward.rewardAmount } (元以上)</c:if>
+					   					<c:if test="${reward.rewardAmount ne '3000'}">${reward.rewardAmount } (元)</c:if></dd>
                                </dl>
                   
                                 <dl class="dl-horizontal">
@@ -65,14 +66,17 @@
 
 								<dl class="dl-horizontal">
 									<dt>发布日期：</dt>
-									<dd>  <fmt:formatDate value="${reward.createTime }" pattern="yyyy-MM-dd HH:mm:ss"/></dd>
+									<dd>  <fmt:formatDate value="${reward.createTime }" pattern="yyyy-MM-dd"/></dd>
 								</dl>
 
 								<dl class="dl-horizontal">
 									<dt>有效日期：</dt>
-									<dd><fmt:formatDate value="${reward.endTime }" pattern="yyyy-MM-dd HH:mm:ss"/></dd>
+									<dd><fmt:formatDate value="${reward.endTime }" pattern="yyyy-MM-dd"/></dd>
 								</dl>
-
+								<dl class="dl-horizontal">
+									<dt>所在地：</dt>
+									<dd>${reward.province} ${reward.city}</dd>
+								</dl>
 								<dl class="dl-horizontal">
 									<dt>状态：</dt>
 									<dd>	
@@ -92,7 +96,7 @@
 								</dl>
 								<dl class="dl-horizontal">
 									<dt>悬赏描述：</dt>
-									<dd>${user.description}</dd>
+									<dd>${reward.description}</dd>
 								</dl>
 								<dl class="dl-horizontal">
 									<dt>备注：</dt>

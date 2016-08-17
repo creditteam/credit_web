@@ -123,7 +123,7 @@ public class RewardController extends BaseController{
 		
 		HttpServletRequest request = super.getRequest();
 		
-		reward.setRewardStatus((short)1);
+		reward.setRewardStatus((short)0);//默认新增的悬赏不发布，需要后台审核
 		reward.setCreateTime(new Date());
 		String path = request.getSession().getServletContext().getRealPath("/");
 		Boolean bool = false;
