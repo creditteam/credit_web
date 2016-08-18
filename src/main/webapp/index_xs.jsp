@@ -20,9 +20,8 @@ pageContext.setAttribute("basePath", basePath);
 			</ol>
 			<!-- 轮播（Carousel）项目 -->
 			<div class="carousel-inner">
-				<c:forEach var="item" items="${sampleList}" varStatus="status">
-					<c:if test="${item.samType eq '2'}">
-						<div class="item <c:if test="${status.index eq 0}">active</c:if>">
+				<c:forEach var="item" items="${sampleList1}" varStatus="status">
+						<div class="item <c:if test="${status.first}">active</c:if>">
 							<div class="row">
 								<div class="col-sm-2">
 									<img src="${basePath}${item.samImg}" width="100%" alt="First slide"  width="112" height="163">
@@ -41,7 +40,6 @@ pageContext.setAttribute("basePath", basePath);
 							</div>
 							<div class="carousel-caption"></div>
 						</div>
-					</c:if>
 				</c:forEach>
 				
 				<%--

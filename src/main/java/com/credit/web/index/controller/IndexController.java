@@ -71,6 +71,13 @@ public class IndexController extends BaseController{
 		
 		pd.put("size", 0);
 		List<Sample> sampleList = sampleWebService.list(pd);
+		List<Sample> sampleList1 = new ArrayList<Sample>();
+		for(int i = 0 ;i < sampleList.size();i++){
+			if(sampleList.get(i).getSamType() == 2){
+				sampleList1.add(sampleList.get(i));
+				sampleList.remove(i);
+			}
+		}
 		
 		mv.addObject("creditdisposalList",disposalList);
 		mv.addObject("credittransferList",transferList);
@@ -83,6 +90,7 @@ public class IndexController extends BaseController{
 		mv.addObject("userList3",userList3);
 		
 		mv.addObject("sampleList",sampleList);
+		mv.addObject("sampleList1",sampleList1);
 		
 		Boolean isMobile = MozillaUtil.isMobileDevice(super.getRequest());
 		if(isMobile){
