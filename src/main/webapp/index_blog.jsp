@@ -26,7 +26,7 @@ pageContext.setAttribute("basePath", basePath);
 										<a href="${item.blogSource}" style="color:#676A6C">&nbsp;&nbsp;${item.blogTitle}</a>
 									</h3>
 									<p>&nbsp;&nbsp;&nbsp;
-										<a href="${item.blogSource}"><img alt="" src="${item.blogAuthor}" width="80px" height="60px"></a>
+										<a href="${item.blogSource}"><img alt="" src="${item.blogImage}" width="80px" height="60px"></a>
 										<span style="margin-left: 15px">${fn:substring(item.blogContext,0,60)}...</span></p>
 								</div>
 								<div class="hr-line-dashed"></div>

@@ -11,13 +11,14 @@ public class Blog {
 	private Date createTime;
 	private String blogSource;
 	private String blogAuthor;
+	private String blogImage;
 
 	public Blog() {
 
 	}
 
 	public Blog(Integer id, Short blogType, String blogTitle,
-			String blogContext, Date createTime,String blogSource,String blogAuthor) {
+			String blogContext, Date createTime,String blogSource,String blogAuthor,String blogImage) {
 		super();
 		this.id = id;
 		this.blogType = blogType;
@@ -26,6 +27,7 @@ public class Blog {
 		this.createTime = createTime;
 		this.blogSource = blogSource;
 		this.blogAuthor = blogAuthor;
+		this.blogImage = blogImage;
 	}
 
 	public Integer getId() {
@@ -84,4 +86,13 @@ public class Blog {
 		this.blogAuthor = blogAuthor;
 	}
 
+	public String getBlogImage() {
+		return blogImage;
+	}
+
+	public void setBlogImage(String blogImage) {
+		this.blogImage = blogImage;
+	}
+
+	
 }

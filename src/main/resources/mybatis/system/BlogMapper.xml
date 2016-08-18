@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="BlogMapper">
-	<sql id="commonColumns">select id,blog_type,blog_title,blog_context,create_time,blog_source,blog_author,blog_status </sql>
+	<sql id="commonColumns">select id,blog_type,blog_title,blog_context,create_time,blog_source,blog_author,blog_status,blog_image </sql>
 
 	<resultMap type="Blog" id="userResultMap">
 		<id column="id" property="id"/>
@@ -14,6 +14,7 @@
 		<result column="blog_source" property="blogSource"/>
 		<result column="blog_author" property="blogAuthor"/>
 		<result column="blog_status" property="blogStatus"/>
+		<result column="blog_image" property="blogImage"/>
 	</resultMap>
 	
 	    <!-- 根据id获取债权信息 -->
@@ -41,9 +42,7 @@
 			and u.blog_type = #{blogType}
 		</if>
 		order by id desc
-		<if test="from != 0 and size != 0">
-			limit #{from},#{size}
-		</if>
+        limit #{from},#{size}
 	</select>
 	
 	

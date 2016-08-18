@@ -54,13 +54,7 @@ public class IndexController extends BaseController{
 		List<Credit> credittransferList = creditWebService.creditlist(pd);//债权转让
 		List<Credit> transferList = new ArrayList<Credit>();
 		shieldDeptName(credittransferList, transferList);
-		
-		//行业动态、业务文章 
-		pd.put("blogType", 1);
-		List<Blog> blogList1 = blogWebService.bloglist(pd);
-		pd.put("blogType", 2);
-		List<Blog> blogList2 = blogWebService.bloglist(pd);
-		
+				
 		pd.put("userLevel", 99);//专家、律师、财经法制媒体人
 		pd.put("userStatus", 7);
 		List<User> userList1 = userWebService.findPartUserList(pd);
@@ -70,10 +64,26 @@ public class IndexController extends BaseController{
 		List<User> userList3 = userWebService.findPartUserList(pd);
 		
 		pd.put("size", 0);
-		pd.put("samType", 1);
 		List<Sample> sampleList = sampleWebService.list(pd);
-		pd.put("samType", 2);
-		List<Sample> sampleList1 = sampleWebService.list(pd);
+		List<Sample> sampleListAl = new ArrayList<Sample>();
+		List<Sample> sampleListXs = new ArrayList<Sample>();
+		for(int i = 0 ;i < sampleList.size();i++){
+			Sample sample =  sampleList.get(i);
+			if(sample.getSamType() == (short)2){
+				sampleListXs.add(sample);
+			}else if(sample.getSamType()==1){
+				sampleListAl.add(sample);
+			}
+		}
+		
+		
+		//行业动态、业务文章 
+		pd.put("from",0);
+		pd.put("size", 4);	
+		pd.put("blogType", 1);
+		List<Blog> blogList1 = blogWebService.bloglist(pd);
+		pd.put("blogType", 2);
+		List<Blog> blogList2 = blogWebService.bloglist(pd);
 		
 		mv.addObject("creditdisposalList",disposalList);
 		mv.addObject("credittransferList",transferList);
@@ -85,8 +95,8 @@ public class IndexController extends BaseController{
 		mv.addObject("userList2",userList2);
 		mv.addObject("userList3",userList3);
 		
-		mv.addObject("sampleList",sampleList);
-		mv.addObject("sampleList1",sampleList1);
+		mv.addObject("sampleList",sampleListAl);
+		mv.addObject("sampleList1",sampleListXs);
 		
 		Boolean isMobile = MozillaUtil.isMobileDevice(super.getRequest());
 		if(isMobile){
