@@ -38,6 +38,7 @@ pageContext.setAttribute("basePath",basePath);
 			   <thead>
 			      <tr>
 			         <th style="text-align:center;">所在地</th>
+			         <th style="text-align:center;">债务人</th>
 			         <th style="text-align:center;">金额(万元)</th>
 			         <th style="text-align:center;">佣金</th>
 			         <th style="text-align:center;"></th>
@@ -48,6 +49,7 @@ pageContext.setAttribute("basePath",basePath);
 				   <c:forEach items="${pd.data }" var="credit">
 						<tr onclick="javascript:window.location.href = '${basePath}credit/creditInfo?id=${credit.id}'">
 							<td><span class="label label-warning">${credit.debtProvince}</span></td>
+							<td>${credit.deptName }</td>
 							<td><i class="fa fa-clock-o"></i> ${credit.crAmount}</td>
 							<td class="text-navy"><i class="fa fa-level-up"></i>${credit.commisionRange}</td>
 							<td>
