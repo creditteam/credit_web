@@ -6,13 +6,13 @@
 		<div id="myCarousel2" class="carousel slide" data-ride="carousel">
 			<!-- 轮播（Carousel）指标 -->
 			<ol class="carousel-indicators">
-				<li data-target="#myCarousel2" data-slide-to="0" class="active"></li>
+				<li data-target="#myCarousel2" data-slide-to="0"></li>
 				<li data-target="#myCarousel2" data-slide-to="1"></li>
 			</ol>
 			<!-- 轮播（Carousel）项目 -->
 			<div class="carousel-inner">
 				<c:forEach var="item" items="${sampleList}" varStatus="status">
-						<div class="item <c:if test="${!status.first}">active</c:if>">
+						<div class="item <c:if test="${status.first}">active</c:if>">
 							<div class="row">
 								<div class="col-sm-12" style="font-size: 18px">
 									${item.samName}：${item.description}

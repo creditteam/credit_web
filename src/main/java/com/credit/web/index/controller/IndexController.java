@@ -73,7 +73,7 @@ public class IndexController extends BaseController{
 		List<Sample> sampleList = sampleWebService.list(pd);
 		List<Sample> sampleList1 = new ArrayList<Sample>();
 		for(int i = 0 ;i < sampleList.size();i++){
-			if(sampleList.get(i).getSamType() == 2){
+			if(sampleList.get(i).getSamType() == (short)2){
 				sampleList1.add(sampleList.get(i));
 				sampleList.remove(i);
 			}
