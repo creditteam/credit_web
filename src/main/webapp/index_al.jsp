@@ -25,8 +25,8 @@
 				</c:forEach>
 			</div>
 			<!-- 轮播（Carousel）导航 -->
-			<a class="carousel-control left" href="#myCarousel2" data-slide="prev"><span class="glyphicon glyphicon-chevron-left"></span></a> 
-			<a class="carousel-control right" href="#myCarousel2" data-slide="next"><span class="glyphicon glyphicon-chevron-right"></span>
+			<a class=" left" href="#myCarousel2" data-slide="prev"><span class="glyphicon glyphicon-chevron-left"></span></a> 
+			<a class=" right" href="#myCarousel2" data-slide="next" style="text-align: right;float: right;"><span class="glyphicon glyphicon-chevron-right"></span>
 			</a>
 		</div>
 	</div>
