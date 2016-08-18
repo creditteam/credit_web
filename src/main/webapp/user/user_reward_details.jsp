@@ -102,15 +102,15 @@ pageContext.setAttribute("basePath",basePath);
 									<dt> 图片：</dt>
 									<dd><c:forEach items="${reward.imagesArry}" var="item">
 										<c:if test="${not empty item}">
-										<span onclick="showBigImage('${basePath}${item}')">
-											<img alt="" src="${basePath}${item}" onclick="showBigImage('${basePath}${item}')" width="50px" height="50px"/>&nbsp;&nbsp;
-										</span>
+										<a href="${basePath }credit/imgDetail?imageUrl=${basePath}${item}" target="_blank">
+											<img alt="" src="${basePath}${item}" width="50px" height="50px"/>&nbsp;&nbsp;
+										</a>
 										</c:if>
 									</c:forEach></dd>
 								</dl>
 								<dl class="dl-horizontal">
 									<dt>悬赏描述：</dt>
-									<dd>${user.description}</dd>
+									<dd>${reward.description}</dd>
 								</dl>
 							</div>
                 </div>

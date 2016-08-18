@@ -83,6 +83,9 @@
 		<if test="creditType != null and creditType != ''">
 			and credit_type=#{creditType}
 		</if>
+		<if test="dealTeamName != null and dealTeamName != ''">
+			and deal_team_name=#{dealTeamName}
+		</if>
 		<if test="contactName!=nul and contactName!=''">
 			and contact_name like CONCAT(CONCAT('%',#{contactName}),'%')
 		</if>
@@ -106,6 +109,9 @@
 		</if>
 		<if test="creditType != null and creditType != ''">
 			and credit_type=#{creditType}
+		</if>
+		<if test="dealTeamName != null and dealTeamName != ''">
+			and deal_team_name=#{dealTeamName}
 		</if>
 		<if test="contactName!=nul and contactName!=''">
 			and contact_name like CONCAT(CONCAT('%',#{contactName}),'%')
@@ -162,5 +168,40 @@
 			0
 		)
 	</insert>	
-
+	<select id="tranCount" parameterType="PageData" resultType="int">
+		select count(1)
+		from cr_credit u
+		where deal_team_name=#{dealTeamName}
+		<if test="crStatus != null and crStatus != ''">
+			and cr_status=#{crStatus}
+		</if>
+		<if test="crType != null and crType != ''">
+			and cr_type=#{crType}
+		</if>
+		<if test="creditType != null and creditType != ''">
+			and credit_type=#{creditType}
+		</if>
+		<if test="contactName!=nul and contactName!=''">
+			and contact_name like CONCAT(CONCAT('%',#{contactName}),'%')
+		</if>
+	</select>
+	<select id="tranList" parameterType="PageData" resultType="Credit">
+	   <include refid="creditColumns"></include>
+		 from cr_credit u
+		where deal_team_name=#{dealTeamName}
+		<if test="crStatus != null and crStatus != ''">
+			and cr_status=#{crStatus}
+		</if>
+		<if test="crType != null and crType != ''">
+			and cr_type=#{crType}
+		</if>
+		<if test="creditType != null and creditType != ''">
+			and credit_type=#{creditType}
+		</if>
+		<if test="contactName!=nul and contactName!=''">
+			and contact_name like CONCAT(CONCAT('%',#{contactName}),'%')
+		</if>
+		order by u.id desc
+		limit #{from},#{size}
+	</select>
 </mapper>

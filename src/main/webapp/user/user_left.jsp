@@ -25,7 +25,7 @@ pageContext.setAttribute("basePath",basePath);
                                 </li>
                                  <li class="jstree-open">债权管理
                                     <ul>
-                                    <li data-jstree='{"type":"css"}'><a href ="${basePath }credit/list?creditType=1" target="_self">债权信息</a></li>
+                                    <li data-jstree='{"type":"css"}'><a href ="${basePath }credit/list?creditType=1" target="_self">债权追收</a></li>
                                     <li data-jstree='{"type":"css"}'><a href ="${basePath }credit/list?creditType=2" target="_self">债权转让</a></li>
                                     </ul>
                                 </li>
@@ -34,6 +34,13 @@ pageContext.setAttribute("basePath",basePath);
                                     <li data-jstree='{"type":"css"}'><a href ="${basePath }reward/list" target="_self">悬赏信息</a></li>
                                     </ul>
                                  </li>
+                                 <c:if test="${userInfo.userType eq '1'}">
+	                                 <li class="jstree-open">我处置的债权
+	                                    <ul>
+	                                    <li data-jstree='{"type":"css"}'><a href ="${basePath }credit/userCreditList" target="_self">处置债权</a></li>
+	                                    </ul>
+	                                 </li>
+                                 </c:if>
                             </ul>
                         </div>
                     </div>

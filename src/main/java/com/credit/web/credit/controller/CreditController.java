@@ -352,4 +352,30 @@ public class CreditController extends BaseController{
 			disposalList.add(credit);
 		}
 	}
+	
+	/**
+	 * 用户处置债权列表
+	 */
+	@RequestMapping(value="/userCreditList")
+	public ModelAndView userCreditList() throws Exception{
+		
+		PageData pd =super.getPageData();
+		User user =(User) super.getRequest().getSession().getAttribute("userInfo");
+		if(user!=null){
+			pd.put("dealTeamName", user.getId());
+		}
+		pd = creditWebService.tranPageList(pd);
+		
+		ModelAndView mv = this.getModelAndView();
+		mv.addObject("pd", pd);
+		mv.setViewName("/user/my_credit_dis_list");
+		return mv;
+	}
+	@RequestMapping(value="/imgDetail")
+	public ModelAndView imageDetail(String imageUrl){
+		ModelAndView mv = super.getModelAndView();
+		mv.addObject("rewardImg",imageUrl);
+		mv.setViewName("/user/image_detail");
+		return mv;
+	}
 }

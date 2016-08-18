@@ -37,36 +37,28 @@ pageContext.setAttribute("basePath",basePath);
                         <h5>债权详情信息</h5>
                     </div>
                     <div class="ibox-content">
-                          <a class="list-group-item active">
-					      <h4 class="list-group-item-heading">
-					         债权人信息
-					      </h4>
-					      </a><br/>
+					      <b><font color="blue">基本信息</font></b>
+                 		 <hr>
                   		    <dl class="dl-horizontal">
                                     <dt>债权类型：</dt>
                                     <dd>
-												    <c:if test="${credit.crType==1 }">民间借贷</c:if>
-												    <c:if test="${credit.crType==2 }">应收账款</c:if>
-												    <c:if test="${credit.crType==3 }">银行借贷</c:if>
-												    <c:if test="${credit.crType==4 }">互联网金融</c:if>
-												    <c:if test="${credit.crType==5 }">小额信贷</c:if>
-												    <c:if test="${credit.crType==6 }">典当担保</c:if>
-												    <c:if test="${credit.crType==7 }">司法裁决</c:if>
+									    <c:if test="${credit.crType==1 }">民间借贷</c:if>
+									    <c:if test="${credit.crType==2 }">应收账款</c:if>
+									    <c:if test="${credit.crType==3 }">银行借贷</c:if>
+									    <c:if test="${credit.crType==4 }">互联网金融</c:if>
+									    <c:if test="${credit.crType==5 }">小额信贷</c:if>
+									    <c:if test="${credit.crType==6 }">典当担保</c:if>
+									    <c:if test="${credit.crType==7 }">司法裁决</c:if>
                                     </dd>
                                 </dl>
                   
-                              <dl class="dl-horizontal">
-                                    <dt>债务人名称：</dt>
+								<dl class="dl-horizontal">
+                                    <dt>债权人名称：</dt>
                                     <dd> ${credit.contactName }</dd>
                                </dl>
-                  
-                                <dl class="dl-horizontal">
-                                    <dt>所在省份：</dt>
-                                    <dd>${credit.debtProvince }</dd>
-                               </dl>
 								<dl class="dl-horizontal">
-									<dt>所在城市：</dt>
-									<dd>${credit.debtCity }</dd>
+									<dt>债权方联系电话：</dt>
+									<dd>${credit.contactNumber }</dd>
 								</dl>
 
 								<dl class="dl-horizontal">
@@ -82,7 +74,10 @@ pageContext.setAttribute("basePath",basePath);
 									<dt>佣金范围：</dt>
 									<dd>${credit.commisionRange }</dd>
 								</dl>
-
+								<dl class="dl-horizontal">
+									<dt>债权金额：</dt>
+									<dd> ${credit.crAmount }(万元)</dd>
+								</dl>
 								<dl class="dl-horizontal">
 									<dt>发布日期：</dt>
 									<dd>
@@ -92,34 +87,36 @@ pageContext.setAttribute("basePath",basePath);
 								<dl class="dl-horizontal">
 									<dt>债权开始日期：</dt>
 									<dd>
-									<fmt:formatDate value="${credit.openDate }" pattern="yyyy-MM-dd"/>
+									<fmt:formatDate value="${credit.openDate }" pattern="yyyy"/>
 									</dd>
 								</dl>
 
-								<dl class="dl-horizontal">
-									<dt>债权金额：</dt>
-									<dd> ${credit.crAmount }(万元)</dd>
-								</dl>
-
                           <div class="hr-line-dashed"></div>
-                          <a class="list-group-item active">
-					      <h4 class="list-group-item-heading">
-					         债务方信息
-					      </h4>
-					      </a><br/>
-								<dl class="dl-horizontal">
-									<dt>债权方联系人：</dt>
+					      <b><font color="blue">债务方信息</font></b>
+                 		 <hr>
+                 		 		<dl class="dl-horizontal">
+                                    <dt>债务方性质：</dt>
+                                    <dd> <c:if test="${credit.deptType eq '1'}">个人</c:if>
+										 <c:if test="${credit.deptType eq '2'}">企业</c:if></dd>
+                               </dl>
+                 		 		<dl class="dl-horizontal">
+									<dt>债务人名称：</dt>
 									<dd> ${credit.debtName }</dd>
 								</dl>
-								<dl class="dl-horizontal">
-									<dt>债权方联系电话：</dt>
-									<dd>${credit.debtPhone }</dd>
-								</dl>
+								
+                  				<dl class="dl-horizontal">
+                                    <dt>债务人联系电话：</dt>
+                                    <dd> ${credit.debtPhone }</dd>
+                               </dl>
+                                <dl class="dl-horizontal">
+                                    <dt>所在城市：</dt>
+                                    <dd>${credit.debtProvince } ${credit.debtCity }</dd>
+                               </dl>
 								<dl class="dl-horizontal">
 									<dt>债权凭证：</dt>
 									<dd><c:forEach items="${credit.debtProofs}" var="item">
 										<c:if test="${not empty item}">
-										<a onclick="showBigImage('${basePath}${item}')">
+										<a href="${basePath }credit/imgDetail?imageUrl=${basePath}${item}" target="_blank">
 											<img alt="" src="${basePath}${item}" width="50px" height="50px"/>&nbsp;&nbsp;
 										</a>
 										</c:if>

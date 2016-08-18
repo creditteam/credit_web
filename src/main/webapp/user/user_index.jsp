@@ -23,7 +23,12 @@
                                     <dt>线索悬赏统计：</dt>
                                     <dd>共5 条</dd>
                                </dl>
-
+                               <c:if test="${userInfo.userType eq '1'}">
+	                               <dl class="dl-horizontal">
+	                                    <dt>我处置的债权：</dt>
+	                                    <dd>共1 条</dd>
+	                               </dl>
+							   </c:if>
                     </div>
                 </div>
             </div>
