@@ -70,14 +70,10 @@ public class IndexController extends BaseController{
 		List<User> userList3 = userWebService.findPartUserList(pd);
 		
 		pd.put("size", 0);
+		pd.put("samType", 1);
 		List<Sample> sampleList = sampleWebService.list(pd);
-		List<Sample> sampleList1 = new ArrayList<Sample>();
-		for(int i = 0 ;i < sampleList.size();i++){
-			if(sampleList.get(i).getSamType() == (short)2){
-				sampleList1.add(sampleList.get(i));
-				sampleList.remove(i);
-			}
-		}
+		pd.put("samType", 2);
+		List<Sample> sampleList1 = sampleWebService.list(pd);
 		
 		mv.addObject("creditdisposalList",disposalList);
 		mv.addObject("credittransferList",transferList);
