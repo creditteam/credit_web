@@ -71,7 +71,7 @@ pageContext.setAttribute("basePath",basePath);
 							<td>${credit.debtName }</td>
 							<td><i class="fa fa-clock-o"></i> ${credit.crAmount }</td>
 							<td class="text-navy"><i class="fa fa-level-up"></i>${credit.commisionRange}</td>
-							<td><a href="${basePath }credit/userCreditDetails?id=${credit.id}" target="_self">查看</a></td>
+							<td><a href="${basePath }credit/myCreditDetails?id=${credit.id}" target="_self">查看</a></td>
 						</tr>
 						</c:forEach>
 					</tbody>

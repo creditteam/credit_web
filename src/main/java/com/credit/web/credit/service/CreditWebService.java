@@ -6,13 +6,11 @@ import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.util.ObjectUtils;
 
 import com.credit.web.common.tag.PageInfo;
 import com.credit.web.common.tag.PageUtil;
 import com.credit.web.entity.Credit;
 import com.gvtv.manage.base.dao.BaseDao;
-import com.gvtv.manage.base.util.AppUtil;
 import com.gvtv.manage.base.util.Const;
 import com.gvtv.manage.base.util.PageData;
 import com.gvtv.manage.base.util.StringUtils;
@@ -121,4 +119,12 @@ public class CreditWebService {
 		return credit;
 	}
 
+	public Boolean updateStatus(Credit credit) throws Exception {
+		int num = dao.save("CreditMapper.updateStatus", credit);
+		if(num>0){
+			return true;
+		}
+		return false;
+	}
+	
 }

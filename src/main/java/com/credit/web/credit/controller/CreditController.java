@@ -174,6 +174,30 @@ public class CreditController extends BaseController{
 		return mv;
 	}
 	
+	@RequestMapping(value="/myCreditDetails",method =RequestMethod.GET)
+	public ModelAndView myCreditDetails() throws Exception{
+		ModelAndView mv = this.getModelAndView();
+		String id =super.getRequest().getParameter("id");
+		if(id!=null&&id!=""){
+			Credit credit = creditWebService.findById(Integer.valueOf(id));
+			if(StringUtils.isNotEmpty(credit.getDisposalType())){
+				String[] types = credit.getDisposalType().split(",");
+				credit.setDisTypes(types);
+			}
+			if(StringUtils.isNotEmpty(credit.getDebtProof())){
+				String[] Proofs = credit.getDebtProof().split(";");
+				credit.setDebtProofs(Proofs);
+			}
+			mv.addObject("credit", credit);
+			if(MozillaUtil.isMobileDevice(super.getRequest())){//如果是手机
+				//待完成
+			}else{
+				mv.setViewName("/user/my_credit_disposal_details");
+			}
+		}
+		return mv;
+	}
+	
 	
 	/**
 	 * 查询债权详情(未登录时，屏蔽敏感信息)
@@ -231,10 +255,6 @@ public class CreditController extends BaseController{
 			User user = null;
 			if(null != credit){
 				user = userWerService.getUserById(credit.getUserId());
-				/*credit.setDebtName(SensitiveUtil.shieldName(credit.getDebtName()));
-				credit.setDebtPhone(SensitiveUtil.shieldPhone(credit.getDebtPhone()));
-				credit.setContactName(SensitiveUtil.shieldName(credit.getContactName()));
-				credit.setContactNumber(SensitiveUtil.shieldPhone(credit.getContactNumber()));*/
 				if(StringUtils.isNotEmpty(credit.getDisposalType())){
 					String[] types = credit.getDisposalType().split(",");
 					credit.setDisTypes(types);

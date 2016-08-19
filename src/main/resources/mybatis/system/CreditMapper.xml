@@ -204,4 +204,9 @@
 		order by u.id desc
 		limit #{from},#{size}
 	</select>
+	<update id="updateStatus" parameterType="credit">
+			update cr_credit set 
+			cr_status=#{crStatus}
+			where id = #{id}
+	</update>
 </mapper>
