@@ -29,3 +29,7 @@ ALTER TABLE cr_credit ADD COLUMN legal_service_path VARCHAR(256) COMMENT '法律
 ALTER TABLE cr_credit ADD COLUMN deal_team_name VARCHAR(64) COMMENT '处置团队名称';
 ALTER TABLE cr_credit ADD COLUMN dept_type SMALLINT(3) COMMENT '债权人性质（1个人，2企业）' AFTER contact_number;
 UPDATE cr_credit SET is_audit=1,dept_type=1;
+
+
+/***********2016-08-18***************/
+ALTER TABLE `cr_blog` ADD COLUMN `blog_image`  varchar(64) NULL COMMENT '博客简介图片' AFTER `blog_author`;
