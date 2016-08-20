@@ -4,7 +4,7 @@
 <mapper namespace="AgreementMapper">
 	<sql id="commonColumns">select id,credit_id,user_id,agree_type,agree_img,sign_time,sign_status  </sql>
 
-	<resultMap type="agreement" id="userResultMap">
+	<resultMap type="Agreement" id="AgreementResultMap">
 		<id column="id" property="id"/>
 		<result column="credit_id" property="creditId"/>
 		<result column="user_id" property="userId"/>
@@ -30,10 +30,10 @@
 		</if>
 	</select>
 	
-	<select id="list" parameterType="PageData" resultType="Blog">
+	<select id="list" parameterType="PageData" resultType="Agreement">
 	   <include refid="commonColumns"></include>
 		from cr_agreement u
-		where 1=1
+		where u.sign_status = 1
 		<if test="agreeType != null and agreeType != ''">
 			and u.agree_type = #{agreeType}
 		</if>
@@ -48,14 +48,15 @@
 		</if>
 		order by u.id asc
 	</select>
-	<insert id="saveAgreeInfo" parameterType="agreement">
+	
+	<insert id="save" parameterType="Agreement">
 		insert into cr_agreement (
-			credit_id,
-			user_id,
-			agree_type,
-			agree_img ,
-			sign_time,
-			sign_status
+           credit_id,
+           user_id,
+           agree_type,
+           agree_img,
+           sign_time,
+           sign_status
 		) values (
 			#{creditId},
 			#{userId},

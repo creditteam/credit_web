@@ -14,7 +14,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.credit.web.agreement.service.AgreementWebService;
 import com.credit.web.credit.service.CreditWebService;
+import com.credit.web.entity.Agreement;
 import com.credit.web.entity.Credit;
 import com.credit.web.entity.User;
 import com.credit.web.filemanager.service.UploadFileService;
@@ -36,6 +38,9 @@ public class CreditController extends BaseController{
 	
 	@Resource
 	private UserWebService userWerService;
+	
+	@Resource
+	private AgreementWebService agreementWebService;
 	
 	@Resource
 	private UploadFileService uploadFileService;
@@ -188,7 +193,13 @@ public class CreditController extends BaseController{
 				String[] Proofs = credit.getDebtProof().split(";");
 				credit.setDebtProofs(Proofs);
 			}
+			
+			//查询债权协议信息
+			PageData pd =this.getPageData();
+			pd.put("creditId", credit.getId());
+			List<Agreement> agreeList = agreementWebService.list(pd);
 			mv.addObject("credit", credit);
+			mv.addObject("agreeList", agreeList);
 			if(MozillaUtil.isMobileDevice(super.getRequest())){//如果是手机
 				//待完成
 			}else{
@@ -391,6 +402,22 @@ public class CreditController extends BaseController{
 		mv.setViewName("/user/my_credit_dis_list");
 		return mv;
 	}
+	
+	/**
+	 * 跳转到处置方上传签署协议页面
+	 * @return
+	 * @throws Exception
+	 */
+	@RequestMapping(value="/signedAgree")
+	public ModelAndView signedAgree(int id) throws Exception{
+		PageData pd =super.getPageData();
+		Credit credit = creditWebService.findById(Integer.valueOf(id));
+		ModelAndView mv = this.getModelAndView();
+		mv.addObject("credit", credit);
+		mv.setViewName("/user/user_agreement_add");
+		return mv;
+	}
+	
 	@RequestMapping(value="/imgDetail")
 	public ModelAndView imageDetail(String imageUrl){
 		ModelAndView mv = super.getModelAndView();

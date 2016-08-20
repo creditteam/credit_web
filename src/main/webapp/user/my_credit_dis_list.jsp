@@ -71,7 +71,19 @@ pageContext.setAttribute("basePath",basePath);
 							<td>${credit.debtName }</td>
 							<td><i class="fa fa-clock-o"></i> ${credit.crAmount }</td>
 							<td class="text-navy"><i class="fa fa-level-up"></i>${credit.commisionRange}</td>
-							<td><a href="${basePath }credit/myCreditDetails?id=${credit.id}" target="_self">查看</a></td>
+							<td>
+							<a href="${basePath }credit/myCreditDetails?id=${credit.id}" target="_self">查看</a>
+							<a href="${basePath }credit/myCreditDetails?id=${credit.id}" target="_self">确认处置</a>
+							<c:if test="${credit.crStatus==2 }">
+							<a href="${basePath }credit/signedAgree?id=${credit.id}" target="_self">居间协议</a>
+							</c:if>
+							<c:if test="${credit.crStatus==3 }">
+							<a href="${basePath }credit/signedAgree?id=${credit.id}" target="_self">合同服务</a>
+							</c:if>
+							<c:if test="${credit.crStatus==4 }">
+							<a href="${basePath }credit/signedAgree?id=${credit.id}" target="_self">法律文书</a>
+							</c:if>
+							</td>
 						</tr>
 						</c:forEach>
 					</tbody>
