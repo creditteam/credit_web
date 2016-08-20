@@ -12,6 +12,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.credit.web.agreement.service.AgreementWebService;
 import com.credit.web.credit.service.CreditWebService;
@@ -130,17 +131,17 @@ public class AgreementController extends BaseController{
 	
 	@RequestMapping(value="/updStatus")
 	@ResponseBody
-	public PageData updStatus(Integer userId,Short agreeType,Integer creditId){
+	public PageData updStatus(Integer userId,Integer creditId){
 		PageData result = new PageData();
 		try{
 			Agreement agree = new Agreement();
 			agree.setCreditId(creditId);
 			agree.setUserId(userId);
-			agree.setAgreeType(agreeType);
+			agree.setAgreeType((short)1);
 			agree.setSignStatus((short)1);
 			agreementWebService.updateAgreeStatus(agree);
 			
-			if(null != agreeType){
+			if(null != creditId){
 				Credit credit = new Credit();
 				credit.setId(creditId);
 				credit.setCrStatus((short)3);
@@ -155,5 +156,18 @@ public class AgreementController extends BaseController{
 		return result;
 	}
 	
+	/**
+	 * 查看居间服务协议(前期)
+	 * @return
+	 */
+	@RequestMapping(value="/lookAgree")
+	public ModelAndView lookAgreement(Integer userId,Integer creditId,Short agreeType){
+		ModelAndView mv = super.getModelAndView();
+		mv.addObject("userId",userId);
+		mv.addObject("creditId",creditId);
+		mv.addObject("agreeType",agreeType);
+		mv.setViewName("/user/credit_agreement");
+		return mv;
+	}
 	
 }

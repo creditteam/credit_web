@@ -34,7 +34,15 @@ pageContext.setAttribute("basePath",basePath);
                   <div class="col-sm-9">
                   <div class="ibox float-e-margins">
                     <div class="ibox-title">
-                        <h5>债权详情信息</h5>
+                    	<table style="width:100%">
+                    		<tr>
+                    			<td><h5>债权详情信息</h5></td>
+                    			<td align="right">
+                    				<button type="button" data-toggle="modal" data-target="#myModal" href="${basePath}agreement/lookAgree?userId=${credit.dealTeamName}&creditId=${credit.id}" class="btn btn-sm btn-primary">签订居间服务协议</button>
+                    				<button type="button" class="btn btn-sm btn-primary">更新状态</button>
+                    			</td>
+                    		</tr>
+                    	</table>
                     </div>
                     <div class="ibox-content">
 					      <b><font color="blue">基本信息</font></b>
@@ -142,11 +150,29 @@ pageContext.setAttribute("basePath",basePath);
             
         </div>
     </div>
-    <jsp:include page="/common/_script.jsp"></jsp:include>
+	<div class="modal fade" id="myModal" tabindex="-1" role="dialog" data-backdrop="static" aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"
+						aria-hidden="true">&times;</button>
+					<h4 class="modal-title" id="myModalLabel">协议确认</h4>
+				</div>
+				<div class="modal-body">
+				
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+					<button type="button" class="btn btn-primary">确定协议</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<jsp:include page="/common/_script.jsp"></jsp:include>
     <script type="text/javascript" src="http://tajs.qq.com/stats?sId=9051096" charset="UTF-8"></script>
     <script type="text/javascript">
-    	
-    </script>
+					
+				</script>
 </body>
 
 </html>
