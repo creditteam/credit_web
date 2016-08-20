@@ -17,6 +17,7 @@ import com.credit.web.agreement.service.AgreementWebService;
 import com.credit.web.credit.service.CreditWebService;
 import com.credit.web.entity.Agreement;
 import com.credit.web.entity.Credit;
+import com.credit.web.entity.User;
 import com.credit.web.filemanager.service.UploadFileService;
 import com.credit.web.util.DataUtil;
 import com.gvtv.manage.base.controller.BaseController;
@@ -50,11 +51,12 @@ public class AgreementController extends BaseController{
 		return result;
 	}
 	
-	@RequestMapping(value="/addOrUpd", method=RequestMethod.POST)
-	public PageData saveOrUpd(Agreement agree){
+	@RequestMapping(value="/save", method=RequestMethod.POST)
+	public String save(Agreement agree){
 		PageData result = new PageData();
 		try{
 			String images = "";
+			User user =(User) super.getRequest().getSession().getAttribute("userInfo");
 			String path = super.getRequest().getSession().getServletContext().getRealPath("/");
 			if(null != agree.getUploadFiles()){
 				for(int i=0;i< agree.getUploadFiles().length;i++){
@@ -63,26 +65,31 @@ public class AgreementController extends BaseController{
 						String fileName = agree.getUploadFiles()[i].getOriginalFilename();
 						fileName = "agree"+newFileName + fileName.substring(fileName.lastIndexOf("."), fileName.length());
 						uploadFileService.uploadFile(path+"uploadFile/agree", agree.getUploadFiles()[i], fileName);
-						if(i == 0){
-							images += "uploadFile/agree/"+fileName;
-						}else{
-							images += ";uploadFile/agree/"+fileName;
-						}
+						images += "uploadFile/agree/"+fileName;
+						agree.setAgreeImg(images);
+						agree.setSignStatus((short)1);
+						agree.setSignTime(new Date());
+						agree.setUserId(user.getId());
+						agreementWebService.saveAgree(agree);
 					}
 				}
-				agree.setAgreeImg(images);
 			}
-			agree.setSignStatus((short)1);
-			agree.setSignTime(new Date());
-			agreementWebService.deleteByCreditId(agree);
-			agreementWebService.saveAgree(agree);
-			result.put("status", 1);
+
+			//修改债权状态
+			Credit credit =creditWebService.findById(agree.getCreditId());
+			if(agree.getAgreeType()==1){
+				credit.setCrStatus((short)3);	
+			}else if(agree.getAgreeType()==2){
+				credit.setCrStatus((short)4);
+			}else if(agree.getAgreeType()==3){
+				credit.setCrStatus((short)5);
+			}
+			creditWebService.updateStatus(credit);
+			return "redirect:/credit/userCreditList";
 		}catch(Exception e){
 			logger.error("addOrUpd agree error", e);
-			result.put("status", 0);
-			result.put("msg", "操作失败");
 		}
-		return result;
+		return null;
 	}
 	
 	@RequestMapping(value="/delete")

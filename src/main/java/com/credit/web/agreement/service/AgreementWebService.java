@@ -31,7 +31,7 @@ public class AgreementWebService {
 	}
 	
 	public Boolean saveAgree(Agreement agree) throws Exception{
-		int num = dao.save("AgreementMapper.saveAgreeInfo", agree);
+		int num = dao.save("AgreementMapper.save", agree);
 		if (num > 0) {
 			return true;
 		}

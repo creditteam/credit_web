@@ -126,6 +126,20 @@ pageContext.setAttribute("basePath",basePath);
 									<dt>债权描述：</dt>
 									<dd> ${credit.description }</dd>
 								</dl>
+							<div class="hr-line-dashed"></div>
+					         <b><font color="blue">债权协议信息</font></b>
+                 		     <hr>
+								<dl class="dl-horizontal">
+									<dt>债权协议凭证：</dt>
+									<dd><c:forEach items="${agreeList}" var="item">
+										<c:if test="${not empty item}">
+										<a href="${basePath }credit/imgDetail?imageUrl=${basePath}${item.agreeImg}" target="_blank">
+											<img alt="" src="${basePath}${item.agreeImg}" width="50px" height="50px"/>&nbsp;&nbsp;
+										</a>
+										</c:if>
+									</c:forEach></dd>
+								</dl>
+								
 							</div>
                 </div>
             </div>
