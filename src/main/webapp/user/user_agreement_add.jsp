@@ -74,7 +74,7 @@ pageContext.setAttribute("basePath",basePath);
                             <div class="form-group">
                                 <div class="col-sm-8 col-sm-offset-3">
                                     <button class="btn btn-primary" type="submit">提交</button>
-                                    <button class="btn btn-primary btn-white" type="button">取消</button>
+                                    <button class="btn btn-primary btn-white" type="button" onclick="goToBack()">取消</button>
                                 </div>
                             </div>
                         </form>
@@ -102,6 +102,9 @@ pageContext.setAttribute("basePath",basePath);
     <script type="text/javascript" src="http://tajs.qq.com/stats?sId=9051096" charset="UTF-8"></script>
     
 	<script type="text/javascript">
+	function goToBack(){
+		window.location.href = "${basePath }credit/userCreditList";
+	}
 	function addFileUpload(){
 		$("#addFileUpload").append('<input class="form-control" type="file" name="uploadFiles" accept=".jpg,.png,.jpeg,.gif,.bmp"/>');
 	}

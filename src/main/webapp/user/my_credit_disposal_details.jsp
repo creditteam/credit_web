@@ -38,7 +38,7 @@ pageContext.setAttribute("basePath",basePath);
                     		<tr>
                     			<td><h5>债权详情信息</h5></td>
                     			<td align="right">
-                    				<button type="button" class="btn btn-sm btn-primary">更新状态</button>
+                    				
                     			</td>
                     		</tr>
                     	</table>
@@ -94,7 +94,7 @@ pageContext.setAttribute("basePath",basePath);
 								<dl class="dl-horizontal">
 									<dt>债权开始日期：</dt>
 									<dd>
-									<fmt:formatDate value="${credit.openDate }" pattern="yyyy"/>
+									${credit.openDate }
 									</dd>
 								</dl>
 
@@ -145,7 +145,7 @@ pageContext.setAttribute("basePath",basePath);
 											<td><c:forEach items="${agreeList}" var="item">
 												<c:if test="${not empty item}">
 													<c:if test="${item.agreeType eq '1'}">
-														<a href="${basePath }agreement/agreeDetail?id=${item.id}">查看《居间服务协议(前期)》</a><br>
+														查看<a href="${basePath }${item.agreeSample}" target="_self">《居间服务协议(前期)》</a><br>
 													</c:if>
 												</c:if>
 											</c:forEach>

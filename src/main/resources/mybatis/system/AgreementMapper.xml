@@ -2,13 +2,14 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="AgreementMapper">
-	<sql id="commonColumns">select id,credit_id,user_id,agree_type,agree_img,sign_time,sign_status  </sql>
+	<sql id="commonColumns">select id,credit_id,user_id,agree_type,agree_sample,agree_img,sign_time,sign_status  </sql>
 
 	<resultMap type="Agreement" id="AgreementResultMap">
 		<id column="id" property="id"/>
 		<result column="credit_id" property="creditId"/>
 		<result column="user_id" property="userId"/>
 		<result column="agree_type" property="agreeType"/>
+		<result column="agree_sample" property="agreeSample"/>
 		<result column="agree_img" property="agreeImg"/>
 		<result column="sign_time" property="signTime"/>
 		<result column="sign_status" property="signStatus"/>
@@ -33,7 +34,7 @@
 	<select id="list" parameterType="PageData" resultType="Agreement">
 	   <include refid="commonColumns"></include>
 		from cr_agreement u
-		where u.sign_status = 1
+		where 1 = 1
 		<if test="agreeType != null and agreeType != ''">
 			and u.agree_type = #{agreeType}
 		</if>
