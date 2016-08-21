@@ -425,4 +425,23 @@ public class CreditController extends BaseController{
 		mv.setViewName("/user/image_detail");
 		return mv;
 	}
+	
+	@RequestMapping(value="/updStatus")
+	@ResponseBody
+	public PageData updStatus(Short crStatus,Integer creditId){
+		PageData result = new PageData();
+		try{
+			if(null != creditId){
+				Credit credit = new Credit();
+				credit.setId(creditId);
+				credit.setCrStatus(crStatus);
+				creditWebService.updateStatus(credit);
+			}
+			result.put("status", 1);
+		}catch(Exception e){
+			result.put("status", 0);
+			result.put("msg", "删除失败");
+		}
+		return result;
+	}
 }

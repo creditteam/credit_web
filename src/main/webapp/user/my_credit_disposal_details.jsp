@@ -138,18 +138,48 @@ pageContext.setAttribute("basePath",basePath);
                  		     <hr>
 								<dl class="dl-horizontal">
 									<dt>债权协议凭证：</dt>
-									<dd><c:forEach items="${agreeList}" var="item">
-										<c:if test="${not empty item}">
-											<c:if test="${item.agreeType eq '1'}">
-												<a href="${basePath }agreement/agreeDetail?id=${item.id}">查看《居间服务协议(前期)》</a><br>
-											</c:if>
-											<c:if test="${item.agreeType ne '1'}">
-											<a href="${basePath }credit/imgDetail?imageUrl=${basePath}${item.agreeImg}" target="_blank">
-												<img alt="" src="${basePath}${item.agreeImg}" width="50px" height="50px"/>&nbsp;&nbsp;
-											</a>
-											</c:if>
-										</c:if>
-									</c:forEach></dd>
+									<dd>
+									<table>
+										<tr>
+											<td>居间协议：</td>
+											<td><c:forEach items="${agreeList}" var="item">
+												<c:if test="${not empty item}">
+													<c:if test="${item.agreeType eq '1'}">
+														<a href="${basePath }agreement/agreeDetail?id=${item.id}">查看《居间服务协议(前期)》</a><br>
+													</c:if>
+												</c:if>
+											</c:forEach>
+											</td>
+										</tr>
+										<tr style="height:60px">
+											<td>服务协议：</td>
+											<td><c:forEach items="${agreeList}" var="item">
+												<c:if test="${not empty item}">
+													<c:if test="${item.agreeType eq '2'}">
+														<a href="${basePath }credit/imgDetail?imageUrl=${basePath}${item.agreeImg}" target="_blank">
+															<img alt="" src="${basePath}${item.agreeImg}" width="50px" height="50px"/>&nbsp;&nbsp;
+														</a>
+													</c:if>
+												</c:if>
+											</c:forEach>
+											</td>
+										</tr>
+										<tr>
+											<td>法律文书：</td>
+											<td>
+												<c:forEach items="${agreeList}" var="item">
+													<c:if test="${not empty item}">
+														<c:if test="${item.agreeType eq '3'}">
+															<a href="${basePath }credit/imgDetail?imageUrl=${basePath}${item.agreeImg}" target="_blank">
+																<img alt="" src="${basePath}${item.agreeImg}" width="50px" height="50px"/>&nbsp;&nbsp;
+															</a>
+														</c:if>
+													</c:if>
+												</c:forEach>
+											</td>
+										</tr>
+									</table>
+									</dd>
 								</dl>
 								
 							</div>
