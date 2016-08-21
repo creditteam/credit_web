@@ -44,7 +44,7 @@ pageContext.setAttribute("basePath",basePath);
 				   <c:forEach items="${pd.data }" var="credit">
 						<tr onclick="javascript:window.location.href = '${basePath}credit/creditDetails?id=${credit.id}'">
 							<td><span class="label label-warning">${credit.debtProvince}</span></td>
-							<td>${credit.deptName }</td>
+							<td>${credit.debtName }</td>
 							<td><i class="fa fa-clock-o"></i> ${credit.crAmount}</td>
 							<td class="text-navy"><i class="fa fa-level-up"></i>${credit.commisionRange}</td>
 							<td>
@@ -64,7 +64,7 @@ pageContext.setAttribute("basePath",basePath);
 						</tr>
 					</c:forEach>
 			   	<tr>
-			   		<td colspan="4"><gvtv:newPage href="${basePath }credit/navlist?creditType=1" pageType="mobile"></gvtv:newPage></td>
+			   		<td colspan="5"><gvtv:newPage href="${basePath }credit/navlist?creditType=1" pageType="mobile"></gvtv:newPage></td>
 			   	</tr>
 			   </tbody>
 			</table>

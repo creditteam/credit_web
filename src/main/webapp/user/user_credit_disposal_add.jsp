@@ -36,7 +36,7 @@ pageContext.setAttribute("basePath",basePath);
                         <h5>债权追收-发布项目</h5>
                     </div>
                     <div class="ibox-content">
-                          <form class="form-horizontal m-t" id="signupForm" action="${basePath }credit/saveCredit" method="post" target="_self"  enctype="multipart/form-data">
+                       <form class="form-horizontal m-t" id="signupForm" action="${basePath }credit/saveCredit" method="post" target="_self"  enctype="multipart/form-data">
                           <input type="hidden"  name="userId" value="${userInfo.id}"/>
                           <input type="hidden"  name="creditType" value="${creditType }">
 					      <b style="margin-left: 30px"><font color="blue"> 债权人信息</font></b>
@@ -104,7 +104,7 @@ pageContext.setAttribute("basePath",basePath);
                  		  <div class="form-group">
                                 <label class="col-sm-3 control-label">债务方性质：</label>
                                 <div class="col-sm-8">
-                                    <select id="debtType" name="debtType" class="form-control input-sm"  required="required">
+                                    <select id="deptType" name="deptType" class="form-control input-sm"  required="required">
 							              <option value="">请选择</option>
 							              <option value="1">个人</option>
 							              <option value="2">企业</option>

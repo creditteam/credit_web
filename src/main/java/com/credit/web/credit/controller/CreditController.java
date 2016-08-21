@@ -150,7 +150,7 @@ public class CreditController extends BaseController{
 				return "redirect:/credit/saveCredit?userId="+credit.getUserId()+"&creditType="+credit.getCreditType();
 			}
 		}else{
-			return "redirect:/credit/list?creditType="+credit.getCreditType()+"&userId="+credit.getUserId();
+			return "redirect:/credit/list?creditType="+credit.getCreditType();
 			
 		}
 	}

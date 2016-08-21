@@ -87,7 +87,7 @@ pageContext.setAttribute("basePath",basePath);
                  		   <div class="form-group">
                                 <label class="col-sm-3 control-label">债务方性质：</label>
                                 <div class="col-sm-8">
-                                    <select id="debtType" name="debtType" class="form-control input-sm"  required="required">
+                                    <select id="deptType" name="deptType" class="form-control input-sm"  required="required">
 							              <option value="">请选择</option>
 							              <option value="1">个人</option>
 							              <option value="2">企业</option>
