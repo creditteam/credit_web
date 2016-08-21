@@ -38,7 +38,6 @@ pageContext.setAttribute("basePath",basePath);
                     		<tr>
                     			<td><h5>债权详情信息</h5></td>
                     			<td align="right">
-                    				<button type="button" data-toggle="modal" data-target="#myModal" href="${basePath}agreement/lookAgree?userId=${credit.dealTeamName}&creditId=${credit.id}" class="btn btn-sm btn-primary">签订居间服务协议</button>
                     				<button type="button" class="btn btn-sm btn-primary">更新状态</button>
                     			</td>
                     		</tr>
@@ -141,9 +140,14 @@ pageContext.setAttribute("basePath",basePath);
 									<dt>债权协议凭证：</dt>
 									<dd><c:forEach items="${agreeList}" var="item">
 										<c:if test="${not empty item}">
-										<a href="${basePath }credit/imgDetail?imageUrl=${basePath}${item.agreeImg}" target="_blank">
-											<img alt="" src="${basePath}${item.agreeImg}" width="50px" height="50px"/>&nbsp;&nbsp;
-										</a>
+											<c:if test="${item.agreeType eq '1'}">
+												<a href="${basePath }agreement/agreeDetail?id=${item.id}">查看《居间服务协议(前期)》</a><br>
+											</c:if>
+											<c:if test="${item.agreeType ne '1'}">
+											<a href="${basePath }credit/imgDetail?imageUrl=${basePath}${item.agreeImg}" target="_blank">
+												<img alt="" src="${basePath}${item.agreeImg}" width="50px" height="50px"/>&nbsp;&nbsp;
+											</a>
+											</c:if>
 										</c:if>
 									</c:forEach></dd>
 								</dl>
@@ -164,29 +168,11 @@ pageContext.setAttribute("basePath",basePath);
             
         </div>
     </div>
-	<div class="modal fade" id="myModal" tabindex="-1" role="dialog" data-backdrop="static" aria-labelledby="myModalLabel" aria-hidden="true">
-		<div class="modal-dialog">
-			<div class="modal-content">
-				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal"
-						aria-hidden="true">&times;</button>
-					<h4 class="modal-title" id="myModalLabel">协议确认</h4>
-				</div>
-				<div class="modal-body">
-				
-				</div>
-				<div class="modal-footer">
-					<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-					<button type="button" class="btn btn-primary">确定协议</button>
-				</div>
-			</div>
-		</div>
-	</div>
+	
 	<jsp:include page="/common/_script.jsp"></jsp:include>
     <script type="text/javascript" src="http://tajs.qq.com/stats?sId=9051096" charset="UTF-8"></script>
     <script type="text/javascript">
-					
-				</script>
+	</script>
 </body>
 
 </html>

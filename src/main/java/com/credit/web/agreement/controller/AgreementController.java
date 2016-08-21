@@ -66,7 +66,7 @@ public class AgreementController extends BaseController{
 						String fileName = agree.getUploadFiles()[i].getOriginalFilename();
 						fileName = "agree"+newFileName + fileName.substring(fileName.lastIndexOf("."), fileName.length());
 						uploadFileService.uploadFile(path+"uploadFile/agree", agree.getUploadFiles()[i], fileName);
-						images += "uploadFile/agree/"+fileName;
+						images = "uploadFile/agree/"+fileName;
 						agree.setAgreeImg(images);
 						agree.setSignStatus((short)1);
 						agree.setSignTime(new Date());
@@ -137,8 +137,7 @@ public class AgreementController extends BaseController{
 	}
 	
 	@RequestMapping(value="/updStatus")
-	@ResponseBody
-	public PageData updStatus(Integer userId,Integer creditId){
+	public String updStatus(Integer userId,Integer creditId){
 		PageData result = new PageData();
 		try{
 			Agreement agree = new Agreement();
@@ -154,13 +153,13 @@ public class AgreementController extends BaseController{
 				credit.setCrStatus((short)3);
 				creditWebService.updateStatus(credit);
 			}
-			result.put("status", 1);
+			return "redirect:/credit/userCreditList";
 		}catch(Exception e){
 			logger.error("update agree error", e);
 			result.put("status", 0);
 			result.put("msg", "删除失败");
 		}
-		return result;
+		return null;
 	}
 	
 	/**
@@ -173,7 +172,7 @@ public class AgreementController extends BaseController{
 		mv.addObject("userId",userId);
 		mv.addObject("creditId",creditId);
 		mv.addObject("agreeType",agreeType);
-		mv.setViewName("/user/credit_agreement");
+		mv.setViewName("/user/user_credit_agree_sure");
 		return mv;
 	}
 	
