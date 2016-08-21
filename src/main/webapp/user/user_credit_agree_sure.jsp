@@ -33,16 +33,31 @@ pageContext.setAttribute("basePath",basePath);
 						<div class="col-sm-9">
 							<div class="ibox float-e-margins">
 								<div class="ibox-title">
-									<h5>债权协议-确认居间服务协议(前期)</h5>
+									<h5>
+									<c:if test="${agreeType==1 }">
+									债权协议-确认居间服务协议(前期)
+									</c:if>
+								    <c:if test="${agreeType==3 }">
+									债权协议-确认居间服务协议(后期)
+									</c:if>
+									</h5>
 								</div>
 								 <div class="ibox-content">
 									<form class="form-horizontal m-t" id="signAgreeForm" action="${basePath }agreement/updStatus" method="post" target="_self" enctype="multipart/form-data">
 										<input type="hidden" name="userId" value="${userId}">
 										<input type="hidden" name="creditId" value="${creditId}">
+										<input type="hidden" name="agreeType" value=${agreeType }>
 										<div class="form-group">
 											<div class="col-sm-12" style="font-size:14px">
 												<c:forEach items="${agreeList}" var="item">
-													<a href="${basePath}${item.agreeSample}" id="downDocx" target="_self">《居间服务协议(前期)》</a>
+													<a href="${basePath}${item.agreeSample}" id="downDocx" target="_self">
+									<c:if test="${agreeType==1 }">
+									《居间服务协议(前期)》
+									</c:if>
+								    <c:if test="${agreeType==3 }">
+									《居间服务协议(后期)》
+									</c:if>
+													</a>
 													<button type="button" class="btn btn-success btn-sm" onclick="downDocs('${basePath}${item.agreeSample}')">下载协议</button>
 												</c:forEach>
 											</div>
@@ -53,7 +68,15 @@ pageContext.setAttribute("basePath",basePath);
 											<table width="98%">
 												<tr>
 													<td align="left">&nbsp;&nbsp;&nbsp;
-														<b><label for="signStatus"><input type="checkbox" name="signStatus" id="signStatus" value="1" />同意&lt;居间服务协议(前期)&gt;</label></b>
+														<b><label for="signStatus"><input type="checkbox" name="signStatus" id="signStatus" value="1" />
+									<c:if test="${agreeType==1 }">
+									同意&lt;居间服务协议(前期)&gt;
+									</c:if>
+								    <c:if test="${agreeType==3 }">
+									同意&lt;居间服务协议(后期)&gt;
+									</c:if>
+														
+														</label></b>
 														<span id="titleSub"></span>
 													</td>
 													<td align="right"><button type="button" class="btn btn-default" onclick="goToBack()">返回</button>&nbsp;

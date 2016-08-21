@@ -139,7 +139,7 @@ public class AgreementController extends BaseController{
 	}
 	
 	@RequestMapping(value="/updStatus")
-	public String updStatus(Integer userId,Integer creditId){
+	public String updStatus(Integer userId,Integer creditId,Integer agreeType){
 		PageData result = new PageData();
 		try{
 			Agreement agree = new Agreement();
@@ -149,7 +149,7 @@ public class AgreementController extends BaseController{
 			agree.setSignStatus((short)1);
 			agreementWebService.updateAgreeStatus(agree);
 			
-			if(null != creditId){
+			if(null != creditId&&agreeType==1){
 				Credit credit = new Credit();
 				credit.setId(creditId);
 				credit.setCrStatus((short)3);
