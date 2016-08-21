@@ -33,3 +33,7 @@ UPDATE cr_credit SET is_audit=1,dept_type=1;
 
 /***********2016-08-18***************/
 ALTER TABLE `cr_blog` ADD COLUMN `blog_image`  varchar(64) NULL COMMENT '博客简介图片' AFTER `blog_author`;
+
+
+/***********2016-08-21***************/
+ALTER TABLE cr_credit MODIFY COLUMN open_date VARCHAR(32) COMMENT '债权开始年份';

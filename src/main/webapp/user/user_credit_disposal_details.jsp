@@ -49,6 +49,8 @@ pageContext.setAttribute("basePath",basePath);
 									    <c:if test="${credit.crType==5 }">小额信贷</c:if>
 									    <c:if test="${credit.crType==6 }">典当担保</c:if>
 									    <c:if test="${credit.crType==7 }">司法裁决</c:if>
+									    <c:if test="${credit.crType==8 }">资产包债权</c:if>
+									    <c:if test="${credit.crType==9 }">单笔债权</c:if>
                                     </dd>
                                 </dl>
                   
@@ -87,7 +89,7 @@ pageContext.setAttribute("basePath",basePath);
 								<dl class="dl-horizontal">
 									<dt>债权开始日期：</dt>
 									<dd>
-									<fmt:formatDate value="${credit.openDate }" pattern="yyyy"/>
+									${credit.openDate }
 									</dd>
 								</dl>
 

@@ -49,7 +49,7 @@ pageContext.setAttribute("basePath",basePath);
 						<span class="list-group-item" >所在城市：${credit.debtCity}</span>
 						<span class="list-group-item" style=" color: #f0841d">债权金额：${credit.crAmount} (万元)</span>
 						<span class="list-group-item" >佣金范围：${credit.commisionRange}</span>
-						<span class="list-group-item" >发布日期：<fmt:formatDate value="${credit.openDate}" type="date" dateStyle="long"/></span>
+						<span class="list-group-item" >发布日期：${credit.openDate}</span>
 						<span class="list-group-item" >债权开始日期：<fmt:formatDate value="${credit.agreedDate}" type="date" dateStyle="long"/></span>
 						
 						<span class="list-group-item active" >高级信息</span>
