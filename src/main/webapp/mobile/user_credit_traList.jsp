@@ -58,10 +58,7 @@ pageContext.setAttribute("basePath",basePath);
 							<c:if test="${credit.crStatus eq '2'}">
 								<button  style="border-radius:25px;" class="btn btn-yellow export btn-sm" disabled="disabled">处置中</button>
 							</c:if>
-							<c:if test="${credit.crStatus eq '3'}">
-								<button  style="border-radius:25px;" class="btn btn-yellow export btn-sm" disabled="disabled">还款中</button>
-							</c:if>
-							<c:if test="${credit.crStatus eq '4'}">
+							<c:if test="${credit.crStatus eq '9'}">
 								<button  style="border-radius:25px;" class="btn btn-yellow export btn-sm" disabled="disabled">已结束</button>
 							</c:if>
 						</td>

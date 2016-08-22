@@ -41,13 +41,13 @@ pageContext.setAttribute("basePath",basePath);
 						  债权基本信息
 						</span>
 						<span class="list-group-item" >债权类型：
-												    <c:if test="${credit.crType==1 }">民间借贷</c:if>
-												    <c:if test="${credit.crType==2 }">应收账款</c:if>
-												    <c:if test="${credit.crType==3 }">银行借贷</c:if>
-												    <c:if test="${credit.crType==4 }">互联网金融</c:if>
-												    <c:if test="${credit.crType==5 }">小额信贷</c:if>
-												    <c:if test="${credit.crType==6 }">典当担保</c:if>
-												    <c:if test="${credit.crType==7 }">司法裁决</c:if></span>
+						    <c:if test="${credit.crType==1 }">民间借贷</c:if>
+						    <c:if test="${credit.crType==2 }">应收账款</c:if>
+						    <c:if test="${credit.crType==3 }">银行借贷</c:if>
+						    <c:if test="${credit.crType==4 }">互联网金融</c:if>
+						    <c:if test="${credit.crType==5 }">小额信贷</c:if>
+						    <c:if test="${credit.crType==6 }">典当担保</c:if>
+						    <c:if test="${credit.crType==7 }">司法裁决</c:if></span>
 						<span class="list-group-item" >债务人名称：${credit.debtName}</span>
 						<span class="list-group-item" >所在省份：${credit.debtProvince}</span>
 						<span class="list-group-item" >所在城市：${credit.debtCity}</span>
@@ -75,26 +75,50 @@ pageContext.setAttribute("basePath",basePath);
 							</c:forEach>
 						</span>
 						<span id="lsg13" class="list-group-item" >债权描述：${user.description}</span>
-							
-							<c:if test="${not empty credit.dealTeamName }">
-								<span class="list-group-item">处置团队：${user.userEmail } - ${user.userPhone }</span>
-							</c:if>
-							<c:if test="${not empty agreeList}">
-								<span class="list-group-item">服务协议：
-									<c:forEach items="${agreeList}" var="item">
+						<span class="list-group-item">
+							<table width="100%">
+								<tr>
+									<td>协议(前期)：</td>
+									<td><c:forEach items="${agreeList}" var="item">
 										<c:if test="${not empty item}">
-											<c:if test="${item.agreeType eq '2'}">
-													<a href="${basePath }credit/imgDetail?imageUrl=${basePath}${item.agreeImg}" target="_blank">
-														<img alt="" src="${basePath}${item.agreeImg}" width="50px" height="50px"/>&nbsp;&nbsp;
-													</a>
-												
+											<c:if test="${item.agreeType eq '1'}">
+												<a href="${basePath }${item.agreeSample}" target="_self">《居间服务协议(前期)》</a><br>
 											</c:if>
 										</c:if>
 									</c:forEach>
-								</span>
-								</c:if>						
-								<input type="hidden" id="lsg14" />
-			
+									</td>
+								</tr>
+								<tr style="height:60px">
+									<td align="right">服务合同：</td>
+									<td><c:forEach items="${agreeList}" var="item">
+										<c:if test="${not empty item}">
+											<c:if test="${item.agreeType eq '2'}">
+												<a href="${basePath }credit/imgDetail?imageUrl=${basePath}${item.agreeImg}" target="_blank">
+													<img alt="" src="${basePath}${item.agreeImg}" width="50px" height="50px"/>&nbsp;&nbsp;
+												</a>
+											</c:if>
+										</c:if>
+									</c:forEach>
+									</td>
+								</tr>
+								<tr>
+									<td>协议(后期)：</td>
+									<td>
+										<c:forEach items="${agreeList}" var="item">
+											<c:if test="${not empty item}">
+												<c:if test="${item.agreeType eq '3'}">
+													<a href="${basePath }credit/imgDetail?imageUrl=${basePath}${item.agreeImg}" target="_blank">
+														<img alt="" src="${basePath}${item.agreeImg}" width="50px" height="50px"/>&nbsp;&nbsp;
+													</a>
+												</c:if>
+											</c:if>
+										</c:forEach>
+									</td>
+								</tr>
+							</table>
+						</span>
+						<input type="hidden" id="lsg14" />
+						
 			         </div>
 			         <div class="modal-footer">
 			            <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="javascript:history.go(-1)">

@@ -44,7 +44,7 @@ pageContext.setAttribute("basePath",basePath);
 	    	<div class="col-md-12">
 	   			<table class="table table-bordered" width="98%" style="margin-top: 10px;border-left: 0px;border-right: 0px;">
 	   				<tbody>
-		   				<tr valign="middle" onclick="toDisList()">
+		   				<tr valign="middle" onclick="toDisList('1')">
 		   					<td align="left" style="border-left: 0px;border-right: 0px;">
 		   						&nbsp;&nbsp;<img alt="" src="${basePath}hplus/img/bj03.png" class="img-circle" style="width: 30px;height:30px;">&nbsp;债权追收
 		   					</td>
@@ -68,6 +68,17 @@ pageContext.setAttribute("basePath",basePath);
 		   						<span><b>></b>&nbsp;&nbsp;</span>
 		   					</td>
 		   				</tr>
+		   				<c:if test="${userInfo.userType eq '1'}">
+			   				<tr><td colspan="2"></td></tr>
+			   				<tr valign="middle" onclick="toDisList('2')">
+			   					<td align="left" style="border-left: 0px;border-right: 0px;" valign="middle">
+			   						&nbsp;&nbsp;<img alt="" src="${basePath }hplus/img/bj05.png" class="img-circle" style="width: 30px;height:30px;">&nbsp;处置债权
+			   					</td>
+			   					<td align="right" style="border-left: 0px;border-right: 0px;" valign="middle">
+			   						<span><b>></b>&nbsp;&nbsp;</span>
+			   					</td>
+			   				</tr>
+		   				</c:if>
 	   				</tbody>
 	   			</table>
 	   			
@@ -156,8 +167,12 @@ pageContext.setAttribute("basePath",basePath);
     	function showDetails(){
     		window.location.href = "${basePath}user/userdetails?id=${userInfo.id}";
     	}
-    	function toDisList(){
-    		window.location.href = "${basePath}credit/list?userId=${userInfo.id}&creditType=1";
+    	function toDisList(obj){
+    		if(obj == "1"){
+	    		window.location.href = "${basePath}credit/list?userId=${userInfo.id}&creditType=1";
+    		}else{
+    			window.location.href = "${basePath}credit/userCreditList";
+    		}
     	}
     	function toTraList(){
     		window.location.href = "${basePath}credit/list?userId=${userInfo.id}&creditType=2";

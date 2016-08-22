@@ -22,6 +22,7 @@ import com.credit.web.entity.User;
 import com.credit.web.filemanager.service.UploadFileService;
 import com.credit.web.util.DataUtil;
 import com.gvtv.manage.base.controller.BaseController;
+import com.gvtv.manage.base.util.MozillaUtil;
 import com.gvtv.manage.base.util.PageData;
 
 import ch.qos.logback.core.encoder.EchoEncoder;
@@ -183,7 +184,11 @@ public class AgreementController extends BaseController{
 			mv.addObject("creditId",creditId);
 			mv.addObject("agreeType",agreeType);
 			mv.addObject("agreeList",agreeList);
-			mv.setViewName("/user/user_credit_agree_sure");
+			if(MozillaUtil.isMobileDevice(super.getRequest())){
+				mv.setViewName("/mobile/user_credit_agree_sure");
+			}else{
+				mv.setViewName("/user/user_credit_agree_sure");
+			}
 		}catch(Exception e){
 			logger.error("query agree error", e);
 			pd.put("status", 0);

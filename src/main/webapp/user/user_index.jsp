@@ -11,7 +11,7 @@
 
                               <dl class="dl-horizontal">
                                     <dt>债权追收统计：</dt>
-                                    <dd>共100 条</dd>
+                                    <dd>共1 条</dd>
                               </dl>
                   
                               <dl class="dl-horizontal">

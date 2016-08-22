@@ -212,7 +212,7 @@ public class CreditController extends BaseController{
 			mv.addObject("credit", credit);
 			mv.addObject("agreeList", agreeList);
 			if(MozillaUtil.isMobileDevice(super.getRequest())){//如果是手机
-				//待完成
+				mv.setViewName("/mobile/my_credit_disDetails");
 			}else{
 				mv.setViewName("/user/my_credit_disposal_details");
 			}
@@ -293,9 +293,14 @@ public class CreditController extends BaseController{
 				/*user.setNickname(SensitiveUtil.shieldName(user.getNickname()));
 				user.setUserPhone(SensitiveUtil.shieldPhone(user.getUserPhone()));*/
 			}
+			PageData pd = this.getPageData();
+			pd.put("creditId", credit.getId());
+			pd.put("agreeType", 2);
+			List<Agreement> agreeList=agreementWebService.list(pd);
 			ModelAndView mv = this.getModelAndView();
 			mv.addObject("credit", credit);
 			mv.addObject("user",user);
+			mv.addObject("agreeList",agreeList);
 			if(MozillaUtil.isMobileDevice(super.getRequest())){//如果是手机
 				if(null != credit.getCreditType() && credit.getCreditType() == 1){
 					mv.setViewName("/mobile/user_credit_disDetails");
@@ -410,7 +415,11 @@ public class CreditController extends BaseController{
 		
 		ModelAndView mv = this.getModelAndView();
 		mv.addObject("pd", pd);
-		mv.setViewName("/user/my_credit_dis_list");
+		if(MozillaUtil.isMobileDevice(super.getRequest())){
+			mv.setViewName("/mobile/my_credit_disList");
+		}else{
+			mv.setViewName("/user/my_credit_dis_list");
+		}
 		return mv;
 	}
 	
@@ -425,7 +434,11 @@ public class CreditController extends BaseController{
 		Credit credit = creditWebService.findById(Integer.valueOf(id));
 		ModelAndView mv = this.getModelAndView();
 		mv.addObject("credit", credit);
-		mv.setViewName("/user/user_agreement_add");
+		if(MozillaUtil.isMobileDevice(super.getRequest())){
+			mv.setViewName("/mobile/user_agreement_add");
+		}else{
+			mv.setViewName("/user/user_agreement_add");
+		}
 		return mv;
 	}
 	
