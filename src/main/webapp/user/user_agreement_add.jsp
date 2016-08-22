@@ -48,7 +48,7 @@ pageContext.setAttribute("basePath",basePath);
                           <c:if test="${credit.crStatus==4 }">
                                      <input type="hidden"  name="agreeType" value="3"/>
                           </c:if>
-                          <b style="margin-left: 30px"><font color="blue">债权人信息</font></b>
+                          <b style="margin-left: 30px"><font color="blue">协议信息</font></b>
                  		 <hr>
                             <div class="form-group">
                                 <label class="col-sm-3 control-label">协议类型：</label>

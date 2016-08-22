@@ -71,19 +71,19 @@ pageContext.setAttribute("basePath",basePath);
 							<td>${credit.debtName }</td>
 							<td><i class="fa fa-clock-o"></i> ${credit.crAmount }</td>
 							<td class="text-navy"><i class="fa fa-level-up"></i>${credit.commisionRange}</td>
-							<td><a href="${basePath }credit/myCreditDetails?id=${credit.id}" target="_self">查看</a>
+							<td><a href="${basePath }credit/myCreditDetails?id=${credit.id}" target="_self">[查看]</a>
 							<c:if test="${credit.crStatus==2 }">
-							<a href="${basePath}agreement/lookAgree?userId=${credit.dealTeamName}&creditId=${credit.id}&agreeType=1" target="_self">上传居间协议（前期）</a>
+							<a href="${basePath}agreement/lookAgree?userId=${credit.dealTeamName}&creditId=${credit.id}&agreeType=1" target="_self">[居间协议(前期)]</a>
 							</c:if>
 							<c:if test="${credit.crStatus==3 }">
-								<a href="${basePath }credit/signedAgree?id=${credit.id}" target="_self">上传合同服务</a>
+								<a href="${basePath }credit/signedAgree?id=${credit.id}" target="_self">[上传服务合同]</a>
 							</c:if>
 							<c:if test="${credit.crStatus==4 }">
-							    <a href="${basePath}agreement/lookAgree?userId=${credit.dealTeamName}&creditId=${credit.id}&agreeType=3" target="_self">上传居间协议（后期）</a>
-								<a href="${basePath }credit/signedAgree?id=${credit.id}" target="_self">上传法律文书</a>
+							    <a href="${basePath}agreement/lookAgree?userId=${credit.dealTeamName}&creditId=${credit.id}&agreeType=3" target="_self">[居间协议(后期)]</a>
+								<a href="${basePath }credit/signedAgree?id=${credit.id}" target="_self">[上传协议]</a>
 							</c:if>
 							<c:if test="${credit.crStatus eq 5 or credit.crStatus eq 6 or credit.crStatus eq 7 }">
-								<a href="javascript:void(0)" onclick="showSelectModal('${credit.crStatus}','${credit.id}')">更新进度</a>
+								<a href="javascript:void(0)" onclick="showSelectModal('${credit.crStatus}','${credit.id}')">[更新进度]</a>
 							</c:if>
 							</td>
 						</tr>

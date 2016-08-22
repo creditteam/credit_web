@@ -141,7 +141,7 @@ pageContext.setAttribute("basePath",basePath);
 									<dd>
 									<table>
 										<tr>
-											<td>居间协议：</td>
+											<td>居间协议(前期)：</td>
 											<td><c:forEach items="${agreeList}" var="item">
 												<c:if test="${not empty item}">
 													<c:if test="${item.agreeType eq '1'}">
@@ -152,7 +152,7 @@ pageContext.setAttribute("basePath",basePath);
 											</td>
 										</tr>
 										<tr style="height:60px">
-											<td>服务协议：</td>
+											<td align="right">服务协议：</td>
 											<td><c:forEach items="${agreeList}" var="item">
 												<c:if test="${not empty item}">
 													<c:if test="${item.agreeType eq '2'}">
@@ -165,7 +165,7 @@ pageContext.setAttribute("basePath",basePath);
 											</td>
 										</tr>
 										<tr>
-											<td>法律文书：</td>
+											<td>居间协议(后期)：</td>
 											<td>
 												<c:forEach items="${agreeList}" var="item">
 													<c:if test="${not empty item}">

@@ -49,16 +49,21 @@ pageContext.setAttribute("basePath",basePath);
 										<input type="hidden" name="agreeType" value=${agreeType }>
 										<div class="form-group">
 											<div class="col-sm-12" style="font-size:14px">
-												<c:forEach items="${agreeList}" var="item">
-													<a href="${basePath}${item.agreeSample}" id="downDocx" target="_self">
-									<c:if test="${agreeType==1 }">
-									《居间服务协议(前期)》
-									</c:if>
-								    <c:if test="${agreeType==3 }">
-									《居间服务协议(后期)》
-									</c:if>
-													</a>
-													<button type="button" class="btn btn-success btn-sm" onclick="downDocs('${basePath}${item.agreeSample}')">下载协议</button>
+												<c:forEach items="${agreeList}" var="item" varStatus="sta">
+													<c:if test="${not empty item.agreeSample}">
+														<a href="${basePath}${item.agreeSample}" id="downDocx" target="_self">
+														<c:if test="${agreeType==1 }">
+															《居间服务协议(前期)》
+														</c:if>
+													    <c:if test="${agreeType==3 }">
+															《居间服务协议(后期)》
+														</c:if>
+														</a>
+														<button type="button" class="btn btn-success btn-sm" onclick="downDocs('${basePath}${item.agreeSample}')">下载协议</button>
+														<c:if test="${sta.first}">
+															<input type="hidden" id="conStatus" value="${item.signStatus}"/>
+														</c:if>
+													</c:if>
 												</c:forEach>
 											</div>
 										</div>
@@ -68,19 +73,19 @@ pageContext.setAttribute("basePath",basePath);
 											<table width="98%">
 												<tr>
 													<td align="left">&nbsp;&nbsp;&nbsp;
-														<b><label for="signStatus"><input type="checkbox" name="signStatus" id="signStatus" value="1" />
-									<c:if test="${agreeType==1 }">
-									同意&lt;居间服务协议(前期)&gt;
-									</c:if>
-								    <c:if test="${agreeType==3 }">
-									同意&lt;居间服务协议(后期)&gt;
-									</c:if>
+														<b id="conCheckBox"><label for="signStatus"><input type="checkbox" name="signStatus" id="signStatus" value="1" />
+															<c:if test="${agreeType==1 }">
+															同意&lt;居间服务协议(前期)&gt;
+															</c:if>
+														    <c:if test="${agreeType==3 }">
+															同意&lt;居间服务协议(后期)&gt;
+															</c:if>
 														
 														</label></b>
 														<span id="titleSub"></span>
 													</td>
 													<td align="right"><button type="button" class="btn btn-default" onclick="goToBack()">返回</button>&nbsp;
-														<button type="button" class="btn btn-primary" onclick="checkAgree()">确定</button>
+														<button type="button" class="btn btn-primary" id="submitBtn" onclick="checkAgree()">确定</button>
 													</td>
 												</tr>
 											</table>
@@ -110,7 +115,13 @@ pageContext.setAttribute("basePath",basePath);
             </h4>
          </div>
          <div class="modal-body">
-            	确认签订《居间服务协议(前期)》吗?
+            	
+            	<c:if test="${agreeType==1 }">
+					确认签订《居间服务协议(前期)》吗?
+				</c:if>
+			    <c:if test="${agreeType==3 }">
+					确认签订《居间服务协议(后期)》吗?
+				</c:if>
          </div>
          <div class="modal-footer">
             <button type="button" class="btn btn-default" data-dismiss="modal">取消
@@ -124,6 +135,15 @@ pageContext.setAttribute("basePath",basePath);
 </div>
 <jsp:include page="/common/_script.jsp"></jsp:include>
     <script type="text/javascript">
+    
+    	$(function (){
+    		var conStatus = $("#conStatus").val();
+    		if(conStatus == "1"){
+    			$("#submitBtn").hide();
+    			$("#conCheckBox").hide();
+    		}
+    	});	
+    
     	function downDocs(url){
     		window.location.href = url;
     	}
