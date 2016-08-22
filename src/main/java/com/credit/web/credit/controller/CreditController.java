@@ -169,7 +169,18 @@ public class CreditController extends BaseController{
 				String[] Proofs = credit.getDebtProof().split(";");
 				credit.setDebtProofs(Proofs);
 			}
+			User user = null;
+			if(StringUtils.isNotEmpty(credit.getDealTeamName())){
+				user = userWerService.getUserById(Integer.valueOf(credit.getDealTeamName()));
+			}
+			PageData pd = this.getPageData();
+			pd.put("creditId", credit.getId());
+			pd.put("agreeType", 2);
+			List<Agreement> agreeList=agreementWebService.list(pd);
+			
 			mv.addObject("credit", credit);
+			mv.addObject("user", user);
+			mv.addObject("agreeList", agreeList);
 			if(MozillaUtil.isMobileDevice(super.getRequest())){//如果是手机
 				//待完成
 			}else{
