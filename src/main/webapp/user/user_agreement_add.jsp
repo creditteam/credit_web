@@ -55,7 +55,7 @@ pageContext.setAttribute("basePath",basePath);
                                 <div class="col-sm-8">
                                     <select  name="agreeType" class="form-control" required="required" disabled="disabled">
 										<option value="1" <c:if test="${credit.crStatus==2 }">selected="selected"</c:if>>居间服务协议(前期)</option>
-										<option value="2" <c:if test="${credit.crStatus==3 }">selected="selected"</c:if>>服务合同</option>
+										<option value="2" <c:if test="${credit.crStatus==3 }">selected="selected"</c:if>>处置协议</option>
 										<option value="3" <c:if test="${credit.crStatus==4 }">selected="selected"</c:if>>居间服务协议(后期)</option>
 									</select>
                                 </div>

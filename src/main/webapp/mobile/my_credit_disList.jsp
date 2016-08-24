@@ -67,7 +67,7 @@ pageContext.setAttribute("basePath",basePath);
 									  <c:if test="${credit.crStatus==3 }">
 									  	<li role="presentation" class="divider"></li>
 									  	<li role="presentation">
-											<a href="${basePath }credit/signedAgree?id=${credit.id}" target="_self">[上传服务合同]</a>
+											<a href="${basePath }credit/signedAgree?id=${credit.id}" target="_self">[上传处置协议]</a>
 										</li>
 									  </c:if>
 									  <c:if test="${credit.crStatus==4 }">

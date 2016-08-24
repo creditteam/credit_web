@@ -89,7 +89,7 @@ pageContext.setAttribute("basePath",basePath);
 									</td>
 								</tr>
 								<tr style="height:60px">
-									<td align="right">服务合同：</td>
+									<td align="right">处置协议：</td>
 									<td><c:forEach items="${agreeList}" var="item">
 										<c:if test="${not empty item}">
 											<c:if test="${item.agreeType eq '2'}">

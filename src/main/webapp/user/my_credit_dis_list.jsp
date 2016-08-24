@@ -76,7 +76,7 @@ pageContext.setAttribute("basePath",basePath);
 							<a href="${basePath}agreement/lookAgree?userId=${credit.dealTeamName}&creditId=${credit.id}&agreeType=1" target="_self">[居间协议(前期)]</a>
 							</c:if>
 							<c:if test="${credit.crStatus==3 }">
-								<a href="${basePath }credit/signedAgree?id=${credit.id}" target="_self">[上传服务合同]</a>
+								<a href="${basePath }credit/signedAgree?id=${credit.id}" target="_self">[上传处置协议]</a>
 							</c:if>
 							<c:if test="${credit.crStatus==4 }">
 							    <a href="${basePath}agreement/lookAgree?userId=${credit.dealTeamName}&creditId=${credit.id}&agreeType=3" target="_self">[居间协议(后期)]</a>
