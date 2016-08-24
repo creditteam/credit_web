@@ -12,13 +12,15 @@ public class Blog {
 	private String blogSource;
 	private String blogAuthor;
 	private String blogImage;
+	private String blogIntroduction;
 
 	public Blog() {
 
 	}
 
 	public Blog(Integer id, Short blogType, String blogTitle,
-			String blogContext, Date createTime,String blogSource,String blogAuthor,String blogImage) {
+			String blogContext, Date createTime,String blogSource,
+			String blogAuthor,String blogImage,String blogIntroduction) {
 		super();
 		this.id = id;
 		this.blogType = blogType;
@@ -28,6 +30,7 @@ public class Blog {
 		this.blogSource = blogSource;
 		this.blogAuthor = blogAuthor;
 		this.blogImage = blogImage;
+		this.blogIntroduction = blogIntroduction;
 	}
 
 	public Integer getId() {
@@ -92,6 +95,14 @@ public class Blog {
 
 	public void setBlogImage(String blogImage) {
 		this.blogImage = blogImage;
+	}
+
+	public String getBlogIntroduction() {
+		return blogIntroduction;
+	}
+
+	public void setBlogIntroduction(String blogIntroduction) {
+		this.blogIntroduction = blogIntroduction;
 	}
 
 	
