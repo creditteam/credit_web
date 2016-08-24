@@ -31,6 +31,7 @@ pageContext.setAttribute("basePath", basePath);
 								</div>
 								<div class="hr-line-dashed"></div>
 							</c:forEach>
+							<a class="pull-right" href="${basePath }blog/list?from=0&blogType=1" target="_blank">更多>></a>
 						</div>
 					</div>
 				</div>
@@ -47,6 +48,7 @@ pageContext.setAttribute("basePath", basePath);
 								</div>
 								<div class="hr-line-dashed"></div>
 							</c:forEach>
+							<a class="pull-right" href="${basePath }blog/list?from=0&blogType=2" target="_blank">更多>></a>
 						</div>
 					</div>
 				</div>
