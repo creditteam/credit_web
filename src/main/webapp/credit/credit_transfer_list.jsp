@@ -60,9 +60,13 @@ pageContext.setAttribute("basePath",basePath);
 												<td class="text-navy"><i class="fa fa-level-up"></i>${credit.commisionRange}</td>
 												<td><span class="label label-warning">
 												<c:if test="${credit.crStatus==1 }">招标中</c:if>
-												<c:if test="${credit.crStatus==2 }">处置中</c:if>
-												<c:if test="${credit.crStatus==3 }">还款中</c:if>
-												<c:if test="${credit.crStatus==4 }">已结束</c:if>
+												<c:if test="${credit.crStatus==2 }">已匹配</c:if>
+												<c:if test="${credit.crStatus==3 }">已签前期协议</c:if>
+												<c:if test="${credit.crStatus==4 }">已签处置协议</c:if>
+												<c:if test="${credit.crStatus==5 }">已签后期协议</c:if>
+												<c:if test="${credit.crStatus==6 }">处置中</c:if>
+												<c:if test="${credit.crStatus==7 }">还款中</c:if>
+												<c:if test="${credit.crStatus==9 }">已终结</c:if>
 												</span></td>
 												<td><a href="${basePath }credit/creditDetails?id=${credit.id}" target="_self">查看</a></td>
 											</tr>

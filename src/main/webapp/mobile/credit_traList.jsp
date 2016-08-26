@@ -47,18 +47,30 @@ pageContext.setAttribute("basePath",basePath);
 						<td><i class="fa fa-clock-o"></i> ${credit.crAmount}</td>
 						<td class="text-navy"><i class="fa fa-level-up"></i>${credit.commisionRange}</td>
 						<td>
-							<c:if test="${credit.crStatus eq '1'}">
-								<button  style="background-color: red; border-radius:25px;" class="btn btn-yellow export btn-sm" disabled="disabled">招标中</button>
-							</c:if>
-							<c:if test="${credit.crStatus eq '2'}">
-								<button  style="border-radius:25px;" class="btn btn-yellow export btn-sm" disabled="disabled">处置中</button>
-							</c:if>
-							<c:if test="${credit.crStatus eq '3'}">
-								<button  style="border-radius:25px;" class="btn btn-yellow export btn-sm" disabled="disabled">还款中</button>
-							</c:if>
-							<c:if test="${credit.crStatus eq '4'}">
-								<button  style="border-radius:25px;" class="btn btn-yellow export btn-sm" disabled="disabled">已结束</button>
-							</c:if>
+								    <c:if test="${credit.crStatus eq '1'}">
+									<button  style="background-color: red; border-radius:25px;" class="btn btn-yellow export btn-sm" disabled="disabled">招标中</button>
+									</c:if>
+									<c:if test="${credit.crStatus eq '2'}">
+									<button  style="border-radius:25px;" class="btn btn-yellow export btn-sm" disabled="disabled">已匹配</button>
+									</c:if>
+									<c:if test="${credit.crStatus eq '3'}">
+									<button  style="border-radius:25px;" class="btn btn-yellow export btn-sm" disabled="disabled">已签前期协议</button>
+									</c:if>
+									<c:if test="${credit.crStatus eq '4'}">
+									<button  style="border-radius:25px;" class="btn btn-yellow export btn-sm" disabled="disabled">已签处置协议</button>
+								    </c:if>
+		                            <c:if test="${credit.crStatus eq '5'}">
+									<button  style="border-radius:25px;" class="btn btn-yellow export btn-sm" disabled="disabled">已签后期协议</button>
+								    </c:if>
+                                   <c:if test="${credit.crStatus eq '6'}">
+									<button  style="border-radius:25px;" class="btn btn-yellow export btn-sm" disabled="disabled">处置中</button>
+								    </c:if>
+								   <c:if test="${credit.crStatus eq '7'}">
+									<button  style="border-radius:25px;" class="btn btn-yellow export btn-sm" disabled="disabled">还款中</button>
+								    </c:if>
+								    <c:if test="${credit.crStatus eq '9'}">
+									<button  style="border-radius:25px;" class="btn btn-yellow export btn-sm" disabled="disabled">已终结</button>
+								    </c:if>
 						</td>
 					</tr>
 				</c:forEach>

@@ -67,7 +67,7 @@
    <select id="count" parameterType="PageData" resultType="int">
 		select count(1)
 		from cr_credit u
-		where 1=1
+		where cr_status!=-1
 		<if test="userId == null or userId == ''">
 			and is_audit = 1
 		</if>
@@ -94,7 +94,7 @@
 	<select id="list" parameterType="PageData" resultType="Credit">
 	   <include refid="creditColumns"></include>
 		 from cr_credit u
-		where 1 = 1
+		where cr_status!=-1
 		<if test="userId == null or userId == ''">
 			and is_audit = 1
 		</if>
@@ -172,6 +172,7 @@
 		select count(1)
 		from cr_credit u
 		where deal_team_name=#{dealTeamName}
+		and cr_status!=-1
 		<if test="crStatus != null and crStatus != ''">
 			and cr_status=#{crStatus}
 		</if>
@@ -189,6 +190,7 @@
 	   <include refid="creditColumns"></include>
 		 from cr_credit u
 		where deal_team_name=#{dealTeamName}
+		and cr_status!=-1
 		<if test="crStatus != null and crStatus != ''">
 			and cr_status=#{crStatus}
 		</if>
