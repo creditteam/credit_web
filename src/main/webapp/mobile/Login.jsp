@@ -84,7 +84,7 @@
 	</div>
 
 <!-- 模态框（Modal） -->
-<div class="modal fade" id="oblsModal" tabindex="-1" role="dialog"
+<div class="modal fade" id="oblsModal" tabindex="-1" role="dialog" data-backdrop="static"
 	aria-labelledby="oblModalLabel" aria-hidden="true">
 	<form action="${basePath}user/passBack" class="bs-example bs-example-form" method="POST" role="form" id="getBackForm">
 	<div class="modal-dialog">
@@ -209,6 +209,11 @@ function SetRemainTime() {
         $("#regiohonebtn").attr("disabled", "disabled");
     }
 };
+$(function (){
+	if('${result}' && '${result}' !== ''){
+		alert('${result}');
+	}
+});
 </script>
 </body>
 </html>

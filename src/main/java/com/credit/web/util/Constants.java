@@ -50,7 +50,8 @@ public class Constants {
 			"/blog/details",
 			"/blog/mlList",
 			"/uploadFile",
-			"/filemanager/list"
+			"/filemanager/list",
+			"register_success"
 			};
 }
   

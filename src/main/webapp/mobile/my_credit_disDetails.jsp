@@ -78,7 +78,7 @@ pageContext.setAttribute("basePath",basePath);
 						<span class="list-group-item">
 							<table width="100%">
 								<tr>
-									<td>协议(前期)：</td>
+									<td>居间协议(前期)：</td>
 									<td><c:forEach items="${agreeList}" var="item">
 										<c:if test="${not empty item}">
 											<c:if test="${item.agreeType eq '1'}">
@@ -102,7 +102,7 @@ pageContext.setAttribute("basePath",basePath);
 									</td>
 								</tr>
 								<tr>
-									<td>协议(后期)：</td>
+									<td>居间协议(后期)：</td>
 									<td>
 										<c:forEach items="${agreeList}" var="item">
 											<c:if test="${not empty item}">

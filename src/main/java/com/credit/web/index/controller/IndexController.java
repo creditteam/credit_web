@@ -143,4 +143,8 @@ public class IndexController extends BaseController{
 	public String to_handflow(){
 		return "/mobile/handFlow";
 	}
+	@RequestMapping(value="/register_success")
+	public String register_success(){
+		return "/register_success";
+	}
 }

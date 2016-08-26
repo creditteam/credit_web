@@ -198,7 +198,7 @@ public class UserController extends BaseController{
 			if(isMobile){//如果是手机注册
 				mv.setViewName("/mobile/login");
 			}else{
-				mv.setViewName("/login");
+				mv.setViewName("/register_success");
 			}
 		}else{
 			if(isMobile){//如果是手机注册
