@@ -10,7 +10,7 @@ pageContext.setAttribute("basePath",basePath);
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
   <head>
-    <title>快易收债权管理|债权信息</title>
+    <title>快易收债权管理|债权详情</title>
     
 	<meta name="description" content="Worthy a Bootstrap-based, Responsive HTML5 Template">
 	<meta name="author" content="htmlcoder.me">
@@ -35,6 +35,7 @@ pageContext.setAttribute("basePath",basePath);
 			            <h4 class="modal-title" id="oblModalLabel" >
 			               	债权详细信息
 			            </h4>
+			            <span><jsp:include page="/common/_share.jsp"></jsp:include></span>
 			         </div>
 			         <div class="modal-body">
 			           	<span class="list-group-item active" >
@@ -58,7 +59,7 @@ pageContext.setAttribute("basePath",basePath);
 							</c:forEach></span>
 						<span class="list-group-item" style=" color: #f0841d">债权金额：${credit.crAmount} (万元)</span>
 						<span class="list-group-item" >佣金范围：${credit.commisionRange}</span>
-						<span class="list-group-item" >发布日期：<fmt:formatDate value="${credit.openDate}" type="date" dateStyle="long"/></span>
+						<span class="list-group-item" >发布日期：<fmt:formatDate value="${credit.createDate}" type="date" dateStyle="long"/></span>
 						<span class="list-group-item" >债权开始日期：${credit.openDate}</span>
 						
 						<span class="list-group-item active" >高级信息</span>
