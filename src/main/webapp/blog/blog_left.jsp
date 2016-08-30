@@ -17,7 +17,7 @@ pageContext.setAttribute("basePath", basePath);
                                 </li>
                                 <li><a href="${basePath}filemanager/list"><i class="fa fa-folder"></i> 资源下载</a></li>
                             </ul>
-                            <h5 class="tag-title">标签</h5>
+                           <!--  <h5 class="tag-title">标签</h5>
                             <ul class="tag-list" style="padding: 0">
                                 <li><a href="file_manager.html">爱人</a>
                                 </li>
@@ -35,7 +35,7 @@ pageContext.setAttribute("basePath", basePath);
                                 </li>
                                 <li><a href="file_manager.html">电影</a>
                                 </li>
-                            </ul>
+                            </ul> -->
                             <div class="clearfix"></div>
                         </div>
                     </div>

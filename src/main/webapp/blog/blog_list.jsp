@@ -20,8 +20,8 @@ pageContext.setAttribute("basePath", basePath);
 		                        <div class="search-result">
 		                            <h3><a href="${item.blogSource}" style="color:#676A6C">${item.blogTitle}</a></h3>
 		                            <p>
-		                              <a href="${item.blogSource}"><img alt="" src="${basePath}${item.blogAuthor}" width="80px" height="60px"></a>
-										<span style="margin-left: 15px">${fn:substring(item.blogContext,0,50)}...</span>
+		                              <a href="${item.blogSource}"><img alt="" src="${basePath}${item.blogImage}" width="80px" height="60px"></a>
+										<span style="margin-left: 15px">${item.blogIntroduction}</span>
 		                            </p>
 		                        </div>
 	                        </c:if>
@@ -29,13 +29,13 @@ pageContext.setAttribute("basePath", basePath);
 		                        <div class="search-result">
 		                            <h3><a href="${basePath}/blog/details?id=${item.id}">&nbsp;&nbsp;${item.blogTitle}</a></h3>
 		                            <p>
-		                              &nbsp;&nbsp;&nbsp;&nbsp;${fn:substring(item.blogContext,0,65)}...
+		                              &nbsp;&nbsp;&nbsp;&nbsp;${item.blogIntroduction}
 		                            </p>
 		                        </div>
 	                        </c:if>
                         </c:forEach>
                         <div class="hr-line-dashed"></div>
-                        <gvtv:newPage href="${basePath }blog/list?blogType=1" pageType="pc"></gvtv:newPage>
+                        <gvtv:newPage href="${basePath }blog/list?blogType=${pd.blogType}" pageType="pc"></gvtv:newPage>
                     </div>
                 </div>
             </div>
