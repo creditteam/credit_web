@@ -22,6 +22,10 @@ pageContext.setAttribute("basePath",basePath);
 	</style>
   </head>
 	<jsp:include page="mobile_meta.jsp"></jsp:include>
+	 <link href="${basePath}hplus/css/share_style.css" rel="stylesheet">
+ 	<link href="${basePath}hplus/css/share_popup.css" rel="stylesheet">
+ 	<link href="${basePath}hplus/css/select_share.css" rel="stylesheet">
+	<script src="${basePath }hplus/js/share.js"></script>
 <body>
 
 <div class="main-container" style="height:100%">
@@ -35,7 +39,15 @@ pageContext.setAttribute("basePath",basePath);
 			            <h4 class="modal-title" id="oblModalLabel" >
 			               	债权详细信息
 			            </h4>
-			            <span><jsp:include page="/common/_share.jsp"></jsp:include></span>
+			            <div class="bdsharebuttonbox bdshare-button-style0-16" style="margin-left: 20%;" data-bd-bind="1469635014810">
+							<a class="" onclick="javascript:void(0)">分享到：</a>
+							<a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a>
+							<a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+							<a href="#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博"></a>
+							<a href="#" class="bds_renren" data-cmd="renren" title="分享到人人网">
+							<a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>	
+							
+						</div>
 			         </div>
 			         <div class="modal-body">
 			           	<span class="list-group-item active" >
