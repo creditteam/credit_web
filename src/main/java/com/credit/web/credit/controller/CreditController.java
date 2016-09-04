@@ -249,6 +249,7 @@ public class CreditController extends BaseController{
 			}else{
 				user.setNickname(SensitiveUtil.shieldName(user.getNickname()));
 				user.setUserPhone(SensitiveUtil.shieldPhone(user.getUserPhone()));
+				user.setUserEmail(SensitiveUtil.shieldName(user.getUserEmail()));
 			}
 			ModelAndView mv = this.getModelAndView();
 			mv.addObject("credit", credit);
