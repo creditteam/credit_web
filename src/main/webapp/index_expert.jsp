@@ -10,7 +10,7 @@ pageContext.setAttribute("basePath",basePath);
 %>
 <div class="panel panel-default">
     <div class="panel-body">
-    <h2 style="text-align: center">专家顾问</h2>
+    <h2 style="text-align: center;font-family: 华文行楷;color:#C50E20;"><b>专家顾问</b></h2>
 <div class="row">
 	<div class="col-sm-12">
 		<div class="tabs-container">
