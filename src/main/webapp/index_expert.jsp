@@ -8,6 +8,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 // 将 "项目路径basePath" 放入pageContext中，待以后用EL表达式读出。
 pageContext.setAttribute("basePath",basePath);
 %>
+<div class="panel panel-default">
+    <div class="panel-body">
+    <h2 style="text-align: center">专家顾问</h2>
 <div class="row">
 	<div class="col-sm-12">
 		<div class="tabs-container">
@@ -117,7 +120,7 @@ pageContext.setAttribute("basePath",basePath);
 		</div>
 	</div>
 </div>
-</div>
+</div></div></div>
 <script>
 $('ul a').hover(function () {
     $(this).tab('show');
