@@ -33,6 +33,7 @@
 				<div class="login-title text-center">
 					<h4>会员注册</h4>
 				</div>
+				<span class="label label-warning">${message }</span><br/><br/>  
 				<div class="form-group">
 					<div class="input-group input-group-xs">
 						<span class="input-group-addon">会员类型</span>
@@ -54,7 +55,7 @@
 						<table>
 							<tr>
 								<td>
-									<input type="text" id="registerZm" name="registerZm" class="form-control" disabled="disabled" placeholder="验证码" maxlength="6">
+									<input type="text" id="registerZm" name="registerZm" class="form-control" readonly="readonly" placeholder="验证码" maxlength="6">
 								</td>
 								<td>
 									<input class="btn btn-primary" id="regiohonebtn" type="button" value="发送验证码" onclick="registPhone()"/>
@@ -78,12 +79,6 @@
 					</div>
 				</div>
 				
-				<!-- <div class="form-group">
-					<div class="input-group input-group-xs">
-						<span class="input-group-addon">确认密码</span>
-						<input type="password" id="userPwd2" name="userPwd2" class="form-control" placeholder="重复输入一次密码" maxlength="20">
-					</div>
-				</div> -->
 				<div class="form-group">
 					<div class="input-group input-group-xs">
 						<div class="checkbox" id="zqfbxy">
@@ -103,7 +98,7 @@
 				<span id="userpassword" style="color: red" hidden="hidden"></span><br>
 				<div class="form-group">
 					<div class="col-xs-14">
-						<input type="button" id="checksubbtn" class="btn btn-lg btn-success btn-block" value="提交" onclick="submitRegit()"/>
+						<input type="submit" id="checksubbtn" class="btn btn-lg btn-success btn-block" value="提交" />
 					</div>
 				</div>
 			</form>
@@ -123,7 +118,7 @@
 			alert('请输入手机号');
 			return false;
 		}
-		$("#registerZm").removeAttr("disabled");
+		$("#registerZm").removeAttr("readonly");
 		InterValObj = window.setInterval(SetRemainTime, 1000); //启动计时器，1秒执行一次
 		$.ajax({
 			 type: "POST", //用POST方式传输
@@ -178,12 +173,12 @@
    	    if(bootstrapValidator.isValid()){
    	    	var selxy = $("#userType").val();
    	    	if (selxy == 0) {
-   	    		if($("#zqfbxycb").attr("checked") == 'checked'){
+   	    		if($("#zqfbxycb").attr("checked") != 'checked'){
    	    			alert("需要同意用户服务协议才能完成注册");
    	    			return false;
    	    		}
    	    	} else {
-   	    		if($("#zqczxycb").attr("checked") == "checked"){
+   	    		if($("#zqczxycb").attr("checked") != "checked"){
    	    			alert("需要同意用户服务协议才能完成注册");
    	    			return false;
    	    		}
@@ -210,55 +205,23 @@
 	                    phone : {
 	                    	message: '手机号输入不正确',
 	                    	country: 'CN'
-	                    },
-	                    threshold :  10 , //有6字符以上才发送ajax请求，（input中输入一个字符，插件会向服务器发送一次，设置限制，6字符以上才开始）
-	                    remote: {//ajax验证。server result:{"valid",true or false} 向服务发送当前input name值，获得一个json数据。例表示正确：{"valid",true}  
-	                         url: '${basePath }user/validaPhone',//验证地址
-	                         message: '该手机号已注册',//提示消息
-	                         delay :  1000,//每输入一个字符，就发ajax请求，服务器压力还是太大，设置2秒发送一次ajax
-	                         type: 'POST'
-	                     }
+	                    }
 	                }
 	            },
-	            nickname: {
+	            userEmail: {
 	                validators: {
 	                    notEmpty: {
 	                        message: '用户昵称请输入邮箱!'
-	                    },
-	                    emailAddress: {
-	                        message: '请输入正确的邮箱!'
-	                    },
-	                    threshold :  7 , //有6字符以上才发送ajax请求，（input中输入一个字符，插件会向服务器发送一次，设置限制，6字符以上才开始）
-	                    remote: {//ajax验证。server result:{"valid",true or false} 向服务发送当前input name值，获得一个json数据。例表示正确：{"valid",true}  
-	                         url: '${basePath }user/validaEmail',//验证地址
-	                         message: '该邮箱已注册',//提示消息
-	                         delay :  1000,//每输入一个字符，就发ajax请求，设置1秒发送一次ajax
-	                         type: 'POST'//请求方式
-	                     }
+	                    }
 	                }
 	            },
 	            userPwd: {
 	                validators: {
 	                	notEmpty: {
 	                        message: '密码不能为空'
-	                    }/* ,
-	                    identical: {
-	                        field: 'userPwd2',
-	                        message: '密码和确认密码不一致!'
-	                    } */
-	                }
-	            },
-	            /* userPwd2: {
-	                validators: {
-	                	notEmpty: {
-	                        message: '重复密码不能为空'
-	                    },
-	                    identical: {
-	                        field: 'userPwd',
-	                        message: '密码和确认密码不一致!'
 	                    }
 	                }
-	            }, */
+	            },
 	            registerZm: {
 	            	validators: {
 	            		notEmpty: {

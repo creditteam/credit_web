@@ -48,7 +48,7 @@ pageContext.setAttribute("basePath",basePath);
 									</div>
                                     <div class="form-group">
                                         <label>用户名</label>
-                                        <input type="text" id="nickname" name="nickname" placeholder="请输入您用户名" class="form-control"  style="width:80%"/>
+                                        <input type="text" id="userEmail" name="userEmail" placeholder="请输入有效的电子邮箱" class="form-control"  style="width:80%"/>
                                     </div>
                                     <div class="form-group">
                                         <label>密码</label>
@@ -64,13 +64,13 @@ pageContext.setAttribute("basePath",basePath);
 					                    <label>验证码</label>
 					                    <input type="text" id="registerZm" name = "registerZm" class="form-control" placeholder="验证码" style="width:80%"/>
 					                </div>						             
-					                <div class="form-group">
+					                <!-- <div class="form-group">
 					                    <label>Email</label>
 					                    <input type="email"  id="userEmail" name="userEmail" class="form-control"  placeholder="请输入有效的Email" style="width:80%"/>
-					                </div>
+					                </div> -->
                                     <div>
-                                        <label id="userType_fb" > <input type="checkbox"  name="isAgreeProtocol" class="i-checks"><a href="${basePath }hplus/uploadFile/docs/fwxy_fbb.docx">我同意《用户服务协议》（债权发布方版）</a></label>
-                                        <label id="userType_cz" style="display: none"> <input type="checkbox" name="isAgreeProtocol" class="i-checks"><a href="${basePath }hplus/uploadFile/docs/fwxy_czb.docx">我同意《用户服务协议》（债权处置方版）</a></label>
+                                        <label id="userType_fb" > <input type="checkbox"  name="isAgreeProtocol" class="i-checks" checked="checked"><a href="${basePath }hplus/uploadFile/docs/fwxy_fbb.docx">我同意《用户服务协议》（债权发布方版）</a></label>
+                                        <label id="userType_cz" style="display: none"> <input type="checkbox" name="isAgreeProtocol" class="i-checks" checked="checked"><a href="${basePath }hplus/uploadFile/docs/fwxy_czb.docx">我同意《用户服务协议》（债权处置方版）</a></label>
                                     </div>
                                     <div>
                                         <button class="btn btn-sm btn-primary  m-t-n-xs" type="submit"  id="regist"><strong>注册</strong></button>
@@ -81,7 +81,7 @@ pageContext.setAttribute("basePath",basePath);
                                 <h4>你已经是新会员了！</h4>
                                 <p>您可以跳转到登录页面</p>
                                 <p class="text-center">
-                                    <a href="login.jsp"><i class="fa fa-sign-in big-icon"></i></a>
+                                    <a href="${basePath }/user/tologin" target="_self"><i class="fa fa-sign-in big-icon"></i></a>
                                 </p>
                             </div>
                         </div>
@@ -167,9 +167,6 @@ $(function(){
         	alert("表单验证错误");
         },
         rules:{
-        	nickname:{
-                required:true
-            },
             userPwd:{
                 required:true
             },
@@ -179,7 +176,7 @@ $(function(){
             },
             userPhone:{
                 required:true,
-                rangelength:[3,11]
+                rangelength:[6,11]
             },
             registerZm:{
             	required:true,
@@ -187,9 +184,6 @@ $(function(){
             }                    
         },
         messages:{
-        	nickname:{
-                required:"必填"
-            },
             userPwd:{
                 required:"必填"
             },
