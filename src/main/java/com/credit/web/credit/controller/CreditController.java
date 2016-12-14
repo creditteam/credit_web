@@ -341,6 +341,7 @@ public class CreditController extends BaseController{
 	 */
 	@RequestMapping(value="/navlist")
 	public ModelAndView navlist(HttpServletRequest request) throws Exception{
+        System.out.println("navlist start");
 		String creditType =request.getParameter("creditType");
 		PageData pd =super.getPageData();
 		pd = creditWebService.pageList(pd);

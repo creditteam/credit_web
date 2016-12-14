@@ -54,7 +54,7 @@ pageContext.setAttribute("basePath",basePath);
 						<c:forEach items="${blogList1}" var="item">
 							<div id="blog${item.id}" style="border-bottom:thin solid #ffeeee;">
 								<div class="text-left" style="margin-left:20">
-									<a href="${basePath}blog/details?id=${item.id}" style=" padding-left: 20"><br>${item.blogTitle }</a>
+									<a href="${item.blogSource}" style=" padding-left: 20"><br>${item.blogTitle }</a>
 								</div>
 							</div>
 						</c:forEach>
