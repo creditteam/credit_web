@@ -390,14 +390,18 @@ public class CreditController extends BaseController{
 	public void shieldDeptName(List<Credit> creditdisposalList, List<Credit> disposalList) {
 		for (int i = 0; i < creditdisposalList.size(); i++) {
 			Credit credit =creditdisposalList.get(i);
-			if(credit.getDeptType()==1){
-				String debtName = SensitiveUtil.shieldName(credit.getDebtName());
-				credit.setDebtName(debtName);
-			}else{
-				String debtName = SensitiveUtil.shieldCompany(credit.getDebtName());
-				credit.setDebtName(debtName);				
+			if(credit!=null){
+				if(credit.getDeptType()!=null){
+					if(credit.getDeptType()==1){
+						String debtName = SensitiveUtil.shieldName(credit.getDebtName());
+						credit.setDebtName(debtName);
+					}else{
+						String debtName = SensitiveUtil.shieldCompany(credit.getDebtName());
+						credit.setDebtName(debtName);				
+					}
+					disposalList.add(credit);
+				}
 			}
-			disposalList.add(credit);
 		}
 	}
 	
